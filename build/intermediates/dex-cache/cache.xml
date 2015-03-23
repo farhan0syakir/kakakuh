@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-649ac89a3b0e186e3f827abf4234e6c732ccd17c.jar" />
+    </item>
+    <item
         jar="/home/farhansyakir/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -9,11 +16,25 @@
         <dex dex="/home/farhansyakir/development/Proj/Kakakuh/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-397997de572d981e2aa2f8356d6fafaca27a6b9d.jar" />
     </item>
     <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/classes-6a27b5bf5185607a74ea1cb45513789f9a912793.jar" />
+    </item>
+    <item
         jar="/home/farhansyakir/development/Proj/Kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="/home/farhansyakir/development/Proj/Kakakuh/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-e33e66ae2a7d22c41ee89260001ab66f139e2436.jar" />
+    </item>
+    <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/classes-8755d619b70f2024604bf8bf5540b04ffcfe1bf8.jar" />
     </item>
     <item
         jar="/home/farhansyakir/development/Proj/Kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
