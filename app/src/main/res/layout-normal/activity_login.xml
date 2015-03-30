@@ -52,7 +52,7 @@
         android:id="@+id/username_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kakakuh_portal"
+        android:text="@string/username_label"
         android:textSize="@dimen/normal_text"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/logo_text"
