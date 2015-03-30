@@ -1,6 +1,15 @@
 package com.kakakuh.c4ppl.kakakuh.model;
 
+import android.util.Log;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -80,7 +89,7 @@ public class User implements Model{
             data += "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8");
             data += "&" + URLEncoder.encode("user", "UTF-8") + "=" + URLEncoder.encode(Login, "UTF-8");
             data += "&" + URLEncoder.encode("pass", "UTF-8") + "=" + URLEncoder.encode(Pass, "UTF-8");
-            */
+
             String data = "?id=1&role-1&username=farhan&password=ganteng&npm=1206242151&name=farhan&angkatan=2012";
             String text = "";
             BufferedReader reader=null;
@@ -124,9 +133,27 @@ public class User implements Model{
             }
 
 
+*/
+        HttpClient client = new DefaultHttpClient();
+        HttpGet request = new HttpGet("http://http://127.0.0.1/login.php?id=1&role-1&username=farhan&password=ganteng&npm=1206242151&name=farhan&angkatan=2012");
+        // replace with your url
 
-        return text;
+        HttpResponse response;
+        try {
+            response = client.execute(request);
+
+            Log.d("Response of GET request", response.toString());
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+//        return text;
+        return "farhan";
     }
+
 
     @Override
     public String Update(Object object) {
