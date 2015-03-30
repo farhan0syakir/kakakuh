@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="500dp"
         android:background="@color/emerald"
         android:id="@+id/wrapper_logo_portal"
         android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:background="@color/white">
-            </RelativeLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -46,7 +46,7 @@
         android:textColor="@color/emerald"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/wrapper_logo_portal"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="100dp" />
 
     <TextView
         android:id="@+id/username_label"
@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/username_label"
-        android:textSize="@dimen/normal_text"
         android:inputType="text"
+        android:textSize="@dimen/normal_text"
         android:layout_marginTop="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"

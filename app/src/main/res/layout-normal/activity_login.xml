@@ -52,7 +52,7 @@
         android:id="@+id/username_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/username_label"
+        android:text="@string/kakakuh_portal"
         android:textSize="@dimen/normal_text"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/logo_text"
@@ -65,11 +65,11 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/username_label"
         android:textSize="@dimen/normal_text"
-        android:inputType="text"
         android:layout_marginTop="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:background="@drawable/square_text_box"/>
+        android:background="@drawable/square_text_box"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/password_label"
@@ -104,6 +104,6 @@
         android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/btn_login"/>
+        android:contentDescription="@string/btn_login" />
 
 </RelativeLayout>
