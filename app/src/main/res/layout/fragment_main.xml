@@ -15,4 +15,5 @@
         android:text="Halo Again"
         android:id="@+id/textView"
         android:textSize="12dp" />
+
 </RelativeLayout>

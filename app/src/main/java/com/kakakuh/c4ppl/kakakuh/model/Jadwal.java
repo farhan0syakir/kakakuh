@@ -4,21 +4,6 @@ import java.security.Timestamp;
 import java.util.Date;
 
 public class Jadwal implements Model{
-    @Override
-    public String Create() {
-        return null;
-    }
-
-    @Override
-    public String Update(Object object) {
-        return null;
-    }
-
-    @Override
-    public String Delete() {
-        return null;
-    }
-
     private int id;
     private int type;
     private int bookerId;
