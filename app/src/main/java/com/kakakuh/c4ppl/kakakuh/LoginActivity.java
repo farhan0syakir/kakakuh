@@ -1,8 +1,12 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import android.view.inputmethod.InputMethodManager;
@@ -13,28 +17,30 @@ import android.view.View;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends Activity {
+    private EditText usernameField, passwordField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        /*
-        // Loading Font Face
-        Typeface tfBold = Typeface.createFromAsset(getAssets(), "Signika-Bold.ttf");
-        Typeface tfRegular = Typeface.createFromAsset(getAssets(), "Signika-Reqular.ttf");
-
-        // elements
-        TextView txtLogo = (TextView) findViewById(R.id.logo_text);
-        TextView txtUsername = (TextView) findViewById(R.id.username_label);
-        TextView txtPassword = (TextView) findViewById(R.id.password_label);
-
-        // Applying font
-        txtLogo.setTypeface(tfBold);
-        txtUsername.setTypeface(tfRegular);
-        txtPassword.setTypeface(tfRegular);
-        */
+        usernameField = (EditText)findViewById(R.id.username);
+        passwordField = (EditText)findViewById(R.id.password);
     }
+
+    public void login(View view){
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
+        new SigninActivity().execute(username, password);
+
+        if(username.equals("admin") && password.equals("admin")){
+            Intent nextScreen = new Intent(getApplicationContext(), Blank.class);
+
+            startActivity(nextScreen);
+        }
+        else{
+
+        }
+    }
+
 
     /*
     public void showSoftKeyboard(View view) {
@@ -46,3 +52,4 @@ public class LoginActivity extends Activity {
     }
     */
 }
+
