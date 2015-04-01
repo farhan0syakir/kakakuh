@@ -5,6 +5,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import android.view.inputmethod.InputMethodManager;
+import android.view.View;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -32,4 +35,14 @@ public class LoginActivity extends Activity {
         txtPassword.setTypeface(tfRegular);
         */
     }
+
+    /*
+    public void showSoftKeyboard(View view) {
+        if (view.requestFocus()) {
+            InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }
+    */
 }

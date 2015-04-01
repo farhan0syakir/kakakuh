@@ -69,7 +69,8 @@
         android:layout_marginTop="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:background="@drawable/square_text_box"/>
+        android:background="@drawable/square_text_box"
+        android:onClick=""/>
 
     <TextView
         android:id="@+id/password_label"
