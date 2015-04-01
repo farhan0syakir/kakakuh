@@ -2,39 +2,39 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7557d0db622b231c4a652d0d2710892007aa4a1a.jar" />
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-649ac89a3b0e186e3f827abf4234e6c732ccd17c.jar" />
     </item>
     <item
-        jar="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-089f5f6544d3992631cf9bc1c5e7a5969ac5a425.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-a412315a5fa750133db5ae6f73b7fe78936f2056.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-2750845fd5f1a0751ced96e7c685cd238c738f44.jar" />
-    </item>
-    <item
-        jar="C:\Users\Anas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="/home/farhansyakir/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-c4feb1fbb0051ee226b1fcccdd18546f4d1c956f.jar" />
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-397997de572d981e2aa2f8356d6fafaca27a6b9d.jar" />
+    </item>
+    <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/classes-6a27b5bf5185607a74ea1cb45513789f9a912793.jar" />
+    </item>
+    <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/classes-8755d619b70f2024604bf8bf5540b04ffcfe1bf8.jar" />
+    </item>
+    <item
+        jar="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/home/farhansyakir/development/Proj/kakakuh/app/build/intermediates/pre-dexed/debug/classes-efec5450b16f7aa8e4a48d41b4b18e62ae682bd2.jar" />
     </item>
 
 </items>
