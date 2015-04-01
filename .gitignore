@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-.idea/*
-.gradle/*
-=======
 # built application files
 *.apk
 *.ap_
@@ -43,4 +39,3 @@ Thumbs.db
 .idea/tasks.xml
 .idea/datasources.xml
 .idea/dataSources.ids
->>>>>>> 2a6117ae6e40f7577f607017f3b7b69b0e20acd1
