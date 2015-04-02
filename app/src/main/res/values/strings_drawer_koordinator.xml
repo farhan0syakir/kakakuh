@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="koor_nav_drawer_items">
+        <item >Profil</item>
+        <item >Review Log</item>
+        <item >Buat Akun</item>
+        <item >Hapus Akun</item>
+        <item >Pasangkan Akun</item>
+        <item >List Kakak Asuh</item>
+        <item >List Adik Asuh</item>
+        <item >Pengaturan</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="koor_nav_drawer_icons">
+        <item>@drawable/ic_drawer_profil</item>
+        <item>@drawable/ic_drawer_review_log</item>
+        <item>@drawable/ic_drawer_buat_akun</item>
+        <item>@drawable/ic_drawer_hapus_akun</item>
+        <item>@drawable/ic_drawer_pasangkan_akun</item>
+        <item>@drawable/ic_drawer_list_akun</item>
+        <item>@drawable/ic_drawer_list_akun_adik</item>
+        <item>@drawable/ic_drawer_pengaturan</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+</resources>
