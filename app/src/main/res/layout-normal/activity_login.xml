@@ -126,7 +126,8 @@
                     android:background="@null"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/btn_login"/>
+                    android:onClick="login"
+                    android:contentDescription="@string/btn_login" />
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>

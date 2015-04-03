@@ -44,7 +44,8 @@
         <!-- Another Activity -->
         <activity
             android:name=".KoordinatorActivity"
-            android:label="@string/title_activity_koordinator" >
+            android:label="@string/title_activity_koordinator">
         </activity>
+
     </application>
 </manifest>
