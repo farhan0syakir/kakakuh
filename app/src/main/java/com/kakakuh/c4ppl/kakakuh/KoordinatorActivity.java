@@ -103,7 +103,6 @@ public class KoordinatorActivity extends Activity {
         // enabling action bar app icon and behaving it as toggle button
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(46, 204, 113)));
         getActionBar().setTitle(navMenuTitles[1]);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -148,7 +147,7 @@ public class KoordinatorActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_actions, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

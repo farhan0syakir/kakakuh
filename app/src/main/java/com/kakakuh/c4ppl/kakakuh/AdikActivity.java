@@ -97,7 +97,6 @@ public class AdikActivity extends Activity {
         // enabling action bar app icon and behaving it as toggle button
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(46, 204, 113)));
         getActionBar().setTitle(navMenuTitles[1]);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -141,7 +140,7 @@ public class AdikActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_actions, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -150,6 +149,7 @@ public class AdikActivity extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_pesan:

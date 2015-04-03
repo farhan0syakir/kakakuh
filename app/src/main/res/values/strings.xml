@@ -16,5 +16,9 @@
     <string name="hello_world">Hello World!</string>
     <string name="title_activity_adik">AdikActivity</string>
     <string name="action_pesan">pesan</string>
+    <string name="title_activity_pesan_koordinator">Pesan</string>
+    <string name="title_activity_pesan_baru_koordinator">PesanBaruKoordinatorActivity</string>
+    <string name="kirim_pesan">Kirim Pesan</string>
+    <string name="pesan">Pesan</string>
 
 </resources>

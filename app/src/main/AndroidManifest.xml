@@ -44,18 +44,62 @@
         <!-- Another Activity -->
         <activity
             android:name=".KoordinatorActivity"
-            android:label="@string/title_activity_koordinator">
+            android:label="@string/title_activity_koordinator" >
         </activity>
-
         <activity
             android:name=".KakakActivity"
-            android:label="@string/title_activity_kakak">
+            android:label="@string/title_activity_kakak" >
+        </activity>
+        <activity
+            android:name=".AdikActivity"
+            android:label="@string/title_activity_adik" >
         </activity>
 
         <activity
-            android:name=".AdikActivity"
-            android:label="@string/title_activity_adik">
+            android:name=".PesanKoordinatorActivity"
+            android:label="@string/pesan"
+            android:parentActivityName=".KoordinatorActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.KoordinatorActivity" />
+        </activity>
+
+        <activity
+            android:name=".PesanBaruKoordinatorActivity"
+            android:label="@string/kirim_pesan"
+            android:parentActivityName=".PesanKoordinatorActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.PesanKoordinatorActivity" />
+        </activity>
+
+        <activity
+            android:name=".PesanKakakActivity"
+            android:label="@string/pesan"
+            android:parentActivityName=".KakakActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.KakakActivity" />
+        </activity>
+
+        <activity
+            android:name=".PesanBaruKakakActivity"
+            android:label="@string/kirim_pesan"
+            android:parentActivityName=".PesanKakakActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.PesanKakakActivity" />
+        </activity>
+
+        <activity
+            android:name=".PesanAdikActivity"
+            android:label="@string/pesan"
+            android:parentActivityName=".AdikActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.AdikActivity" />
         </activity>
 
     </application>
+
 </manifest>
