@@ -15,5 +15,6 @@
 
     <string name="hello_world">Hello World!</string>
     <string name="title_activity_adik">AdikActivity</string>
+    <string name="action_pesan">pesan</string>
 
 </resources>

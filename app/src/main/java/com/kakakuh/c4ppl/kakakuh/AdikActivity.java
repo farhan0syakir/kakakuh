@@ -141,20 +141,21 @@ public class AdikActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.activity_main_actions, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // toggle nav drawer on selecting action bar app icon/title
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle action bar actions click
+        // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_pesan:
+                //TODO: go to PesanAdikActivity
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -167,7 +168,7 @@ public class AdikActivity extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_pesan).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
