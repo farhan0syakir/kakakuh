@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/2/2015.
  */
-public class KoordinatorActivity extends Activity {
+public class KakakActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -54,11 +54,11 @@ public class KoordinatorActivity extends Activity {
         mTitle = mDrawerTitle = getTitle();
 
         //load slide menu items
-        navMenuTitles = getResources().getStringArray(R.array.koor_nav_drawer_items);
+        navMenuTitles = getResources().getStringArray(R.array.kakak_nav_drawer_items);
 
         //nav drawer icons from resources
         navMenuIcons = getResources()
-                .obtainTypedArray(R.array.koor_nav_drawer_icons);
+                .obtainTypedArray(R.array.kakak_nav_drawer_icons);
 
         //Jangan dihapus!
         //Add header
@@ -66,7 +66,7 @@ public class KoordinatorActivity extends Activity {
         //ViewGroup header_role = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
         //mDrawerList.addHeaderView(header_role, null, false);
         //mDrawerRole = (TextView) findViewById(R.id.role);
-        //mDrawerRole.setText("Koordinator");
+        //mDrawerRole.setText("Kakak Asuh");
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
@@ -75,20 +75,16 @@ public class KoordinatorActivity extends Activity {
 
         //Profil
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        //Review Log
+        //Adik Asuhku
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        //Buat Akun
+        //Jadwal
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        //Hapus Akun
+        //Konfirmasi Booking
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-        //Pasangkan akun
+        //List Kakak Asuh
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        //List kakak asuh
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-        //List adik asuh
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
         //Pengaturan
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -190,31 +186,23 @@ public class KoordinatorActivity extends Activity {
                 break;
             case 1:
                 getActionBar().setIcon(R.drawable.ic_action_home);
-                fragment = new ReviewLogFragment();
+                fragment = new AdikAsuhkuFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_action_buat_akun);
-                fragment = new BuatAkunFragment();
+                getActionBar().setIcon(R.drawable.ic_action_jadwal);
+                fragment = new JadwalFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_action_hapus_akun);
-                fragment = new HapusAkunFragment();
+                getActionBar().setIcon(R.drawable.ic_action_konfirmasi_booking);
+                fragment = new KonfirmasiBookingFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_action_pasangkan_akun);
-                fragment = new PasangkanAkunFragment();
-                break;
-            case 5:
                 getActionBar().setIcon(R.drawable.ic_action_list_akun);
                 fragment = new ListKakakAsuhFragment();
                 break;
-            case 6:
-                getActionBar().setIcon(R.drawable.ic_action_list_akun_adik);
-                fragment = new ListAdikAsuhFragment();
-                break;
-            case 7:
+            case 5:
                 getActionBar().setIcon(R.drawable.ic_action_pengaturan);
-                fragment = new PengaturanKoordinatorFragment();
+                fragment = new PengaturanKakakAdikFragment();
                 break;
 
             default:
@@ -233,7 +221,7 @@ public class KoordinatorActivity extends Activity {
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
             // error in creating fragment
-            Log.e("KoordinatorActivity", "Error in creating fragment");
+            Log.e("KakakActivity", "Error in creating fragment");
         }
     }
 

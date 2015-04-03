@@ -47,5 +47,15 @@
             android:label="@string/title_activity_koordinator">
         </activity>
 
+        <activity
+            android:name=".KakakActivity"
+            android:label="@string/title_activity_kakak">
+        </activity>
+
+        <activity
+            android:name=".AdikActivity"
+            android:label="@string/title_activity_adik">
+        </activity>
+
     </application>
 </manifest>
