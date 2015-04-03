@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.NavDrawerListAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.NavDrawerItem;
@@ -31,6 +33,7 @@ public class KoordinatorActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private TextView mDrawerRole;
 
     // nav drawer title
     private CharSequence mDrawerTitle;
@@ -50,8 +53,8 @@ public class KoordinatorActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CharSequence title = "KakaKuh";
-        mTitle = mDrawerTitle = title;
+        //CharSequence title = "KakaKuh";
+        mTitle = mDrawerTitle = getTitle();
 
         // load slide menu items
         navMenuTitles = getResources().getStringArray(R.array.koor_nav_drawer_items);
@@ -59,13 +62,15 @@ public class KoordinatorActivity extends Activity {
         // nav drawer icons from resources
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.koor_nav_drawer_icons);
-
+/*
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup mTop = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
+        mDrawerList.addHeaderView(mTop, null, false);
+        mDrawerRole = (TextView) findViewById(R.id.role);
+        mDrawerRole.setText("Koordinator");
+*/
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
-        //LayoutInflater inflater = getLayoutInflater();
-        //ViewGroup mTop = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
-        //mDrawerList.addHeaderView(mTop, null, false);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
@@ -100,6 +105,7 @@ public class KoordinatorActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(46, 204, 113)));
+        getActionBar().setTitle(navMenuTitles[1]);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, //nav menu toggle icon
