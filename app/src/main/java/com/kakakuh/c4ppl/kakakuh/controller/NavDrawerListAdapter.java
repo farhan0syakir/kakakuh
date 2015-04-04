@@ -29,9 +29,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return navDrawerItems.size();
-    }
+    public int getCount() { return navDrawerItems.size(); }
 
     @Override
     public Object getItem(int position) {
@@ -39,9 +37,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
+    public long getItemId(int position) { return position; }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

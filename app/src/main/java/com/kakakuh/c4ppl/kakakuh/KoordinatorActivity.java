@@ -11,9 +11,11 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,16 +62,16 @@ public class KoordinatorActivity extends Activity {
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.koor_nav_drawer_icons);
 
-        //Jangan dihapus!
-        //Add header
-        //LayoutInflater inflater = getLayoutInflater();
-        //ViewGroup header_role = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
-        //mDrawerList.addHeaderView(header_role, null, false);
-        //mDrawerRole = (TextView) findViewById(R.id.role);
-        //mDrawerRole.setText("Koordinator");
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+
+        //Add header
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header_role = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
+        mDrawerList.addHeaderView(header_role, null, false);
+        mDrawerRole = (TextView) findViewById(R.id.role);
+        mDrawerRole.setText("Koordinator");
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
@@ -140,6 +142,7 @@ public class KoordinatorActivity extends Activity {
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             // display view for selected nav drawer item
+            position -= mDrawerList.getHeaderViewsCount();
             displayView(position);
         }
     }
@@ -228,8 +231,8 @@ public class KoordinatorActivity extends Activity {
                     .replace(R.id.frame_container, fragment).commit();
 
             // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
+            mDrawerList.setItemChecked(position+1, true);
+            mDrawerList.setSelection(position+1);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
