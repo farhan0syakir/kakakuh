@@ -29,12 +29,13 @@ public class LoginActivity extends Activity {
     public void login(View view){
         String username = usernameField.getText().toString();
         String password = passwordField.getText().toString();
-        new SigninActivity().execute(username, password);
+//        new SigninActivity().execute(username, password);
 
         if(username.equals("admin") && password.equals("admin")){
-            Intent nextScreen = new Intent(getApplicationContext(), Blank.class);
-
-            startActivity(nextScreen);
+            Intent blankScreen = new Intent(getApplicationContext(), BlankActivity.class);
+            //Sending data to another Activity
+            //blankScreen.putExtra("name", "farhan");
+            startActivity(blankScreen);
         }
         else{
 

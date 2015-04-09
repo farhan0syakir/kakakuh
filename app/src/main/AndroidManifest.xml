@@ -42,11 +42,11 @@
 
         <!-- Another Activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SigninActivity"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name=".Blank"
+            android:name=".BlankActivity"
             android:label="@string/title_activity_blank" >
         </activity>
     </application>

@@ -15,9 +15,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 
-public class SigninActivity extends AsyncTask<String, Void, String> {
+public class SigninActivity extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... arg0) {
         try{
             String username = (String)arg0[0];
@@ -45,6 +48,8 @@ public class SigninActivity extends AsyncTask<String, Void, String> {
                 break;
             }
             return sb.toString();
+
+
         }catch(Exception e){
             return new String("Exception: " + e.getMessage());
         }
