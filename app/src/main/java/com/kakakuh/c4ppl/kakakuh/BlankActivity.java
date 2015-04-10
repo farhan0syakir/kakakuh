@@ -1,5 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,16 +9,16 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class BlankActivity extends ActionBarActivity {
+public class BlankActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blank);
-//        TextView txtName = (TextView) findViewById(R.id.txtName);
-//        Intent i = getIntent();
-//        String name = i.getStringExtra("name");
-//        txtName.setText(name);
+        TextView txtName = (TextView) findViewById(R.id.txtName);
+        Intent i = getIntent();
+        String name = i.getStringExtra("name");
+        txtName.setText(name);
 
     }
 
