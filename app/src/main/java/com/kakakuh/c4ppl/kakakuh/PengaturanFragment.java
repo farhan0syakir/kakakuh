@@ -41,8 +41,7 @@ public class PengaturanFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_pengaturan_koordinator, container, false);
 
         //baca preferensi
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
+        roleSekarang = MainActivity.getRoleSekarang();
 
         listPengaturan = (ListView) rootView.findViewById(R.id.list_pengaturan);
         listTitles = getResources().getStringArray(R.array.pengaturan_titles);
@@ -91,7 +90,7 @@ public class PengaturanFragment extends Fragment{
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanOtentikasiActivity.class);
                 startActivity(nextScreen);
                 break;
-            /*case 1:
+            case 1:
                 //TODO start activity pengaturan profil
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 nextScreen = new Intent(getActivity().getApplicationContext(), UbahProfilActivity.class);
@@ -123,10 +122,10 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 6:
-                //TODO start activity log out
-                nextScreen = new Intent(getActivity().getApplicationContext(), LogOutActivity.class);
-                startActivity(nextScreen);
-                break;*/
+                //TODO log out
+                //panggil method log out disini. Implementasikan!
+                //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
+                break;
 
             default:
                 break;
@@ -144,7 +143,7 @@ public class PengaturanFragment extends Fragment{
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanOtentikasiActivity.class);
                 startActivity(nextScreen);
                 break;
-           /* case 1:
+            case 1:
                 //TODO start activity pengaturan profil
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 nextScreen = new Intent(getActivity().getApplicationContext(), UbahProfilActivity.class);
@@ -170,10 +169,10 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 5:
-                //TODO start activity log out
-                nextScreen = new Intent(getActivity().getApplicationContext(), LogOutActivity.class);
-                startActivity(nextScreen);
-                break;*/
+                //TODO
+                //panggil method log out disini. Implementasikan!
+                //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
+                break;
 
             default:
                 break;
@@ -190,7 +189,7 @@ public class PengaturanFragment extends Fragment{
             // display view for selected nav drawer item
             position -= listPengaturan.getHeaderViewsCount();
 
-            if(roleSekarang.equals("koordinator")) {
+            if(roleSekarang.equals("Koordinator")) {
                 displayViewKoordinator(position);
             } else {
                 displayView(position);

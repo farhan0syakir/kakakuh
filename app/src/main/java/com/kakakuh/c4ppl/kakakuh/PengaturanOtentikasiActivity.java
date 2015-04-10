@@ -14,8 +14,10 @@ public class PengaturanOtentikasiActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setIcon(R.drawable.ic_white_home);
 
-        setContentView(R.layout.fragment_pengaturan_kakak_adik); //sementara
+        setContentView(R.layout.activity_pengaturan_otentikasi);
     }
 }

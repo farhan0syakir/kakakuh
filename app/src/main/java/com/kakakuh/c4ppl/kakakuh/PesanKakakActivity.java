@@ -1,7 +1,9 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -26,16 +28,19 @@ public class PesanKakakActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        // Handle presses on the action bar items
+        // Handle action bar item clicks here.
         switch (item.getItemId()) {
+            case android.R.id.home:
+                // This is called when the Home (Up) button is pressed in the action bar.
+                NavUtils.navigateUpFromSameTask(this);
+                //finish(); //masalahnya kalo difinish nanti dia terminate.
+                // Harusnya jalan dibackground kan? coba cari tahu soal itu
+                return true;
             case R.id.action_tambah:
                 //TODO: go to PesanBaruKakakActivity
+                Intent nextScreen = new Intent(getApplicationContext(), PesanBaruKakakActivity.class);
+                startActivity(nextScreen);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

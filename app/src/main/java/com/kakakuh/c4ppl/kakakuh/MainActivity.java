@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
     private NavDrawerListAdapter adapter;
 
     //terkait shared preferensi
-    static private String roleSekarang;
+    static private String roleSekarang = "Koordinator"; //default
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +63,14 @@ public class MainActivity extends Activity {
         //edit Preferences untuk role sekarang. Sambungin dengan login. Sementara HARDCODE
         //ini sangat guna buat banyak recycle ex di pengaturan
         SharedPreferences.Editor editor = sharedPref.edit();
-        //editor.putString(getString(R.string.role_sekarang), "Koordinator"); //koordinator
+        editor.putString(getString(R.string.role_sekarang), "Koordinator"); //koordinator
         //editor.putString(getString(R.string.role_sekarang), "Kakak Asuh"); //kakak asuh
         //editor.putString(getString(R.string.role_sekarang), "Adik Asuh"); //adik asuh
         editor.commit();
 
         //baca preferensi
         //SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "koordinator");
+        roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
 
         //CharSequence title = "KakaKuh";
         mTitle = mDrawerTitle = getTitle();

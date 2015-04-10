@@ -23,4 +23,9 @@
     <string name="button">disini button</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_pengaturan_otentikasi">Otentikasi</string>
+    <string name="title_activity_ubah_profil">Ubah Profil</string>
+    <string name="title_activity_pengaturan_pesan">Pesan</string>
+    <string name="title_activity_pengaturan_reminder">Reminder</string>
+    <string name="title_activity_pengaturan_list">Tampilan List</string>
+    <string name="title_activity_pengaturan_review_log">Review Log</string>
 </resources>
