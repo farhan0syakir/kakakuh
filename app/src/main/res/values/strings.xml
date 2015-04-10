@@ -21,5 +21,6 @@
     <string name="kirim_pesan">Kirim Pesan</string>
     <string name="pesan">Pesan</string>
     <string name="button">disini button</string>
-
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_pengaturan_otentikasi">Otentikasi</string>
 </resources>
