@@ -20,5 +20,6 @@
     <string name="title_activity_pesan_baru_koordinator">PesanBaruKoordinatorActivity</string>
     <string name="kirim_pesan">Kirim Pesan</string>
     <string name="pesan">Pesan</string>
+    <string name="button">disini button</string>
 
 </resources>

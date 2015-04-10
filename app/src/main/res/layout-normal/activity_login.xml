@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/wrapper_logo_portal"
         android:layout_alignTop="@+id/logo_text"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="50dp">
 
         <ScrollView
             android:orientation="vertical"
@@ -67,8 +67,7 @@
                 android:orientation="vertical"
                 android:id="@+id/container_text"
                 android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                >
+                android:layout_width="fill_parent">
 
                 <TextView
                     android:id="@+id/username_label"
@@ -115,18 +114,19 @@
                     android:paddingBottom="2dp"
                     android:background="@drawable/square_text_box"/>
 
-                <ImageButton
-                    android:id="@+id/login_button"
-                    android:src="@drawable/btn_login"
-                    android:scaleType="fitXY"
+                <Button
+                    android:id="@+id/btn_login"
+                    android:text="@id/btn_login_label"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/password"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@null"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="login"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
                     android:contentDescription="@string/btn_login" />
             </RelativeLayout>
         </ScrollView>
