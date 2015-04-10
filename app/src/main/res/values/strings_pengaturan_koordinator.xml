@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="koor_pengaturan_titles">
+        <item >Otentikasi</item>
+        <item >Profil</item>
+        <item >Pesan</item>
+        <item >Reminder</item>
+        <item >Tampilan List</item>
+        <item >Review Log</item>
+        <item >Log Out</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="koor_pengaturan_emerald_icons">
+        <item>@drawable/ic_emerald_home</item>
+        <item>@drawable/ic_emerald_profil</item>
+        <item>@drawable/ic_emerald_pesan</item>
+        <item>@drawable/ic_emerald_reminder</item>
+        <item>@drawable/ic_emerald_list</item>
+        <item>@drawable/ic_emerald_review_log</item>
+        <item>@drawable/ic_emerald_log_out</item>
+    </array>
+
+    <array name="koor_pengaturan_white_icons">
+        <item>@drawable/ic_white_home</item>
+        <item>@drawable/ic_white_profil</item>
+        <item>@drawable/ic_white_pesan</item>
+        <item>@drawable/ic_white_reminder</item>
+        <item>@drawable/ic_white_list</item>
+        <item>@drawable/ic_white_review_log</item>
+        <item>@drawable/ic_white_log_out</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+</resources>

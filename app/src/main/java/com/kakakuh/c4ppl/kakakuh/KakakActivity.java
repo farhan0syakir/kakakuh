@@ -5,8 +5,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -115,7 +113,7 @@ public class KakakActivity extends Activity {
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
-                getActionBar().setIcon(R.drawable.ic_action_home);
+                getActionBar().setIcon(R.drawable.ic_white_home);
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 invalidateOptionsMenu();
             }
@@ -182,27 +180,27 @@ public class KakakActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                getActionBar().setIcon(R.drawable.ic_action_profil);
+                getActionBar().setIcon(R.drawable.ic_white_profil);
                 fragment = new ProfilFragment();
                 break;
             case 1:
-                getActionBar().setIcon(R.drawable.ic_action_home);
+                getActionBar().setIcon(R.drawable.ic_white_home);
                 fragment = new AdikAsuhkuFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_action_jadwal);
+                getActionBar().setIcon(R.drawable.ic_white_jadwal);
                 fragment = new JadwalFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_action_konfirmasi_booking);
+                getActionBar().setIcon(R.drawable.ic_white_konfirmasi_booking);
                 fragment = new KonfirmasiBookingFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_action_list_akun);
+                getActionBar().setIcon(R.drawable.ic_white_list_akun);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 5:
-                getActionBar().setIcon(R.drawable.ic_action_pengaturan);
+                getActionBar().setIcon(R.drawable.ic_white_pengaturan);
                 fragment = new PengaturanKakakAdikFragment();
                 break;
 

@@ -1,10 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class PesanBaruKoordinatorActivity extends Activity {
@@ -15,6 +12,6 @@ public class PesanBaruKoordinatorActivity extends Activity {
         setContentView(R.layout.activity_pesan_baru_koordinator);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_action_pesan);
+        getActionBar().setIcon(R.drawable.ic_white_pesan);
     }
 }

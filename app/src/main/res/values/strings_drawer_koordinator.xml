@@ -15,14 +15,14 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="koor_nav_drawer_icons">
-        <item>@drawable/ic_drawer_profil</item>
-        <item>@drawable/ic_drawer_review_log</item>
-        <item>@drawable/ic_drawer_buat_akun</item>
-        <item>@drawable/ic_drawer_hapus_akun</item>
-        <item>@drawable/ic_drawer_pasangkan_akun</item>
-        <item>@drawable/ic_drawer_list_akun</item>
-        <item>@drawable/ic_drawer_list_akun_adik</item>
-        <item>@drawable/ic_drawer_pengaturan</item>
+        <item>@drawable/ic_emerald_profil</item>
+        <item>@drawable/ic_emerald_review_log</item>
+        <item>@drawable/ic_emerald_buat_akun</item>
+        <item>@drawable/ic_emerald_hapus_akun</item>
+        <item>@drawable/ic_emerald_pasangkan_akun</item>
+        <item>@drawable/ic_emerald_list_akun</item>
+        <item>@drawable/ic_emerald_list_akun_adik</item>
+        <item>@drawable/ic_emerald_pengaturan</item>
     </array>
 
     <!-- Content Description -->

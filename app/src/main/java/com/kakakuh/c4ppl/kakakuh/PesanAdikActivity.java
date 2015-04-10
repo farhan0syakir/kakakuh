@@ -2,8 +2,6 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class PesanAdikActivity extends Activity {
@@ -14,6 +12,6 @@ public class PesanAdikActivity extends Activity {
         setContentView(R.layout.activity_pesan_adik);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_action_pesan);
+        getActionBar().setIcon(R.drawable.ic_white_pesan);
     }
 }

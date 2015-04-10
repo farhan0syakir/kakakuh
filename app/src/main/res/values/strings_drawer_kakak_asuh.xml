@@ -13,12 +13,12 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="kakak_nav_drawer_icons">
-        <item>@drawable/ic_drawer_profil</item>
-        <item>@drawable/ic_drawer_list_akun_adik</item>
-        <item>@drawable/ic_drawer_jadwal</item>
-        <item>@drawable/ic_drawer_konfirmasi_booking</item>
-        <item>@drawable/ic_drawer_list_akun</item>
-        <item>@drawable/ic_drawer_pengaturan</item>
+        <item>@drawable/ic_emerald_profil</item>
+        <item>@drawable/ic_emerald_list_akun_adik</item>
+        <item>@drawable/ic_emerald_jadwal</item>
+        <item>@drawable/ic_emerald_konfirmasi_booking</item>
+        <item>@drawable/ic_emerald_list_akun</item>
+        <item>@drawable/ic_emerald_pengaturan</item>
     </array>
 
 </resources>

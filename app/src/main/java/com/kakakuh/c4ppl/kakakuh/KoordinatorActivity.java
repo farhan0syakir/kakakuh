@@ -5,8 +5,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -120,7 +118,7 @@ public class KoordinatorActivity extends Activity {
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
-                getActionBar().setIcon(R.drawable.ic_action_home);
+                getActionBar().setIcon(R.drawable.ic_white_home);
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 invalidateOptionsMenu();
             }
@@ -189,35 +187,35 @@ public class KoordinatorActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                getActionBar().setIcon(R.drawable.ic_action_profil);
+                getActionBar().setIcon(R.drawable.ic_white_profil);
                 fragment = new ProfilFragment();
                 break;
             case 1:
-                getActionBar().setIcon(R.drawable.ic_action_home);
+                getActionBar().setIcon(R.drawable.ic_white_home);
                 fragment = new ReviewLogFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_action_buat_akun);
+                getActionBar().setIcon(R.drawable.ic_white_buat_akun);
                 fragment = new BuatAkunFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_action_hapus_akun);
+                getActionBar().setIcon(R.drawable.ic_white_hapus_akun);
                 fragment = new HapusAkunFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_action_pasangkan_akun);
+                getActionBar().setIcon(R.drawable.ic_white_pasangkan_akun);
                 fragment = new PasangkanAkunFragment();
                 break;
             case 5:
-                getActionBar().setIcon(R.drawable.ic_action_list_akun);
+                getActionBar().setIcon(R.drawable.ic_white_list_akun);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 6:
-                getActionBar().setIcon(R.drawable.ic_action_list_akun_adik);
+                getActionBar().setIcon(R.drawable.ic_white_list_akun_adik);
                 fragment = new ListAdikAsuhFragment();
                 break;
             case 7:
-                getActionBar().setIcon(R.drawable.ic_action_pengaturan);
+                getActionBar().setIcon(R.drawable.ic_white_pengaturan);
                 fragment = new PengaturanKoordinatorFragment();
                 break;
 

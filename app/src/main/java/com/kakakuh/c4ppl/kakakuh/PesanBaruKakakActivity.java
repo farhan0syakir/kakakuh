@@ -12,6 +12,6 @@ public class PesanBaruKakakActivity extends Activity {
         setContentView(R.layout.activity_pesan_baru_kakak);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_action_pesan);
+        getActionBar().setIcon(R.drawable.ic_white_pesan);
     }
 }

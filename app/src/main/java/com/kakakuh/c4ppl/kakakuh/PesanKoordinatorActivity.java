@@ -1,9 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +14,7 @@ public class PesanKoordinatorActivity extends Activity {
         setContentView(R.layout.activity_pesan_koordinator);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_action_pesan);
+        getActionBar().setIcon(R.drawable.ic_white_pesan);
     }
 
     @Override
