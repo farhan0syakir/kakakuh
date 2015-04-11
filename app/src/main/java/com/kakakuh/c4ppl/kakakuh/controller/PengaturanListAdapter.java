@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.R;
-import com.kakakuh.c4ppl.kakakuh.model.NavDrawerItem;
 import com.kakakuh.c4ppl.kakakuh.model.PengaturanListItem;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class PengaturanListAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.pengaturan_list_item, null);
+            convertView = mInflater.inflate(R.layout.list_item_pengaturan, null);
         }
 
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
