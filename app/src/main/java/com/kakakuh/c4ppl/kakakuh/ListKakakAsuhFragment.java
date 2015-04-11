@@ -34,23 +34,23 @@ public class ListKakakAsuhFragment extends Fragment{
         //TODO panggil method yg mengeksekusi query SELECT Kakak Asuh
         //dummy list
         akunListItems = new ArrayList<>();
-        akunListItems.add(new AkunListItem("Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
+        akunListItems.add(new AkunListItem("la1","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+        akunListItems.add(new AkunListItem("la2","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
+        akunListItems.add(new AkunListItem("la3","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
+        akunListItems.add(new AkunListItem("la4","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+        akunListItems.add(new AkunListItem("la5","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
+        akunListItems.add(new AkunListItem("la6","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
+        akunListItems.add(new AkunListItem("la7","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+        akunListItems.add(new AkunListItem("la8","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
+        akunListItems.add(new AkunListItem("la9","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
+        akunListItems.add(new AkunListItem("la10","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+        akunListItems.add(new AkunListItem("la11","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
+        akunListItems.add(new AkunListItem("la12","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
 
         // Tambahkan Listener
         mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
-        // setting the Pengaturan list adapter
+        // list adapter
         adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
         mListAkun.setAdapter(adapter);
 
@@ -67,6 +67,7 @@ public class ListKakakAsuhFragment extends Fragment{
             //TEST
             System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
             akun.getPhoto(); //photo
+            akun.getUsername(); //ini untuk query
         }
     }
 }

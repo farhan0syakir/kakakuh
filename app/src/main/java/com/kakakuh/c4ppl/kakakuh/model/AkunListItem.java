@@ -9,11 +9,21 @@ public class AkunListItem {
     private String name;
     private String role;
     private Bitmap photo;
+    private String username;
 
-    public AkunListItem(String name, String role, Bitmap photo) {
+    public AkunListItem(String keyUsername, String name, String role, Bitmap photo) {
         this.name = name;
         this.role = role;
         this.photo = photo;
+        this.username = keyUsername;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

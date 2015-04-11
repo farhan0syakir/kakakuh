@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.NavDrawerItem;
 
 import java.util.ArrayList;
 
 /**
  * Created by Anas on 4/11/2015.
  */
-public class AkunListAdapter extends BaseAdapter {
+public class HapusAkunListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<AkunListItem> akunListItems;
 
-    public AkunListAdapter(Context context, ArrayList<AkunListItem> akunListItems) {
+    public HapusAkunListAdapter(Context context, ArrayList<AkunListItem> akunListItems) {
         this.context = context;
         this.akunListItems = akunListItems;
     }
@@ -40,20 +39,28 @@ public class AkunListAdapter extends BaseAdapter {
     public long getItemId(int position) { return position; }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_item_akun, null);
+            convertView = mInflater.inflate(R.layout.list_item_akun_with_hapus, null);
         }
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
         TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
+        Button delete = (Button) convertView.findViewById(R.id.btn_delete);
 
         image.setImageBitmap(akunListItems.get(position).getPhoto());
         txtName.setText(akunListItems.get(position).getName());
         txtRole.setText(akunListItems.get(position).getRole());
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO execusi kueri delete dengan condisi username
+                System.out.println(akunListItems.get(position).getUsername()); //TEST
+            }
+        });
 
         return convertView;
     }
