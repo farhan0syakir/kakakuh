@@ -450,8 +450,9 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         if(positionFragment == 1) {
-            //ketika di home. back dari activity
-            super.onBackPressed();
+            //ketika di home. close application
+            finish();
+            System.exit(0);
         } else {
             //else. display ke home
             positionFragment = 1;
