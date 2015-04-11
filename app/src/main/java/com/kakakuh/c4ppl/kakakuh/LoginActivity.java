@@ -58,15 +58,16 @@ public class LoginActivity extends Activity {
                 if(sharedpreferences.contains(passKey)){
                     if(sharedpreferences.contains(roleKey)){
                         Intent i=getIntent();
+                        i = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(i);
                         if(sharedpreferences.getString(roleKey,"wrong").equals("0")){
-                            i = new Intent(getApplicationContext(),MainActivity.class);
+                            MainActivity.setRoleSekarang("0");
                         }else if (sharedpreferences.getString(roleKey,"wrong").equals("1")){
-                            i = new Intent(getApplicationContext(),MainActivity.class);
+                            MainActivity.setRoleSekarang("1");
                         }else{
-                            i = new Intent(getApplicationContext(),MainActivity.class);
+                            MainActivity.setRoleSekarang("2");
                         }
                         finish();
-                        startActivity(i);
                     }
                 }
             }
@@ -93,16 +94,17 @@ public class LoginActivity extends Activity {
         }else{
             editor.putString(nameKey, username);
             editor.putString(passKey, password);
+            nextScreen = new Intent(getApplicationContext(), MainActivity.class);
             if(obj.getRole().equals("0")){
-                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 editor.putString(roleKey, "0");
+                MainActivity.setRoleSekarang("0");
             }else if(obj.getRole().equals("1")){
-                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 editor.putString(roleKey, "1");
+                MainActivity.setRoleSekarang("1");
             }else if(obj.getRole().equals("2")){
-                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 //nextScreen.putExtra("name", obj.getNama());
                 editor.putString(roleKey, "2");
+                MainActivity.setRoleSekarang("2");
             }
             startActivity(nextScreen);
             //editor.putBoolean("isLogged", true);
