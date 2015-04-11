@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="normal_text">16sp</dimen>
+    <dimen name="nama_akun_text">18sp</dimen>
+    <dimen name="role_akun_text">14sp</dimen>
     <dimen name="large_text">24sp</dimen>
     <dimen name="heading_text">30sp</dimen>
 
