@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
     private NavDrawerListAdapter adapter;
 
     //terkait shared preferensi
-    static private String roleSekarang = "Koordinator"; //default
+    static private String roleSekarang; //default
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +58,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //get Preferences
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        //SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         //edit Preferences untuk role sekarang. Sambungin dengan login. Sementara HARDCODE
         //ini sangat guna buat banyak recycle ex di pengaturan
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.role_sekarang), "Koordinator"); //koordinator
+        //SharedPreferences.Editor editor = sharedPref.edit();
+        //editor.putString(getString(R.string.role_sekarang), "Koordinator"); //koordinator
         //editor.putString(getString(R.string.role_sekarang), "Kakak Asuh"); //kakak asuh
         //editor.putString(getString(R.string.role_sekarang), "Adik Asuh"); //adik asuh
-        editor.commit();
+        //editor.commit();
 
         //baca preferensi
         //SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
+        //roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
 
         mTitle = mDrawerTitle = getResources().getString(R.string.app_name);
 
@@ -453,5 +453,14 @@ public class MainActivity extends Activity {
 
     public static String getRoleSekarang() {
         return roleSekarang;
+    }
+    public static void setRoleSekarang(String roleNumber) {
+        if(roleNumber.equals("0")){
+            roleSekarang = "Koordinator";
+        } else if(roleNumber.equals("1")){
+            roleSekarang = "Kakak Asuh";
+        } else {
+            roleSekarang = "Adik Asuh";
+        }
     }
 }
