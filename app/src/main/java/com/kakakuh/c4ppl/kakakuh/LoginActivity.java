@@ -33,15 +33,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         usernameField = (EditText)findViewById(R.id.username);
         passwordField = (EditText)findViewById(R.id.password);
-//        Button btnLogin = (Button) findViewById(R.id.btn_buat);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Buat Akun ngapain
-//                //TODO
-//
-//            }
-//        });
+
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
         }
@@ -50,9 +42,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onResume() {
 
-
-            sharedpreferences=getSharedPreferences("mypref",
-                    Context.MODE_PRIVATE);
+        sharedpreferences=getSharedPreferences("mypref",Context.MODE_PRIVATE);
             if (sharedpreferences.contains(nameKey))
             {
                 if(sharedpreferences.contains(passKey)){
@@ -88,26 +78,25 @@ public class LoginActivity extends Activity {
 
         while(obj.parsingComplete);
         Intent nextScreen=null;
-        if(obj.getRole().equals("3")){//dummy role
-            //do nothing
-            Toast.makeText(this, "maaf username atau password salah", Toast.LENGTH_LONG).show();
-        }else{
+        if(obj.getRole().equals("3")) {
+            Toast.makeText(this, "Maaf Username atau Password salah", Toast.LENGTH_LONG).show();
+        } else {
             editor.putString(nameKey, username);
             editor.putString(passKey, password);
             nextScreen = new Intent(getApplicationContext(), MainActivity.class);
-            if(obj.getRole().equals("0")){
+            Toast.makeText(getApplicationContext(), "Tersambung!", Toast.LENGTH_SHORT).show();
+            if (obj.getRole().equals("0")) {
                 editor.putString(roleKey, "0");
                 MainActivity.setRoleSekarang("0");
-            }else if(obj.getRole().equals("1")){
+            } else if (obj.getRole().equals("1")) {
                 editor.putString(roleKey, "1");
                 MainActivity.setRoleSekarang("1");
-            }else if(obj.getRole().equals("2")){
-                //nextScreen.putExtra("name", obj.getNama());
+            } else {
                 editor.putString(roleKey, "2");
                 MainActivity.setRoleSekarang("2");
             }
             startActivity(nextScreen);
-            //editor.putBoolean("isLogged", true);
+
         }
         editor.commit();
     }

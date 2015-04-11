@@ -22,7 +22,7 @@ import android.annotation.SuppressLint;
 
 public class HandleJSON {
     private String role = "role";
-    private String nama = "nama";
+    private String nama = "nama_lengkap";
     private String urlString = null;
 
     public volatile boolean parsingComplete = true;
@@ -36,6 +36,7 @@ public class HandleJSON {
         return nama;
     }
 
+
     @SuppressLint("NewApi")
     public void readAndParseJSON(String in) {
         try {
@@ -46,8 +47,6 @@ public class HandleJSON {
             nama = sys.getString("nama_lengkap");
 
             parsingComplete = false;
-
-
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
