@@ -57,21 +57,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get Preferences
-        //SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-
-        //edit Preferences untuk role sekarang. Sambungin dengan login. Sementara HARDCODE
-        //ini sangat guna buat banyak recycle ex di pengaturan
-        //SharedPreferences.Editor editor = sharedPref.edit();
-        //editor.putString(getString(R.string.role_sekarang), "Koordinator"); //koordinator
-        //editor.putString(getString(R.string.role_sekarang), "Kakak Asuh"); //kakak asuh
-        //editor.putString(getString(R.string.role_sekarang), "Adik Asuh"); //adik asuh
-        //editor.commit();
-
-        //baca preferensi
-        //SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        //roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
-
         mTitle = mDrawerTitle = getResources().getString(R.string.app_name);
 
         //ambil dari layout
@@ -461,6 +446,7 @@ public class MainActivity extends Activity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    // agar backnya sesuai UAT
     @Override
     public void onBackPressed() {
         if(positionFragment == 1) {
@@ -482,6 +468,7 @@ public class MainActivity extends Activity {
     public static String getRoleSekarang() {
         return roleSekarang;
     }
+
     public static void setRoleSekarang(String roleNumber) {
         if(roleNumber.equals("0")){
             roleSekarang = "Koordinator";
