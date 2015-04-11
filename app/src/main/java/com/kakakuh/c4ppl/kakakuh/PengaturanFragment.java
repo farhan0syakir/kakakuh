@@ -187,9 +187,8 @@ public class PengaturanFragment extends Fragment{
     public void onLogoutPressed() {
         new AlertDialog.Builder(getActivity())
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("ALERT")
-                .setMessage("Yakin nih mau logout?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                .setMessage("Apakah anda yakin ingin logout?")
+                .setNegativeButton("Ya", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -197,7 +196,7 @@ public class PengaturanFragment extends Fragment{
                     }
 
                 })
-                .setNegativeButton("No", null)
+                .setPositiveButton("Tidak", null)
                 .show();
     }
 
