@@ -32,8 +32,6 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         usernameField = (EditText)findViewById(R.id.username);
         passwordField = (EditText)findViewById(R.id.password);
-
-<<<<<<< HEAD
         Button btnLogin = (Button) findViewById(R.id.btn_buat);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +54,6 @@ public class LoginActivity extends Activity {
                 */
             }
         });
-=======
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
         }
@@ -74,11 +71,11 @@ public class LoginActivity extends Activity {
                     if(sharedpreferences.contains(roleKey)){
                         Intent i=getIntent();
                         if(sharedpreferences.getString(roleKey,"wrong").equals("0")){
-                            i = new Intent(getApplicationContext(),KoordinatorActivity.class);
+                            i = new Intent(getApplicationContext(),MainActivity.class);
                         }else if (sharedpreferences.getString(roleKey,"wrong").equals("1")){
-                            i = new Intent(getApplicationContext(),KakakActivity.class);
+                            i = new Intent(getApplicationContext(),MainActivity.class);
                         }else{
-                            i = new Intent(getApplicationContext(),AdikActivity.class);
+                            i = new Intent(getApplicationContext(),MainActivity.class);
                         }
                         finish();
                         startActivity(i);
@@ -109,13 +106,13 @@ public class LoginActivity extends Activity {
             editor.putString(nameKey, username);
             editor.putString(passKey, password);
             if(obj.getRole().equals("0")){
-                nextScreen = new Intent(getApplicationContext(), KoordinatorActivity.class);
+                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 editor.putString(roleKey, "0");
             }else if(obj.getRole().equals("1")){
-                nextScreen = new Intent(getApplicationContext(), KakakActivity.class);
+                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 editor.putString(roleKey, "1");
             }else if(obj.getRole().equals("2")){
-                nextScreen = new Intent(getApplicationContext(), AdikActivity.class);
+                nextScreen = new Intent(getApplicationContext(), MainActivity.class);
                 //nextScreen.putExtra("name", obj.getNama());
                 editor.putString(roleKey, "2");
             }
@@ -123,16 +120,6 @@ public class LoginActivity extends Activity {
             //editor.putBoolean("isLogged", true);
         }
         editor.commit();
-    }
-
-    /*
-    public void showSoftKeyboard(View view) {
-        if (view.requestFocus()) {
-            InputMethodManager imm = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-        }
->>>>>>> b3b1656892ea0db71920a476baa7dbd9adca172e
     }
 }
 

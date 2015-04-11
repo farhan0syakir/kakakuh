@@ -57,10 +57,6 @@
             android:name=".KakakActivity"
             android:label="@string/title_activity_kakak" >
         </activity>
-        <activity
-            android:name=".AdikActivity"
-            android:label="@string/title_activity_adik" >
-        </activity>
 
         <!-- Pesan Activity -->
         <activity
