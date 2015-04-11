@@ -43,10 +43,10 @@
 
         <!-- Another Activity -->
         <activity
-<<<<<<< HEAD
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
-=======
+		</activity>
+		<activity
             android:name=".KoordinatorActivity"
             android:label="@string/title_activity_koordinator" >
         </activity>
@@ -60,7 +60,6 @@
         <activity
             android:name=".AdikActivity"
             android:label="@string/title_activity_adik" >
->>>>>>> b3b1656892ea0db71920a476baa7dbd9adca172e
         </activity>
 
         <!-- Pesan Activity -->
