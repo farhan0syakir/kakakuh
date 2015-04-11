@@ -1,7 +1,9 @@
 package com.kakakuh.c4ppl.kakakuh;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
@@ -125,7 +127,7 @@ public class PengaturanFragment extends Fragment{
                 //TODO log out
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
-                logout();
+                onLogoutPressed();
                 break;
 
             default:
@@ -173,13 +175,30 @@ public class PengaturanFragment extends Fragment{
                 //TODO
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
-                logout();
+                onLogoutPressed();
                 break;
 
             default:
                 break;
 
         }
+    }
+
+    public void onLogoutPressed() {
+        new AlertDialog.Builder(getActivity())
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("ALERT")
+                .setMessage("Yakin nih mau logout?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        logout();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     public void logout(){
