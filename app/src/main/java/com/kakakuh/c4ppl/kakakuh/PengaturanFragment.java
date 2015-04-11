@@ -125,6 +125,7 @@ public class PengaturanFragment extends Fragment{
                 //TODO log out
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
+                logout();
                 break;
 
             default:
@@ -172,6 +173,7 @@ public class PengaturanFragment extends Fragment{
                 //TODO
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
+                logout();
                 break;
 
             default:
@@ -180,7 +182,19 @@ public class PengaturanFragment extends Fragment{
         }
     }
 
+    public void logout(){
+        SharedPreferences sharedpreferences = getActivity().getSharedPreferences
+                ("mypref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
 
+        Intent login = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(login);
+        getActivity().finish();
+    }
 
     private class PengaturanClickListener implements
             ListView.OnItemClickListener {
