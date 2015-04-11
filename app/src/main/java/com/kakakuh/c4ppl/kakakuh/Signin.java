@@ -10,9 +10,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-import android.os.AsyncTask;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
-public class SigninActivity extends AsyncTask<String, Void, String> {
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
+
+public class Signin extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... arg0) {
         try{
             String username = arg0[0];
@@ -40,6 +48,8 @@ public class SigninActivity extends AsyncTask<String, Void, String> {
                 break;
             }
             return sb.toString();
+
+
         }catch(Exception e){
             return "Exception: " + e.getMessage();
         }

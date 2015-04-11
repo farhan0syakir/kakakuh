@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
         roleSekarang = sharedPref.getString(getString(R.string.role_sekarang), "Koordinator");
 
         //CharSequence title = "KakaKuh";
-        mTitle = mDrawerTitle = getTitle();
+        mTitle = mDrawerTitle = R.id.string.app;
 
         //ambil dari layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
