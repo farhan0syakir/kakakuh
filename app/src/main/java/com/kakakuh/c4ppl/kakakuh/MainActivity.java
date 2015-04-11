@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -190,6 +191,11 @@ public class MainActivity extends Activity {
                 getActionBar().setIcon(R.drawable.ic_white_home);
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                hideKeyboard(); //hide keyboard
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -461,6 +467,16 @@ public class MainActivity extends Activity {
             roleSekarang = "Kakak Asuh";
         } else {
             roleSekarang = "Adik Asuh";
+        }
+    }
+
+    /* hide keyboard*/
+    private void hideKeyboard() {
+        // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 }
