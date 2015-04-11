@@ -43,7 +43,7 @@ public class HandleJSON {
 
             JSONObject sys  = reader.getJSONObject("data");
             role = sys.getString("role");
-            nama = sys.getString("nama");
+            nama = sys.getString("nama_lengkap");
 
             parsingComplete = false;
 
