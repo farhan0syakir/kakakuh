@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -51,10 +50,10 @@ public class MainActivity extends Activity {
 
     //terkait shared preferensi
     static private String roleSekarang; //default
+    static private int positionFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -201,11 +200,15 @@ public class MainActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            // on first time display view for first nav item
+            positionFragment = 1;
             // sesuaikan dengan role
-            if(roleSekarang.equals("Koordinator")) displayViewKoordinator(1);
-            else if (roleSekarang.equals("Kakak Asuh")) displayViewKakak(1);
-            else /*adik*/ displayViewAdik(1);
+            if(roleSekarang.equals("Koordinator")) {
+                displayViewKoordinator(1);
+            } else if (roleSekarang.equals("Kakak Asuh")) {
+                displayViewKakak(1);
+            } else /*adik*/ {
+                displayViewAdik(1);
+            }
         }
     }
 
@@ -222,6 +225,7 @@ public class MainActivity extends Activity {
             if(roleSekarang.equals("Koordinator")) displayViewKoordinator(position);
             else if (roleSekarang.equals("Kakak Asuh")) displayViewKakak(position);
             else /*adik*/ displayViewAdik(position);
+            positionFragment = position;
         }
     }
 
@@ -455,6 +459,24 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(positionFragment == 1) {
+            //ketika di home. back dari activity
+            super.onBackPressed();
+        } else {
+            //else. display ke home
+            positionFragment = 1;
+            if(roleSekarang.equals("Koordinator")) {
+                displayViewKoordinator(1);
+            } else if (roleSekarang.equals("Kakak Asuh")) {
+                displayViewKakak(1);
+            } else /*adik*/ {
+                displayViewAdik(1);
+            }
+        }
     }
 
     public static String getRoleSekarang() {
