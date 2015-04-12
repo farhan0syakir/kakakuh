@@ -2,7 +2,7 @@
 <resources>
     <!-- pengaturan title -->
     <string-array name="pengaturan_titles">
-        <item >Otentikasi</item>
+        <item >Ubah Password</item>
         <item >Profil</item>
         <item >Pesan</item>
         <item >Reminder</item>

@@ -89,7 +89,7 @@ public class PengaturanFragment extends Fragment{
             case 0:
                 //TODO start activity pengaturan otentifikasi
                 //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanOtentikasiActivity.class);
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanUbahPasswordActivity.class);
                 startActivity(nextScreen);
                 break;
             case 1:
@@ -143,7 +143,7 @@ public class PengaturanFragment extends Fragment{
             case 0:
                 //TODO start activity pengaturan otentifikasi
                 //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanOtentikasiActivity.class);
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanUbahPasswordActivity.class);
                 startActivity(nextScreen);
                 break;
             case 1:

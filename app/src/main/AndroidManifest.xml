@@ -91,7 +91,7 @@
 
         <!-- Pengaturan Activity -->
         <activity
-            android:name=".PengaturanOtentikasiActivity"
+            android:name=".PengaturanUbahPasswordActivity"
             android:label="@string/title_activity_pengaturan_otentikasi"
             android:parentActivityName=".MainActivity" >
             <meta-data
