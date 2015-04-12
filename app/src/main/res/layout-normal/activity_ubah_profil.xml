@@ -63,23 +63,10 @@
                     android:layout_marginTop="20dp"/>
 
                 <EditText
-                    android:id="@+id/first_name"
-                    android:layout_width="135dp"
+                    android:id="@+id/nama"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/npm"
-                    android:layout_below="@+id/label_nama"
-                    android:textSize="@dimen/normal_text"
-                    android:layout_marginTop="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:background="@drawable/square_text_box"
-                    android:inputType="textNoSuggestions" />
-
-                <EditText
-                    android:id="@+id/last_name"
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignRight="@+id/npm"
                     android:layout_below="@+id/label_nama"
                     android:textSize="@dimen/normal_text"
                     android:layout_marginTop="5dp"
@@ -166,7 +153,7 @@
                     android:layout_alignLeft="@+id/npm"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/alamat"/>
-\
+
                 <EditText
                     android:id="@+id/asal_daerah"
                     android:layout_width="280dp"

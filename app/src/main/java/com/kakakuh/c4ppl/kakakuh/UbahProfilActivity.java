@@ -7,8 +7,8 @@ import android.widget.EditText;
 
 
 public class UbahProfilActivity extends BaseActivity {
-    private EditText firstNameField, lastNameField;
-    private EditText npmField, noHPField, alamatField;
+    private EditText namaField, npmField;
+    private EditText noHPField, alamatField;
     private EditText asalDaerahField, mottoField;
 
     @Override
@@ -21,8 +21,7 @@ public class UbahProfilActivity extends BaseActivity {
         setContentView(R.layout.activity_ubah_profil);
 
         //get Element
-        firstNameField = (EditText)findViewById(R.id.first_name);
-        lastNameField = (EditText)findViewById(R.id.last_name);
+        namaField = (EditText)findViewById(R.id.nama);
         npmField = (EditText)findViewById(R.id.npm);
         noHPField = (EditText)findViewById(R.id.no_hp);
         alamatField = (EditText)findViewById(R.id.alamat);
