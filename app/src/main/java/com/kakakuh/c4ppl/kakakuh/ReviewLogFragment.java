@@ -80,7 +80,7 @@ public class ReviewLogFragment extends Fragment{
         i.putExtra("detail", log.getDetail());
         i.putExtra("note", log.getNote());
 
-        String[] time = convertDate(log.getTimestamp();
+        String[] time = convertDate(log.getTimestamp());
         i.putExtra("date", time[0]);
         i.putExtra("hour", time[1]);
 

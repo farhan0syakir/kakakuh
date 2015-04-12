@@ -61,7 +61,7 @@ public class LogListAdapter extends BaseAdapter{
 
     /*Timestamp GMT + 7 */
     private String getTime(Date timestamp) {
-        long elapsedTime = new java.util.Date().getTime() - timestamp.getTime();
+        long elapsedTime = System.currentTimeMillis() - timestamp.getTime();
         long elapsedTimeInSeconds = elapsedTime/1000;
 
         long days = elapsedTimeInSeconds / 86400;
