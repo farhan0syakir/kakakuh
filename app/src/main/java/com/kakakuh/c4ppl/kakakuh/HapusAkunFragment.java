@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 
@@ -28,9 +26,9 @@ public class HapusAkunFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list_akun, container, false);
+        View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
-        mListAkun = (ListView) rootView.findViewById(R.id.list_akun);
+        mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
 
         //ini aturan agar button di dalam list bisa diclick
         mListAkun.setItemsCanFocus(true);

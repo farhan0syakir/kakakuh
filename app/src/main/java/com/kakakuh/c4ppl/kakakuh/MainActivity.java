@@ -393,7 +393,7 @@ public class MainActivity extends Activity {
                 fragment = new JadwalKakakFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_white_konfirmasi_booking);
+                getActionBar().setIcon(R.drawable.ic_white_list_akun);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 4:

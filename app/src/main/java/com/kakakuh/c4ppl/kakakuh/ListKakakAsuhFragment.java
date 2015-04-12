@@ -27,9 +27,9 @@ public class ListKakakAsuhFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list_akun, container, false);
+        View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
-        mListAkun = (ListView) rootView.findViewById(R.id.list_akun);
+        mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
 
         //TODO panggil method yg mengeksekusi query SELECT Kakak Asuh
         //dummy list
