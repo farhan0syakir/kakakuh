@@ -37,7 +37,7 @@ public class BuatAkunFragment extends Fragment{
     String result=null;
     String line=null;
     int code;
-    private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/buatAkunController";
+    private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/create";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
