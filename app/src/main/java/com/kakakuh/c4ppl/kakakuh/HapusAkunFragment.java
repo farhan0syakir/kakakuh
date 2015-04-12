@@ -99,7 +99,7 @@ public class HapusAkunFragment extends Fragment{
         protected JSONObject doInBackground(String... args) {
             JSONParser jParser = new JSONParser();
             // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/lihatAkunController");
+            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieve");
             return json;
         }
         @Override
