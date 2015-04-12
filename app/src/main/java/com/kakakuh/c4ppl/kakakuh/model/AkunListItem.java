@@ -6,10 +6,10 @@ import android.graphics.Bitmap;
  * Created by Anas on 4/11/2015.
  */
 public class AkunListItem {
+    private String username;
     private String name;
     private String role;
     private Bitmap photo;
-    private String username;
 
     public AkunListItem(String keyUsername, String name, String role, Bitmap photo) {
         this.name = name;
