@@ -166,7 +166,7 @@
                     android:layout_alignLeft="@+id/npm"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/alamat"/>
-
+\
                 <EditText
                     android:id="@+id/asal_daerah"
                     android:layout_width="280dp"

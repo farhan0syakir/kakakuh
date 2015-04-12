@@ -74,6 +74,11 @@ public class ReviewLogFragment extends Fragment{
         return rootView;
     }
 
+    /**
+     * menuju ke detail log dan mengirimkan informasi
+     *
+     * @param log
+     */
     public void getDetailLog(Log log) {
         Intent i = new Intent(getActivity(), DetailLogActivity.class);
 
@@ -85,11 +90,17 @@ public class ReviewLogFragment extends Fragment{
         i.putExtra("hour", time[1]);
 
         if(log.isTempat()) i.putExtra("tempat", log.getTempat());
-        else i.putExtra("tempat", "kosong");
+        else i.putExtra("tempat", "null");
 
         getActivity().startActivity(i);
     }
 
+    /**
+     * timestamp kurangi dengan waktu local
+     *
+     * @param timestamp
+     * @return tanggal dan waktu
+     */
     public String[] convertDate(Date timestamp) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(timestamp);
@@ -112,7 +123,7 @@ public class ReviewLogFragment extends Fragment{
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
             Log log = (Log) mListLog.getAdapter().getItem(position);
-            //getDetailLog(log);
+            getDetailLog(log);
         }
     }
 }

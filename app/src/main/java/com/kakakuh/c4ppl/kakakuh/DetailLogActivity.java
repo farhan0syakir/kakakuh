@@ -1,39 +1,52 @@
 package com.kakakuh.c4ppl.kakakuh;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.TextView;
 
-
-public class DetailLogActivity extends ActionBarActivity {
+/**
+ * Class ini untuk menampilkan detail log
+ */
+public class DetailLogActivity extends BaseActivity {
+    TextView note, tanggal, jam, tempat, detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_log);
-    }
 
+        //ambil intent dari pemanggil
+        Intent detailLog = getIntent();
+        String iDetail = detailLog.getStringExtra("detail");
+        String iNote = detailLog.getStringExtra("note");
+        String iDate = detailLog.getStringExtra("date");
+        String iHour = detailLog.getStringExtra("hour");
+        String iTempat = detailLog.getStringExtra("tempat");
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail_log, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        //cek if tempat null.
+        //berikan approriate layout
+        if(!iTempat.equals("null")) {
+            setContentView(R.layout.activity_detail_log_with_tempat);
+        } else {
+            setContentView(R.layout.activity_detail_log);
         }
 
-        return super.onOptionsItemSelected(item);
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_log);
+
+        //ambil dari layout
+        note = (TextView) findViewById(R.id.note);
+        tanggal = (TextView) findViewById(R.id.waktu_tanggal);
+        jam = (TextView) findViewById(R.id.waktu_jam);
+        detail = (TextView) findViewById(R.id.detail);
+
+        //set value
+        note.setText(iNote);
+        tanggal.setText(iDate);
+        jam.setText(iHour);
+        detail.setText(iDetail);
+        if(!iTempat.equals("null")) {
+            tempat = (TextView) findViewById(R.id.tempat);
+            tempat.setText(iTempat);
+        }
     }
 }
