@@ -164,6 +164,20 @@ public class HapusAkunListAdapter extends BaseAdapter {
         return result;
     }
 
+    public void onLogoutPressed() {
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setMessage("Apakah anda yakin ingin Logout?")
+                .setNegativeButton("Ya", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+
+                })
+                .setPositiveButton("Tidak", null)
+                .show();
+    }
+
     class deleteTask extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... params) {
