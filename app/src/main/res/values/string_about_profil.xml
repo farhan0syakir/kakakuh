@@ -19,4 +19,5 @@
         <item>@drawable/ic_emerald_motto</item>
     </array>
 
+    <string name="label_hari_ini">Hari Ini</string>
 </resources>
