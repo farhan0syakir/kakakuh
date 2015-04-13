@@ -32,7 +32,7 @@ public class PesanKoordinatorActivity extends Activity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // This is called when the Home (Up) button is pressed in the action bar.
-                NavUtils.navigateUpFromSameTask(this);
+                super.onBackPressed();
                 //finish(); //masalahnya kalo difinish nanti dia terminate.
                 // Harusnya jalan dibackground kan? coba cari tahu soal itu
                 return true;

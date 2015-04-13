@@ -29,9 +29,10 @@ public abstract class BaseActivity extends Activity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // This is called when the Home (Up) button is pressed in the action bar.
-                Intent upIntent = new Intent(this, MainActivity.class);
-                upIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(upIntent);
+                //Intent upIntent = new Intent(this, MainActivity.class);
+                //upIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(upIntent);
+                super.onBackPressed();
                 finish();
                 return true;
             case R.id.action_pesan:

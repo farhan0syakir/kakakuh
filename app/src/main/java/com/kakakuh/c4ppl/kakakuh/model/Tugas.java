@@ -1,1 +1,3 @@
-public class Tugas{}
+public class Tugas{
+
+}

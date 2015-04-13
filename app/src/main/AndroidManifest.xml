@@ -50,11 +50,7 @@
         <!-- Pesan Activity -->
         <activity
             android:name=".PesanKoordinatorActivity"
-            android:label="@string/pesan"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/pesan">
         </activity>
         <activity
             android:name=".PesanBaruKoordinatorActivity"
@@ -66,11 +62,7 @@
         </activity>
         <activity
             android:name=".PesanKakakActivity"
-            android:label="@string/pesan"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/pesan">
         </activity>
         <activity
             android:name=".PesanBaruKakakActivity"
@@ -82,94 +74,43 @@
         </activity>
         <activity
             android:name=".PesanAdikActivity"
-            android:label="@string/pesan"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/pesan">
         </activity>
 
         <!-- Pengaturan Activity -->
         <activity
             android:name=".PengaturanUbahPasswordActivity"
-            android:label="@string/title_activity_pengaturan_otentikasi"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_pengaturan_otentikasi">
         </activity>
         <activity
             android:name=".UbahProfilActivity"
-            android:label="@string/title_activity_ubah_profil"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_ubah_profil">
         </activity>
         <activity
             android:name=".PengaturanPesanActivity"
-            android:label="@string/title_activity_pengaturan_pesan"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_pengaturan_pesan">
         </activity>
         <activity
             android:name=".PengaturanReminderActivity"
-            android:label="@string/title_activity_pengaturan_reminder"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_pengaturan_reminder">
         </activity>
         <activity
             android:name=".PengaturanListActivity"
-            android:label="@string/title_activity_pengaturan_list"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_pengaturan_list">
         </activity>
         <activity
             android:name=".PengaturanReviewLogActivity"
-            android:label="@string/title_activity_pengaturan_review_log"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_pengaturan_review_log">
         </activity>
         <activity
             android:name=".DetailLogActivity"
-            android:label="@string/title_activity_detail_log"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
+            android:label="@string/title_activity_detail_log" >
         </activity>
+
         <!-- Profil Activity -->
         <activity
-            android:name=".ProfilAboutActivity"
-            android:label="@string/title_activity_profil_about"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
-        </activity>
-        <activity
-            android:name=".ProfilLogActivity"
-            android:label="@string/title_activity_profil_log"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
-        </activity>
-        <activity
             android:name=".ProfilActivity"
-            android:label="@string/title_activity_profil"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
+            android:label="@string/title_activity_profil">
         </activity>
     </application>
 
