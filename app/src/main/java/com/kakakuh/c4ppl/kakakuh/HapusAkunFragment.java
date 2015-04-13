@@ -30,11 +30,12 @@ public class HapusAkunFragment extends Fragment{
     HapusAkunListAdapter adapter;
     JSONArray android = null;
 
+
     public HapusAkunFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
@@ -45,42 +46,28 @@ public class HapusAkunFragment extends Fragment{
         mListAkun.setFocusableInTouchMode(false);
         mListAkun.setClickable(false);
 
+        akunListItems = new ArrayList<>();
         //TODO panggil method yg mengeksekusi query SELECT Kakak Asuh
         //dummy list
         new JSONParse().execute();
-
-        akunListItems = new ArrayList<>();
         //akunListItems.add(new AkunListItem("la1","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        /*
-        akunListItems.add(new AkunListItem("la2","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la3","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la4","Lala","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la5","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la6","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la7","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la8","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la9","Coco","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la10","Lala","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la11","Yoyo","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la12","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        */
         // Tambahkan Listener
 
         return rootView;
     }
 
-    private class ListAkunClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
-
-            //TODO go to profil page dengan informasi akun
-            //TEST
-            System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
-            akun.getPhoto(); //photo
-        }
-    }
+//    private class ListAkunClickListener implements ListView.OnItemClickListener {
+//        @Override
+//        public void onItemClick(AdapterView<?> parent, View view, int position,
+//                                long id) {
+//            AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
+//
+//            //TODO go to profil page dengan informasi akun
+//            //TEST
+//            System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
+//            akun.getPhoto(); //photo
+//        }
+//    }
 
 
     class JSONParse extends AsyncTask<String, String, JSONObject> {
@@ -89,7 +76,7 @@ public class HapusAkunFragment extends Fragment{
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Getting Data ...");
+            pDialog.setMessage("Tunggu Bentar Yak....");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -122,10 +109,16 @@ public class HapusAkunFragment extends Fragment{
                     else{
                         akunListItems.add(new AkunListItem(username,nama_lengkap,"Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
                     }
-                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
+//                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
                     // list adapter
-                    adapter = new HapusAkunListAdapter(getActivity().getApplicationContext(), akunListItems);
+                    adapter = new HapusAkunListAdapter(getActivity().getApplicationContext(), akunListItems,new HapusAkunListAdapter.BtnClickListener() {
+                        @Override
+                        public void onBtnClick(int position) {
+
+                        }
+                    });
                     mListAkun.setAdapter(adapter);
+
 
 
                 }
@@ -133,5 +126,8 @@ public class HapusAkunFragment extends Fragment{
                 e.printStackTrace();
             }
         }
+
     }
 }
+
+
