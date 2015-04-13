@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="profil_about_title">
+        <item >NPM</item>
+        <item >Nomor HP</item>
+        <item >Alamat</item>
+        <item >Asal Daerah</item>
+        <item >Motto</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="profil_about_icons">
+        <item>@drawable/ic_emerald_npm</item>
+        <item>@drawable/ic_emerald_hp</item>
+        <item>@drawable/ic_emerald_alamat</item>
+        <item>@drawable/ic_emerald_tempat</item>
+        <item>@drawable/ic_emerald_motto</item>
+    </array>
+
+</resources>

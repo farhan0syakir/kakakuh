@@ -146,6 +146,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kakakuh.c4ppl.kakakuh.MainActivity" />
         </activity>
+        <!-- Profil Activity -->
+        <activity
+            android:name=".ProfilAboutActivity"
+            android:label="@string/title_activity_profil_about"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".ProfilLogActivity"
+            android:label="@string/title_activity_profil_log"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".ProfilActivity"
+            android:label="@string/title_activity_profil"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kakakuh.c4ppl.kakakuh.MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
