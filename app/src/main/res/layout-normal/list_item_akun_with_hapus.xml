@@ -27,8 +27,8 @@
         android:id="@+id/wrapper_text">
 
         <TextView
-            android:id="@+id/nama_akun"
-            android:text="Nama Saya"
+            android:id="@+id/username"
+            android:text="Username"
             android:textSize="@dimen/nama_akun_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

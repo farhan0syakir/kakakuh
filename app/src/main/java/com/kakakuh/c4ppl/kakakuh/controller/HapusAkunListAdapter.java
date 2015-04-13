@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,21 +79,35 @@ public class HapusAkunListAdapter extends BaseAdapter {
         }
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
+        final TextView txtName = (TextView) convertView.findViewById(R.id.username);
         TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
         Button delete = (Button) convertView.findViewById(R.id.btn_delete);
 
         image.setImageBitmap(akunListItems.get(position).getPhoto());
-        txtName.setText(akunListItems.get(position).getName());
+        txtName.setText(akunListItems.get(position).getUsername());
         txtRole.setText(akunListItems.get(position).getRole());
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO execusi kueri delete dengan kondisi username
-                new deleteTask().execute("");
+                new AlertDialog.Builder(v.getRootView().getContext())
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setMessage("Apakah anda yakin ingin menghapus "+ akunListItems.get(position).getName() + "?")
+                        .setNegativeButton("Ya", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new deleteTask().execute("");
+                                //Toast.makeText(,"berhasil menghapus" , Toast.LENGTH_LONG).show();
+                            }
+
+                        })
+                        .setPositiveButton("Tidak", null)
+                        .show();
+
                 System.out.println(username);
                 username = akunListItems.get(position).getUsername();
-                Toast.makeText(v.getContext(),"berhasil menghapus" , Toast.LENGTH_LONG).show();
+
                 //System.out.println(akunListItems.get(position).getUsername()); //TEST
 
             }
@@ -162,20 +177,6 @@ public class HapusAkunListAdapter extends BaseAdapter {
         }
 
         return result;
-    }
-
-    public void onLogoutPressed() {
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage("Apakah anda yakin ingin Logout?")
-                .setNegativeButton("Ya", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-
-                })
-                .setPositiveButton("Tidak", null)
-                .show();
     }
 
     class deleteTask extends AsyncTask<String, String, String> {

@@ -76,7 +76,7 @@ public class HapusAkunFragment extends Fragment{
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Tunggu Bentar Yak....");
+            pDialog.setMessage("Loading...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -86,7 +86,7 @@ public class HapusAkunFragment extends Fragment{
         protected JSONObject doInBackground(String... args) {
             JSONParser jParser = new JSONParser();
             // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieve");
+            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieveHapus");
             return json;
         }
         @Override
