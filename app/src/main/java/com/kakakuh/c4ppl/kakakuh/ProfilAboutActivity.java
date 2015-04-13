@@ -41,6 +41,7 @@ public class ProfilAboutActivity extends BaseActivity{
         listTitles = getResources().getStringArray(R.array.profil_about_title);
         listEmeraldIcons = getResources().obtainTypedArray(R.array.profil_about_icons);
 
+
         profilListItems = new ArrayList<>();
 
         //npm
