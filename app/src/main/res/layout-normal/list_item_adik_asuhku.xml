@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:id="@+id/line_adik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:contentDescription="@string/desc_list_item_icon"
+            android:src="@drawable/ic_white_home"
+            android:background="@color/grey"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/nama"
+            android:text="Nama Saya"
+            android:textSize="@dimen/nama_akun_text"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/list_item_title"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"/>
+        </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_tugas"
+        android:layout_below="@+id/line_adik"/>
+
+</RelativeLayout>

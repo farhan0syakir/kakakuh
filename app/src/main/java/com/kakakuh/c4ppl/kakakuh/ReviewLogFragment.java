@@ -46,7 +46,7 @@ public class ReviewLogFragment extends Fragment{
         //algo:
         //ambil dulu current timestamp dari mysql currentTimestamp = ;
         //ambil semua log
-        //input parameter timestamp jadinya adalah get(currentTimestamp, query.getTimestamp)
+        //input parameter timestamp jadinya adalah get(currentTimestamp, query.getWaktuDikerjakan)
         //contoh dibawah HARDCODED tanpa perbandingan;
         logs = new ArrayList<>();
         logs.add(new Log(1, "a01", "a01 mengadakan pertemuan dengan b01", "Belajar Bareng",
