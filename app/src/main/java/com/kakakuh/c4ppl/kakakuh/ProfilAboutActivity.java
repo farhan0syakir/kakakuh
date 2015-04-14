@@ -2,28 +2,25 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.os.Bundle;
 import android.content.res.TypedArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-import com.kakakuh.c4ppl.kakakuh.controller.PengaturanListAdapter;
-import com.kakakuh.c4ppl.kakakuh.controller.ProfilAboutAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.PengaturanListItem;
+
+import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 import java.util.ArrayList;
 
 /**
- * Created by Aldi Reinaldi on 12/04/2015.
+ * Created by Aldi, Anas on 12/04/2015.
  */
 
 public class ProfilAboutActivity extends BaseActivity{
     private ListView listProfilAbout;
     private String[] listTitles;
 
-    private ArrayList<PengaturanListItem> profilListItems;
+    private ArrayList<IconTextListItem> profilListItems;
     private TypedArray listEmeraldIcons;
 
     //Adapter
-    private ProfilAboutAdapter adapter;
+    private IconTextListAdapter adapter;
 
     //untuk preferensi
     private String roleSekarang;
@@ -41,27 +38,24 @@ public class ProfilAboutActivity extends BaseActivity{
         listTitles = getResources().getStringArray(R.array.profil_about_title);
         listEmeraldIcons = getResources().obtainTypedArray(R.array.profil_about_icons);
 
-
         profilListItems = new ArrayList<>();
 
         //npm
-        profilListItems.add(new PengaturanListItem(listTitles[0], listEmeraldIcons.getResourceId(0, -1)));
+        profilListItems.add(new IconTextListItem(listTitles[0], listEmeraldIcons.getResourceId(0, -1)));
         //nomer hape
-        profilListItems.add(new PengaturanListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
+        profilListItems.add(new IconTextListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
         //alamat
-        profilListItems.add(new PengaturanListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
+        profilListItems.add(new IconTextListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
         //asal daerah
-        profilListItems.add(new PengaturanListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
+        profilListItems.add(new IconTextListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
         //motto
-        profilListItems.add(new PengaturanListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
+        profilListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
 
         // Recycle the typed array
         listEmeraldIcons.recycle();
 
         // setting the Profil list adapter
-        adapter = new ProfilAboutAdapter(getApplicationContext(), profilListItems);
+        adapter = new IconTextListAdapter(getApplicationContext(), profilListItems, R.layout.list_profil_about);
         listProfilAbout.setAdapter(adapter);
-
     }
 }
-

@@ -1,4 +1,4 @@
-package com.kakakuh.c4ppl.kakakuh.model;
+package com.kakakuh.c4ppl.kakakuh.model.belumTerpakai;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

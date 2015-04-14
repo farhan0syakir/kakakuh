@@ -21,8 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.kakakuh.c4ppl.kakakuh.controller.NavDrawerListAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.NavDrawerItem;
+import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 
 import java.util.ArrayList;
 
@@ -45,12 +45,14 @@ public class MainActivity extends Activity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
+    private ArrayList<IconTextListItem> navDrawerItems;
+    private IconTextListAdapter adapter;
 
-    //terkait shared preferensi
-    static private String roleSekarang; //default
+    static private String roleSekarang;
+
     static private int positionFragment;
+
+    static final String ROLEKEY = "roleKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,24 +80,24 @@ public class MainActivity extends Activity {
             //nav drawer icons from resources
             navMenuIcons = getResources().obtainTypedArray(R.array.koor_nav_drawer_icons);
 
-            navDrawerItems = new ArrayList<NavDrawerItem>();
+            navDrawerItems = new ArrayList<>();
 
             //Profil
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
             //Review Log
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
             //Buat Akun
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
             //Hapus Akun
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
             //Pasangkan akun
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
             //List kakak asuh
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
             //List adik asuh
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
             //Pengaturan
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -107,20 +109,20 @@ public class MainActivity extends Activity {
             //nav drawer icons from resources
             navMenuIcons = getResources().obtainTypedArray(R.array.kakak_nav_drawer_icons);
 
-            navDrawerItems = new ArrayList<NavDrawerItem>();
+            navDrawerItems = new ArrayList<>();
 
             //Profil
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
             //Adik Asuhku
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
             //Jadwal
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
             //Konfirmasi Booking
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
             //List Kakak Asuh
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
             //Pengaturan
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -131,18 +133,18 @@ public class MainActivity extends Activity {
             //nav drawer icons from resources
             navMenuIcons = getResources().obtainTypedArray(R.array.adik_nav_drawer_icons);
 
-            navDrawerItems = new ArrayList<NavDrawerItem>();
+            navDrawerItems = new ArrayList<>();
 
             //Profil
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
             //Tugas
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
             //Jadwal Kakak
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
             //List Kakak Asuh
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
             //Pengaturan
-            navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -151,7 +153,7 @@ public class MainActivity extends Activity {
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
         // setting the nav drawer list adapter
-        adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+        adapter = new IconTextListAdapter(getApplicationContext(), navDrawerItems);
         mDrawerList.setAdapter(adapter);
 
         // enabling action bar app icon and behaving it as toggle button
@@ -229,7 +231,7 @@ public class MainActivity extends Activity {
         Intent nextScreen;
         switch (item.getItemId()) {
             case R.id.action_pesan:
-                //TODO: go to Pesan
+                //TODO: go to com.kakakuh.c4ppl.kakakuh.model.belumTerpakai.Pesan
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?
                 if(roleSekarang.equals("Koordinator")) {
                     nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
@@ -452,7 +454,6 @@ public class MainActivity extends Activity {
         if(positionFragment == 1) {
             //ketika di home. close application
             finish();
-            System.exit(0);
         } else {
             //else. display ke home
             positionFragment = 1;

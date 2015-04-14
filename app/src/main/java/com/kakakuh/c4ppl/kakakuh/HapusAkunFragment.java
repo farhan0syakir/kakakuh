@@ -111,15 +111,8 @@ public class HapusAkunFragment extends Fragment{
                     }
 //                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
                     // list adapter
-                    adapter = new HapusAkunListAdapter(getActivity().getApplicationContext(), akunListItems,new HapusAkunListAdapter.BtnClickListener() {
-                        @Override
-                        public void onBtnClick(int position) {
-
-                        }
-                    });
+                    adapter = new HapusAkunListAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
-
-
 
                 }
             } catch (JSONException e) {

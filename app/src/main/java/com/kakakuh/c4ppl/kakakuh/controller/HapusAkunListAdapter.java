@@ -38,37 +38,19 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/11/2015.
  */
-public class HapusAkunListAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<AkunListItem> akunListItems;
+public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
+
     private String username = "";
     private String url = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/delete";
     InputStream is = null;
     String result = null;
     String line = null;
+
     //mulai dari sini editnya
-    private BtnClickListener mClickListener = null;
-    public HapusAkunListAdapter(Context context, ArrayList<AkunListItem> akunListItems, BtnClickListener listener) {
+    public HapusAkunListAdapter(Context context, ArrayList<AkunListItem> akunListItems) {
         this.context = context;
-        this.akunListItems = akunListItems;
-        mClickListener=listener;
+        listItems = akunListItems;
     }
-
-    @Override
-    public int getCount() {
-        return akunListItems.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return akunListItems.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -83,16 +65,16 @@ public class HapusAkunListAdapter extends BaseAdapter {
         TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
         Button delete = (Button) convertView.findViewById(R.id.btn_delete);
 
-        image.setImageBitmap(akunListItems.get(position).getPhoto());
-        txtName.setText(akunListItems.get(position).getUsername());
-        txtRole.setText(akunListItems.get(position).getRole());
+        image.setImageBitmap(listItems.get(position).getPhoto());
+        txtName.setText(listItems.get(position).getUsername());
+        txtRole.setText(listItems.get(position).getRole());
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO execusi kueri delete dengan kondisi username
                 new AlertDialog.Builder(v.getRootView().getContext())
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setMessage("Apakah anda yakin ingin menghapus "+ akunListItems.get(position).getName() + "?")
+                        .setMessage("Apakah anda yakin ingin menghapus "+ listItems.get(position).getUsername() + "?")
                         .setNegativeButton("Ya", new DialogInterface.OnClickListener()
                         {
                             @Override
@@ -106,7 +88,7 @@ public class HapusAkunListAdapter extends BaseAdapter {
                         .show();
 
                 System.out.println(username);
-                username = akunListItems.get(position).getUsername();
+                username = listItems.get(position).getUsername();
 
                 //System.out.println(akunListItems.get(position).getUsername()); //TEST
 
@@ -194,8 +176,5 @@ public class HapusAkunListAdapter extends BaseAdapter {
             }
             //after background is done, use this to show or hide dialogs
         }
-    }
-    public interface BtnClickListener {
-        public abstract void onBtnClick(int position);
     }
 }

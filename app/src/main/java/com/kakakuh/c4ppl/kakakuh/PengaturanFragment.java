@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.kakakuh.c4ppl.kakakuh.controller.PengaturanListAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.PengaturanListItem;
+import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 
 import java.util.ArrayList;
 
@@ -26,11 +26,11 @@ public class PengaturanFragment extends Fragment{
     private ListView listPengaturan;
     private String[] listTitles;
 
-    private ArrayList<PengaturanListItem> pengaturanListItems;
+    private ArrayList<IconTextListItem> iconTextListItems;
     private TypedArray listEmeraldIcons;
 
     //Adapter
-    private PengaturanListAdapter adapter;
+    private IconTextListAdapter adapter;
 
     //untuk preferensi
     private String roleSekarang;
@@ -49,24 +49,24 @@ public class PengaturanFragment extends Fragment{
         listTitles = getResources().getStringArray(R.array.pengaturan_titles);
         listEmeraldIcons = getResources().obtainTypedArray(R.array.pengaturan_emerald_icons);
 
-        pengaturanListItems = new ArrayList<>();
+        iconTextListItems = new ArrayList<>();
 
         //otentikasi
-        pengaturanListItems.add(new PengaturanListItem(listTitles[0], listEmeraldIcons.getResourceId(0, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[0], listEmeraldIcons.getResourceId(0, -1)));
         //profil
-        pengaturanListItems.add(new PengaturanListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
         //pesan
-        pengaturanListItems.add(new PengaturanListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
         //reminder
-        pengaturanListItems.add(new PengaturanListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
         //list
-        pengaturanListItems.add(new PengaturanListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
         //review log
         if(roleSekarang.equals("Koordinator")) {
-            pengaturanListItems.add(new PengaturanListItem(listTitles[5], listEmeraldIcons.getResourceId(5, -1)));
+            iconTextListItems.add(new IconTextListItem(listTitles[5], listEmeraldIcons.getResourceId(5, -1)));
         }
         //log out
-        pengaturanListItems.add(new PengaturanListItem(listTitles[6], listEmeraldIcons.getResourceId(6, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[6], listEmeraldIcons.getResourceId(6, -1)));
 
         // Recycle the typed array
         listEmeraldIcons.recycle();
@@ -75,7 +75,7 @@ public class PengaturanFragment extends Fragment{
         listPengaturan.setOnItemClickListener(new PengaturanClickListener());
 
         // setting the Pengaturan list adapter
-        adapter = new PengaturanListAdapter(getActivity().getApplicationContext(), pengaturanListItems);
+        adapter = new IconTextListAdapter(getActivity().getApplicationContext(), iconTextListItems);
         listPengaturan.setAdapter(adapter);
 
         return rootView;
@@ -202,14 +202,14 @@ public class PengaturanFragment extends Fragment{
 
     public void logout(){
         SharedPreferences sharedpreferences = getActivity().getSharedPreferences
-                ("mypref", Context.MODE_PRIVATE);
+                ("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.clear();
         editor.commit();
 
         Intent login = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(login);
         getActivity().finish();
     }

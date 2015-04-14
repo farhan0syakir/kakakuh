@@ -24,8 +24,7 @@ public class LoginActivity extends Activity {
     public static final String nameKey = "nameKey";
     public static final String passKey = "passwordKey";
     public static final String roleKey = "roleKey";
-    SharedPreferences sharedpreferences;
-
+    SharedPreferences preferensiKakakuh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,36 +32,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
         usernameField = (EditText)findViewById(R.id.username);
         passwordField = (EditText)findViewById(R.id.password);
-
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-
-        sharedpreferences=getSharedPreferences("mypref",Context.MODE_PRIVATE);
-            if (sharedpreferences.contains(nameKey))
-            {
-                if(sharedpreferences.contains(passKey)){
-                    if(sharedpreferences.contains(roleKey)){
-                        Intent i=getIntent();
-                        i = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(i);
-                        if(sharedpreferences.getString(roleKey,"wrong").equals("0")){
-                            MainActivity.setRoleSekarang("0");
-                        }else if (sharedpreferences.getString(roleKey,"wrong").equals("1")){
-                            MainActivity.setRoleSekarang("1");
-                        }else{
-                            MainActivity.setRoleSekarang("2");
-                        }
-                        finish();
-                    }
-                }
-            }
-        super.onResume();
-
+        preferensiKakakuh = getSharedPreferences("com.kakakuh.c4ppl.preferences",Context.MODE_PRIVATE);
     }
 
     public void login(View view){
@@ -70,20 +40,22 @@ public class LoginActivity extends Activity {
         String password = passwordField.getText().toString();
         String url = "username="+username+"&password="+password;
 
-        Editor editor = sharedpreferences.edit();
+        Editor editor = preferensiKakakuh.edit();
 
         String finalUrl = url1 + url;
         obj = new HandleJSON(finalUrl);
         obj.fetchJSON();
 
         while(obj.parsingComplete);
-        Intent nextScreen=null;
         if(obj.getRole().equals("3")) {
             Toast.makeText(this, "Maaf Username atau Password salah", Toast.LENGTH_LONG).show();
         } else {
             editor.putString(nameKey, username);
             editor.putString(passKey, password);
-            nextScreen = new Intent(getApplicationContext(), MainActivity.class);
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
             Toast.makeText(getApplicationContext(), "Tersambung!", Toast.LENGTH_SHORT).show();
             if (obj.getRole().equals("0")) {
                 editor.putString(roleKey, "0");
@@ -95,10 +67,8 @@ public class LoginActivity extends Activity {
                 editor.putString(roleKey, "2");
                 MainActivity.setRoleSekarang("2");
             }
-            startActivity(nextScreen);
-
+            editor.putBoolean("isLogged", true);
         }
         editor.commit();
     }
 }
-

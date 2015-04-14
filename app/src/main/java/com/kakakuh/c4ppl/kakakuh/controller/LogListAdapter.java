@@ -20,25 +20,12 @@ import java.util.GregorianCalendar;
 /**
  * Created by Anas on 4/12/2015.
  */
-public class LogListAdapter extends BaseAdapter{
-    private Context context;
-    private ArrayList<Log> logs;
+public class LogListAdapter extends KakakuhBaseAdapter<Log> {
 
     public LogListAdapter(Context context, ArrayList<Log> logs) {
         this.context = context;
-        this.logs = logs;
+        listItems = logs;
     }
-
-    @Override
-    public int getCount() { return logs.size(); }
-
-    @Override
-    public Object getItem(int position) {
-        return logs.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) { return position; }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -52,14 +39,13 @@ public class LogListAdapter extends BaseAdapter{
         TextView txtNote = (TextView) convertView.findViewById(R.id.note);
         TextView txtTime = (TextView) convertView.findViewById(R.id.time);
 
-        image.setImageBitmap(logs.get(position).getPhoto());
-        txtNote.setText(logs.get(position).getNote());
-        txtTime.setText(getTime(logs.get(position).getTimestamp()));
+        image.setImageBitmap(listItems.get(position).getPhoto());
+        txtNote.setText(listItems.get(position).getNote());
+        txtTime.setText(getTime(listItems.get(position).getTimestamp()));
 
         return convertView;
     }
 
-    /*Timestamp GMT + 7 */
     private String getTime(Date timestamp) {
         long elapsedTime = System.currentTimeMillis() - timestamp.getTime();
         long elapsedTimeInSeconds = elapsedTime/1000;

@@ -1,9 +1,8 @@
-package com.kakakuh.c4ppl.kakakuh.model;
+package com.kakakuh.c4ppl.kakakuh.model.belumTerpakai;
 
-import java.security.Timestamp;
 import java.util.Date;
 
-public class Jadwal implements Model{
+public class Jadwal implements Model {
     @Override
     public String Create() {
         return null;

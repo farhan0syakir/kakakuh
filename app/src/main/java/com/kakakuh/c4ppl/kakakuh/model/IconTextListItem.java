@@ -1,15 +1,15 @@
 package com.kakakuh.c4ppl.kakakuh.model;
 
 /**
- * Created by Anas on 4/2/2015.
+ * Created by Anas on 4/10/2015.
  */
-public class NavDrawerItem {
+public class IconTextListItem {
     private String title;
     private int icon;
 
-    public NavDrawerItem(){}
+    public IconTextListItem(){}
 
-    public NavDrawerItem(String title, int icon){
+    public IconTextListItem(String title, int icon){
         this.title = title;
         this.icon = icon;
     }

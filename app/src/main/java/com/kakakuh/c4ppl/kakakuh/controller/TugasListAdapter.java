@@ -74,7 +74,6 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
 
         //TEST
         //btnKerjakan.setText(entrySekarang.getDeadline().getTime() - System.currentTimeMillis() + "");
-
         return convertView;
     }
 
