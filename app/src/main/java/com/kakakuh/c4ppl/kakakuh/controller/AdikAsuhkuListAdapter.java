@@ -36,7 +36,6 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
             convertView = mInflater.inflate(R.layout.list_item_adik_asuhku, null);
         }
 
-        LinearLayout lineAdik = (LinearLayout) convertView.findViewById(R.id.line_adik);
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
@@ -55,6 +54,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         RelativeLayout lineTugas = (RelativeLayout) convertView.findViewById(R.id.line_tugas);
         RelativeLayout container = (RelativeLayout) convertView.findViewById(R.id.container_tugas);
         TextView belum_ada = (TextView) convertView.findViewById(R.id.belum_ada_tugas);
+
         if(listItems.get(position).getTugas() != null) {
             belum_ada.setVisibility(View.GONE);
             container.setVisibility(View.VISIBLE);

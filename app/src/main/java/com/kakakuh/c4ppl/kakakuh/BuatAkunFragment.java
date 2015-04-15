@@ -79,9 +79,14 @@ public class BuatAkunFragment extends Fragment{
                 //debug
                 System.out.println(user);
                 System.out.println(pass);
+
+
                 if(user.equals("")||pass.equals("")||role.equals("0")) {
                     Toast.makeText(getActivity(), "Ada yang belum terisi",
                             Toast.LENGTH_LONG).show();
+                }
+                else if (usernameField.getText().toString().contains(" ")||passwordField.getText().toString().contains(" ")) {
+                    Toast.makeText(getActivity(), "Spasi tidak diperbolehkan", Toast.LENGTH_LONG).show();
                 }
                 else{
                     new insertTask().execute("");
