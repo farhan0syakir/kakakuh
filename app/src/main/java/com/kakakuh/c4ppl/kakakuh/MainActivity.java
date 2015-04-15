@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
 
     // used to store app title
     private CharSequence mTitle;
+    private int mTitleIcon;
 
     // slide menu items
     private String[] navMenuTitles;
@@ -168,6 +169,7 @@ public class MainActivity extends Activity {
         ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
+                getActionBar().setIcon(mTitleIcon);
                 // calling onPrepareOptionsMenu() to show action bar icons
                 invalidateOptionsMenu();
             }
@@ -269,35 +271,43 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                getActionBar().setIcon(R.drawable.ic_white_profil);
+                mTitleIcon = R.drawable.ic_white_profil;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ProfilFragment();
                 break;
             case 1:
-                getActionBar().setIcon(R.drawable.ic_white_home);
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ReviewLogFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_white_buat_akun);
+                mTitleIcon = R.drawable.ic_white_buat_akun;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new BuatAkunFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_white_hapus_akun);
+                mTitleIcon = R.drawable.ic_white_hapus_akun;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new HapusAkunFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_white_pasangkan_akun);
+                mTitleIcon = R.drawable.ic_white_pasangkan_akun;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new PasangkanAkunFragment();
                 break;
             case 5:
-                getActionBar().setIcon(R.drawable.ic_white_list_akun);
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 6:
-                getActionBar().setIcon(R.drawable.ic_white_list_akun_adik);
+                mTitleIcon = R.drawable.ic_white_list_akun_adik;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ListAdikAsuhFragment();
                 break;
             case 7:
-                getActionBar().setIcon(R.drawable.ic_white_pengaturan);
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new PengaturanFragment();
                 break;
 
@@ -330,27 +340,33 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
+                mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(R.drawable.ic_white_profil);
                 fragment = new ProfilFragment();
                 break;
             case 1:
-                getActionBar().setIcon(R.drawable.ic_white_home);
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new AdikAsuhkuFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_white_jadwal);
+                mTitleIcon = R.drawable.ic_white_jadwal;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new JadwalFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_white_konfirmasi_booking);
+                mTitleIcon = R.drawable.ic_white_konfirmasi_booking;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new KonfirmasiBookingFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_white_list_akun);
+                mTitleIcon = R.drawable.ic_white_profil;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 5:
-                getActionBar().setIcon(R.drawable.ic_white_pengaturan);
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new PengaturanFragment();
                 break;
 
@@ -383,23 +399,28 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                getActionBar().setIcon(R.drawable.ic_white_profil);
+                mTitleIcon = R.drawable.ic_white_profil;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ProfilFragment();
                 break;
             case 1:
-                getActionBar().setIcon(R.drawable.ic_white_home);
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new TugasFragment();
                 break;
             case 2:
-                getActionBar().setIcon(R.drawable.ic_white_jadwal);
+                mTitleIcon = R.drawable.ic_white_jadwal;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new JadwalKakakFragment();
                 break;
             case 3:
-                getActionBar().setIcon(R.drawable.ic_white_list_akun);
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new ListKakakAsuhFragment();
                 break;
             case 4:
-                getActionBar().setIcon(R.drawable.ic_white_pengaturan);
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
                 fragment = new PengaturanFragment();
                 break;
 

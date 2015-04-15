@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp">
+    android:paddingBottom="8dp">
 
     <LinearLayout
         android:id="@+id/line_adik"
@@ -40,30 +39,49 @@
         android:id="@+id/label_tugas_terakhir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tugas terakhir"
+        android:text="@string/label_tugas_terakhir"
         android:paddingLeft="12dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/line_adik"/>
 
     <TextView
-        android:id="@+id/kategori"
+        android:id="@+id/belum_ada_tugas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kategori apa?"
-        android:textSize="16sp"
+        android:layout_below="@id/label_tugas_terakhir"
         android:paddingLeft="12dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/label_tugas_terakhir"/>
+        android:layout_marginBottom="10dp"
+        android:text="@string/label_belum_ada_tugas"
+        android:textSize="16sp"
+        android:visibility="gone"/>
 
-    <CheckBox
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ini tugas apa?"
-        android:id="@+id/tugas"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/kategori"
-        android:enabled="false"
-        android:textColor="@color/black"/>
+        android:id="@+id/container_tugas"
+        android:layout_below="@id/label_tugas_terakhir"
+        android:paddingLeft="12dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategori apa?"
+            android:textSize="16sp"/>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ini tugas apa?"
+            android:id="@+id/tugas"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/kategori"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:checked="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
 
 </RelativeLayout>

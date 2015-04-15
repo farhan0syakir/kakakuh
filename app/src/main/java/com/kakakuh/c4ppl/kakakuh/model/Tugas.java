@@ -16,7 +16,7 @@ public class Tugas {
 
     public Tugas(String id, String kategori, String deskripsiTugas, Date deadline, boolean sudahDikerjakan) {
         this.id = id;
-        this.id = kategori;
+        this.kategori = kategori;
         this.deskripsiTugas = deskripsiTugas;
         this.deadline = deadline;
         this.sudahDikerjakan = sudahDikerjakan;
