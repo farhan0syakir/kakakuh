@@ -25,9 +25,9 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class HapusAkunFragment extends Fragment{
-    ListView mListAkun;
-    ArrayList<AkunListItem> akunListItems;
-    HapusAkunListAdapter adapter;
+    public ListView mListAkun;
+    public ArrayList<AkunListItem> akunListItems;
+    public HapusAkunListAdapter adapter;
     JSONArray android = null;
 
 
@@ -36,6 +36,11 @@ public class HapusAkunFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
+
+
         View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
@@ -113,6 +118,7 @@ public class HapusAkunFragment extends Fragment{
                     // list adapter
                     adapter = new HapusAkunListAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
 
                 }
             } catch (JSONException e) {

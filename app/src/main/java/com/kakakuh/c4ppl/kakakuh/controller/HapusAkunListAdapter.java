@@ -14,9 +14,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.ads.mediation.customevent.CustomEventAdapter;
 import com.kakakuh.c4ppl.kakakuh.HapusAkunFragment;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
@@ -81,6 +83,7 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
                             public void onClick(DialogInterface dialog, int which) {
                                 new deleteTask().execute("");
                                 //Toast.makeText(,"berhasil menghapus" , Toast.LENGTH_LONG).show();
+
                             }
 
                         })
@@ -157,7 +160,6 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
             Log.e("Fail 2", e.toString());
 
         }
-
         return result;
     }
 
@@ -170,11 +172,12 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
 
 
         protected void onPostExecute(String result) {
-            if (result.equals("OK")){
-//                Toast.makeText(context, position,
- //                       Toast.LENGTH_LONG).show();
-            }
+//            if (result.equals("OK")){
+                Toast.makeText(context, "Akun Berhasil Dihapus",Toast.LENGTH_LONG).show();
+                HapusAkunListAdapter.this.notifyDataSetChanged();
+//            }
             //after background is done, use this to show or hide dialogs
         }
+
     }
 }
