@@ -236,7 +236,7 @@ public class MainActivity extends Activity {
                 if(roleSekarang.equals("Koordinator")) {
                     nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
                     startActivity(nextScreen);
-                } else if (roleSekarang.equals("KakakAsuh")) {
+                } else if (roleSekarang.equals("Kakak Asuh")) {
                     nextScreen = new Intent(getApplicationContext(), PesanKakakActivity.class);
                     startActivity(nextScreen);
                 } else {

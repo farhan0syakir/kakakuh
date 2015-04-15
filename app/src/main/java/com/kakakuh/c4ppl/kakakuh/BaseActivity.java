@@ -44,7 +44,7 @@ public abstract class BaseActivity extends Activity {
                         nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
                         startActivity(nextScreen);
                         break;
-                    case "KakakAsuh":
+                    case "Kakak Asuh":
                         nextScreen = new Intent(getApplicationContext(), PesanKakakActivity.class);
                         startActivity(nextScreen);
                         break;

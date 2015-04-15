@@ -70,7 +70,7 @@ public class UbahProfilActivity extends BaseActivity {
         Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
 
         //url = url+"?username=adik";
-        sharedpreferences = getSharedPreferences("mypref", Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
         username = sharedpreferences.getString("nameKey",null);
         new retrieveMyProfile().execute();
 

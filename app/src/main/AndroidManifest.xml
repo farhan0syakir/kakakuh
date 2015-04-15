@@ -84,11 +84,13 @@
         <!-- Pengaturan Activity -->
         <activity
             android:name=".PengaturanUbahPasswordActivity"
-            android:label="@string/title_activity_pengaturan_otentikasi">
+            android:label="@string/title_activity_pengaturan_otentikasi"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
         <activity
             android:name=".UbahProfilActivity"
-            android:label="@string/title_activity_ubah_profil">
+            android:label="@string/title_activity_ubah_profil"
+            android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <activity
             android:name=".PengaturanPesanActivity"

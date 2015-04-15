@@ -48,7 +48,7 @@ public class AdikAsuhkuFragment extends Fragment{
         new JSONParse().execute();
         akunListItems = new ArrayList<>();
 
-        sharedPreferences = getActivity().getSharedPreferences("mypref", Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nameKey","wrong");
 
 

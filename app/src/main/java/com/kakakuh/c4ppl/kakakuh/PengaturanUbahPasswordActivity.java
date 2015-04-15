@@ -49,7 +49,7 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
         getActionBar().setIcon(R.drawable.ic_white_home);
 
         setContentView(R.layout.activity_pengaturan_ubah_password);
-        sharedpreferences = getSharedPreferences("mypref", Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
 
         passwordSekarangField = (EditText) findViewById(R.id.password_sekarang);
         passwordBaruField = (EditText) findViewById(R.id.password_baru);
