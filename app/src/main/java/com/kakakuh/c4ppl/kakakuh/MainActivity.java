@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
             case 0:
                 mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(mTitleIcon);
-                fragment = new ProfilFragment();
+                startActivity(new Intent(this, ProfilActivity.class));
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;
@@ -342,7 +342,7 @@ public class MainActivity extends Activity {
             case 0:
                 mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(R.drawable.ic_white_profil);
-                fragment = new ProfilFragment();
+                startActivity(new Intent(this, ProfilActivity.class));
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;
@@ -401,7 +401,7 @@ public class MainActivity extends Activity {
             case 0:
                 mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(mTitleIcon);
-                fragment = new ProfilFragment();
+                startActivity(new Intent(this, ProfilActivity.class));
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;

@@ -23,6 +23,9 @@ public class ProfilActivity extends TabActivity {
 
         TabHost tabHost = getTabHost();
 
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_profil);
+
         // About Tab
         TabSpec profilAboutSpec = tabHost.newTabSpec(PROFIL_ABOUT_SPEC);
         // Tab Icon
