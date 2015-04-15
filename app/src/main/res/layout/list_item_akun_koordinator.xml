@@ -34,14 +34,14 @@
             android:textColor="@color/list_item_title"
             android:layout_marginBottom="5dp"/>
 
-        <!--<TextView-->
-            <!--android:id="@+id/role_akun"-->
-            <!--android:text="Role Saya"-->
-            <!--android:textSize="@dimen/role_akun_text"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:textColor="@color/list_item_title"/>-->
+        <TextView
+        android:id="@+id/role_akun"
+        android:text="Role Saya"
+        android:textSize="@dimen/role_akun_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/list_item_title"/>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

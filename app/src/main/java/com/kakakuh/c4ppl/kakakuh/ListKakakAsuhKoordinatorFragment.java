@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.AkunListKoordinatorAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
@@ -24,13 +25,13 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/2/2015.
  */
-public class ListKakakAsuhFragment extends Fragment{
+public class ListKakakAsuhKoordinatorFragment extends Fragment{
     ListView mListAkun;
     ArrayList<AkunListItem> akunListItems;
-    AkunListAdapter adapter;
+    AkunListKoordinatorAdapter adapter;
     JSONArray android = null;
 
-    public ListKakakAsuhFragment(){}
+    public ListKakakAsuhKoordinatorFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,7 +96,7 @@ public class ListKakakAsuhFragment extends Fragment{
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter
-                    adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
+                    adapter = new AkunListKoordinatorAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
 
 

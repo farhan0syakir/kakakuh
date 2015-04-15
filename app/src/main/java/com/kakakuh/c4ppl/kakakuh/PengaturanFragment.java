@@ -87,7 +87,7 @@ public class PengaturanFragment extends Fragment{
         Intent nextScreen;
         switch (position) {
             case 0:
-                //TODO start activity pengaturan otentifikasi
+                //TODO start activity pengaturan otentikasi
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanUbahPasswordActivity.class);
                 startActivity(nextScreen);

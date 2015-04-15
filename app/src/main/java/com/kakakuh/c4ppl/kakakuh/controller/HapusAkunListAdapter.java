@@ -69,7 +69,7 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
 
         image.setImageBitmap(listItems.get(position).getPhoto());
         txtName.setText(listItems.get(position).getUsername());
-        txtRole.setText(listItems.get(position).getRole());
+        txtRole.setText(listItems.get(position).getName());
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

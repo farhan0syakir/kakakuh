@@ -298,7 +298,7 @@ public class MainActivity extends Activity {
             case 5:
                 mTitleIcon = R.drawable.ic_white_list_akun;
                 getActionBar().setIcon(mTitleIcon);
-                fragment = new ListKakakAsuhFragment();
+                fragment = new ListKakakAsuhKoordinatorFragment();
                 break;
             case 6:
                 mTitleIcon = R.drawable.ic_white_list_akun_adik;

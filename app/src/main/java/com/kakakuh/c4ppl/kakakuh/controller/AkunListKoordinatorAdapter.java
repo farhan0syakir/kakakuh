@@ -16,9 +16,9 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/11/2015.
  */
-public class AkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
+public class AkunListKoordinatorAdapter extends KakakuhBaseAdapter<AkunListItem> {
 
-    public AkunListAdapter(Context context, ArrayList<AkunListItem> akunListItems) {
+    public AkunListKoordinatorAdapter(Context context, ArrayList<AkunListItem> akunListItems) {
         this.context = context;
         listItems = akunListItems;
     }
@@ -28,16 +28,16 @@ public class AkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_item_akun, null);
+            convertView = mInflater.inflate(R.layout.list_item_akun_koordinator, null);
         }
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
-//        TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
+        TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
 
         image.setImageBitmap(listItems.get(position).getPhoto());
-        txtName.setText(listItems.get(position).getName());
-//        txtRole.setText("");
+        txtName.setText(listItems.get(position).getUsername());
+        txtRole.setText(listItems.get(position).getName());
 
         return convertView;
     }

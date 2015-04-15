@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.AkunListKoordinatorAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
@@ -27,39 +28,21 @@ import java.util.ArrayList;
 public class ListAdikAsuhFragment extends Fragment{
     ListView mListAkun;
     ArrayList<AkunListItem> akunListItems;
-    AkunListAdapter adapter;
+    AkunListKoordinatorAdapter adapter;
     JSONArray android = null;
 
     public ListAdikAsuhFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
 
         //TODO panggil method yg mengeksekusi query SELECT Adikk Asuh
-        //dummy list
         new JSONParse().execute();
         akunListItems = new ArrayList<>();
-
-        //akunListItems.add(new AkunListItem("la2","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        //akunListItems.remove(0);
-        /*
-        akunListItems.add(new AkunListItem("la3","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la4","Lala","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la5","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la6","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la7","Lala","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la8","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la9","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));
-        akunListItems.add(new AkunListItem("la10","Lala","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
-        akunListItems.add(new AkunListItem("la11","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
-        akunListItems.add(new AkunListItem("la12","Coco","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_list_akun_adik)));*/
-        // Tambahkan Listener
-
-
         return rootView;
     }
 
@@ -112,7 +95,7 @@ public class ListAdikAsuhFragment extends Fragment{
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter
-                    adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
+                    adapter = new AkunListKoordinatorAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
 
                 }
