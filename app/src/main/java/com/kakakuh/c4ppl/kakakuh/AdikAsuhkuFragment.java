@@ -13,14 +13,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.kakakuh.c4ppl.kakakuh.controller.AdikAsuhkuListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.AdikAsuhkuListItem;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
+import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -28,8 +32,8 @@ import java.util.ArrayList;
  */
 public class AdikAsuhkuFragment extends Fragment{
     ListView mListAkun;
-    ArrayList<AkunListItem> akunListItems;
-    AkunListAdapter adapter;
+    ArrayList<AdikAsuhkuListItem> listItems;
+    AdikAsuhkuListAdapter adapter;
     JSONArray android = null;
     SharedPreferences sharedPreferences;
     String user;
@@ -43,10 +47,16 @@ public class AdikAsuhkuFragment extends Fragment{
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
 
+        //ini aturan agar elemen di dalam list bisa diclick
+        mListAkun.setItemsCanFocus(true);
+        mListAkun.setFocusable(false);
+        mListAkun.setFocusableInTouchMode(false);
+        mListAkun.setClickable(false);
+
         //TODO panggil method yg mengeksekusi query SELECT Adikk Asuh
         //dummy list
         new JSONParse().execute();
-        akunListItems = new ArrayList<>();
+        listItems = new ArrayList<>();
 
         sharedPreferences = getActivity().getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nameKey","wrong");
@@ -68,18 +78,6 @@ public class AdikAsuhkuFragment extends Fragment{
 
 
         return rootView;
-    }
-
-    private class ListAkunClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-            AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
-
-            //TODO go to DetailTugasActivity
-            //TEST
-            System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
-        }
     }
 
     class JSONParse extends AsyncTask<String, String, JSONObject> {
@@ -105,24 +103,32 @@ public class AdikAsuhkuFragment extends Fragment{
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
+                Tugas[] tugases = {new Tugas("2","PPL","sudah dikerjakan",new Date(new Long("1438224300000")),true),null};
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
                 for(int i = 0; i < android.length(); i++){
                     JSONObject c = android.getJSONObject(i);
                     // Storing  JSON item in a Variable
-                    String nama_lengkap = c.getString("nama_lengkap");
+                    String namaLengkap = c.getString("nama_lengkap");
                     String username = c.getString("username");
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
-                    akunListItems.add(new AkunListItem(username,nama_lengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                    AkunListItem akun = new AkunListItem(username,namaLengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal));
 
-                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
+                    //TODO Hardcoded harusnya ambil tugas terakhir yang sudah dikerjakan adik.
+                    Tugas tugas = tugases[i];
 
-                    // setting the Pengaturan list adapter
-                    adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
-                    mListAkun.setAdapter(adapter);
+                    if(tugas == null) {
+                        listItems.add(new AdikAsuhkuListItem(akun));
+                    } else {
+                        listItems.add(new AdikAsuhkuListItem(akun,tugas));
+                    }
 
                 }
+
+                // setting the Pengaturan list adapter
+                adapter = new AdikAsuhkuListAdapter(getActivity().getApplicationContext(), listItems);
+                mListAkun.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

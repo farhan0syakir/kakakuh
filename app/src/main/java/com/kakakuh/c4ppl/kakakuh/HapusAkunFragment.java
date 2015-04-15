@@ -122,5 +122,3 @@ public class HapusAkunFragment extends Fragment{
 
     }
 }
-
-

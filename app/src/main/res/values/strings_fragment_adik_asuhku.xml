@@ -2,5 +2,5 @@
 <resources>
     <string name="btn_lihat">Lihat</string>
     <string name="label_belum_ada_tugas">Belum ada tugas yang dikerjakan</string>
-    <string name="label_tugas_terakhir">Tugas terakhir yang dikerjakan</string>
+    <string name="label_tugas_terakhir">Tugas</string>
 </resources>
