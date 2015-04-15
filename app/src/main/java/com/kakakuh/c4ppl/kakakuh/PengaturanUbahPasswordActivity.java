@@ -66,8 +66,17 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
                 newPass = passwordBaruField.getText().toString();
                 String confirm_pass = passwordKonfirmasiField.getText().toString();
                 if(myPass.equals(pass)){
-                    if(newPass.equals(confirm_pass)){
+                    if(confirm_pass.equals("")&&newPass.equals("")) {
+                        Toast.makeText(getApplicationContext(), "Password tidak boleh kosong",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else if(newPass.equals(confirm_pass)){
                         new UpdatePass().execute();
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString("passwordKey", newPass);
+                        editor.commit();
+                        finish();
+                        startActivity(getIntent());
                     }else{
                         Toast.makeText(getApplicationContext(), "Password tidak sama",
                                 Toast.LENGTH_LONG).show();

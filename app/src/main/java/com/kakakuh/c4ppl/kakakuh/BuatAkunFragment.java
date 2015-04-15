@@ -86,7 +86,7 @@ public class BuatAkunFragment extends Fragment{
                             Toast.LENGTH_LONG).show();
                 }
                 else if (usernameField.getText().toString().contains(" ")||passwordField.getText().toString().contains(" ")) {
-                    Toast.makeText(getActivity(), "No Spaces Allowed", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Spasi tidak diperbolehkan", Toast.LENGTH_LONG).show();
                 }
                 else{
                     new insertTask().execute("");
