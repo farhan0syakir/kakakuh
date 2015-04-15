@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class MainActivity extends Activity {
     private ActionBarDrawerToggle mDrawerToggle;
     private TextView mDrawerRole;
 
+    // shared preferences
+    SharedPreferences sharedpreferences;
+
     // nav drawer title
     private CharSequence mDrawerTitle;
 
@@ -48,6 +52,8 @@ public class MainActivity extends Activity {
 
     private ArrayList<IconTextListItem> navDrawerItems;
     private IconTextListAdapter adapter;
+
+    static private String usernameSekarang;
 
     static private String roleSekarang;
 
@@ -274,6 +280,9 @@ public class MainActivity extends Activity {
                 mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(mTitleIcon);
                 startActivity(new Intent(this, ProfilActivity.class));
+                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
+                String user = sharedpreferences.getString("nameKey", "wrong");
+                setUsernameSekarang(user);
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;
@@ -343,6 +352,9 @@ public class MainActivity extends Activity {
                 mTitleIcon = R.drawable.ic_white_profil;
                 getActionBar().setIcon(R.drawable.ic_white_profil);
                 startActivity(new Intent(this, ProfilActivity.class));
+                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
+                String user = sharedpreferences.getString("nameKey", "wrong");
+                setUsernameSekarang(user);
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;
@@ -400,8 +412,11 @@ public class MainActivity extends Activity {
         switch (position) {
             case 0:
                 mTitleIcon = R.drawable.ic_white_profil;
-                getActionBar().setIcon(mTitleIcon);
+                getActionBar().setIcon(R.drawable.ic_white_profil);
                 startActivity(new Intent(this, ProfilActivity.class));
+                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
+                String user = sharedpreferences.getString("nameKey", "wrong");
+                setUsernameSekarang(user);
                 break;
             case 1:
                 mTitleIcon = R.drawable.ic_white_home;
@@ -500,6 +515,12 @@ public class MainActivity extends Activity {
         } else {
             roleSekarang = "Adik Asuh";
         }
+    }
+
+    public static String getUsernameSekarang() { return usernameSekarang; }
+
+    public void setUsernameSekarang(String usernameSekarang){
+        this.usernameSekarang = usernameSekarang;
     }
 
     /* hide keyboard*/

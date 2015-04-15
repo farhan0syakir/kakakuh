@@ -5,21 +5,61 @@ package com.kakakuh.c4ppl.kakakuh;
  */
 import android.app.TabActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class ProfilActivity extends TabActivity {
     // TabSpec Names
     private static final String PROFIL_ABOUT_SPEC = "About";
     private static final String PROFIL_LOG_SPEC = "Log";
 
+    private String url="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieve";
+
+    private JSONArray jsonArray;
+
+    TextView nama, role;
+
+    String username;
+    InputStream is=null;
+    String result=null;
+    String line=null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
+
+        username = MainActivity.getUsernameSekarang();
+
+        nama = (TextView) findViewById(R.id.nama);
+        role = (TextView) findViewById(R.id.role);
+
+        new retrieveMyProfile().execute();
 
         TabHost tabHost = getTabHost();
 
@@ -51,6 +91,85 @@ public class ProfilActivity extends TabActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public String retrieve() {
+
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+        nameValuePairs.add(new BasicNameValuePair("username", username));
+        //debug
+        System.out.println(nameValuePairs);
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            //debug
+            System.out.println(is);
+            Log.e("pass 1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail 1", e.toString());
+            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(is, "iso-8859-1"), 8);
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            is.close();
+            result = sb.toString();
+            //debug
+
+            Log.e("pass 2", "connection success ");
+            System.out.println(result);
+        } catch (Exception e) {
+            Log.e("Fail 2", e.toString());
+
+        }
+
+        return result;
+    }
+
+    class retrieveMyProfile extends AsyncTask<String, String, String> {
+        protected String doInBackground(String... params) {
+            String hasil = retrieve();
+            return hasil ;
+        }
+
+
+
+        protected void onPostExecute(String result) {
+            JSONObject c = null;
+            try {
+                JSONObject json = new JSONObject(result);
+                jsonArray = json.getJSONArray("data");
+                c = jsonArray.getJSONObject(0);
+
+                nama.setText(c.getString("nama_lengkap"));
+                String roles = c.getString("role");
+                if(roles.equals("0")){
+                    role.setText("Koordinator");
+                }
+                else if(roles.equals("1")){
+                    role.setText("Kakak Asuh");
+                }
+                else{
+                    role.setText("Adik Asuh");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
