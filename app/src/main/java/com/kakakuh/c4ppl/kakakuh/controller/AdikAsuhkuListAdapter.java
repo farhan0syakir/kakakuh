@@ -38,7 +38,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
         image.setImageBitmap(listItems.get(position).getPhoto());
-        txtName.setText(listItems.get(position).getNama());
+        txtName.setText(listItems.get(position).getUsername());
 
         if(listItems.get(position).isTugasNull()) {
             convertView.findViewById(R.id.belum_ada_tugas).setVisibility(View.VISIBLE);
