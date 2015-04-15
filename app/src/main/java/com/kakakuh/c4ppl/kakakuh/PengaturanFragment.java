@@ -40,12 +40,12 @@ public class PengaturanFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_pengaturan_koordinator, container, false);
+        View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         //baca preferensi
         roleSekarang = MainActivity.getRoleSekarang();
 
-        listPengaturan = (ListView) rootView.findViewById(R.id.list_pengaturan);
+        listPengaturan = (ListView) rootView.findViewById(R.id.list_generic);
         listTitles = getResources().getStringArray(R.array.pengaturan_titles);
         listEmeraldIcons = getResources().obtainTypedArray(R.array.pengaturan_emerald_icons);
 

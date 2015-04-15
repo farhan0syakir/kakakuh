@@ -9,12 +9,14 @@ import java.sql.Date;
  */
 public class Tugas {
     private String id;
+    private String kategori;
     private String deskripsiTugas;
     private Date deadline;
     private boolean sudahDikerjakan;
 
-    public Tugas(String id, String deskripsiTugas, Date deadline, boolean sudahDikerjakan) {
+    public Tugas(String id, String kategori, String deskripsiTugas, Date deadline, boolean sudahDikerjakan) {
         this.id = id;
+        this.id = kategori;
         this.deskripsiTugas = deskripsiTugas;
         this.deadline = deadline;
         this.sudahDikerjakan = sudahDikerjakan;
@@ -26,6 +28,14 @@ public class Tugas {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 
     public String getDeskripsiTugas() {

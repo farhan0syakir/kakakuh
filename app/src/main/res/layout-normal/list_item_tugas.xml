@@ -12,7 +12,9 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:enabled="false"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/btn_kerjakan"

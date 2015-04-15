@@ -39,7 +39,7 @@ public class AdikAsuhkuFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_adik_asuhku, container, false);
+        View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
 
@@ -50,7 +50,6 @@ public class AdikAsuhkuFragment extends Fragment{
 
         sharedPreferences = getActivity().getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
         user = sharedPreferences.getString("nameKey","wrong");
-
 
         //akunListItems.add(new AkunListItem("la2","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
         //akunListItems.remove(0);
@@ -77,10 +76,9 @@ public class AdikAsuhkuFragment extends Fragment{
                                 long id) {
             AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
 
-            //TODO go to profil page dengan informasi akun
+            //TODO go to DetailTugasActivity
             //TEST
             System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
-            akun.getPhoto(); //photo
         }
     }
 
@@ -117,6 +115,7 @@ public class AdikAsuhkuFragment extends Fragment{
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
                     akunListItems.add(new AkunListItem(username,nama_lengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter

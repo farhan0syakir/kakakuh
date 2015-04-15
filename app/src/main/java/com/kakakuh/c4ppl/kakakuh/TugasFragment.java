@@ -38,10 +38,10 @@ public class TugasFragment extends Fragment{
         String[] kategori = {"PPL","DDP"}; //misal kategorinya dari username A ada PPL dan DDP;
         for(int i = 0; i < kategori.length ; i++) {
             listTugas = new ArrayList<>();
-            listTugas.add(new Tugas("1","belum dikerjakan",new Date(new Long("1438224300000")),false)); //Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
-            listTugas.add(new Tugas("2","sudah dikerjakan",new Date(new Long("1438224300000")),true)); ////Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
-            listTugas.add(new Tugas("3","belum dikerjakan",new Date(new Long("1438224300000")),false)); //Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
-            listTugas.add(new Tugas("4","sudah lewat deadline",new Date(new Long("1428345600000")),false)); //Pokoknya tanggal lewat
+            listTugas.add(new Tugas("1",kategori[i],"belum dikerjakan",new Date(new Long("1438224300000")),false)); //Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
+            listTugas.add(new Tugas("2",kategori[i],"sudah dikerjakan",new Date(new Long("1438224300000")),true)); ////Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
+            listTugas.add(new Tugas("3",kategori[i],"belum dikerjakan",new Date(new Long("1438224300000")),false)); //Thu Jul 30 2015 09:45:00 GMT+0700 (SE Asia Standard Time)
+            listTugas.add(new Tugas("4",kategori[i],"sudah lewat deadline",new Date(new Long("1428345600000")),false)); //Pokoknya tanggal lewat
 
             //mau tau convert milis to Date? cek http://www.ruddwire.com/handy-code/date-to-millisecond-calculators/
 

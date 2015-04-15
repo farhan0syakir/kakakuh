@@ -39,8 +39,6 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
 
         Tugas entrySekarang = listItems.get(position);
 
-        deskripsiTugas.setEnabled(false);
-
         //set deskripsi
         deskripsiTugas.setText(entrySekarang.getDeskripsiTugas());
 
