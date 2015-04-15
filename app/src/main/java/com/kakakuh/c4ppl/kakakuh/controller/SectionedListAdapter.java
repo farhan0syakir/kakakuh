@@ -1,5 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import android.content.Context;
@@ -14,33 +15,35 @@ import com.kakakuh.c4ppl.kakakuh.R;
 /**
  * Created by Anas on 4/14/2015.
  */
-public class SectionedListAdapter<E extends KakakuhBaseAdapter> extends BaseAdapter {
+public class SectionedListAdapter<H extends KakakuhBaseHeaderAdapter,E extends KakakuhBaseAdapter> extends BaseAdapter {
 
-    public final Map<String, E> sections = new LinkedHashMap<String, E>();
-    public final ArrayAdapter<String> headers;
+    public final ArrayList<E> sectionAdapters = new ArrayList<>();
+    public final H headerAdapter;
     public final static int TYPE_SECTION_HEADER = 0;
+    protected Context context;
 
-    public SectionedListAdapter(Context context, int layoutHeader)
+    public SectionedListAdapter(Context context, H adapter)
     {
-        headers = new ArrayAdapter<String>(context, layoutHeader);
+        this.context = context;
+        this.headerAdapter = adapter;
     }
 
     public void addSection(String section, E adapter)
     {
-        this.headers.add(section);
-        this.sections.put(section, adapter);
+        headerAdapter.add(section);
+        this.sectionAdapters.add(adapter);
     }
 
     @Override
     public Object getItem(int position)
     {
-        for (Object section : this.sections.keySet())
+        for (int i = 0; i < headerAdapter.getCount() ; i++)
         {
-            E adapter = sections.get(section);
+            E adapter = sectionAdapters.get(i);
             int size = adapter.getCount() + 1;
 
             // check if position inside this section
-            if (position == 0) return section;
+            if (position == 0) return headerAdapter.getItem(i);
             if (position < size) return adapter.getItem(position - 1);
 
             // otherwise jump into next section
@@ -54,7 +57,7 @@ public class SectionedListAdapter<E extends KakakuhBaseAdapter> extends BaseAdap
     {
         // total together all sections, plus one for each section header
         int total = 0;
-        for (E adapter : this.sections.values())
+        for (E adapter : sectionAdapters)
             total += adapter.getCount() + 1;
         return total;
     }
@@ -64,7 +67,7 @@ public class SectionedListAdapter<E extends KakakuhBaseAdapter> extends BaseAdap
     {
         // assume that headers count as one, then total all sections
         int total = 1;
-        for (E adapter : this.sections.values())
+        for (E adapter : sectionAdapters)
             total += adapter.getViewTypeCount();
         return total;
     }
@@ -73,9 +76,9 @@ public class SectionedListAdapter<E extends KakakuhBaseAdapter> extends BaseAdap
     public int getItemViewType(int position)
     {
         int type = 1;
-        for (Object section : this.sections.keySet())
+        for (int i = 0; i < headerAdapter.getCount() ; i++)
         {
-            E adapter = sections.get(section);
+            E adapter = sectionAdapters.get(i);
             int size = adapter.getCount() + 1;
 
             // check if position inside this section
@@ -103,19 +106,17 @@ public class SectionedListAdapter<E extends KakakuhBaseAdapter> extends BaseAdap
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        int sectionnum = 0;
-        for (Object section : this.sections.keySet())
+        for (int i = 0; i < headerAdapter.getCount() ; i++)
         {
-            E adapter = sections.get(section);
+            E adapter = sectionAdapters.get(i);
             int size = adapter.getCount() + 1;
 
             // check if position inside this section
-            if (position == 0) return headers.getView(sectionnum, convertView, parent);
+            if (position == 0) return headerAdapter.getView(i, convertView, parent);
             if (position < size) return adapter.getView(position - 1, convertView, parent);
 
             // otherwise jump into next section
             position -= size;
-            sectionnum++;
         }
         return null;
     }

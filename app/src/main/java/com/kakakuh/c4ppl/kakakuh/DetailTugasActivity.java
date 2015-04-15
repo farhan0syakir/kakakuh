@@ -1,40 +1,33 @@
 package com.kakakuh.c4ppl.kakakuh;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.kakakuh.c4ppl.kakakuh.controller.HeaderListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.HeaderTugasListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.TugasListAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
- * Created by Anas on 4/2/2015.
+ * Created by Anas on 4/16/2015.
  */
-public class TugasFragment extends Fragment{
+public class DetailTugasActivity extends BaseActivity {
     private ArrayList<Tugas> listTugas;
     private ArrayList<TugasListAdapter> adapter;
-    private SectionedListAdapter<HeaderListAdapter,TugasListAdapter> sectionAdapter;
+    private SectionedListAdapter<HeaderTugasListAdapter,TugasListAdapter> sectionAdapter;
 
     private ListView mList;
 
-    public TugasFragment(){}
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.list_generic, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_generic);
 
         adapter = new ArrayList<>();
-        sectionAdapter = new SectionedListAdapter<>(getActivity().getApplicationContext(), new HeaderListAdapter(getActivity().getApplicationContext()));
+        sectionAdapter = new SectionedListAdapter<>(getApplicationContext(), new HeaderTugasListAdapter(getApplicationContext()));
         //ini Hardcoded. harusnya dari resultSet yg didapat from query kita bisa dapat ini
         String[] kategori = {"PPL","DDP"}; //misal kategorinya dari username A ada PPL dan DDP;
         for(int i = 0; i < kategori.length ; i++) {
@@ -46,14 +39,11 @@ public class TugasFragment extends Fragment{
 
             //mau tau convert milis to Date? cek http://www.ruddwire.com/handy-code/date-to-millisecond-calculators/
 
-            adapter.add(new TugasListAdapter(this.getActivity(),listTugas));
+            adapter.add(new TugasListAdapter(this,listTugas));
 
             sectionAdapter.addSection(kategori[i],adapter.get(i));
         }
-
-        mList = (ListView) rootView.findViewById(R.id.list_generic);
+        mList = (ListView) findViewById(R.id.list_generic);
         mList.setAdapter(sectionAdapter);
-
-        return rootView;
     }
 }

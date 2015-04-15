@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@drawable/list_selector">
+    android:layout_height="50dp">
 
     <CheckBox
         android:layout_width="210dp"
@@ -26,8 +25,9 @@
         android:textColor="@color/white"
         android:background="@drawable/btn_normal"
         android:contentDescription="@string/button"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
