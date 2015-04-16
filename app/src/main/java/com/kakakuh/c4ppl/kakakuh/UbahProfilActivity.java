@@ -87,6 +87,8 @@ public class UbahProfilActivity extends BaseActivity {
             public void onClick(View v) {
                 // SELESAI ngapain
                 new updateMyProfile().execute();
+                finish();
+                startActivity(getIntent());
                 System.out.println("SELESAI"); //TEST
             }
         });
