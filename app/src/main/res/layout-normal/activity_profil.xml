@@ -40,14 +40,14 @@
                 android:id="@+id/nama"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Yoyo Siyoyo"
+                android:text="Nama Pengguna"
                 android:textSize="@dimen/heading_text" />
 
             <TextView
                 android:id="@+id/role"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Adik Asuh"
+                android:text="Role"
                 android:textSize="@dimen/normal_text"/>
 
         </LinearLayout>
