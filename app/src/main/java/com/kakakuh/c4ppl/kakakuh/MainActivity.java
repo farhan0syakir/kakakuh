@@ -277,8 +277,8 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_profil;
-                getActionBar().setIcon(mTitleIcon);
+                //mTitleIcon = R.drawable.ic_white_profil;
+                //getActionBar().setIcon(mTitleIcon);
                 startActivity(new Intent(this, ProfilActivity.class));
                 sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
                 String user = sharedpreferences.getString("nameKey", "wrong");
@@ -349,8 +349,8 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_profil;
-                getActionBar().setIcon(R.drawable.ic_white_profil);
+                //mTitleIcon = R.drawable.ic_white_profil;
+                //getActionBar().setIcon(R.drawable.ic_white_profil);
                 startActivity(new Intent(this, ProfilActivity.class));
                 sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
                 String user = sharedpreferences.getString("nameKey", "wrong");
@@ -411,8 +411,8 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_profil;
-                getActionBar().setIcon(R.drawable.ic_white_profil);
+                // mTitleIcon = R.drawable.ic_white_profil;
+                // getActionBar().setIcon(R.drawable.ic_white_profil);
                 startActivity(new Intent(this, ProfilActivity.class));
                 sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
                 String user = sharedpreferences.getString("nameKey", "wrong");
