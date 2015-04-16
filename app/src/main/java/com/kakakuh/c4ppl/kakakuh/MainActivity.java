@@ -519,8 +519,8 @@ public class MainActivity extends Activity {
 
     public static String getUsernameSekarang() { return usernameSekarang; }
 
-    public void setUsernameSekarang(String usernameSekarang){
-        this.usernameSekarang = usernameSekarang;
+    public static void setUsernameSekarang(String usernames){
+        usernameSekarang = usernames;
     }
 
     /* hide keyboard*/

@@ -43,7 +43,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
-        AkunListItem akunItem = listItems.get(position).getAkun();
+        final AkunListItem akunItem = listItems.get(position).getAkun();
         image.setImageBitmap(akunItem.getPhoto());
         txtName.setText(akunItem.getName());
 
@@ -52,6 +52,9 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
             @Override
             public void onClick(View v) {
                 //TODO kasih message intent disini
+
+                MainActivity.setUsernameSekarang(akunItem.getUsername());
+
                 Intent i = new Intent(context, ProfilActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);

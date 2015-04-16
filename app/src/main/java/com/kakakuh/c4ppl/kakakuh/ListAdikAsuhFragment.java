@@ -2,6 +2,7 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class ListAdikAsuhFragment extends Fragment{
     AkunListKoordinatorAdapter adapter;
     JSONArray android = null;
 
+    String user;
+
     public ListAdikAsuhFragment(){}
 
     @Override
@@ -52,9 +55,13 @@ public class ListAdikAsuhFragment extends Fragment{
                                 long id) {
             AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
 
+        MainActivity.setUsernameSekarang(akun.getUsername());
+        Intent i = new Intent(getActivity(), ProfilActivity.class);
+        startActivity(i);
+
             //TODO go to profil page dengan informasi akun
             //TEST
-            System.out.println(akun.getName()+" "+akun.getRole()); //nama dan role
+            System.out.println(akun.getName() + " " + akun.getRole()); //nama dan role
             akun.getPhoto(); //photo
         }
     }
