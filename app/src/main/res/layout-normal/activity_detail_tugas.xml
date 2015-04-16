@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/line_adik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="12dp"
+            android:contentDescription="@string/desc_list_item_icon"
+            android:src="@drawable/ic_white_home"
+            android:background="@color/grey"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/nama_akun"
+            android:text="Nama Saya"
+            android:textSize="@dimen/nama_akun_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/container_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line_adik">
+        <Button
+            android:id="@+id/btn_tambah_tugas"
+            android:text="TAMBAH TUGAS"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_normal"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/button"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="singleChoice"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"
+        android:layout_gravity="start"
+        android:background="@color/list_background"
+        android:headerDividersEnabled="false"
+        android:layout_below="@id/container_button"/>
+
+</RelativeLayout>

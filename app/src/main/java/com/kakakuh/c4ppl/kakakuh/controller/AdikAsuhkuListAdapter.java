@@ -2,6 +2,7 @@ package com.kakakuh.c4ppl.kakakuh.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.kakakuh.c4ppl.kakakuh.DetailTugasActivity;
+import com.kakakuh.c4ppl.kakakuh.MainActivity;
+import com.kakakuh.c4ppl.kakakuh.ProfilActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.AdikAsuhkuListItem;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
@@ -47,7 +51,10 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         txtName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO kasih message intent disini
+                Intent i = new Intent(context, ProfilActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
             }
         });
 
@@ -69,7 +76,9 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
             lineTugas.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Go to Detail Tugas
+                    Intent i = new Intent(context, DetailTugasActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
                 }
             });
         } else {

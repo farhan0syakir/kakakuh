@@ -24,7 +24,10 @@ public class DetailTugasActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_generic);
+        setContentView(R.layout.activity_detail_tugas);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_tugas);
 
         adapter = new ArrayList<>();
         sectionAdapter = new SectionedListAdapter<>(getApplicationContext(), new HeaderTugasListAdapter(getApplicationContext()));
@@ -43,7 +46,8 @@ public class DetailTugasActivity extends BaseActivity {
 
             sectionAdapter.addSection(kategori[i],adapter.get(i));
         }
-        mList = (ListView) findViewById(R.id.list_generic);
+
+        mList = (ListView) findViewById(R.id.list);
         mList.setAdapter(sectionAdapter);
     }
 }
