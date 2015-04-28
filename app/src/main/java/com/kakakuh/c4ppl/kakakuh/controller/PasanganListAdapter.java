@@ -26,14 +26,14 @@ public class PasanganListAdapter extends KakakuhBaseAdapter<PasanganListItem> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_item_akun, null);
+            convertView = mInflater.inflate(R.layout.list_item_pasangan, null);
         }
 
-        ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
+        TextView txtUsername = (TextView) convertView.findViewById(R.id.username);
+        TextView txtName = (TextView) convertView.findViewById(R.id.nama);
 
-        image.setImageBitmap(listItems.get(position).getPhoto());
-        txtName.setText(listItems.get(position).getUsername());
+        txtUsername.setText(listItems.get(position).getUsername());
+        txtName.setText(listItems.get(position).getNama());
 
         return convertView;
     }

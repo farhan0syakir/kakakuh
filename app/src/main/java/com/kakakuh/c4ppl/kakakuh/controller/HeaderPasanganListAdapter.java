@@ -27,14 +27,16 @@ public class HeaderPasanganListAdapter extends KakakuhBaseAdapter<PasanganListIt
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_item_header_akun, null);
+            convertView = mInflater.inflate(R.layout.list_item_header_pasangan, null);
         }
 
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
-        TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
+        TextView txtName = (TextView) convertView.findViewById(R.id.nama);
+        TextView txtUsername = (TextView) convertView.findViewById(R.id.username);
 
         image.setImageBitmap(listItems.get(position).getPhoto());
-        txtName.setText(listItems.get(position).getUsername());
+        txtName.setText(listItems.get(position).getNama());
+        txtUsername.setText(listItems.get(position).getUsername());
 
         return convertView;
     }

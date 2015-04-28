@@ -7,11 +7,27 @@ import android.graphics.Bitmap;
  */
 public class PasanganListItem {
     private String username;
+    private String nama;
     private Bitmap photo;
 
-    public PasanganListItem(String username, Bitmap photo) {
+    public PasanganListItem(String username, String nama, Bitmap photo) {
         this.username = username;
+        this.nama = nama;
         this.photo = photo;
+    }
+
+    public PasanganListItem(String username, String nama) {
+        this.username = username;
+        this.nama = nama;
+        this.photo = null;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getUsername() {
