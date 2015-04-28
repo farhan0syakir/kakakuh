@@ -43,8 +43,8 @@ public class DaftarPasanganFragment extends Fragment{
         ArrayList<TempClass> temps = new ArrayList<>();
 
         Bitmap tempGambar = BitmapFactory.decodeResource(getResources(), R.drawable.ic_white_profil);
-        if(preferensi.isTampilanByKakak()) {
-            //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | imageKakak | usernameAdik | imageAdik | sorted by kakak
+        if(preferensi.getPengaturanPasangan().equals("Kakak Asuh")) {
+            //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | namaKakak | imageKakak | usernameAdik | namaAdik | sorted by kakak
             //ini HARDCODED
             temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik1", "Keke Louis"));
             temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik2", "Loue Koka"));
@@ -54,7 +54,6 @@ public class DaftarPasanganFragment extends Fragment{
             TempClass currentKategori = temps.get(0);
             ArrayList<PasanganListItem> akuns = new ArrayList<>();
             for(int i = 0; i < temps.size() ; i++) {
-                System.out.println(i + " " + currentKategori.getUsernameKakak());
                 TempClass current = temps.get(i);
                 if(!currentKategori.getUsernameKakak().equals(current.getUsernameKakak())) {
                     sectionAdapter.addSection(new PasanganListItem(
@@ -76,7 +75,7 @@ public class DaftarPasanganFragment extends Fragment{
                             temps.get(temps.size()-1).getImageKakak()),
                     new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
         } else {
-            //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | namaKakak | imageKakak | usernameAdik | namaAdik | sorted by adik
+            //TODO eksekusi query. ambil array dari json yg isinya | usernameKakak | namaKakak | usernameAdik | namaAdik | imageAdik | sorted by adik
             //ini HARDCODED
             temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik1", "Didik Lolo", tempGambar));
             temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik1", "Didik Lolo", tempGambar));

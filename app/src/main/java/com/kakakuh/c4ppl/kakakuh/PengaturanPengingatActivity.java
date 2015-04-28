@@ -9,46 +9,54 @@ import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
+import java.util.HashMap;
 
-public class PengaturanDaftarPasanganActivity extends BaseActivity {
+
+public class PengaturanPengingatActivity extends BaseActivity {
 
     private Preferensi preferensi;
     private RadioGroup radioGroup;
     private Button btnSimpan;
     private String selectedOption;
 
-    final private String pilihanDefault = "Kakak Asuh";
-    final private String pilihan2 = "Adik Asuh";
+    final private String[] pilihan = {"15 menit","30 menit","1 jam","2 jam"};
+    private HashMap<String,Integer> mapPilihan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pengaturan_daftar_pasangan);
+        setContentView(R.layout.activity_pengaturan_pengingat);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_white_list);
+        getActionBar().setIcon(R.drawable.ic_white_reminder);
 
         preferensi = new Preferensi(getApplicationContext());
+        mapPilihan = new HashMap<>();
+        mapPilihan.put(pilihan[0],0);
+        mapPilihan.put(pilihan[1],1);
+        mapPilihan.put(pilihan[2],2);
+        mapPilihan.put(pilihan[3],3);
 
         radioGroup = (RadioGroup) findViewById(R.id.radio_group);
-        selectedOption = preferensi.getPengaturanPasangan();
-        if(preferensi.getPengaturanPasangan().equals(pilihanDefault)) {
-            ((RadioButton) radioGroup.getChildAt(0)).setChecked(true);
-        } else {
-            ((RadioButton) radioGroup.getChildAt(1)).setChecked(true);
-        }
+        selectedOption = preferensi.getPengaturanPengingat();
+        System.out.println(selectedOption);
+        ((RadioButton) radioGroup.getChildAt(mapPilihan.get(selectedOption))).setChecked(true);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.radio_kakak:
-                        // 'Kakak Asuh' checked
-                        selectedOption = pilihanDefault;
+                    case R.id.radio_0:
+                        selectedOption = pilihan[0];
                         break;
-                    case R.id.radio_adik:
-                        // 'Adik Asuh' checked
-                        selectedOption = pilihan2;
+                    case R.id.radio_1:
+                        selectedOption = pilihan[1];
+                        break;
+                    case R.id.radio_2:
+                        selectedOption = pilihan[2];
+                        break;
+                    case R.id.radio_3:
+                        selectedOption = pilihan[3];
                         break;
                 }
             }
@@ -58,8 +66,8 @@ public class PengaturanDaftarPasanganActivity extends BaseActivity {
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!selectedOption.equals(preferensi.getPengaturanPasangan())) {
-                    preferensi.setPengaturanPasangan(selectedOption);
+                if(!selectedOption.equals(preferensi.getPengaturanPengingat())) {
+                    preferensi.setPengaturanPengingat(selectedOption);
                     preferensi.commit();
                     Toast.makeText(getApplicationContext(), "Pengaturan tersimpan!",
                             Toast.LENGTH_LONG).show();

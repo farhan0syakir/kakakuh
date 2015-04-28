@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,15 +33,16 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
     private EditText passwordBaruField;
     private EditText passwordKonfirmasiField;
     private Button btnSimpan;
-    String user;
-    String pass;
-    String myPass;
-    String newPass;
+
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/pengaturanController/ubahPass";
-    InputStream is=null;
-    String result=null;
-    String line=null;
-    SharedPreferences sharedpreferences;
+    private String user;
+    private String pass;
+    private String myPass;
+    private String newPass;
+    private InputStream is=null;
+    private String result=null;
+    private String line=null;
+    private Preferensi preferensi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
         getActionBar().setIcon(R.drawable.ic_white_home);
 
         setContentView(R.layout.activity_pengaturan_ubah_password);
-        sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
+        preferensi = new Preferensi(getApplicationContext());
 
         passwordSekarangField = (EditText) findViewById(R.id.password_sekarang);
         passwordBaruField = (EditText) findViewById(R.id.password_baru);
@@ -60,21 +63,19 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // kyknya ini bisa ngerefer ke buat akun.
-                user = sharedpreferences.getString("nameKey","wrong");
-                myPass = sharedpreferences.getString("passwordKey","wrong");
+                user = preferensi.getUsername();
                 pass = passwordSekarangField.getText().toString();
                 newPass = passwordBaruField.getText().toString();
                 String confirm_pass = passwordKonfirmasiField.getText().toString();
-                if(myPass.equals(pass)){
+                if(preferensi.isPassword(pass)){
                     if(confirm_pass.equals("")&&newPass.equals("")) {
                         Toast.makeText(getApplicationContext(), "Password tidak boleh kosong",
                                 Toast.LENGTH_LONG).show();
                     }
                     else if(newPass.equals(confirm_pass)){
                         new UpdatePass().execute();
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putString("passwordKey", newPass);
-                        editor.commit();
+                        preferensi.setPassword(newPass);
+                        preferensi.commit();
                         finish();
                         startActivity(getIntent());
                     }else{
@@ -92,7 +93,7 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
 
     public String update() {
 
-        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
 
         nameValuePairs.add(new BasicNameValuePair("username", user));
         nameValuePairs.add(new BasicNameValuePair("password", pass));
@@ -132,9 +133,7 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
             System.out.println(result);
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());
-
         }
-
         return result;
     }
 
@@ -143,8 +142,6 @@ public class PengaturanUbahPasswordActivity extends BaseActivity {
             String hasil = update();
             return hasil ;
         }
-
-
 
         protected void onPostExecute(String result) {
             Toast.makeText(getApplicationContext(), "Berhasil mengganti password",

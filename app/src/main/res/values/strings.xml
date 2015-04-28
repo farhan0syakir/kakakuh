@@ -22,7 +22,7 @@
     <string name="title_activity_pengaturan_otentikasi">Ubah Password</string>
     <string name="title_activity_ubah_profil">Ubah Profil</string>
     <string name="title_activity_pengaturan_pesan">Pesan</string>
-    <string name="title_activity_pengaturan_reminder">Reminder</string>
+    <string name="title_activity_pengaturan_reminder">Pengingat</string>
     <string name="title_activity_pengaturan_list">Tampilan Daftar Pasangan</string>
     <string name="title_activity_pengaturan_review_log">Review Log</string>
     <string name="title_activity_detail_log">Detail Log</string>

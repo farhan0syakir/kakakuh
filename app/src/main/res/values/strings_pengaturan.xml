@@ -34,4 +34,26 @@
         <item>@drawable/ic_white_log_out</item>
     </array>
 
+    <string name="pengaturan_pesan_label">Download Pesan Baru Per</string>
+    <string name="pengaturan_pesan_default">5 menit</string>
+    <string name="pengaturan_pesan_2">15 menit</string>
+    <string name="pengaturan_pesan_3">30 menit</string>
+    <string name="pengaturan_pesan_4">1 jam</string>
+
+    <string name="pengaturan_pengingat_label">Ingatkan Sebelum</string>
+    <string name="pengaturan_pengingat_default">15 menit</string>
+    <string name="pengaturan_pengingat_2">30 menit</string>
+    <string name="pengaturan_pengingat_3">1 jam</string>
+    <string name="pengaturan_pengingat_4">2 jam</string>
+
+    <string name="pengaturan_pasangan_label">Tampilkan Berdasarkan</string>
+    <string name="pengaturan_pasangan_default">Kakak Asuh</string>
+    <string name="pengaturan_pasangan_2">Adik Asuh</string>
+
+    <string name="pengaturan_review_log_label">Ambil Log Per</string>
+    <string name="pengaturan_review_log_1">1 hari</string>
+    <string name="pengaturan_review_log_default">3 hari</string>
+    <string name="pengaturan_review_log_3">7 hari</string>
+    <string name="pengaturan_review_log_4">14 hari</string>
+
 </resources>

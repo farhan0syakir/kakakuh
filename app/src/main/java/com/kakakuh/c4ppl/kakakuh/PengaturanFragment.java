@@ -103,7 +103,7 @@ public class PengaturanFragment extends Fragment{
                 //TODO start activity pengaturan Reminder
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 //untuk reminder ini spertinya controller dia dijalankan background ketika apps awal jalan
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanReminderActivity.class);
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanPengingatActivity.class);
                 startActivity(nextScreen);
                 break;
             case 4:
@@ -157,7 +157,7 @@ public class PengaturanFragment extends Fragment{
                 //TODO start activity pengaturan Reminder
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 //untuk reminder ini spertinya controller dia dijalankan background ketika apps awal jalan
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanReminderActivity.class);
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanPengingatActivity.class);
                 startActivity(nextScreen);
                 break;
             case 4:

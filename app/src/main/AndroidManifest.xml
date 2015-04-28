@@ -97,7 +97,7 @@
             android:label="@string/title_activity_pengaturan_pesan">
         </activity>
         <activity
-            android:name=".PengaturanReminderActivity"
+            android:name=".PengaturanPengingatActivity"
             android:label="@string/title_activity_pengaturan_reminder">
         </activity>
         <activity
