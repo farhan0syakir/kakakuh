@@ -15,14 +15,10 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/16/2015.
  */
-public class HeaderTugasListAdapter extends KakakuhBaseHeaderAdapter<String> {
+public class HeaderTugasListAdapter extends KakakuhBaseAdapter<String> {
     public HeaderTugasListAdapter(Context context) {
         this.context = context;
         listItems = new ArrayList<>();
-    }
-
-    public void add(String entry) {
-        listItems.add(entry);
     }
 
     @Override

@@ -101,7 +101,7 @@
             android:label="@string/title_activity_pengaturan_reminder">
         </activity>
         <activity
-            android:name=".PengaturanListActivity"
+            android:name=".PengaturanDaftarPasanganActivity"
             android:label="@string/title_activity_pengaturan_list">
         </activity>
         <activity

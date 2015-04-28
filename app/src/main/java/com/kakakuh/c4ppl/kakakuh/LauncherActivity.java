@@ -6,23 +6,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
+
 /**
  * Created by Anas on 4/15/2015.
  */
 public class LauncherActivity extends Activity {
-    static private SharedPreferences preferensiKakakuh;
-    static boolean isLogged;
-    public static final String ROLEKEY = "roleKey";
+    static private Preferensi preferensi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        preferensiKakakuh = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-        isLogged = preferensiKakakuh.getBoolean("isLogged", false);
+        preferensi = new Preferensi(getApplicationContext());
 
-        if(!isLogged) {
+        if(!preferensi.isLogged()) {
             Intent i = new Intent(getApplicationContext(), LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -32,13 +31,6 @@ public class LauncherActivity extends Activity {
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
-            if(preferensiKakakuh.getString(ROLEKEY,"wrong").equals("0")){
-                MainActivity.setRoleSekarang("0");
-            }else if (preferensiKakakuh.getString(ROLEKEY,"wrong").equals("1")){
-                MainActivity.setRoleSekarang("1");
-            }else{
-                MainActivity.setRoleSekarang("2");
-            }
         }
         finish();
     }

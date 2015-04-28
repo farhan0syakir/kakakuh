@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:background="@color/emerald_light">
+    android:background="@color/emerald_light"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
 
     <ImageView
         android:id="@+id/image"
@@ -24,21 +26,22 @@
         android:layout_centerVertical="true">
 
         <TextView
-            android:id="@+id/drawer_username"
-            android:text="username"
-            android:textSize="18sp"
+            android:id="@+id/nama_akun"
+            android:text="Nama Saya"
+            android:textSize="@dimen/nama_akun_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/white"
+            android:textColor="@color/list_item_title"
             android:layout_marginBottom="5dp"/>
 
-        <TextView
-            android:id="@+id/drawer_role"
-            android:text="role"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/white"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/role_akun"-->
+            <!--android:text="Role Saya"-->
+            <!--android:textSize="@dimen/role_akun_text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:textColor="@color/list_item_title"/>-->
+
+        </LinearLayout>
 
 </RelativeLayout>

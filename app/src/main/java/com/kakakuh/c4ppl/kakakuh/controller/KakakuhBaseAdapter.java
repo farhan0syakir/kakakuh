@@ -15,6 +15,10 @@ public abstract class KakakuhBaseAdapter<E> extends BaseAdapter{
     protected Context context;
     protected ArrayList<E> listItems;
 
+    public void add(Object item) {
+        listItems.add((E) item);
+    }
+
     @Override
     public int getCount() { return listItems.size(); }
 

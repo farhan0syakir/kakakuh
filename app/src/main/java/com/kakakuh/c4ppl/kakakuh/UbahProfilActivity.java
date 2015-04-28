@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
@@ -48,10 +49,13 @@ public class UbahProfilActivity extends BaseActivity {
     String result=null;
     String line=null;
     SharedPreferences sharedpreferences;
+    static Preferensi preferensi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        preferensi = new Preferensi(getApplicationContext());
 
         getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
         getActionBar().setIcon(R.drawable.ic_white_profil);
@@ -70,8 +74,7 @@ public class UbahProfilActivity extends BaseActivity {
         Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
 
         //url = url+"?username=adik";
-        sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-        username = sharedpreferences.getString("nameKey",null);
+        username = preferensi.getUsername();
         new retrieveMyProfile().execute();
 
         //Add listener

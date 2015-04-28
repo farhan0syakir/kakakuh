@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 
 import java.util.ArrayList;
@@ -34,10 +35,16 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+
     private TextView mDrawerRole;
+    private TextView mDrawerUsername;
+
+    static private Preferensi preferensi;
+    static private String usernameSekarang;
+    static private String roleSekarang;
 
     // shared preferences
-    SharedPreferences sharedpreferences;
+    SharedPreferences preferensiKakakuh;
 
     // nav drawer title
     private CharSequence mDrawerTitle;
@@ -53,10 +60,6 @@ public class MainActivity extends Activity {
     private ArrayList<IconTextListItem> navDrawerItems;
     private IconTextListAdapter adapter;
 
-    static private String usernameSekarang;
-
-    static private String roleSekarang;
-
     static private int positionFragment;
 
     static final String ROLEKEY = "roleKey";
@@ -65,6 +68,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set usernameSekarang dan roleSekarang
+        ambilPreferensi();
 
         mTitle = mDrawerTitle = getResources().getString(R.string.app_name);
 
@@ -75,8 +81,11 @@ public class MainActivity extends Activity {
         //Add header
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup header_role = (ViewGroup)inflater.inflate(R.layout.header_drawer, mDrawerList, false);
+        header_role.setOnClickListener(new HeaderMenuClickListener());
         mDrawerList.addHeaderView(header_role, null, false);
-        mDrawerRole = (TextView) findViewById(R.id.role);
+        mDrawerUsername = (TextView) findViewById(R.id.drawer_username);
+        mDrawerRole = (TextView) findViewById(R.id.drawer_role);
+        mDrawerUsername.setText(usernameSekarang);
         mDrawerRole.setText(roleSekarang);
 
         //sesuaikan drawer dengan role
@@ -89,22 +98,15 @@ public class MainActivity extends Activity {
 
             navDrawerItems = new ArrayList<>();
 
-            //Profil
             navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-            //Review Log
             navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-            //Buat Akun
             navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-            //Hapus Akun
             navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-            //Pasangkan akun
             navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-            //List kakak asuh
             navDrawerItems.add(new IconTextListItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-            //List adik asuh
             navDrawerItems.add(new IconTextListItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
-            //Pengaturan
             navDrawerItems.add(new IconTextListItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+            navDrawerItems.add(new IconTextListItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -118,18 +120,11 @@ public class MainActivity extends Activity {
 
             navDrawerItems = new ArrayList<>();
 
-            //Profil
             navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-            //Adik Asuhku
             navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-            //Jadwal
             navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-            //Konfirmasi Booking
             navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-            //List Kakak Asuh
             navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-            //Pengaturan
-            navDrawerItems.add(new IconTextListItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -142,16 +137,10 @@ public class MainActivity extends Activity {
 
             navDrawerItems = new ArrayList<>();
 
-            //Profil
             navDrawerItems.add(new IconTextListItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-            //Tugas
             navDrawerItems.add(new IconTextListItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-            //Jadwal Kakak
             navDrawerItems.add(new IconTextListItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-            //List Kakak Asuh
             navDrawerItems.add(new IconTextListItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-            //Pengaturan
-            navDrawerItems.add(new IconTextListItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
             // Recycle the typed array
             navMenuIcons.recycle();
@@ -195,15 +184,23 @@ public class MainActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            positionFragment = 1;
+            positionFragment = 0;
             // sesuaikan dengan role
             if(roleSekarang.equals("Koordinator")) {
-                displayViewKoordinator(1);
+                displayViewKoordinator(0);
             } else if (roleSekarang.equals("Kakak Asuh")) {
-                displayViewKakak(1);
+                displayViewKakak(0);
             } else /*adik*/ {
-                displayViewAdik(1);
+                displayViewAdik(0);
             }
+        }
+    }
+
+    private class HeaderMenuClickListener implements
+            ListView.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            displayProfil();
         }
     }
 
@@ -217,10 +214,194 @@ public class MainActivity extends Activity {
                                 long id) {
             // display view for selected nav drawer item
             position -= mDrawerList.getHeaderViewsCount();
-            if(roleSekarang.equals("Koordinator")) displayViewKoordinator(position);
+            if (roleSekarang.equals("Koordinator")) displayViewKoordinator(position);
             else if (roleSekarang.equals("Kakak Asuh")) displayViewKakak(position);
             else /*adik*/ displayViewAdik(position);
             positionFragment = position;
+        }
+    }
+
+    private void displayProfil() {
+        Intent i = new Intent(this, ProfilActivity.class);
+        i.putExtra("username",usernameSekarang);
+        startActivity(i);
+        Log.i("klik header","berhasil klik header");
+    }
+
+    /**
+     * Diplaying fragment view for selected nav drawer list item
+     * Untuk KOORDINATOR
+     * */
+    private void displayViewKoordinator(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new ReviewLogFragment();
+                break;
+            case 1:
+                mTitleIcon = R.drawable.ic_emerald_jadwal;
+                getActionBar().setIcon(mTitleIcon);
+                //fragment = new BuatEventFragment();
+                break;
+            case 2:
+                mTitleIcon = R.drawable.ic_white_buat_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new BuatAkunFragment();
+                break;
+            case 3:
+                mTitleIcon = R.drawable.ic_white_hapus_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new HapusAkunFragment();
+                break;
+            case 4:
+                mTitleIcon = R.drawable.ic_white_pasangkan_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new PasangkanAkunFragment();
+                break;
+            case 5:
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new DaftarKakakAsuhKoordinatorFragment();
+                break;
+            case 6:
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new DaftarAdikAsuhFragment();
+                break;
+            case 7:
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new DaftarPasanganFragment();
+                break;
+            case 8:
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new PengaturanFragment();
+                break;
+
+            default:
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_container, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position+1, true);
+            mDrawerList.setSelection(position+1);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("KoordinatorView", "Error in creating fragment");
+        }
+    }
+
+    /**
+     * Diplaying fragment view for selected nav drawer list item
+     * untuk KAKAK ASUH
+     * */
+    private void displayViewKakak(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new AdikAsuhkuFragment();
+                break;
+            case 1:
+                mTitleIcon = R.drawable.ic_white_jadwal;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new JadwalFragment();
+                break;
+            case 2:
+                mTitleIcon = R.drawable.ic_white_konfirmasi_booking;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new KonfirmasiBookingFragment();
+                break;
+            case 3:
+                mTitleIcon = R.drawable.ic_white_profil;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new DaftarKakakAsuhFragment();
+                break;
+            case 4:
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new PengaturanFragment();
+                break;
+
+            default:
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_container, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position+1, true);
+            mDrawerList.setSelection(position+1);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("KakakView", "Error in creating fragment");
+        }
+    }
+
+    /**
+     * Diplaying fragment view for selected nav drawer list item
+     * Untuk ADIK ASUH
+     * */
+    private void displayViewAdik(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            case 0:
+                mTitleIcon = R.drawable.ic_white_home;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new TugasFragment();
+                break;
+            case 1:
+                mTitleIcon = R.drawable.ic_white_jadwal;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new JadwalKakakFragment();
+                break;
+            case 2:
+                mTitleIcon = R.drawable.ic_white_list_akun;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new DaftarKakakAsuhFragment();
+                break;
+            case 3:
+                mTitleIcon = R.drawable.ic_white_pengaturan;
+                getActionBar().setIcon(mTitleIcon);
+                fragment = new PengaturanFragment();
+                break;
+
+            default:
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_container, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position+1, true);
+            mDrawerList.setSelection(position+1);
+            setTitle(navMenuTitles[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            // error in creating fragment
+            Log.e("AdikView", "Error in creating fragment");
         }
     }
 
@@ -268,197 +449,6 @@ public class MainActivity extends Activity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    /**
-     * Diplaying fragment view for selected nav drawer list item
-     * Untuk KOORDINATOR
-     * */
-    private void displayViewKoordinator(int position) {
-        // update the main content by replacing fragments
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                //mTitleIcon = R.drawable.ic_white_profil;
-                //getActionBar().setIcon(mTitleIcon);
-                startActivity(new Intent(this, ProfilActivity.class));
-                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-                String user = sharedpreferences.getString("nameKey", "wrong");
-                setUsernameSekarang(user);
-                break;
-            case 1:
-                mTitleIcon = R.drawable.ic_white_home;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new ReviewLogFragment();
-                break;
-            case 2:
-                mTitleIcon = R.drawable.ic_white_buat_akun;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new BuatAkunFragment();
-                break;
-            case 3:
-                mTitleIcon = R.drawable.ic_white_hapus_akun;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new HapusAkunFragment();
-                break;
-            case 4:
-                mTitleIcon = R.drawable.ic_white_pasangkan_akun;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new PasangkanAkunFragment();
-                break;
-            case 5:
-                mTitleIcon = R.drawable.ic_white_list_akun;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new ListKakakAsuhKoordinatorFragment();
-                break;
-            case 6:
-                mTitleIcon = R.drawable.ic_white_list_akun_adik;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new ListAdikAsuhFragment();
-                break;
-            case 7:
-                mTitleIcon = R.drawable.ic_white_pengaturan;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new PengaturanFragment();
-                break;
-
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
-
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position+1, true);
-            mDrawerList.setSelection(position+1);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            // error in creating fragment
-            Log.e("KoordinatorView", "Error in creating fragment");
-        }
-    }
-
-    /**
-     * Diplaying fragment view for selected nav drawer list item
-     * untuk KAKAK ASUH
-     * */
-    private void displayViewKakak(int position) {
-        // update the main content by replacing fragments
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                //mTitleIcon = R.drawable.ic_white_profil;
-                //getActionBar().setIcon(R.drawable.ic_white_profil);
-                startActivity(new Intent(this, ProfilActivity.class));
-                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-                String user = sharedpreferences.getString("nameKey", "wrong");
-                setUsernameSekarang(user);
-                break;
-            case 1:
-                mTitleIcon = R.drawable.ic_white_home;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new AdikAsuhkuFragment();
-                break;
-            case 2:
-                mTitleIcon = R.drawable.ic_white_jadwal;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new JadwalFragment();
-                break;
-            case 3:
-                mTitleIcon = R.drawable.ic_white_konfirmasi_booking;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new KonfirmasiBookingFragment();
-                break;
-            case 4:
-                mTitleIcon = R.drawable.ic_white_profil;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new ListKakakAsuhFragment();
-                break;
-            case 5:
-                mTitleIcon = R.drawable.ic_white_pengaturan;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new PengaturanFragment();
-                break;
-
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
-
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position+1, true);
-            mDrawerList.setSelection(position+1);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            // error in creating fragment
-            Log.e("KakakView", "Error in creating fragment");
-        }
-    }
-
-    /**
-     * Diplaying fragment view for selected nav drawer list item
-     * Untuk ADIK ASUH
-     * */
-    private void displayViewAdik(int position) {
-        // update the main content by replacing fragments
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                // mTitleIcon = R.drawable.ic_white_profil;
-                // getActionBar().setIcon(R.drawable.ic_white_profil);
-                startActivity(new Intent(this, ProfilActivity.class));
-                sharedpreferences = getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-                String user = sharedpreferences.getString("nameKey", "wrong");
-                setUsernameSekarang(user);
-                break;
-            case 1:
-                mTitleIcon = R.drawable.ic_white_home;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new TugasFragment();
-                break;
-            case 2:
-                mTitleIcon = R.drawable.ic_white_jadwal;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new JadwalKakakFragment();
-                break;
-            case 3:
-                mTitleIcon = R.drawable.ic_white_list_akun;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new ListKakakAsuhFragment();
-                break;
-            case 4:
-                mTitleIcon = R.drawable.ic_white_pengaturan;
-                getActionBar().setIcon(mTitleIcon);
-                fragment = new PengaturanFragment();
-                break;
-
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
-
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position+1, true);
-            mDrawerList.setSelection(position+1);
-            setTitle(navMenuTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            // error in creating fragment
-            Log.e("KakakView", "Error in creating fragment");
-        }
-    }
-
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -487,18 +477,18 @@ public class MainActivity extends Activity {
     // agar backnya sesuai UAT
     @Override
     public void onBackPressed() {
-        if(positionFragment == 1) {
+        if(positionFragment == 0) {
             //ketika di home. close application
             finish();
         } else {
             //else. display ke home
-            positionFragment = 1;
+            positionFragment = 0;
             if(roleSekarang.equals("Koordinator")) {
-                displayViewKoordinator(1);
+                displayViewKoordinator(0);
             } else if (roleSekarang.equals("Kakak Asuh")) {
-                displayViewKakak(1);
+                displayViewKakak(0);
             } else /*adik*/ {
-                displayViewAdik(1);
+                displayViewAdik(0);
             }
         }
     }
@@ -521,6 +511,12 @@ public class MainActivity extends Activity {
 
     public static void setUsernameSekarang(String usernames){
         usernameSekarang = usernames;
+    }
+
+    public void ambilPreferensi() {
+        preferensi = new Preferensi(getApplicationContext());
+        usernameSekarang = preferensi.getUsername();
+        roleSekarang = preferensi.getRole();
     }
 
     /* hide keyboard*/

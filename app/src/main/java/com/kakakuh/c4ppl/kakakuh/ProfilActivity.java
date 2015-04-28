@@ -54,7 +54,7 @@ public class ProfilActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        username = MainActivity.getUsernameSekarang();
+        username = getIntent().getStringExtra("username");
 
         nama = (TextView) findViewById(R.id.nama);
         role = (TextView) findViewById(R.id.role);
@@ -71,6 +71,7 @@ public class ProfilActivity extends TabActivity {
         // Tab Icon
         profilAboutSpec.setIndicator("", getResources().getDrawable(R.drawable.tab_selector_about));
         Intent aboutIntent = new Intent(this, ProfilAboutActivity.class);
+        aboutIntent.putExtra("username",username);
         // Tab Content
         profilAboutSpec.setContent(aboutIntent);
 
@@ -184,8 +185,8 @@ public class ProfilActivity extends TabActivity {
                 //Intent upIntent = new Intent(this, MainActivity.class);
                 //upIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 //startActivity(upIntent);
-                super.onBackPressed();
                 finish();
+                super.onBackPressed();
                 return true;
             case R.id.action_pesan:
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?

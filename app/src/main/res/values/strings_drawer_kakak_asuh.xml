@@ -2,7 +2,6 @@
 <resources>
     <!-- Nav Drawer Menu Items -->
     <string-array name="kakak_nav_drawer_items">
-        <item >Profil</item>
         <item >Adik Asuhku</item>
         <item >Jadwal</item>
         <item >Konfirmasi Booking</item>
@@ -13,8 +12,7 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="kakak_nav_drawer_icons">
-        <item>@drawable/ic_emerald_profil</item>
-        <item>@drawable/ic_emerald_list_akun_adik</item>
+        <item>@drawable/ic_emerald_list_akun</item>
         <item>@drawable/ic_emerald_jadwal</item>
         <item>@drawable/ic_emerald_konfirmasi_booking</item>
         <item>@drawable/ic_emerald_list_akun</item>

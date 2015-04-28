@@ -5,17 +5,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.model.PasanganListItem;
 
 import java.util.ArrayList;
 
 /**
  * Created by Anas on 4/16/2015.
  */
-public class HeaderListAdapter extends KakakuhBaseAdapter<String> {
-    public HeaderListAdapter(Context context) {
+public class HeaderPasanganListAdapter extends KakakuhBaseAdapter<PasanganListItem> {
+    public HeaderPasanganListAdapter(Context context) {
         this.context = context;
         listItems = new ArrayList<>();
     }
@@ -25,11 +27,14 @@ public class HeaderListAdapter extends KakakuhBaseAdapter<String> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.list_header, null);
+            convertView = mInflater.inflate(R.layout.list_item_header_akun, null);
         }
 
-        TextView txtHeader = (TextView) convertView.findViewById(R.id.header);
-        txtHeader.setText(listItems.get(position));
+        ImageView image = (ImageView) convertView.findViewById(R.id.image);
+        TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
+
+        image.setImageBitmap(listItems.get(position).getPhoto());
+        txtName.setText(listItems.get(position).getUsername());
 
         return convertView;
     }

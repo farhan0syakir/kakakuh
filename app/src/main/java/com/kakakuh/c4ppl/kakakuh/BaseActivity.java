@@ -32,8 +32,8 @@ public abstract class BaseActivity extends Activity {
                 //Intent upIntent = new Intent(this, MainActivity.class);
                 //upIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 //startActivity(upIntent);
-                super.onBackPressed();
                 finish();
+                super.onBackPressed();
                 return true;
             case R.id.action_pesan:
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?

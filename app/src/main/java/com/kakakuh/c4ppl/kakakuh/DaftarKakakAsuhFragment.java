@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
-import com.kakakuh.c4ppl.kakakuh.controller.AkunListKoordinatorAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
@@ -26,13 +25,13 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/2/2015.
  */
-public class ListKakakAsuhKoordinatorFragment extends Fragment{
+public class DaftarKakakAsuhFragment extends Fragment{
     ListView mListAkun;
     ArrayList<AkunListItem> akunListItems;
-    AkunListKoordinatorAdapter adapter;
+    AkunListAdapter adapter;
     JSONArray android = null;
 
-    public ListKakakAsuhKoordinatorFragment(){}
+    public DaftarKakakAsuhFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,8 +53,8 @@ public class ListKakakAsuhKoordinatorFragment extends Fragment{
                                 long id) {
             AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
 
-            MainActivity.setUsernameSekarang(akun.getUsername());
             Intent i = new Intent(getActivity(), ProfilActivity.class);
+            i.putExtra("username",akun.getUsername());
             startActivity(i);
 
             //TODO go to profil page dengan informasi akun
@@ -101,7 +100,7 @@ public class ListKakakAsuhKoordinatorFragment extends Fragment{
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter
-                    adapter = new AkunListKoordinatorAdapter(getActivity().getApplicationContext(), akunListItems);
+                    adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
 
 

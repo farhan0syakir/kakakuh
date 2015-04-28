@@ -2,26 +2,28 @@
 <resources>
     <!-- Nav Drawer Menu Items -->
     <string-array name="koor_nav_drawer_items">
-        <item >Profil</item>
-        <item >Review Log</item>
-        <item >Buat Akun</item>
-        <item >Hapus Akun</item>
-        <item >Pasangkan Akun</item>
-        <item >Daftar Kakak Asuh</item>
-        <item >Daftar Adik Asuh</item>
-        <item >Pengaturan</item>
+        <item>Review Log</item>
+        <item>Buat Event</item>
+        <item>Buat Akun</item>
+        <item>Hapus Akun</item>
+        <item>Pasangkan Akun</item>
+        <item>Daftar Kakak Asuh</item>
+        <item>Daftar Adik Asuh</item>
+        <item>Daftar Pasangan</item>
+        <item>Pengaturan</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="koor_nav_drawer_icons">
-        <item>@drawable/ic_emerald_profil</item>
         <item>@drawable/ic_emerald_review_log</item>
+        <item>@drawable/ic_emerald_jadwal</item>
         <item>@drawable/ic_emerald_buat_akun</item>
         <item>@drawable/ic_emerald_hapus_akun</item>
         <item>@drawable/ic_emerald_pasangkan_akun</item>
         <item>@drawable/ic_emerald_list_akun</item>
-        <item>@drawable/ic_emerald_list_akun_adik</item>
+        <item>@drawable/ic_emerald_list_akun</item>
+        <item>@drawable/ic_emerald_list_akun</item>
         <item>@drawable/ic_emerald_pengaturan</item>
     </array>
 

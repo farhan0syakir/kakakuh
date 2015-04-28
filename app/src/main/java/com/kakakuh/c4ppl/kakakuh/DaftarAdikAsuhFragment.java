@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/2/2015.
  */
-public class ListAdikAsuhFragment extends Fragment{
+public class DaftarAdikAsuhFragment extends Fragment{
     ListView mListAkun;
     ArrayList<AkunListItem> akunListItems;
     AkunListKoordinatorAdapter adapter;
@@ -34,7 +34,7 @@ public class ListAdikAsuhFragment extends Fragment{
 
     String user;
 
-    public ListAdikAsuhFragment(){}
+    public DaftarAdikAsuhFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,8 +55,8 @@ public class ListAdikAsuhFragment extends Fragment{
                                 long id) {
             AkunListItem akun = (AkunListItem) mListAkun.getAdapter().getItem(position);
 
-        MainActivity.setUsernameSekarang(akun.getUsername());
         Intent i = new Intent(getActivity(), ProfilActivity.class);
+        i.putExtra("username",akun.getUsername());
         startActivity(i);
 
             //TODO go to profil page dengan informasi akun

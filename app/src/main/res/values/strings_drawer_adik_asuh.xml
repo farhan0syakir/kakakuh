@@ -2,7 +2,6 @@
 <resources>
     <!-- Nav Drawer Menu Items -->
     <string-array name="adik_nav_drawer_items">
-        <item >Profil</item>
         <item >Tugas</item>
         <item >Jadwal Kakak</item>
         <item >Daftar Kakak Asuh</item>
@@ -12,7 +11,6 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="adik_nav_drawer_icons">
-        <item>@drawable/ic_emerald_profil</item>
         <item>@drawable/ic_emerald_tugas</item>
         <item>@drawable/ic_emerald_jadwal</item>
         <item>@drawable/ic_emerald_list_akun</item>

@@ -51,18 +51,13 @@ public class PengaturanFragment extends Fragment{
 
         iconTextListItems = new ArrayList<>();
 
-        //otentikasi
         iconTextListItems.add(new IconTextListItem(listTitles[0], listEmeraldIcons.getResourceId(0, -1)));
-        //profil
         iconTextListItems.add(new IconTextListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
-        //pesan
         iconTextListItems.add(new IconTextListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
-        //reminder
         iconTextListItems.add(new IconTextListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
-        //list
-        iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
-        //review log
+        //khusus koordinator
         if(roleSekarang.equals("Koordinator")) {
+            iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
             iconTextListItems.add(new IconTextListItem(listTitles[5], listEmeraldIcons.getResourceId(5, -1)));
         }
         //log out
@@ -112,9 +107,9 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 4:
-                //TODO start activity pengaturan Tampilan List
+                //TODO start activity pengaturan Tampilan Daftar Pasangan
                 //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanListActivity.class);
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanDaftarPasanganActivity.class);
                 startActivity(nextScreen);
                 break;
             case 5:
@@ -166,12 +161,6 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 4:
-                //TODO start activity pengaturan Tampilan List
-                //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanListActivity.class);
-                startActivity(nextScreen);
-                break;
-            case 5:
                 //TODO
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya

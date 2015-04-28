@@ -15,10 +15,10 @@ import com.kakakuh.c4ppl.kakakuh.R;
 /**
  * Created by Anas on 4/14/2015.
  */
-public class SectionedListAdapter<H extends KakakuhBaseHeaderAdapter,E extends KakakuhBaseAdapter> extends BaseAdapter {
+public class SectionedListAdapter<H extends KakakuhBaseAdapter,E extends KakakuhBaseAdapter> extends BaseAdapter {
 
     public final ArrayList<E> sectionAdapters = new ArrayList<>();
-    public final H headerAdapter;
+    public H headerAdapter;
     public final static int TYPE_SECTION_HEADER = 0;
     protected Context context;
 
@@ -28,7 +28,7 @@ public class SectionedListAdapter<H extends KakakuhBaseHeaderAdapter,E extends K
         this.headerAdapter = adapter;
     }
 
-    public void addSection(String section, E adapter)
+    public void addSection(Object section, E adapter)
     {
         headerAdapter.add(section);
         this.sectionAdapters.add(adapter);

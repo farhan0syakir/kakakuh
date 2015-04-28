@@ -69,7 +69,7 @@ public class ProfilAboutActivity extends BaseActivity{
         listTitles = getResources().getStringArray(R.array.profil_about_title);
         listEmeraldIcons = getResources().obtainTypedArray(R.array.profil_about_icons);
 
-        username = MainActivity.getUsernameSekarang();
+        username = getIntent().getStringExtra("username");
         new retrieveMyProfile().execute();
 
 //        profilListItems = new ArrayList<>();
