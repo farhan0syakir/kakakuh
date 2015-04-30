@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,12 +34,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
 public class UbahProfilActivity extends KakakuhBaseActivity {
+    Bitmap decodedByte;
     static int w = 250;
     static int h = 250;
     private static int RESULT_LOAD_IMG = 1;
@@ -46,15 +50,16 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     private EditText namaField, npmField, emailField;
     private EditText noHPField, alamatField;
     private EditText asalDaerahField, mottoField;
+    private ImageView imgView;
     private JSONArray jsonArray;
     private String url="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieve";
     private String urlupdate="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/update";
     String username;
-    String nama_lengkap, tempat_tinggal, npm, email, handphone, asal_daerah, motto;
+    String nama_lengkap, tempat_tinggal, npm, email, handphone, asal_daerah, motto, base64;
+    byte[] imageByteArray;
     InputStream is=null;
     String result=null;
     String line=null;
-    SharedPreferences sharedpreferences;
     static Preferensi preferensi;
 
     @Override
@@ -68,7 +73,9 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
 
         setContentView(R.layout.activity_ubah_profil);
 
-        //get Element
+        //get Element\
+
+        imgView = (ImageView) findViewById(R.id.foto_profil);
         namaField = (EditText)findViewById(R.id.nama);
         npmField = (EditText)findViewById(R.id.npm);
         emailField = (EditText)findViewById(R.id.email);
@@ -125,7 +132,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             HttpEntity entity = response.getEntity();
             is = entity.getContent();
             //debug
-            System.out.println(is);
             Log.e("pass 1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail 1", e.toString());
@@ -146,7 +152,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             //debug
 
             Log.e("pass 2", "connection success ");
-            System.out.println(result);
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());
 
@@ -172,6 +177,17 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
 
                 namaField.setText(c.getString("nama_lengkap"), TextView.BufferType.EDITABLE);
                 npmField.setText(c.getString("npm"), TextView.BufferType.EDITABLE);
+                byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
+                System.out.println("ini hasil decodedString!");
+                System.out.println(decodedString);
+                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
+                decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                System.out.println("ini hasil decodedByte!");
+                System.out.println(decodedByte);
+                imgView.setImageBitmap(decodedByte);
+//                imgView = (ImageView) findViewById(R.id.foto_profil);
+//                imgView.setImageBitmap(bm);
+                emailField.setText(c.getString("email"), TextView.BufferType.EDITABLE);
                 noHPField.setText(c.getString("handphone"), TextView.BufferType.EDITABLE);
                 alamatField.setText(c.getString("tempat_tinggal"),TextView.BufferType.EDITABLE);
                 asalDaerahField.setText(c.getString("asal_daerah"), TextView.BufferType.EDITABLE);
@@ -186,15 +202,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
 
         nama_lengkap = namaField.getText().toString();
         npm = npmField.getText().toString();
+        email = emailField.getText().toString();
         tempat_tinggal = alamatField.getText().toString();
         handphone = noHPField.getText().toString();
         asal_daerah = asalDaerahField.getText().toString();
         motto = mottoField.getText().toString();
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
+        nameValuePairs.add(new BasicNameValuePair("img", base64));
         nameValuePairs.add(new BasicNameValuePair("username", username));
         nameValuePairs.add(new BasicNameValuePair("nama_lengkap", nama_lengkap));
         nameValuePairs.add(new BasicNameValuePair("npm", npm));
+        nameValuePairs.add(new BasicNameValuePair("email", email));
         nameValuePairs.add(new BasicNameValuePair("handphone", handphone));
         nameValuePairs.add(new BasicNameValuePair("tempat_tinggal", tempat_tinggal));
         nameValuePairs.add(new BasicNameValuePair("asal_daerah", asal_daerah));
@@ -280,10 +299,10 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
-                ImageView imgView = (ImageView) findViewById(R.id.foto_profil);
                 // Set the Image in ImageView after decoding the String
+                System.out.println("ini hasil imgdecodeablestringnya brother!");
+                System.out.println(imgDecodableString);
                 Bitmap bitmap_Source=BitmapFactory.decodeFile(imgDecodableString);
-                imgView.setImageBitmap(bitmap_Source);
                 float factorH = h / (float)bitmap_Source.getHeight();
                 float factorW = w / (float)bitmap_Source.getWidth();
                 float factorToUse = (factorH > factorW) ? factorW : factorH;
@@ -292,7 +311,8 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                         (int) (bitmap_Source.getHeight() * factorToUse),
                         false);
                 imgView.setImageBitmap(bm);
-
+                imageByteArray = getByteArray(bm);
+                base64 = Base64.encodeToString(imageByteArray,Base64.NO_WRAP);
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
@@ -301,5 +321,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
+    }
+
+    public byte[] getByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] hasil = stream.toByteArray();
+        System.out.println("hasil panjang sebelum masuk" + hasil.length);
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return hasil;
     }
 }
