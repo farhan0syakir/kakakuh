@@ -38,6 +38,7 @@ public class BuatAkunFragment extends Fragment{
     String line=null;
     int code;
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/create";
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +87,10 @@ public class BuatAkunFragment extends Fragment{
 
                 if(user.equals("")||pass.equals("")||email.equals("")||role.equals("0")) {
                     Toast.makeText(getActivity(), "Ada yang belum terisi",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(!email.matches(emailPattern)){
+                    Toast.makeText(getActivity(), "Alamat email tidak valid",
                             Toast.LENGTH_LONG).show();
                 }
                 else if (usernameField.getText().toString().contains(" ")||passwordField.getText().toString().contains(" ")) {
