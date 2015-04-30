@@ -1,7 +1,5 @@
 package com.kakakuh.c4ppl.kakakuh;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class PengaturanUbahPasswordActivity extends BaseActivity {
+public class PengaturanUbahPasswordActivity extends KakakuhBaseActivity {
     private TextView username;
     private EditText passwordSekarangField;
     private EditText passwordBaruField;

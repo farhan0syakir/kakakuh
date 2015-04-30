@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 
-public class PengaturanDaftarPasanganActivity extends BaseActivity {
+public class PengaturanDaftarPasanganActivity extends KakakuhBaseActivity {
 
     private Preferensi preferensi;
     private RadioGroup radioGroup;

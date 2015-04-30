@@ -12,7 +12,7 @@ import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import java.util.HashMap;
 
 
-public class PengaturanPesanActivity extends BaseActivity {
+public class PengaturanPesanActivity extends KakakuhBaseActivity {
 
     private Preferensi preferensi;
     private RadioGroup radioGroup;

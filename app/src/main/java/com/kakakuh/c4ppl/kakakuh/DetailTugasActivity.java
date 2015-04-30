@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.HeaderTugasListKakakAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.TugasListKakakAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import java.sql.Date;
@@ -19,14 +21,18 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/16/2015.
  */
-public class DetailTugasActivity extends BaseActivity {
+public class DetailTugasActivity extends KakakuhBaseActivity {
     private ArrayList<Tugas> listTugas;
     private ArrayList<TugasListKakakAdapter> adapter;
     private SectionedListAdapter<HeaderTugasListKakakAdapter,TugasListKakakAdapter> sectionAdapter;
 
     private ListView mList;
+    private Button btnTambah;
+
     private Context context;
     private String usernameAdik;
+    private String nama;
+    private byte[] byteImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +50,11 @@ public class DetailTugasActivity extends BaseActivity {
         Intent intent = getIntent();
         usernameAdik = intent.getStringExtra("username");
 
-        byte[] byteImage = intent.getByteArrayExtra("photo");
+        byteImage = intent.getByteArrayExtra("photo");
         photoView.setImageBitmap(BitmapFactory.decodeByteArray(byteImage,0,byteImage.length));
 
-        namaView.setText(intent.getStringExtra("nama"));
+        nama = intent.getStringExtra("nama");
+        namaView.setText(nama);
         namaView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,5 +106,17 @@ public class DetailTugasActivity extends BaseActivity {
 
         mList = (ListView) findViewById(R.id.list);
         mList.setAdapter(sectionAdapter);
+
+        btnTambah = (Button) findViewById(R.id.btn_tambah_tugas);
+        btnTambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(context,TambahTugasActivity.class);
+                nextIntent.putExtra("username",usernameAdik);
+                nextIntent.putExtra("nama", nama);
+                nextIntent.putExtra("photo", byteImage);
+                context.startActivity(nextIntent);
+            }
+        });
     }
 }

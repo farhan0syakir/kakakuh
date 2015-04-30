@@ -1,9 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
-import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -36,7 +30,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class UbahProfilActivity extends BaseActivity {
+public class UbahProfilActivity extends KakakuhBaseActivity {
     private EditText namaField, npmField;
     private EditText noHPField, alamatField;
     private EditText asalDaerahField, mottoField;

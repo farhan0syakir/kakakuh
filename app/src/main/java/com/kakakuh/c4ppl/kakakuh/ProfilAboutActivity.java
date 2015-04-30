@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.content.res.TypedArray;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
@@ -32,7 +31,7 @@ import java.util.ArrayList;
  * Created by Aldi, Anas on 12/04/2015.
  */
 
-public class ProfilAboutActivity extends BaseActivity{
+public class ProfilAboutActivity extends KakakuhBaseActivity {
     private ListView listProfilAbout;
     private String[] listTitles;
 

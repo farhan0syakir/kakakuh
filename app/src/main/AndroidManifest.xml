@@ -132,6 +132,12 @@
             android:name=".DetailTugasActivity"
             android:label="@string/title_activity_detail_tugas">
         </activity>
+
+        <activity
+            android:name=".TambahTugasActivity"
+            android:label="@string/title_activity_tambah_tugas">
+        </activity>
+
     </application>
 
 </manifest>

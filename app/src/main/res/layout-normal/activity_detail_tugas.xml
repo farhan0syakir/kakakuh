@@ -37,6 +37,7 @@
         android:id="@+id/container_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/line_adik">
         <Button
             android:id="@+id/btn_tambah_tugas"

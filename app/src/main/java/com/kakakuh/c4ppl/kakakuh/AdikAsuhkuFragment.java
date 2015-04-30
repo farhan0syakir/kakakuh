@@ -126,7 +126,6 @@ public class AdikAsuhkuFragment extends Fragment{
                     } else {
                         listItems.add(new AdikAsuhkuListItem(akun,tugas));
                     }
-
                 }
 
                 // setting the Pengaturan list adapter

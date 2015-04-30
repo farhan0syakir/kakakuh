@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deadline_label">Deadline</string>
+    <string name="tugas_label">Tugas</string>
+    <string name="kategori_label">Kategori</string>
+    <item name="btn_tambah_label" type="id">TAMBAH</item>
+</resources>
