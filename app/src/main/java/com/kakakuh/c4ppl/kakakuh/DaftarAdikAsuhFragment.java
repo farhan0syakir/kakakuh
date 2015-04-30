@@ -58,11 +58,6 @@ public class DaftarAdikAsuhFragment extends Fragment{
         Intent i = new Intent(getActivity(), ProfilActivity.class);
         i.putExtra("username",akun.getUsername());
         startActivity(i);
-
-            //TODO go to profil page dengan informasi akun
-            //TEST
-            System.out.println(akun.getName() + " " + akun.getRole()); //nama dan role
-            akun.getPhoto(); //photo
         }
     }
 
@@ -98,7 +93,7 @@ public class DaftarAdikAsuhFragment extends Fragment{
                     String username = c.getString("username");
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
-                    akunListItems.add(new AkunListItem(username,nama_lengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                    akunListItems.add(new AkunListItem(username,nama_lengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter

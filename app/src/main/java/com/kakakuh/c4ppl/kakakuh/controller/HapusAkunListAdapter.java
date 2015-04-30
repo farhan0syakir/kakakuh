@@ -18,8 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.ads.mediation.customevent.CustomEventAdapter;
-import com.kakakuh.c4ppl.kakakuh.HapusAkunFragment;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 

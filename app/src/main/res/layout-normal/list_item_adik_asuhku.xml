@@ -41,7 +41,7 @@
         <View
             android:layout_width="12dp"
             android:layout_height="match_parent"
-            android:background="@color/peter_river"/>
+            android:background="@color/emerald"/>
         <RelativeLayout
             android:id="@+id/line_tugas"
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_alignParentTop="true"
-                android:background="@color/peter_river"/>
+                android:background="@color/emerald"/>
 
             <TextView
                 android:id="@+id/label_tugas_terakhir"
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@id/container_tugas"
-                android:background="@color/peter_river"/>
+                android:background="@color/emerald"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

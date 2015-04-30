@@ -1,4 +1,4 @@
-package com.kakakuh.c4ppl.kakakuh.controller;
+package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,20 +8,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 /**
  * Created by Anas on 4/14/2015.
  */
-public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
+public class TugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
     CheckBox deskripsiTugas;
-    Button btnKerjakan;
+    Button btnLihat;
 
-    public TugasListAdapter(Context context, ArrayList<Tugas> tugasListItems) {
+    public TugasListKakakAdapter(Context context, ArrayList<Tugas> tugasListItems) {
         this.context = context;
         listItems = tugasListItems;
     }
@@ -35,7 +34,8 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
         }
 
         deskripsiTugas = (CheckBox) convertView.findViewById(R.id.deskripsi_tugas);
-        btnKerjakan = (Button) convertView.findViewById(R.id.btn_kerjakan);
+        btnLihat = (Button) convertView.findViewById(R.id.btn_kerjakan);
+        btnLihat.setText("Lihat");
 
         Tugas entrySekarang = listItems.get(position);
 
@@ -45,8 +45,8 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
         //set boolean
         if(entrySekarang.isSudahDikerjakan()) {
             deskripsiTugas.setChecked(true);
-            btnKerjakan.setText("Lihat");
-            btnKerjakan.setOnClickListener(new View.OnClickListener() {
+
+            btnLihat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //TODO go to Kerjakan Tugas dengan mengirim data id
@@ -55,23 +55,11 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
             });
         } else {
             deskripsiTugas.setChecked(false);
-            //check deadline
-            if (entrySekarang.isLewatDeadline()) {
-                btnKerjakan.setVisibility(View.GONE);
-            } else {
-                btnKerjakan.setText("Kerjakan");
-                btnKerjakan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //TODO go to Kerjakan Tugas dengan mengirim data id
-                        //System.out.println(akunListItems.get(position).getUsername()); //TEST
-                    }
-                });
-            }
+            btnLihat.setEnabled(false);
         }
 
         //TEST
-        //btnKerjakan.setText(entrySekarang.getDeadline().getTime() - System.currentTimeMillis() + "");
+        //btnLihat.setText(entrySekarang.getDeadline().getTime() - System.currentTimeMillis() + "");
         return convertView;
     }
 }

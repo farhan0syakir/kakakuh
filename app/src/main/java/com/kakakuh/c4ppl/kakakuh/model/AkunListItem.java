@@ -8,12 +8,10 @@ import android.graphics.Bitmap;
 public class AkunListItem {
     private String username;
     private String name;
-    private String role;
     private Bitmap photo;
 
-    public AkunListItem(String keyUsername, String name, String role, Bitmap photo) {
+    public AkunListItem(String keyUsername, String name, Bitmap photo) {
         this.name = name;
-        this.role = role;
         this.photo = photo;
         this.username = keyUsername;
     }
@@ -32,14 +30,6 @@ public class AkunListItem {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public Bitmap getPhoto() {

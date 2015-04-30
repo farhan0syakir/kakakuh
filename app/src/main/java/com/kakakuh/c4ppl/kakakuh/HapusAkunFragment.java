@@ -109,10 +109,10 @@ public class HapusAkunFragment extends Fragment{
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
                     if(role.equals("2")){
-                        akunListItems.add(new AkunListItem(username,nama_lengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                        akunListItems.add(new AkunListItem(username,nama_lengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
                     }
                     else{
-                        akunListItems.add(new AkunListItem(username,nama_lengkap,"Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                        akunListItems.add(new AkunListItem(username,nama_lengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
                     }
 //                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
                     // list adapter

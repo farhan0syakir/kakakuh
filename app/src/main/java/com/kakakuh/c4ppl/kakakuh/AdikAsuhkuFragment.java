@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AdikAsuhkuListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.AdikAsuhkuListItem;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
@@ -31,12 +32,13 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class AdikAsuhkuFragment extends Fragment{
-    ListView mListAkun;
-    ArrayList<AdikAsuhkuListItem> listItems;
-    AdikAsuhkuListAdapter adapter;
-    JSONArray android = null;
-    SharedPreferences sharedPreferences;
-    String user;
+    private ArrayList<AdikAsuhkuListItem> listItems;
+    private AdikAsuhkuListAdapter adapter;
+    private JSONArray android = null;
+    private String user;
+    private ListView mListAkun;
+
+    private Preferensi preferensi;
 
     public AdikAsuhkuFragment(){}
 
@@ -46,6 +48,8 @@ public class AdikAsuhkuFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
         mListAkun = (ListView) rootView.findViewById(R.id.list_generic);
+
+        preferensi = new Preferensi(getActivity());
 
         //ini aturan agar elemen di dalam list bisa diclick
         mListAkun.setItemsCanFocus(true);
@@ -58,8 +62,7 @@ public class AdikAsuhkuFragment extends Fragment{
         new JSONParse().execute();
         listItems = new ArrayList<>();
 
-        sharedPreferences = getActivity().getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
-        user = sharedPreferences.getString("nameKey","wrong");
+        user = preferensi.getUsername();
 
         //akunListItems.add(new AkunListItem("la2","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
         //akunListItems.remove(0);
@@ -103,7 +106,7 @@ public class AdikAsuhkuFragment extends Fragment{
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
-                Tugas[] tugases = {new Tugas("2","PPL","sudah dikerjakan",new Date(new Long("1438224300000")),true),null};
+                Tugas[] tugases = {new Tugas("1","Jajan",new Date(new Long("1438224300000")),"2","Mock Up",true),null};
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
                 for(int i = 0; i < android.length(); i++){
@@ -113,7 +116,7 @@ public class AdikAsuhkuFragment extends Fragment{
                     String username = c.getString("username");
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
-                    AkunListItem akun = new AkunListItem(username,namaLengkap,"Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal));
+                    AkunListItem akun = new AkunListItem(username,namaLengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal));
 
                     //TODO Hardcoded harusnya ambil tugas terakhir yang sudah dikerjakan adik.
                     Tugas tugas = tugases[i];

@@ -70,9 +70,9 @@ public class DaftarPasanganFragment extends Fragment{
             }
             //tambahkan section terakhir
             sectionAdapter.addSection(new PasanganListItem(
-                            temps.get(temps.size()-1).getUsernameKakak(),
-                            temps.get(temps.size()-1).getNamaKakak(),
-                            temps.get(temps.size()-1).getImageKakak()),
+                            currentKategori.getUsernameKakak(),
+                            currentKategori.getNamaKakak(),
+                            currentKategori.getImageKakak()),
                     new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
         } else {
             //TODO eksekusi query. ambil array dari json yg isinya | usernameKakak | namaKakak | usernameAdik | namaAdik | imageAdik | sorted by adik
