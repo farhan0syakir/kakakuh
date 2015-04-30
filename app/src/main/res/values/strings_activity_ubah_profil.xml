@@ -3,6 +3,7 @@
     <string name="btn_upload">UPLOAD</string>
     <string name="label_nama">Nama</string>
     <string name="label_npm">NPM</string>
+    <string name="label_email">E-mail</string>
     <string name="label_no_hp">No. HP</string>
     <string name="label_tempat_tinggal">Alamat</string>
     <string name="label_asal_daerah">Asal Daerah</string>

@@ -30,14 +30,15 @@ import java.util.ArrayList;
 public class BuatAkunFragment extends Fragment{
     public BuatAkunFragment(){}
 
-    private EditText usernameField, passwordField;
-    String user="",pass="",id;
+    private EditText usernameField, passwordField, emailField;
+    String user="",pass="", email="",id;
     String role = "0";
     InputStream is=null;
     String result=null;
     String line=null;
     int code;
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/create";
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +67,7 @@ public class BuatAkunFragment extends Fragment{
 
         usernameField = (EditText)rootView.findViewById(R.id.username);
         passwordField = (EditText)rootView.findViewById(R.id.password);
+        emailField = (EditText)rootView.findViewById(R.id.email);
 
 
         Button btnBuat = (Button) rootView.findViewById(R.id.btn_buat);
@@ -76,13 +78,19 @@ public class BuatAkunFragment extends Fragment{
 //                TODO
                 user = usernameField.getText().toString();
                 pass = passwordField.getText().toString();
+                email = emailField.getText().toString();
                 //debug
                 System.out.println(user);
                 System.out.println(pass);
+                System.out.println(email);
 
 
-                if(user.equals("")||pass.equals("")||role.equals("0")) {
+                if(user.equals("")||pass.equals("")||email.equals("")||role.equals("0")) {
                     Toast.makeText(getActivity(), "Ada yang belum terisi",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(!email.matches(emailPattern)){
+                    Toast.makeText(getActivity(), "Alamat email tidak valid",
                             Toast.LENGTH_LONG).show();
                 }
                 else if (usernameField.getText().toString().contains(" ")||passwordField.getText().toString().contains(" ")) {
@@ -94,6 +102,7 @@ public class BuatAkunFragment extends Fragment{
                             Toast.LENGTH_LONG).show();
                     usernameField.setText("");
                     passwordField.setText("");
+                    emailField.setText("");
                     radioAkun.clearCheck();
                 }
             }
@@ -109,6 +118,7 @@ public class BuatAkunFragment extends Fragment{
 
             nameValuePairs.add(new BasicNameValuePair("username", user));
             nameValuePairs.add(new BasicNameValuePair("password", pass));
+            nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("role", role));
             //debug
             System.out.println(nameValuePairs);

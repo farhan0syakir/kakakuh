@@ -13,5 +13,6 @@
     <string name="kakakuh_portal">KakaKuh</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
+    <string name="email_label">Email</string>
     <item name="btn_login_label" type="id">LOGIN</item>
 </resources>
