@@ -55,11 +55,11 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
             });
         } else {
             deskripsiTugas.setChecked(false);
+            btnKerjakan.setText("Kerjakan");
             //check deadline
             if (entrySekarang.isLewatDeadline()) {
-                btnKerjakan.setVisibility(View.GONE);
+                btnKerjakan.setEnabled(false);
             } else {
-                btnKerjakan.setText("Kerjakan");
                 btnKerjakan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
