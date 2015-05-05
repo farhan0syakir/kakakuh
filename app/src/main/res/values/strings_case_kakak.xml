@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Adik Asuhku -->
     <string name="btn_lihat">Lihat</string>
     <string name="label_belum_ada_tugas">Belum ada tugas yang dikerjakan</string>
     <string name="label_tugas_terakhir">Tugas</string>

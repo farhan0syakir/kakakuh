@@ -20,4 +20,14 @@
     </array>
 
     <string name="label_hari_ini">Hari Ini</string>
+
+    <string name="btn_upload">UNGGAH</string>
+    <string name="label_nama">Nama</string>
+    <string name="label_npm">NPM</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_no_hp">No. HP</string>
+    <string name="label_tempat_tinggal">Alamat</string>
+    <string name="label_asal_daerah">Asal Daerah</string>
+    <string name="label_motto">Motto</string>
+    <string name="btn_selesai">SIMPAN</string>
 </resources>

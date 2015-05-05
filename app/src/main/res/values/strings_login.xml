@@ -15,4 +15,7 @@
     <string name="password_label">Password</string>
     <string name="email_label">Email</string>
     <item name="btn_login_label" type="id">LOGIN</item>
+
+    <string name="logo_portal">Logo Portal</string>
+    <string name="btn_login">Login Button</string>
 </resources>

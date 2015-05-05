@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Pasangkan Akun -->
+    <string name="btn_pasang">PASANG</string>
+    <string name="label_kakak_asuh">Kakak Asuh</string>
+    <string name="label_adik_asuh">Adik Asuh</string>
+
+    <!-- Buat Akun -->
     <string name="radio_kakak_asuh">Kakak Asuh</string>
     <string name="radio_adik_asuh">Adik Asuh</string>
     <string name="btn_buat_akun">BUAT</string>

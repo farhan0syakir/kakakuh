@@ -41,21 +41,8 @@ public class LogListAdapter extends KakakuhBaseAdapter<Log> {
 
         image.setImageBitmap(listItems.get(position).getPhoto());
         txtNote.setText(listItems.get(position).getNote());
-        txtTime.setText(getTime(listItems.get(position).getTimestamp()));
+        txtTime.setText(Kalender.getLogTime(listItems.get(position).getTimestamp()));
 
         return convertView;
-    }
-
-    private String getTime(Date timestamp) {
-        long elapsedTime = System.currentTimeMillis() - timestamp.getTime();
-        long elapsedTimeInSeconds = elapsedTime/1000;
-
-        long days = elapsedTimeInSeconds / 86400;
-        if(days > 1) return (days + " hari yang lalu");
-        if(days > 0) return ("Kemarin");
-        long hours = elapsedTimeInSeconds / 3600;
-        if(hours > 0) return (hours + " jam yang lalu");
-        long minutes = elapsedTimeInSeconds / 60;
-        return (minutes + " menit yang lalu");
     }
 }
