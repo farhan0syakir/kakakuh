@@ -237,7 +237,7 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_home;
+                mTitleIcon = R.drawable.ic_white_review_log;
                 getActionBar().setIcon(mTitleIcon);
                 fragment = new ReviewLogFragment();
                 break;
@@ -311,7 +311,7 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_home;
+                mTitleIcon = R.drawable.ic_white_list_akun;
                 getActionBar().setIcon(mTitleIcon);
                 fragment = new AdikAsuhkuFragment();
                 break;
@@ -326,7 +326,7 @@ public class MainActivity extends Activity {
                 fragment = new KonfirmasiBookingFragment();
                 break;
             case 3:
-                mTitleIcon = R.drawable.ic_white_profil;
+                mTitleIcon = R.drawable.ic_white_list_akun;
                 getActionBar().setIcon(mTitleIcon);
                 fragment = new DaftarKakakAsuhFragment();
                 break;
@@ -365,7 +365,7 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                mTitleIcon = R.drawable.ic_white_home;
+                mTitleIcon = R.drawable.ic_white_tugas;
                 getActionBar().setIcon(mTitleIcon);
                 fragment = new TugasFragment();
                 break;

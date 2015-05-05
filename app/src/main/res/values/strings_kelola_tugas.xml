@@ -3,5 +3,7 @@
     <string name="deadline_label">Deadline</string>
     <string name="tugas_label">Tugas</string>
     <string name="kategori_label">Kategori</string>
+    <string name="btn_cari">Cari...</string>
+    <string name="text_bukti">Silahkan unggah bukti pengerjaan.</string>
     <item name="btn_tambah_label" type="id">TAMBAH</item>
 </resources>

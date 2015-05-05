@@ -2,12 +2,14 @@ package com.kakakuh.c4ppl.kakakuh.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
@@ -18,8 +20,8 @@ import java.util.ArrayList;
  * Created by Anas on 4/14/2015.
  */
 public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
-    CheckBox deskripsiTugas;
-    Button btnKerjakan;
+    private CheckBox deskripsiTugas;
+    private Button btnKerjakan;
 
     public TugasListAdapter(Context context, ArrayList<Tugas> tugasListItems) {
         this.context = context;
@@ -37,7 +39,7 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
         deskripsiTugas = (CheckBox) convertView.findViewById(R.id.deskripsi_tugas);
         btnKerjakan = (Button) convertView.findViewById(R.id.btn_kerjakan);
 
-        Tugas entrySekarang = listItems.get(position);
+        final Tugas entrySekarang = listItems.get(position);
 
         //set deskripsi
         deskripsiTugas.setText(entrySekarang.getDeskripsiTugas());
@@ -64,7 +66,10 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
                     @Override
                     public void onClick(View v) {
                         //TODO go to Kerjakan Tugas dengan mengirim data id
-                        //System.out.println(akunListItems.get(position).getUsername()); //TEST
+
+                        Intent i = new Intent(context, KerjakanTugasActivity.class);
+                        i.putExtra("idTugas",entrySekarang.getIdTugas());
+                        context.startActivity(i);
                     }
                 });
             }

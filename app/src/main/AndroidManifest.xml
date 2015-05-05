@@ -25,15 +25,17 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="portrait">
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme" >
 
         <!-- Default Activity -->
-        <activity android:name=".LauncherActivity"
+        <activity
+            android:name=".LauncherActivity"
             android:label="@string/app_name"
-            android:theme="@style/notitle">
+            android:theme="@style/notitle" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -41,7 +43,7 @@
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main" >
         </activity>
 
         <!-- Login Activity -->
@@ -54,7 +56,7 @@
         <!-- Pesan Activity -->
         <activity
             android:name=".PesanKoordinatorActivity"
-            android:label="@string/pesan">
+            android:label="@string/pesan" >
         </activity>
         <activity
             android:name=".PesanBaruKoordinatorActivity"
@@ -66,7 +68,7 @@
         </activity>
         <activity
             android:name=".PesanKakakActivity"
-            android:label="@string/pesan">
+            android:label="@string/pesan" >
         </activity>
         <activity
             android:name=".PesanBaruKakakActivity"
@@ -78,7 +80,7 @@
         </activity>
         <activity
             android:name=".PesanAdikActivity"
-            android:label="@string/pesan">
+            android:label="@string/pesan" >
         </activity>
 
         <!-- Pengaturan Activity -->
@@ -90,23 +92,23 @@
         <activity
             android:name=".UbahProfilActivity"
             android:label="@string/title_activity_ubah_profil"
-            android:windowSoftInputMode="adjustResize|stateHidden">
+            android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
         <activity
             android:name=".PengaturanPesanActivity"
-            android:label="@string/title_activity_pengaturan_pesan">
+            android:label="@string/title_activity_pengaturan_pesan" >
         </activity>
         <activity
             android:name=".PengaturanPengingatActivity"
-            android:label="@string/title_activity_pengaturan_reminder">
+            android:label="@string/title_activity_pengaturan_reminder" >
         </activity>
         <activity
             android:name=".PengaturanDaftarPasanganActivity"
-            android:label="@string/title_activity_pengaturan_list">
+            android:label="@string/title_activity_pengaturan_list" >
         </activity>
         <activity
             android:name=".PengaturanReviewLogActivity"
-            android:label="@string/title_activity_pengaturan_review_log">
+            android:label="@string/title_activity_pengaturan_review_log" >
         </activity>
         <activity
             android:name=".DetailLogActivity"
@@ -116,28 +118,30 @@
         <!-- Profil Activity -->
         <activity
             android:name=".ProfilActivity"
-            android:label="@string/title_activity_profil">
+            android:label="@string/title_activity_profil" >
         </activity>
         <activity
             android:name=".ProfilAboutActivity"
-            android:label="@string/title_activity_profil">
+            android:label="@string/title_activity_profil" >
         </activity>
         <activity
             android:name=".ProfilLogActivity"
-            android:label="@string/title_activity_profil">
+            android:label="@string/title_activity_profil" >
         </activity>
 
         <!-- TugasActivity -->
         <activity
             android:name=".DetailTugasActivity"
-            android:label="@string/title_activity_detail_tugas">
+            android:label="@string/title_activity_detail_tugas" >
         </activity>
-
         <activity
             android:name=".TambahTugasActivity"
-            android:label="@string/title_activity_tambah_tugas">
+            android:label="@string/title_activity_tambah_tugas" >
         </activity>
-
+        <activity
+            android:name=".KerjakanTugasActivity"
+            android:label="@string/title_activity_kerjakan_tugas" >
+        </activity>
     </application>
 
 </manifest>
