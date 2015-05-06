@@ -20,5 +20,8 @@
     <color name="list_background_pressed">@color/emerald_light</color>
 
     <color name="list_item_title">@color/black</color>
-
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
 </resources>
