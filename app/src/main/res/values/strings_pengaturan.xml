@@ -56,4 +56,9 @@
     <string name="pengaturan_review_log_3">7 hari</string>
     <string name="pengaturan_review_log_4">14 hari</string>
 
+    <string name="label_password_sekarang">Password Sekarang</string>
+    <string name="label_password_baru">Password Baru</string>
+    <string name="label_konfirmasi_password">Konfirmasi Password Baru</string>
+    <item name="btn_simpan_label" type="id">SIMPAN</item>
+
 </resources>

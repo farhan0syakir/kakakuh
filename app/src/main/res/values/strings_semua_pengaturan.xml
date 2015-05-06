@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="label_password_sekarang">Password Sekarang</string>
-    <string name="label_password_baru">Password Baru</string>
-    <string name="label_konfirmasi_password">Konfirmasi Password Baru</string>
-    <item name="btn_simpan_label" type="id">SIMPAN</item>
-</resources>

@@ -24,6 +24,10 @@ public class Preferensi {
     static final String PENGATURAN_PENGINGAT_KEY = "pengaturanPengingat";
     static final String PENGATURAN_REVIEW_LOG_KEY = "pengaturanReviewLog";
 
+    //adik
+    static final String PESAN_AKUN_KAKAK = "pesanAkunKakak";
+    static final String PESAN_IMAGE_KAKAK = "pesanImageKakak";
+
     public Preferensi(Context context) {
         this.context = context;
         preferensiKakakuh = context.getSharedPreferences("com.kakakuh.c4ppl.preferences", Context.MODE_PRIVATE);
@@ -100,6 +104,22 @@ public class Preferensi {
     public String getPengaturanReviewLog() {
         return preferensiKakakuh.getString(PENGATURAN_REVIEW_LOG_KEY,
                 context.getResources().getString(R.string.pengaturan_review_log_default));
+    }
+
+    public void setPesanAkunKakak(String akun) {
+        editor.putString(PESAN_AKUN_KAKAK,akun);
+    }
+
+    public String getPesanAkunKakak() {
+        return preferensiKakakuh.getString(PESAN_AKUN_KAKAK,null);
+    }
+
+    public void setPesanImageKakak(String encodedBitmap) {
+        editor.putString(PESAN_IMAGE_KAKAK,encodedBitmap);
+    }
+
+    public String getPesanImageKakak() {
+        return preferensiKakakuh.getString(PESAN_IMAGE_KAKAK,null);
     }
 
     public void commit() {

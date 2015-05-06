@@ -3,13 +3,18 @@ package com.kakakuh.c4ppl.kakakuh;
 /**
  * Created by Aldi Reinaldi on 12/04/2015.
  */
+import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -42,6 +47,9 @@ public class ProfilActivity extends TabActivity {
 
     private JSONArray jsonArray;
 
+    private ImageView imgView;
+    Bitmap decodedByte;
+
     TextView nama, role;
 
     String username;
@@ -58,6 +66,7 @@ public class ProfilActivity extends TabActivity {
 
         nama = (TextView) findViewById(R.id.nama);
         role = (TextView) findViewById(R.id.role);
+        imgView = (ImageView) findViewById(R.id.foto_profil);
 
         new retrieveMyProfile().execute();
 
@@ -141,14 +150,24 @@ public class ProfilActivity extends TabActivity {
     }
 
     class retrieveMyProfile extends AsyncTask<String, String, String> {
+//        private ProgressDialog pDialog;
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            pDialog = new ProgressDialog(getCurrentActivity());
+//            pDialog.setMessage("Getting Data ...");
+//            pDialog.setIndeterminate(false);
+//            pDialog.setCancelable(true);
+//            pDialog.show();
+//        }
+
         protected String doInBackground(String... params) {
             String hasil = retrieve();
             return hasil ;
         }
 
-
-
         protected void onPostExecute(String result) {
+//            pDialog.dismiss();
             JSONObject c = null;
             try {
                 JSONObject json = new JSONObject(result);
@@ -166,6 +185,15 @@ public class ProfilActivity extends TabActivity {
                 else{
                     role.setText("Adik Asuh");
                 }
+
+                byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
+                System.out.println("ini hasil decodedString!");
+                System.out.println(decodedString);
+                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
+                decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                System.out.println("ini hasil decodedByte!");
+                System.out.println(decodedByte);
+                imgView.setImageBitmap(decodedByte);
 
             } catch (JSONException e) {
                 e.printStackTrace();

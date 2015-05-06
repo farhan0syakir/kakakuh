@@ -4,9 +4,11 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,7 @@ public class AdikAsuhkuFragment extends Fragment{
     private JSONArray android = null;
     private String user;
     private ListView mListAkun;
+    Bitmap decodedByte;
 
     private Preferensi preferensi;
 
@@ -114,9 +117,16 @@ public class AdikAsuhkuFragment extends Fragment{
                     // Storing  JSON item in a Variable
                     String namaLengkap = c.getString("nama_lengkap");
                     String username = c.getString("username");
+                    byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
+                    System.out.println("ini hasil decodedString!");
+                    System.out.println(decodedString);
+                    System.out.println("hasil panjang sesudah masuk" + decodedString.length);
+                    decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    System.out.println("ini hasil decodedByte!");
+                    System.out.println(decodedByte);
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
-                    AkunListItem akun = new AkunListItem(username,namaLengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal));
+                    AkunListItem akun = new AkunListItem(username,namaLengkap, decodedByte);
 
                     //TODO Hardcoded harusnya ambil tugas terakhir yang sudah dikerjakan adik.
                     Tugas tugas = tugases[i];

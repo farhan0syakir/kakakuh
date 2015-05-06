@@ -44,6 +44,7 @@ public class Log{
         this.id = id;
     }
 
+
     public String getUsername() {
         return username;
     }

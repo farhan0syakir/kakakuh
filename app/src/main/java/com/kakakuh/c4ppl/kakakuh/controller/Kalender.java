@@ -54,4 +54,45 @@ public class Kalender {
         Date date = new Date(cal.getTimeInMillis());
         return date;
     }
+
+    public static String getLogTime(Date timestamp) {
+        long elapsedTime = System.currentTimeMillis() - timestamp.getTime();
+        long elapsedTimeInSeconds = elapsedTime/1000;
+
+        long days = elapsedTimeInSeconds / 86400;
+        if(days > 1) return (days + " hari yang lalu");
+        if(days > 0) return ("Kemarin");
+        long hours = elapsedTimeInSeconds / 3600;
+        if(hours > 0) return (hours + " jam yang lalu");
+        long minutes = elapsedTimeInSeconds / 60;
+        return (minutes + " menit yang lalu");
+    }
+
+    public static String getPesanTime(Date timestamp) {
+        long elapsedTime = System.currentTimeMillis() - timestamp.getTime();
+        long elapsedTimeInSeconds = elapsedTime/1000;
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(timestamp);
+
+        long days = elapsedTimeInSeconds / 86400;
+        if(days > 7) {
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int date = cal.get(Calendar.DATE);
+            return date + "/" + month + "/" + year;
+        }
+
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        String time = hour + ":" + minute;
+
+        if(days > 1) {
+            int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+            return HARI[dayOfWeek-1] + " " + time;
+        }
+
+        if(days > 0) return "Kemarin" + " " + time;
+        return time;
+    }
 }

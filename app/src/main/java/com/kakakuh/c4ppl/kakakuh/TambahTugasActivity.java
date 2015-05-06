@@ -83,7 +83,7 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
                 Intent nextIntent = new Intent(context, ProfilActivity.class);
-                nextIntent.putExtra("usernama", username);
+                nextIntent.putExtra("username", username);
                 context.startActivity(nextIntent);
             }
         });
