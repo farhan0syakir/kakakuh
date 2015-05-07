@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class MainActivity extends Activity {
 
     private TextView mDrawerRole;
     private TextView mDrawerUsername;
+    private ImageView mDrawerImage;
 
     static private Preferensi preferensi;
     static private String usernameSekarang;
@@ -85,8 +87,10 @@ public class MainActivity extends Activity {
         mDrawerList.addHeaderView(header_role, null, false);
         mDrawerUsername = (TextView) findViewById(R.id.drawer_username);
         mDrawerRole = (TextView) findViewById(R.id.drawer_role);
+        mDrawerImage = (ImageView) findViewById(R.id.image);
         mDrawerUsername.setText(usernameSekarang);
         mDrawerRole.setText(roleSekarang);
+//        mDrawerImage.setImageBitmap();
 
         //sesuaikan drawer dengan role
         if(roleSekarang.equals("Koordinator")) {

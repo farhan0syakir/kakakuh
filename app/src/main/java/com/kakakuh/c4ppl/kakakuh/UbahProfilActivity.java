@@ -178,12 +178,12 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 namaField.setText(c.getString("nama_lengkap"), TextView.BufferType.EDITABLE);
                 npmField.setText(c.getString("npm"), TextView.BufferType.EDITABLE);
                 byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-                System.out.println("ini hasil decodedString!");
-                System.out.println(decodedString);
-                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
+//                System.out.println("ini hasil decodedString!");
+//                System.out.println(decodedString);
+//                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
                 decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                System.out.println("ini hasil decodedByte!");
-                System.out.println(decodedByte);
+//                System.out.println("ini hasil decodedByte!");
+//                System.out.println(decodedByte);
                 imgView.setImageBitmap(decodedByte);
 //                imgView = (ImageView) findViewById(R.id.foto_profil);
 //                imgView.setImageBitmap(bm);
