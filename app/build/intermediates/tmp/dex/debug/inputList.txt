@@ -1,0 +1,8 @@
+/home/farhan/android-project/kakakuh/app/build/intermediates/classes/debug
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-c6d03e93a8514e845fb5dffd7495fe614663dab3.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-812c7be61864e48bf8e301e06db5640cc6c3533f.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-083f403b5ecad776b70a843cee1e1e832a8d9d60.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3da1a33437e5d73ed442e30ed57cd6ff69e1aacb.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-cfe82fa478071f02e320fa67d42455bc2319adc4.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-d355a8279fdba8a449254a1d5cc1832b07dc1103.jar
+/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-42f0ca2312fcccb589a1fc940277a799f1c566bd.jar

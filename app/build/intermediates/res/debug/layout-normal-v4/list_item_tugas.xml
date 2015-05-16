@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <CheckBox
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:text="Ini tugas apa?"
+        android:id="@+id/deskripsi_tugas"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:enabled="false"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btn_kerjakan"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:text="Kerjakan"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_normal"
+        android:contentDescription="@string/button"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/list_item_tugas.xml -->

@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:background="@color/white"
+    tools:context="com.kakakuh.c4ppl.kakakuh.LoginActivity"
+    android:id="@+id/login_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/emerald"
+        android:id="@+id/wrapper_logo_portal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/art_kakakuh_portal"
+            android:contentDescription="@string/logo_portal"
+            android:id="@+id/logo_portal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+            </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kakakuh_portal"
+        android:textSize="@dimen/heading_text"
+        android:textColor="@color/emerald"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/wrapper_logo_portal"
+        android:layout_marginTop="10dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wrapper_logo_portal"
+        android:layout_alignTop="@+id/logo_text"
+        android:layout_marginTop="50dp">
+
+        <ScrollView
+            android:orientation="vertical"
+            android:id="@+id/scrollview"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:isScrollContainer="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:id="@+id/container_text"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+                <TextView
+                    android:id="@+id/username_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username_label"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"/>
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/username_label"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/password_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password_label"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/username"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/password_label"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"/>
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:text="@id/btn_login_label"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/password"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/btn_login"
+                    android:onClick="login"/>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/activity_login.xml -->

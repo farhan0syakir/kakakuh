@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:orientation="vertical"
+        android:id="@+id/scrollview"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:isScrollContainer="true">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:id="@+id/container"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+
+            <TextView
+                android:id="@+id/username_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="70dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/username"
+                android:layout_alignStart="@+id/username" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/username_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"
+                android:inputType="textNoSuggestions" />
+
+            <TextView
+                android:id="@+id/password_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/username"
+                android:layout_alignLeft="@+id/password"
+                android:layout_alignStart="@+id/password"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/password_label"
+                android:layout_marginTop="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"/>
+
+            <TextView
+                android:id="@+id/email_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/password"
+                android:layout_alignLeft="@+id/email"
+                android:layout_alignStart="@+id/email"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/email_label"
+                android:layout_marginTop="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_alignLeft="@+id/email"
+                android:layout_alignStart="@+id/email">
+
+                <RadioButton
+                    android:id="@+id/radio_kakak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_kakak_asuh" />
+
+                <RadioButton
+                    android:id="@+id/radio_adik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_adik_asuh"
+                    android:layout_marginTop="5dp"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_buat"
+                android:text="@string/btn_buat_akun"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/radio_group"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_normal"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/btn_login" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/fragment_buat_akun.xml -->

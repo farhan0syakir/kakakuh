@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/line_adik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="12dp"
+            android:contentDescription="@string/desc_list_item_icon"
+            android:src="@drawable/ic_white_home"
+            android:background="@color/grey"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/nama"
+            android:text="Nama Saya"
+            android:textSize="@dimen/nama_akun_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/line_adik"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/kategori_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kategori_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_alignParentTop="true"/>
+
+            <EditText
+                android:id="@+id/kategori"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/kategori_label"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"
+                android:inputType="textNoSuggestions" />
+
+            <TextView
+                android:id="@+id/deadline_label"
+                android:layout_below="@+id/kategori"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deadline_label"
+                android:textSize="@dimen/normal_text"/>
+
+            <TextView
+                android:id="@+id/deadline_tanggal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/deadline_jam"
+                android:layout_alignBottom="@+id/deadline_jam"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/square_text_box" />
+
+            <TextView
+                android:id="@+id/deadline_jam"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deadline_label"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/square_text_box"/>
+
+            <TextView
+                android:id="@+id/point_label"
+                android:layout_below="@+id/deadline_tanggal"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tugas_label"
+                android:textSize="@dimen/normal_text"/>
+
+            <LinearLayout
+                android:id="@+id/points"
+                android:layout_below="@+id/point_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/poin1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <EditText
+                    android:id="@+id/poin2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <EditText
+                    android:id="@+id/poin3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <EditText
+                    android:id="@+id/poin4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <EditText
+                    android:id="@+id/poin5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_tambah"
+                android:text="@id/btn_tambah_label"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_below="@+id/points"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_normal"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/button"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/activity_kelola_tugas.xml -->

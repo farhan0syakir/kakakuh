@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Tambah, should appear as action button -->
+    <item android:id="@+id/action_tambah"
+        android:icon="@drawable/ic_white_tambah"
+        android:showAsAction="always"
+        app:showAsAction="always"
+        android:title="Pesan baru"/>
+</menu><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/menu/menu_pesan.xml -->

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- PESAN, should appear as action button -->
+    <item android:id="@+id/action_pesan"
+        android:icon="@drawable/ic_white_pesan"
+        android:showAsAction="always"
+        app:showAsAction="always"
+        android:title="Pesan"/>
+</menu><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/menu/menu_main.xml -->

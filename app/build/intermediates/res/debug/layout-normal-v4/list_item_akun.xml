@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/list_selector"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:contentDescription="@string/desc_list_item_icon"
+        android:src="@drawable/ic_white_home"
+        android:layout_centerVertical="true"
+        android:background="@color/grey"/>
+
+    <TextView
+        android:id="@+id/nama_akun"
+        android:text="Nama Saya"
+        android:textSize="@dimen/nama_akun_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/list_item_title"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/image"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/list_item_akun.xml -->

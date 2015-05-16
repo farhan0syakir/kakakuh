@@ -1,0 +1,237 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:background="@color/white"
+    tools:context="com.kakakuh.c4ppl.kakakuh.UbahProfilActivity"
+    android:id="@+id/ubah_profil_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <ScrollView
+            android:orientation="vertical"
+            android:id="@+id/scrollview"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:isScrollContainer="true">
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:id="@+id/container"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/foto_profil"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/art_default_profil"
+                    android:background="@color/grey"/>
+
+                <Button
+                    android:id="@+id/btn_upload"
+                    android:text="@string/btn_upload"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/foto_profil"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:contentDescription="@string/button" />
+
+                <TextView
+                    android:id="@+id/label_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_nama"
+                    android:layout_alignLeft="@+id/npm"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_below="@id/btn_upload"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/nama"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_below="@+id/label_nama"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/label_npm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_npm"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/nama"/>
+
+                <EditText
+                    android:id="@+id/npm"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_npm"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/label_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_email"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/email"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/npm"/>
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_email"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/label_no_hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_no_hp"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/email"/>
+
+                <EditText
+                    android:id="@+id/no_hp"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_no_hp"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/label_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_tempat_tinggal"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/no_hp"/>
+
+                <EditText
+                    android:id="@+id/alamat"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_alamat"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/label_asal_daerah"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_asal_daerah"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/alamat"/>
+
+                <EditText
+                    android:id="@+id/asal_daerah"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_asal_daerah"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <TextView
+                    android:id="@+id/label_motto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_motto"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_alignLeft="@+id/npm"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/asal_daerah"/>
+
+                <EditText
+                    android:id="@+id/motto"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/label_motto"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:background="@drawable/square_text_box"
+                    android:inputType="textNoSuggestions" />
+
+                <Button
+                    android:id="@+id/btn_selesai"
+                    android:text="@string/btn_selesai"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/motto"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/button" />
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/activity_ubah_profil.xml -->
