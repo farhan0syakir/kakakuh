@@ -3,9 +3,11 @@ package com.kakakuh.c4ppl.kakakuh;
 import android.app.Fragment;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
@@ -26,13 +28,14 @@ public class JadwalFragment
     private static final int TYPE_WEEK_VIEW = 3;
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     WeekView mWeekView;
-
+    Button button;
     public JadwalFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
+
 
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
 
@@ -45,7 +48,6 @@ public class JadwalFragment
 
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
-
 
         return rootView;
     }
@@ -171,4 +173,33 @@ public class JadwalFragment
         Toast.makeText(JadwalFragment.this.getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
+    public void lihatHariIni(){
+        mWeekView.goToToday();
+    }
+
+    public void lihatSeminggu(){
+        if (mWeekViewType != TYPE_WEEK_VIEW) {
+            mWeekViewType = TYPE_WEEK_VIEW;
+            mWeekView.setNumberOfVisibleDays(7);
+
+            // Lets change some dimensions to best fit the view.
+            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
+            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+        }
+    }
+    public void lihat3Hari(){
+        if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
+            mWeekViewType = TYPE_THREE_DAY_VIEW;
+            mWeekView.setNumberOfVisibleDays(3);
+
+            // Lets change some dimensions to best fit the view.
+            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
+            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+        }
+    }
+    public void tambahJadwal(View view){
+//        Toast.makeText(this.getActivity().getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
+    }
 }
