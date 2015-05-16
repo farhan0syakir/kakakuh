@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,7 +36,13 @@ public class JadwalFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
-
+        FloatingActionButton tambahJadwalBtn = (FloatingActionButton) rootView.findViewById(R.id.tambah_jadwal);
+        tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(JadwalFragment.this.getActivity(), "farhan ganteng ", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
 
@@ -49,6 +56,45 @@ public class JadwalFragment
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
 
+        FloatingActionButton goToTodayBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat_hari_ini);
+        goToTodayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mWeekView.goToToday();
+            }
+        });
+
+        FloatingActionButton threeDaysBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat3hari);
+        threeDaysBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
+                    mWeekViewType = TYPE_THREE_DAY_VIEW;
+                    mWeekView.setNumberOfVisibleDays(3);
+
+                    // Lets change some dimensions to best fit the view.
+                    mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
+                    mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                    mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                }
+            }
+        });
+
+        FloatingActionButton weekViewBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat_seminggu);
+        weekViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mWeekViewType != TYPE_WEEK_VIEW) {
+                    mWeekViewType = TYPE_WEEK_VIEW;
+                    mWeekView.setNumberOfVisibleDays(7);
+
+                    //Lets change some dimensions to best fit the view.
+                    mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
+                    mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+                    mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+                }
+            }
+        });
         return rootView;
     }
     @Override
@@ -173,31 +219,28 @@ public class JadwalFragment
         Toast.makeText(JadwalFragment.this.getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
-    public void lihatHariIni(){
-        mWeekView.goToToday();
-    }
 
-    public void lihatSeminggu(){
+    public void lihatSeminggu(View view){
         if (mWeekViewType != TYPE_WEEK_VIEW) {
             mWeekViewType = TYPE_WEEK_VIEW;
-            mWeekView.setNumberOfVisibleDays(7);
+//            mWeekView.setNumberOfVisibleDays(7);
 
             // Lets change some dimensions to best fit the view.
-            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
-            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
-            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+//            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
+//            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+//            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
         }
     }
     public void lihat3Hari(){
-        if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
-            mWeekViewType = TYPE_THREE_DAY_VIEW;
-            mWeekView.setNumberOfVisibleDays(3);
-
-            // Lets change some dimensions to best fit the view.
-            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
-            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-        }
+//        if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
+//            mWeekViewType = TYPE_THREE_DAY_VIEW;
+//            mWeekView.setNumberOfVisibleDays(3);
+//
+//            // Lets change some dimensions to best fit the view.
+//            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
+//            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+//            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+//        }
     }
     public void tambahJadwal(View view){
 //        Toast.makeText(this.getActivity().getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
