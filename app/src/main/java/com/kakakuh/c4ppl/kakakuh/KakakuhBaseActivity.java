@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
+
 /**
  * Ini untuk semua action bar biar ada action button pesan
  * Tinggal extend kelas abstract ini
@@ -38,19 +40,30 @@ public abstract class KakakuhBaseActivity extends Activity {
             case R.id.action_pesan:
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?
                 Intent nextScreen;
-                String roleSekarang = MainActivity.getRoleSekarang();
-                switch (roleSekarang) {
+                Preferensi pref = new Preferensi(this);
+                switch (pref.getRole()) {
                     case "Koordinator":
-                        nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
                         startActivity(nextScreen);
                         break;
                     case "Kakak Asuh":
-                        nextScreen = new Intent(getApplicationContext(), PesanKakakActivity.class);
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
                         startActivity(nextScreen);
                         break;
                     case "Adik Asuh":
-                        nextScreen = new Intent(getApplicationContext(), PesanAdikActivity.class);
-                        startActivity(nextScreen);
+                        //TODO Query ambil data kakak ROLAND
+                        int jumlahKakak = 1;
+                        if(jumlahKakak > 1) {
+                            nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
+                            startActivity(nextScreen);
+                        } else {
+                            nextScreen = new Intent(getApplicationContext(), DetailPesanActivity.class);
+                            nextScreen.putExtra("username","choco");
+                            //TODO encoded Bitmap ROLAND
+                            //nextScreen.putExtra("image",);
+                            nextScreen.putExtra("nama","lala");
+                            startActivity(nextScreen);
+                        }
                         break;
                     default:
                         break;

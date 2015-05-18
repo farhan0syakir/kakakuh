@@ -22,8 +22,10 @@
  To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
      option is required to comply with the Google+ Sign-In developer policies
     -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" /> <!-- To retrieve the account name (email) as part of sign-in: -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+ <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+ <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -61,31 +63,15 @@
 
         <!-- Pesan Activity -->
         <activity
-            android:name="com.kakakuh.c4ppl.kakakuh.PesanKoordinatorActivity"
+            android:name="com.kakakuh.c4ppl.kakakuh.PesanActivity"
             android:label="@string/pesan" >
         </activity>
         <activity
-            android:name="com.kakakuh.c4ppl.kakakuh.PesanBaruKoordinatorActivity"
-            android:label="@string/kirim_pesan"
-            android:parentActivityName="com.kakakuh.c4ppl.kakakuh.PesanKoordinatorActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.PesanKoordinatorActivity" />
+            android:name="com.kakakuh.c4ppl.kakakuh.PesanBaruActivity"
+            android:label="@string/kirim_pesan" >
         </activity>
         <activity
-            android:name="com.kakakuh.c4ppl.kakakuh.PesanKakakActivity"
-            android:label="@string/pesan" >
-        </activity>
-        <activity
-            android:name="com.kakakuh.c4ppl.kakakuh.PesanBaruKakakActivity"
-            android:label="@string/kirim_pesan"
-            android:parentActivityName="com.kakakuh.c4ppl.kakakuh.PesanKakakActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.PesanKakakActivity" />
-        </activity>
-        <activity
-            android:name="com.kakakuh.c4ppl.kakakuh.PesanAdikActivity"
+            android:name="com.kakakuh.c4ppl.kakakuh.DetailPesanActivity"
             android:label="@string/pesan" >
         </activity>
 

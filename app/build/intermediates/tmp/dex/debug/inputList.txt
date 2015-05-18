@@ -1,8 +1,8 @@
-/home/farhan/android-project/kakakuh/app/build/intermediates/classes/debug
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-c6d03e93a8514e845fb5dffd7495fe614663dab3.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-812c7be61864e48bf8e301e06db5640cc6c3533f.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-083f403b5ecad776b70a843cee1e1e832a8d9d60.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3da1a33437e5d73ed442e30ed57cd6ff69e1aacb.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-cfe82fa478071f02e320fa67d42455bc2319adc4.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-d355a8279fdba8a449254a1d5cc1832b07dc1103.jar
-/home/farhan/android-project/kakakuh/app/build/intermediates/pre-dexed/debug/classes-42f0ca2312fcccb589a1fc940277a799f1c566bd.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\classes\debug
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-b3f8a74dec84be7a26db335c44e81b4ecf045a9e.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-a6a7cfb7e174c3ad2cda50c7b83479f77692750b.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-33e3083376773c2d5b41b38649ee677803927975.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7557d0db622b231c4a652d0d2710892007aa4a1a.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-089f5f6544d3992631cf9bc1c5e7a5969ac5a425.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-2750845fd5f1a0751ced96e7c685cd238c738f44.jar
+C:\Users\Anas\Documents\GitHub\kakakuh\app\build\intermediates\pre-dexed\debug\classes-a412315a5fa750133db5ae6f73b7fe78936f2056.jar

@@ -23,4 +23,4 @@
         android:textColor="@color/list_item_title"
         android:layout_below="@id/username"/>
 
-</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/list_item_pasangan.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/layout-normal/list_item_pasangan.xml -->

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 
 /**

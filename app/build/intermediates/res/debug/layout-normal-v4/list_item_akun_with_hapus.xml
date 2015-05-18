@@ -55,4 +55,4 @@
         android:background="@drawable/btn_delete_selector"
         android:contentDescription="@string/button"/>
 
-</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/list_item_akun_with_hapus.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/layout-normal/list_item_akun_with_hapus.xml -->

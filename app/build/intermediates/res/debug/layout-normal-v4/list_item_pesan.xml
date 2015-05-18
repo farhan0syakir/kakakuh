@@ -43,4 +43,4 @@
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:background="@drawable/patch_caption_pengirim"/>
-</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/list_item_pesan.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/layout-normal/list_item_pesan.xml -->

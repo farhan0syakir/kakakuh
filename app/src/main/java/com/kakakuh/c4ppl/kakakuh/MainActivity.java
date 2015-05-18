@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
     static private String roleSekarang;
 
     // shared preferences
-    SharedPreferences preferensiKakakuh;
+    private SharedPreferences preferensiKakakuh;
 
     // nav drawer title
     private CharSequence mDrawerTitle;
@@ -399,8 +399,8 @@ public class MainActivity extends Activity {
                     .replace(R.id.frame_container, fragment).commit();
 
             // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position+1, true);
-            mDrawerList.setSelection(position+1);
+            mDrawerList.setItemChecked(position + 1, true);
+            mDrawerList.setSelection(position + 1);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
@@ -411,35 +411,53 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle presses on the action bar items
-        Intent nextScreen;
+
         switch (item.getItemId()) {
             case R.id.action_pesan:
-                //TODO: go to com.kakakuh.c4ppl.kakakuh.model.belumTerpakai.Pesan
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?
-                if(roleSekarang.equals("Koordinator")) {
-                    nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
-                    startActivity(nextScreen);
-                } else if (roleSekarang.equals("Kakak Asuh")) {
-                    nextScreen = new Intent(getApplicationContext(), PesanKakakActivity.class);
-                    startActivity(nextScreen);
-                } else {
-                    nextScreen = new Intent(getApplicationContext(), PesanAdikActivity.class);
-                    startActivity(nextScreen);
+                Intent nextScreen;
+                switch (preferensi.getRole()) {
+                    case "Koordinator":
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
+                        startActivity(nextScreen);
+                        break;
+                    case "Kakak Asuh":
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
+                        startActivity(nextScreen);
+                        break;
+                    case "Adik Asuh":
+                        //TODO Query ambil data kakak
+                        int jumlahKakak = 1;
+                        if(jumlahKakak > 1) {
+                            nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
+                            startActivity(nextScreen);
+                        } else {
+                            nextScreen = new Intent(getApplicationContext(), DetailPesanActivity.class);
+                            nextScreen.putExtra("username","choco");
+                            //TODO encoded Bitmap
+                            //nextScreen.putExtra("image",);
+                            nextScreen.putExtra("nama","lala");
+                            startActivity(nextScreen);
+                        }
+                        break;
+                    default:
+                        return true;
                 }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /***

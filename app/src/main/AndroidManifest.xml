@@ -55,31 +55,15 @@
 
         <!-- Pesan Activity -->
         <activity
-            android:name=".PesanKoordinatorActivity"
+            android:name=".PesanActivity"
             android:label="@string/pesan" >
         </activity>
         <activity
-            android:name=".PesanBaruKoordinatorActivity"
-            android:label="@string/kirim_pesan"
-            android:parentActivityName=".PesanKoordinatorActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.PesanKoordinatorActivity" />
+            android:name=".PesanBaruActivity"
+            android:label="@string/kirim_pesan" >
         </activity>
         <activity
-            android:name=".PesanKakakActivity"
-            android:label="@string/pesan" >
-        </activity>
-        <activity
-            android:name=".PesanBaruKakakActivity"
-            android:label="@string/kirim_pesan"
-            android:parentActivityName=".PesanKakakActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.kakakuh.c4ppl.kakakuh.PesanKakakActivity" />
-        </activity>
-        <activity
-            android:name=".PesanAdikActivity"
+            android:name=".DetailPesanActivity"
             android:label="@string/pesan" >
         </activity>
 

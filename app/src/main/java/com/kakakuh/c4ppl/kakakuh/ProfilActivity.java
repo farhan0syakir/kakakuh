@@ -3,7 +3,6 @@ package com.kakakuh.c4ppl.kakakuh;
 /**
  * Created by Aldi Reinaldi on 12/04/2015.
  */
-import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +19,8 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,7 +32,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -219,19 +219,30 @@ public class ProfilActivity extends TabActivity {
             case R.id.action_pesan:
                 //Buah Pikiran. Gimana agar pesan activity jalan di background?
                 Intent nextScreen;
-                String roleSekarang = MainActivity.getRoleSekarang();
-                switch (roleSekarang) {
+                Preferensi pref = new Preferensi(this);
+                switch (pref.getRole()) {
                     case "Koordinator":
-                        nextScreen = new Intent(getApplicationContext(), PesanKoordinatorActivity.class);
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
                         startActivity(nextScreen);
                         break;
-                    case "KakakAsuh":
-                        nextScreen = new Intent(getApplicationContext(), PesanKakakActivity.class);
+                    case "Kakak Asuh":
+                        nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
                         startActivity(nextScreen);
                         break;
                     case "Adik Asuh":
-                        nextScreen = new Intent(getApplicationContext(), PesanAdikActivity.class);
-                        startActivity(nextScreen);
+                        //TODO Query ambil data kakak
+                        int jumlahKakak = 1;
+                        if(jumlahKakak > 1) {
+                            nextScreen = new Intent(getApplicationContext(), PesanActivity.class);
+                            startActivity(nextScreen);
+                        } else {
+                            nextScreen = new Intent(getApplicationContext(), DetailPesanActivity.class);
+                            nextScreen.putExtra("username","choco");
+                            //TODO encoded Bitmap
+                            //nextScreen.putExtra("image",);
+                            nextScreen.putExtra("nama","lala");
+                            startActivity(nextScreen);
+                        }
                         break;
                     default:
                         break;

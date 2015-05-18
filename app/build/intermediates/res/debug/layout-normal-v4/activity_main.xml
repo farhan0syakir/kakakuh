@@ -22,4 +22,4 @@
         android:listSelector="@drawable/list_selector"
         android:layout_gravity="start"
         android:background="@color/list_background"/>
-</android.support.v4.widget.DrawerLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/activity_main.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/layout-normal/activity_main.xml -->

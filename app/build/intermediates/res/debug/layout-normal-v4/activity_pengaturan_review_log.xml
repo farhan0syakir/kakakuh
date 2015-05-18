@@ -62,4 +62,4 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:contentDescription="@string/button"/>
-</RelativeLayout><!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/layout-normal/activity_pengaturan_review_log.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/layout-normal/activity_pengaturan_review_log.xml -->

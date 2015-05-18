@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_drawer_adik_asuh.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_drawer_adik_asuh.xml -->
     <eat-comment/>
     <array name="adik_nav_drawer_icons">
         <item>@drawable/ic_emerald_tugas</item>
@@ -14,7 +14,7 @@
         <item>Daftar Kakak Asuh</item>
         <item>Pengaturan</item>
     </string-array>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_drawer_kakak_asuh.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_drawer_kakak_asuh.xml -->
     <eat-comment/>
     <array name="kakak_nav_drawer_icons">
         <item>@drawable/ic_emerald_list_akun</item>
@@ -30,7 +30,7 @@
         <item>Daftar Kakak Asuh</item>
         <item>Pengaturan</item>
     </string-array>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_drawer_koordinator.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_drawer_koordinator.xml -->
     <eat-comment/>
     <array name="koor_nav_drawer_icons">
         <item>@drawable/ic_emerald_review_log</item>
@@ -54,7 +54,7 @@
         <item>Daftar Pasangan</item>
         <item>Pengaturan</item>
     </string-array>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
     <eat-comment/>
     <array name="pengaturan_emerald_icons">
         <item>@drawable/ic_emerald_home</item>
@@ -83,7 +83,7 @@
         <item>@drawable/ic_white_review_log</item>
         <item>@drawable/ic_white_log_out</item>
     </array>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <array name="profil_about_icons">
         <item>@drawable/ic_emerald_npm</item>
@@ -99,7 +99,7 @@
         <item>Asal Daerah</item>
         <item>Motto</item>
     </string-array>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -117,23 +117,23 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="alizarin">#e74c3c</color>
     <color name="background">#e5e5e5</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
     <color name="black_semi_transparent">#B2000000</color>
     <color name="blue_semi_transparent">#805677fc</color>
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -143,10 +143,10 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="cloud">#ecf0f1</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
@@ -158,13 +158,13 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="emerald">#2ecc71</color>
     <color name="emerald_light">#76EDA8</color>
@@ -175,7 +175,7 @@
     <color name="grey">#cccccc</color>
     <color name="grey_700">#646464</color>
     <color name="half_black">#808080</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
@@ -183,26 +183,26 @@
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="list_background">@color/white</color>
     <color name="list_background_pressed">@color/emerald_light</color>
     <color name="list_divider">@color/grey</color>
     <color name="list_item_title">@color/black</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="nerphritis">#27ae60</color>
     <color name="peter_river">#3498db</color>
     <color name="pink">#e91e63</color>
     <color name="pink_pressed">#ec407a</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -220,10 +220,10 @@
     <color name="secondary_text_disabled_material_light">#24000000</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="turqoise">#1abc9c</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_colors.xml -->
     <eat-comment/>
     <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
     <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
@@ -238,7 +238,7 @@
     <color name="wallet_hint_foreground_holo_light">#808080</color>
     <color name="wallet_holo_blue_light">#ff33b5e5</color>
     <color name="wallet_link_text_light">#0000ee</color>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="white">#FFFFFF</color>
     <color name="white_pressed">#f1f1f1</color>
@@ -274,7 +274,7 @@
     <declare-styleable name="WalletFragmentOptions"><attr format="enum" name="appTheme"><enum name="holo_dark" value="0"/><enum name="holo_light" value="1"/></attr><attr format="enum" name="environment"><enum name="production" value="1"/><enum name="sandbox" value="0"/><enum name="strict_sandbox" value="2"/></attr><attr format="reference" name="fragmentStyle"/><attr format="enum" name="fragmentMode"><enum name="buyButton" value="1"/><enum name="selectionDetails" value="2"/></attr></declare-styleable>
     <declare-styleable name="WalletFragmentStyle"><attr format="dimension" name="buyButtonHeight"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="dimension" name="buyButtonWidth"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="enum" name="buyButtonText"><enum name="buy_with_google" value="1"/><enum name="buy_now" value="2"/><enum name="book_now" value="3"/><enum name="donate_with_google" value="4"/></attr><attr format="enum" name="buyButtonAppearance"><enum name="classic" value="1"/><enum name="grayscale" value="2"/><enum name="monochrome" value="3"/></attr><attr format="reference" name="maskedWalletDetailsTextAppearance"/><attr format="reference" name="maskedWalletDetailsHeaderTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsBackground"/><attr format="reference" name="maskedWalletDetailsButtonTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsButtonBackground"/><attr format="color" name="maskedWalletDetailsLogoTextColor"/><attr format="enum" name="maskedWalletDetailsLogoImageType"><enum name="classic" value="1"/><enum name="monochrome" value="2"/></attr></declare-styleable>
     <declare-styleable name="WeekView"><attr format="enum" name="firstDayOfWeek"><enum name="sunday" value="1"/><enum name="monday" value="2"/><enum name="tuesday" value="3"/><enum name="wednesday" value="4"/><enum name="thursday" value="5"/><enum name="friday" value="6"/><enum name="saturday" value="7"/></attr><attr format="dimension" name="hourHeight"/><attr format="dimension" name="textSize"/><attr format="dimension" name="eventTextSize"/><attr format="dimension" name="headerColumnPadding"/><attr format="dimension" name="headerRowPadding"/><attr format="dimension" name="columnGap"/><attr format="color" name="headerColumnTextColor"/><attr format="integer" name="noOfVisibleDays"/><attr format="color" name="headerRowBackgroundColor"/><attr format="color" name="dayBackgroundColor"/><attr format="color" name="hourSeparatorColor"/><attr format="color" name="todayBackgroundColor"/><attr format="color" name="todayHeaderTextColor"/><attr format="dimension" name="hourSeparatorHeight"/><attr format="color" name="eventTextColor"/><attr format="dimension" name="eventPadding"/><attr format="color" name="headerColumnBackground"/><attr format="enum" name="dayNameLength"><enum name="length_short" value="1"/><enum name="length_long" value="2"/></attr><attr format="dimension" name="overlappingEventGap"/><attr format="dimension" name="eventMarginVertical"/><attr format="float" name="xScrollingSpeed"/></declare-styleable>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
@@ -313,11 +313,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -325,7 +325,7 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="fab_actions_spacing">16dp</dimen>
     <dimen name="fab_icon_size">24dp</dimen>
@@ -337,7 +337,7 @@
     <dimen name="fab_size_mini">40dp</dimen>
     <dimen name="fab_size_normal">56dp</dimen>
     <dimen name="fab_stroke_width">1dp</dimen>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="heading_text">30sp</dimen>
     <dimen name="large_text">24sp</dimen>
@@ -345,26 +345,26 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="normal_text">16sp</dimen>
     <dimen name="role_akun_text">14sp</dimen>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <item name="btn_login_label" type="id">LOGIN</item>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
     <eat-comment/>
     <item name="btn_simpan_label" type="id">SIMPAN</item>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <item name="btn_tambah_label" type="id">TAMBAH</item>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/res/values/values.xml -->
     <eat-comment/>
     <item name="fab_expand_menu_button" type="id"/>
     <item name="fab_label" type="id"/>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="home" type="id"/>
     <item name="progress_circular" type="id"/>
@@ -372,10 +372,10 @@
     <item name="split_action_bar" type="id"/>
     <item name="up" type="id"/>
     <integer name="abc_max_action_buttons">2</integer>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/version.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/version.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">6587000</integer>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -393,47 +393,47 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="accept">Accept</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_example">Example action</string>
     <string name="action_pesan">pesan</string>
     <string name="action_settings">Settings</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">Kakakuh</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
     <eat-comment/>
     <string name="btn_buat_akun">BUAT</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <string name="btn_cari">Cari...</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pesan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pesan.xml -->
     <eat-comment/>
     <string name="btn_kirim">KIRIM</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
     <eat-comment/>
     <string name="btn_lihat">Lihat</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="btn_login">Login Button</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
     <eat-comment/>
     <string name="btn_pasang">PASANG</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <string name="btn_selesai">SIMPAN</string>
     <string name="btn_upload">UNGGAH</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="button">disini button</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
     <string name="common_android_wear_update_text">This app won\'t run unless you update the Android Wear app.</string>
@@ -463,84 +463,84 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <string name="deadline_label">Deadline</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="decline">Decline</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_drawer_koordinator.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_drawer_koordinator.xml -->
     <eat-comment/>
     <string name="desc_list_item_icon">Item Icon</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="email_label">Email</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="hello_world">Hello World!</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="kakakuh_portal">KakaKuh</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <string name="kategori_label">Kategori</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="kirim_pesan">Kirim Pesan</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
     <eat-comment/>
     <string name="label_adik_asuh">Adik Asuh</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <string name="label_asal_daerah">Asal Daerah</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
     <eat-comment/>
     <string name="label_belum_ada_tugas">Belum ada tugas yang dikerjakan</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <string name="label_email">E-mail</string>
     <string name="label_hari_ini">Hari Ini</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
     <eat-comment/>
     <string name="label_kakak_asuh">Kakak Asuh</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
     <eat-comment/>
     <string name="label_konfirmasi_password">Konfirmasi Password Baru</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <string name="label_motto">Motto</string>
     <string name="label_nama">Nama</string>
     <string name="label_no_hp">No. HP</string>
     <string name="label_npm">NPM</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
     <eat-comment/>
     <string name="label_password_baru">Password Baru</string>
     <string name="label_password_sekarang">Password Sekarang</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_profil.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_profil.xml -->
     <eat-comment/>
     <string name="label_tempat_tinggal">Alamat</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_case_kakak.xml -->
     <eat-comment/>
     <string name="label_tugas_terakhir">Tugas</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="logo_portal">Logo Portal</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="password_label">Password</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_pengaturan.xml -->
     <eat-comment/>
     <string name="pengaturan_pasangan_2">Adik Asuh</string>
     <string name="pengaturan_pasangan_default">Kakak Asuh</string>
@@ -560,25 +560,25 @@
     <string name="pengaturan_review_log_4">14 hari</string>
     <string name="pengaturan_review_log_default">3 hari</string>
     <string name="pengaturan_review_log_label">Ambil Log Per</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="pesan">Pesan</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_akun.xml -->
     <eat-comment/>
     <string name="radio_adik_asuh">Adik Asuh</string>
     <string name="radio_kakak_asuh">Kakak Asuh</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <string name="text_bukti">Silahkan unggah bukti pengerjaan.</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="title_activity_adik">AdikActivity</string>
     <string name="title_activity_detail_log">Detail Log</string>
@@ -601,16 +601,16 @@
     <string name="title_activity_signin">SigninActivity</string>
     <string name="title_activity_tambah_tugas">Tambah Tugas</string>
     <string name="title_activity_ubah_profil">Ubah Profil</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_kelola_tugas.xml -->
     <eat-comment/>
     <string name="tugas_label">Tugas</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/strings_login.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/strings_login.xml -->
     <eat-comment/>
     <string name="username_label">Username</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_strings.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder" translation_description="Text on a button that allows a user to make a payment with Google Wallet [CHAR LIMIT=30]">Buy with Google</string>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
         <!-- API 11 -->
@@ -618,7 +618,7 @@
         <item name="android:actionBarStyle">@style/MyTheme.ActionBarStyle</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_up</item>
     </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -1372,7 +1372,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/white</item>
@@ -1381,7 +1381,7 @@
         <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
         <item name="android:background">@color/emerald</item>
     </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -1609,7 +1609,7 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_iap_style.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_iap_style.xml -->
     <eat-comment/>
     <style name="Theme.IAPTheme" parent="android:Theme">
     <item name="android:windowIsTranslucent">true</item>
@@ -1619,14 +1619,14 @@
     <item name="android:windowIsFloating">true</item>
     <item name="android:backgroundDimEnabled">false</item>
   </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_styles.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_styles.xml -->
     <eat-comment/>
     <style name="WalletFragmentDefaultButtonTextAppearance">
         <item name="android:textColor">@color/wallet_primary_text_holo_light</item>
@@ -1660,7 +1660,7 @@
         <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
         <item name="maskedWalletDetailsLogoImageType">classic</item>
     </style>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar"/>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid"/>
@@ -1715,7 +1715,7 @@
     <style name="Widget.AppCompat.Spinner.DropDown.ActionBar" parent="Base.Widget.AppCompat.Spinner.DropDown.ActionBar"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
-    <!-- From: file:/home/farhan/android-project/kakakuh/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="menu_labels_style">
         <item name="android:background">@drawable/fab_label_background</item>
