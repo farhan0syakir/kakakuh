@@ -38,7 +38,7 @@ import java.util.Locale;
 public class FormJadwalActivity extends KakakuhBaseActivity {
     private TextView username;
     private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField,deskripsi;
-    private String judulSTR,dateStartSTR,dateEndSTR,deskripsiSTR="";
+    private String judulSTR,dateStartSTR,dateEndSTR,deskripsiSTR,usernameSTR="";
     private Button btnSimpan;
 
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/create";
@@ -51,10 +51,12 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
     DatePickerDialog.OnDateSetListener dateStart,dateEnd;
     TimePickerDialog.OnTimeSetListener timeStart,timeEnd;
 
+    static private Preferensi prefensi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        preferensi = new Preferensi(getApplicationContext());
+        usernameSTR = prefensi.getUsername();
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -169,7 +171,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
     }
     private void updateLabel(int type) {
         if(type==0) {
-            String myFormat = "MM/dd/yy"; //In which you need put here
+            String myFormat = "E, MM dd yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
             dateStartField.setText(sdf.format(myCalendarStart.getTime()));
@@ -179,7 +181,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
 
             timeStartField.setText(sdf.format(myCalendarStart.getTime()));
         }else if (type==2){
-            String myFormat = "MM/dd/yy"; //In which you need put here
+            String myFormat = "E, MM dd yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
             dateEndField.setText(sdf.format(myCalendarStart.getTime()));
@@ -204,6 +206,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
         nameValuePairs.add(new BasicNameValuePair("startdate", dateStartSTR));
         nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
         nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
+        nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
 
         //debug
         System.out.println(nameValuePairs);
