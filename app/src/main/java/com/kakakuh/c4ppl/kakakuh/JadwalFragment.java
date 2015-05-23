@@ -1,6 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -32,15 +33,19 @@ public class JadwalFragment
     Button button;
     public JadwalFragment(){}
 
+    Fragment fragment = null;
+    Intent nextScreen;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         FloatingActionButton tambahJadwalBtn = (FloatingActionButton) rootView.findViewById(R.id.tambah_jadwal);
         tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(JadwalFragment.this.getActivity(), "farhan ganteng ", Toast.LENGTH_SHORT).show();
+                nextScreen = new Intent(getActivity().getApplicationContext(), FormJadwalActivity.class);
+                startActivity(nextScreen);
+
             }
         });
 
