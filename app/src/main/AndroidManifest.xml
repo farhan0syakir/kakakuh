@@ -126,6 +126,10 @@
             android:name=".KerjakanTugasActivity"
             android:label="@string/title_activity_kerjakan_tugas" >
         </activity>
+        <activity
+            android:name=".FormJadwalActivity"
+            android:label="form jadwal" >
+        </activity>
     </application>
 
 </manifest>
