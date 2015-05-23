@@ -1,8 +1,12 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.RectF;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -14,10 +18,20 @@ import android.widget.Toast;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
+import com.kakakuh.c4ppl.kakakuh.model.belumTerpakai.Jadwal;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Anas on 4/2/2015.
@@ -31,15 +45,28 @@ public class JadwalFragment
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     WeekView mWeekView;
     Button button;
+    String id,user,judul,startDate,tahunMulai,bulanMulai,tanggalMulai,jamMulai,menitMulai,detikMulai,endDate,tahunSelesai,bulanSelesai,tanggalSelesai,jamSelesai,menitSelesai,detikSelesai;
+
     public JadwalFragment(){}
 
     Fragment fragment = null;
+    JSONArray android = null;
+    List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+
+
     Intent nextScreen;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)  {
+
+        try{
+            new JSONParse().execute().get();
+        }catch (Exception e){
+            System.out.println(e);
+        }
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         FloatingActionButton tambahJadwalBtn = (FloatingActionButton) rootView.findViewById(R.id.tambah_jadwal);
+
         tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,109 +133,8 @@ public class JadwalFragment
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
 
         // Populate the week view with some events.
-        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
-
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_01));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR_OF_DAY, 4);
-        endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_02));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 4);
-        startTime.set(Calendar.MINUTE, 20);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR_OF_DAY, 5);
-        endTime.set(Calendar.MINUTE, 0);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_03));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 5);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 2);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_02));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 5);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        startTime.add(Calendar.DATE, 1);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 3);
-        endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_03));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.DAY_OF_MONTH, 15);
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_04));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.DAY_OF_MONTH, 1);
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_01));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.DAY_OF_MONTH, startTime.getActualMaximum(Calendar.DAY_OF_MONTH));
-        startTime.set(Calendar.HOUR_OF_DAY, 15);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 3);
-        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.event_color_02));
-        events.add(event);
-
         return events;
     }
-
 
     private String getEventTitle(Calendar time) {
         return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH) + 1, time.get(Calendar.DAY_OF_MONTH));
@@ -225,29 +151,84 @@ public class JadwalFragment
     }
 
 
-    public void lihatSeminggu(View view){
-        if (mWeekViewType != TYPE_WEEK_VIEW) {
-            mWeekViewType = TYPE_WEEK_VIEW;
-//            mWeekView.setNumberOfVisibleDays(7);
-
-            // Lets change some dimensions to best fit the view.
-//            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
-//            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
-//            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
+    class JSONParse extends AsyncTask<String, String, JSONObject> {
+        private ProgressDialog pDialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Getting Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
         }
+
+        @Override
+        protected JSONObject doInBackground(String... args) {
+            JSONParser jParser = new JSONParser();
+            // Getting JSON from URL
+            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve");
+            return json;
+        }
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            pDialog.dismiss();
+            try {
+                // Getting JSON Array from URL
+
+                android = json.getJSONArray("data");
+                for(int i = 0; i < android.length(); i++){
+                    JSONObject c = android.getJSONObject(i);
+                    // Storing  JSON item in a Variable
+                    id = c.getString("id_jadwal");
+                    user = c.getString("user_id");
+                    judul = c.getString("title");
+                    //Date format 2015-05-18 09:33:00
+                    startDate = c.getString("start_date");
+                    String [] spliter = startDate.split(" ");
+                    String [] starterDate = spliter[0].split("-");
+                    String [] starterClock = spliter[1].split(":");
+                    tahunMulai = starterDate[0];
+                    bulanMulai = starterDate[1];
+                    tanggalMulai = starterDate[2];
+                    jamMulai = starterClock[0];
+                    menitMulai = starterClock[1];
+                    detikMulai = starterClock[2];
+                    endDate = c.getString("end_date");
+                    String [] spliter2 = endDate.split(" ");
+                    String [] finisherDate = spliter2[0].split("-");
+                    String [] finisherClock = spliter2[1].split(":");
+                    tahunSelesai = finisherDate[0];
+                    bulanSelesai = finisherDate[1];
+                    tanggalSelesai = finisherDate[2];
+                    jamSelesai = finisherClock[0];
+                    menitSelesai = finisherClock[1];
+                    detikSelesai = finisherClock[2];
+
+                    Calendar startTime = Calendar.getInstance();
+                    startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tanggalMulai));
+                    startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(jamMulai));
+                    startTime.set(Calendar.MINUTE, Integer.parseInt(menitMulai));
+                    startTime.set(Calendar.SECOND, Integer.parseInt(detikMulai));
+                    startTime.set(Calendar.MONTH, Integer.parseInt(bulanMulai)-1);
+                    startTime.set(Calendar.YEAR, Integer.parseInt(tahunMulai));
+                    System.out.println("lala start time" + startTime.toString() + "");
+                    Calendar endTime = Calendar.getInstance();
+                    endTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tanggalSelesai));
+                    endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(jamSelesai));
+                    endTime.set(Calendar.MINUTE, Integer.parseInt(menitSelesai));
+                    endTime.set(Calendar.SECOND, Integer.parseInt(detikSelesai));
+                    endTime.set(Calendar.MONTH, Integer.parseInt(bulanSelesai)-1);
+                    endTime.set(Calendar.YEAR, Integer.parseInt(tahunSelesai));
+                    WeekViewEvent event = new WeekViewEvent(Integer.parseInt(id), judul, startTime, endTime);
+                    event.setColor(getResources().getColor(R.color.event_color_04));
+                    events.add(event);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
-    public void lihat3Hari(){
-//        if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
-//            mWeekViewType = TYPE_THREE_DAY_VIEW;
-//            mWeekView.setNumberOfVisibleDays(3);
-//
-//            // Lets change some dimensions to best fit the view.
-//            mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
-//            mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-//            mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-//        }
-    }
-    public void tambahJadwal(View view){
-//        Toast.makeText(this.getActivity().getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
-    }
+
 }
