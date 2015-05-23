@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +36,9 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class MainActivity extends Activity {
+    static int w = 250;
+    static int h = 250;
+    Bitmap decodedByte;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -44,6 +50,7 @@ public class MainActivity extends Activity {
     static private Preferensi preferensi;
     static private String usernameSekarang;
     static private String roleSekarang;
+    static private String encodedPhoto;
 
     // shared preferences
     private SharedPreferences preferensiKakakuh;
@@ -90,7 +97,19 @@ public class MainActivity extends Activity {
         mDrawerImage = (ImageView) findViewById(R.id.image);
         mDrawerUsername.setText(usernameSekarang);
         mDrawerRole.setText(roleSekarang);
-//        mDrawerImage.setImageBitmap();
+
+//        mDrawerImage.setImageBitmap(decodedByte);
+
+
+        float factorH = h / (float)decodedByte.getHeight();
+        float factorW = w / (float)decodedByte.getWidth();
+        float factorToUse = (factorH > factorW) ? factorW : factorH;
+        Bitmap bm = Bitmap.createScaledBitmap(decodedByte,
+                (int) (decodedByte.getWidth() * factorToUse),
+                (int) (decodedByte.getHeight() * factorToUse),
+                false);
+        mDrawerImage.setImageBitmap(bm);
+
 
         //sesuaikan drawer dengan role
         if(roleSekarang.equals("Koordinator")) {
@@ -539,6 +558,9 @@ public class MainActivity extends Activity {
         preferensi = new Preferensi(getApplicationContext());
         usernameSekarang = preferensi.getUsername();
         roleSekarang = preferensi.getRole();
+        encodedPhoto = preferensi.getPhotoProfil();
+        byte[] decodedString = Base64.decode(encodedPhoto, Base64.NO_WRAP);
+        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
     }
 
     /* hide keyboard*/

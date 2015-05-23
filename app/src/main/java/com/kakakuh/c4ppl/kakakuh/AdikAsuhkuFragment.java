@@ -1,26 +1,21 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AdikAsuhkuListAdapter;
-import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.AdikAsuhkuListItem;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.json.JSONArray;
@@ -62,7 +57,7 @@ public class AdikAsuhkuFragment extends Fragment{
 
         //TODO panggil method yg mengeksekusi query SELECT Adikk Asuh
         //dummy list
-        new JSONParse().execute();
+        new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listAdikAsuhkuController?username="+user).execute();
         listItems = new ArrayList<>();
 
         user = preferensi.getUsername();
@@ -86,25 +81,12 @@ public class AdikAsuhkuFragment extends Fragment{
         return rootView;
     }
 
-    class JSONParse extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Getting Data ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+    class JSONParser extends KakakuhBaseJSONParserAsyncTask {
+
+        public JSONParser(Context context, String url) {
+            super(context, url);
         }
 
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/listAdikAsuhkuController?username="+user);
-            return json;
-        }
         @Override
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();

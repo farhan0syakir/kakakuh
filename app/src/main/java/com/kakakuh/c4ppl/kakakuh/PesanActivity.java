@@ -2,20 +2,43 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import com.kakakuh.c4ppl.kakakuh.controller.PesanAkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.PesanAkunListItem;
+
+import java.util.ArrayList;
 
 
 public class PesanActivity extends Activity {
+    private ListView mListAkun;
+    private ArrayList<PesanAkunListItem> listAkunPesan;
+    private PesanAkunListAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pesan);
+        setContentView(R.layout.list_generic);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setIcon(R.drawable.ic_white_pesan);
+
+        mListAkun = (ListView) findViewById(R.id.list_generic);
+
+        //TODO Pesan masih hardcode
+        Bitmap tempGambar = BitmapFactory.decodeResource(getResources(), R.drawable.ic_white_profil);
+        listAkunPesan = new ArrayList<>();
+        listAkunPesan.add(new PesanAkunListItem("cola","clala",tempGambar,true)); //baru
+        listAkunPesan.add(new PesanAkunListItem("kaku","aldfefu",tempGambar,false)); //gak baru
+        listAkunPesan.add(new PesanAkunListItem("kaku","alcelaclde",tempGambar,false)); //gak baru
+
+        adapter = new PesanAkunListAdapter(this,listAkunPesan);
+        mListAkun.setAdapter(adapter);
     }
 
     @Override

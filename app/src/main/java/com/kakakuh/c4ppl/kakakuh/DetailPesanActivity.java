@@ -60,7 +60,7 @@ public class DetailPesanActivity extends Activity {
         namaAkun = (TextView) findViewById(R.id.nama_akun);
         listPesan = (ListView) findViewById(R.id.list_pesan);
 
-        namaAkun.setText(getIntent().getStringExtra("nama"));
+        namaAkun.setText(getIntent().getStringExtra("name"));
         //TODO decode image ROLAND
         //imageAkun.setImageBitmap(getIntent().getStringExtra("image"));
     }

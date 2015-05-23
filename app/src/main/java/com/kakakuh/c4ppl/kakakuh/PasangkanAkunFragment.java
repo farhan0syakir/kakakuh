@@ -2,8 +2,7 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,15 +60,17 @@ public class PasangkanAkunFragment extends Fragment{
                 url= "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController?";
                 url+= "usernameKakak="+kakakView.getText().toString()+"&";
                 url+= "usernameAdik="+adikView.getText().toString();
-                new Pasang().execute(); //TEST
+                new Pasang(getActivity(),url).execute(); //TEST
             }
         });
 
         return rootView;
     }
 
-    class Pasang extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
+    class Pasang extends KakakuhBaseJSONParserAsyncTask {
+        public Pasang(Context context, String url) {
+            super(context, url);
+        }
 
         @Override
         protected void onPreExecute() {
@@ -81,14 +80,6 @@ public class PasangkanAkunFragment extends Fragment{
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl(url);
-            return json;
         }
 
         @Override

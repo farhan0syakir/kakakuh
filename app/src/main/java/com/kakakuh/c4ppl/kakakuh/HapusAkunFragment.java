@@ -1,19 +1,17 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +52,7 @@ public class HapusAkunFragment extends Fragment{
         akunListItems = new ArrayList<>();
         //TODO panggil method yg mengeksekusi query SELECT Kakak Asuh
         //dummy list
-        new JSONParse().execute();
+        new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieveHapus").execute();
         //akunListItems.add(new AkunListItem("la1","Lala","Kakak Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
         // Tambahkan Listener
 
@@ -75,25 +73,11 @@ public class HapusAkunFragment extends Fragment{
 //    }
 
 
-    class JSONParse extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Loading...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+    class JSONParser extends KakakuhBaseJSONParserAsyncTask {
+        public JSONParser(Context context, String url) {
+            super(context, url);
         }
 
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/retrieveHapus");
-            return json;
-        }
         @Override
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
