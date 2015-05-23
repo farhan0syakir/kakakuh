@@ -171,7 +171,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
     }
     private void updateLabel(int type) {
         if(type==0) {
-            String myFormat = "E, MM dd yy"; //In which you need put here
+            String myFormat = "E, dd MM yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
             dateStartField.setText(sdf.format(myCalendarStart.getTime()));
@@ -181,7 +181,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
 
             timeStartField.setText(sdf.format(myCalendarStart.getTime()));
         }else if (type==2){
-            String myFormat = "E, MM dd yy"; //In which you need put here
+            String myFormat = "E, dd MM yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
             dateEndField.setText(sdf.format(myCalendarEnd.getTime()));
