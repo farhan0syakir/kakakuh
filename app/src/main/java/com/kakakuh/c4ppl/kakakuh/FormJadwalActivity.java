@@ -184,12 +184,12 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
             String myFormat = "E, MM dd yy"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-            dateEndField.setText(sdf.format(myCalendarStart.getTime()));
+            dateEndField.setText(sdf.format(myCalendarEnd.getTime()));
         }else{
             String myFormat = "HH:mm"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-            timeEndField.setText(sdf.format(myCalendarStart.getTime()));
+            timeEndField.setText(sdf.format(myCalendarEnd.getTime()));
         }
     }
 
