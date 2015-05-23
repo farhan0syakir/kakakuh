@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- When selected, use white -->
-    <item android:drawable="@drawable/tab_emerald_log"
-        android:state_selected="true"/>
-    <!-- When not selected, use grey -->
-    <item android:drawable="@drawable/tab_grey_log"/>
-
-</selector><!-- From: file:/C:/Users/Anas/Documents/GitHub/kakakuh/app/src/main/res/drawable/tab_selector_log.xml -->
