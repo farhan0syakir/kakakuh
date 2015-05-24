@@ -551,7 +551,16 @@ public class MainActivity extends Activity {
         usernameSekarang = preferensi.getUsername();
         roleSekarang = preferensi.getRole();
         encodedPhoto = preferensi.getPhotoProfil();
+<<<<<<< HEAD
         decodedByte = ImageConverter.convertStringToBitmap(encodedPhoto);
+=======
+        if(encodedPhoto != null) {
+            byte[] decodedString = Base64.decode(encodedPhoto, Base64.NO_WRAP);
+            decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        } else {
+            decodedByte = null;
+        }
+>>>>>>> 88591c9b22b374fbd2ec40346efdcbf482bce03e
     }
 
     /* hide keyboard*/

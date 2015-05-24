@@ -50,7 +50,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
         final AkunListItem akunItem = listItems.get(position).getAkun();
-        image.setImageBitmap(akunItem.getPhoto());
+        if(akunItem.getPhoto() != null) image.setImageBitmap(akunItem.getPhoto());
         txtName.setText(akunItem.getName());
 
         RelativeLayout lineTugas = (RelativeLayout) convertView.findViewById(R.id.line_tugas);
@@ -64,7 +64,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
             TextView kategori = (TextView) convertView.findViewById(R.id.kategori);
             CheckBox tugas = (CheckBox) convertView.findViewById(R.id.tugas);
 
-            final Tugas tugasItem = listItems.get(position).getTugas();
+            Tugas tugasItem = listItems.get(position).getTugas();
             kategori.setText(tugasItem.getTextKategori());
             tugas.setText(tugasItem.getDeskripsiTugas());
         } else {
@@ -90,15 +90,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
                 Intent i = new Intent(context, DetailTugasActivity.class);
                 i.putExtra("username",akunItem.getUsername());
                 i.putExtra("nama",akunItem.getName());
-
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                akunItem.getPhoto().compress(Bitmap.CompressFormat.PNG, 100, stream);
-                i.putExtra("photo", stream.toByteArray());
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                i.putExtra("photo", ImageConverter.convertBitmapToStringBase64(akunItem.getPhoto()));
 
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);

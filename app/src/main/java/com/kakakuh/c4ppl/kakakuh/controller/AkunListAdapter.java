@@ -34,7 +34,7 @@ public class AkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
-        image.setImageBitmap(listItems.get(position).getPhoto());
+        if(listItems.get(position).getPhoto() != null) image.setImageBitmap(listItems.get(position).getPhoto());
         txtName.setText(listItems.get(position).getName());
 
         return convertView;

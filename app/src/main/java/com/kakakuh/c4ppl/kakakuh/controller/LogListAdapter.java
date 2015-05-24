@@ -39,7 +39,7 @@ public class LogListAdapter extends KakakuhBaseAdapter<Log> {
         TextView txtNote = (TextView) convertView.findViewById(R.id.note);
         TextView txtTime = (TextView) convertView.findViewById(R.id.time);
 
-        image.setImageBitmap(listItems.get(position).getPhoto());
+        if(listItems.get(position).getPhoto() != null) image.setImageBitmap(listItems.get(position).getPhoto());
         txtNote.setText(listItems.get(position).getNote());
         txtTime.setText(Kalender.getLogTime(listItems.get(position).getTimestamp()));
 
