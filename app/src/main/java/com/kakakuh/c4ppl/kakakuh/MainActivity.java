@@ -100,15 +100,18 @@ public class MainActivity extends Activity {
 
 //        mDrawerImage.setImageBitmap(decodedByte);
 
-
-        float factorH = h / (float)decodedByte.getHeight();
-        float factorW = w / (float)decodedByte.getWidth();
-        float factorToUse = (factorH > factorW) ? factorW : factorH;
-        Bitmap bm = Bitmap.createScaledBitmap(decodedByte,
-                (int) (decodedByte.getWidth() * factorToUse),
-                (int) (decodedByte.getHeight() * factorToUse),
-                false);
-        mDrawerImage.setImageBitmap(bm);
+        if(decodedByte != null) {
+            float factorH = h / (float) decodedByte.getHeight();
+            float factorW = w / (float) decodedByte.getWidth();
+            float factorToUse = (factorH > factorW) ? factorW : factorH;
+            Bitmap bm = Bitmap.createScaledBitmap(decodedByte,
+                    (int) (decodedByte.getWidth() * factorToUse),
+                    (int) (decodedByte.getHeight() * factorToUse),
+                    false);
+            mDrawerImage.setImageBitmap(bm);
+        } else {
+            mDrawerImage.setImageResource(R.drawable.art_default_profil);
+        }
 
 
         //sesuaikan drawer dengan role
@@ -559,8 +562,12 @@ public class MainActivity extends Activity {
         usernameSekarang = preferensi.getUsername();
         roleSekarang = preferensi.getRole();
         encodedPhoto = preferensi.getPhotoProfil();
-        byte[] decodedString = Base64.decode(encodedPhoto, Base64.NO_WRAP);
-        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        if(encodedPhoto != null) {
+            byte[] decodedString = Base64.decode(encodedPhoto, Base64.NO_WRAP);
+            decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        } else {
+            decodedByte = null;
+        }
     }
 
     /* hide keyboard*/
