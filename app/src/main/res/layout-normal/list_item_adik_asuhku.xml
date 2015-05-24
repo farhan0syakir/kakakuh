@@ -18,7 +18,7 @@
             android:scaleType="centerCrop"
             android:layout_marginRight="12dp"
             android:contentDescription="@string/desc_list_item_icon"
-            android:src="@drawable/ic_white_home"
+            android:src="@drawable/art_default_profil"
             android:background="@color/grey"
             android:gravity="center_vertical"/>
 

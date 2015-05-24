@@ -44,8 +44,6 @@ import java.util.ArrayList;
 
 public class UbahProfilActivity extends KakakuhBaseActivity {
     Bitmap decodedByte;
-    static int w = 250;
-    static int h = 250;
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
     private EditText namaField, npmField, emailField;
@@ -57,11 +55,10 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     private String urlupdate="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/update";
     String username;
     String nama_lengkap, tempat_tinggal, npm, email, handphone, asal_daerah, motto, base64;
-    byte[] imageByteArray;
-    InputStream is=null;
-    String result=null;
-    String line=null;
-    static Preferensi preferensi;
+    private InputStream is=null;
+    private String result=null;
+    private String line=null;
+    static private Preferensi preferensi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,9 +168,8 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 c = jsonArray.getJSONObject(0);
                 namaField.setText(c.getString("nama_lengkap"), TextView.BufferType.EDITABLE);
                 npmField.setText(c.getString("npm"), TextView.BufferType.EDITABLE);
-                byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-                decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                imgView.setImageBitmap(decodedByte);
+                decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
+                if(decodedByte != null) imgView.setImageBitmap(decodedByte);
                 emailField.setText(c.getString("email"), TextView.BufferType.EDITABLE);
                 noHPField.setText(c.getString("handphone"), TextView.BufferType.EDITABLE);
                 alamatField.setText(c.getString("tempat_tinggal"),TextView.BufferType.EDITABLE);
@@ -285,7 +281,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
-                Bitmap bitmap_Source=ImageConverter.minify(BitmapFactory.decodeFile(imgDecodableString));
+                Bitmap bitmap_Source= ImageConverter.minify(BitmapFactory.decodeFile(imgDecodableString));
                 imgView.setImageBitmap(bitmap_Source);
                 base64 = ImageConverter.convertBitmapToStringBase64(bitmap_Source);
             } else {
