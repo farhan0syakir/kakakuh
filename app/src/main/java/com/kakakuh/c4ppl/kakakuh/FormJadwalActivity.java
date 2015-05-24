@@ -56,7 +56,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferensi = new Preferensi(getApplicationContext());
-        usernameSTR = prefensi.getUsername();
+        usernameSTR = preferensi.getUsername();
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override

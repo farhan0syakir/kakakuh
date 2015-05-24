@@ -8,7 +8,7 @@ import android.widget.TextView;
  * Class ini untuk menampilkan detail log
  */
 public class DetailLogActivity extends KakakuhBaseActivity {
-    TextView note, tanggal, jam, tempat, detail;
+    private TextView note, tanggal, jam, tempat, detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

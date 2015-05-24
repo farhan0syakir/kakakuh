@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -23,10 +25,7 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
     private Button btnCari;
     private Button btnUnggah;
     private static int RESULT_LOAD_IMG = 1;
-    String imgDecodableString,base64;
-    byte[] imageByteArray;
-    static int w = 250;
-    static int h = 250;
+    private String imgDecodableString, base64;
     private String idTugas;
 
     @Override
@@ -65,8 +64,6 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
 
             }
         });
-
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -88,22 +85,11 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
-                cursor.close();
-                // Set the Image in ImageView after decoding the String
-                System.out.println("ini hasil imgdecodeablestringnya brother!");
-                System.out.println(imgDecodableString);
-                fileName.setText(imgDecodableString);
+                cursor.close();  // Set the Image in ImageView after decoding the String);
+
+                fileName.setText(imgDecodableString.substring(imgDecodableString.lastIndexOf("/")+1));
                 Bitmap bitmap_Source= BitmapFactory.decodeFile(imgDecodableString);
-                float factorH = h / (float)bitmap_Source.getHeight();
-                float factorW = w / (float)bitmap_Source.getWidth();
-                float factorToUse = (factorH > factorW) ? factorW : factorH;
-                Bitmap bm = Bitmap.createScaledBitmap(bitmap_Source,
-                        (int) (bitmap_Source.getWidth() * factorToUse),
-                        (int) (bitmap_Source.getHeight() * factorToUse),
-                        false);
-//                imgView.setImageBitmap(bm);
-                imageByteArray = getByteArray(bm);
-                base64 = Base64.encodeToString(imageByteArray, Base64.NO_WRAP);
+                base64 = ImageConverter.convertBitmapToStringBase64(bitmap_Source);
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
@@ -112,18 +98,5 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-    }
-
-    public byte[] getByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] hasil = stream.toByteArray();
-        System.out.println("hasil panjang sebelum masuk" + hasil.length);
-        try {
-            stream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return hasil;
     }
 }

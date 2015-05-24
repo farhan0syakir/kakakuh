@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 
@@ -36,9 +37,7 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class MainActivity extends Activity {
-    static int w = 250;
-    static int h = 250;
-    Bitmap decodedByte;
+    private Bitmap decodedByte;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -100,16 +99,9 @@ public class MainActivity extends Activity {
 
 //        mDrawerImage.setImageBitmap(decodedByte);
 
-
-        float factorH = h / (float)decodedByte.getHeight();
-        float factorW = w / (float)decodedByte.getWidth();
-        float factorToUse = (factorH > factorW) ? factorW : factorH;
-        Bitmap bm = Bitmap.createScaledBitmap(decodedByte,
-                (int) (decodedByte.getWidth() * factorToUse),
-                (int) (decodedByte.getHeight() * factorToUse),
-                false);
-        mDrawerImage.setImageBitmap(bm);
-
+        if(decodedByte != null) {
+            mDrawerImage.setImageBitmap(decodedByte);
+        }
 
         //sesuaikan drawer dengan role
         if(roleSekarang.equals("Koordinator")) {
@@ -559,8 +551,7 @@ public class MainActivity extends Activity {
         usernameSekarang = preferensi.getUsername();
         roleSekarang = preferensi.getRole();
         encodedPhoto = preferensi.getPhotoProfil();
-        byte[] decodedString = Base64.decode(encodedPhoto, Base64.NO_WRAP);
-        decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        decodedByte = ImageConverter.convertStringToBitmap(encodedPhoto);
     }
 
     /* hide keyboard*/

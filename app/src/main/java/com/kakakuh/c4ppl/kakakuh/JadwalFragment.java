@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.RectF;
 import android.os.AsyncTask;
@@ -18,20 +19,15 @@ import android.widget.Toast;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
-import com.kakakuh.c4ppl.kakakuh.model.belumTerpakai.Jadwal;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Anas on 4/2/2015.
@@ -60,7 +56,7 @@ public class JadwalFragment
                              Bundle savedInstanceState)  {
 
         try{
-            new JSONParse().execute().get();
+            new JSONParse(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve").execute().get();
         }catch (Exception e){
             System.out.println(e);
         }
@@ -70,7 +66,7 @@ public class JadwalFragment
         tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextScreen = new Intent(getActivity().getApplicationContext(), FormJadwalActivity.class);
+                nextScreen = new Intent(getActivity(), FormJadwalActivity.class);
                 startActivity(nextScreen);
 
             }
@@ -153,25 +149,12 @@ public class JadwalFragment
     }
 
 
-    class JSONParse extends AsyncTask<String, String, JSONObject> {
-        private ProgressDialog pDialog;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Getting Data ...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
+    class JSONParse extends KakakuhBaseJSONParserAsyncTask {
+
+        public JSONParse(Context context, String url) {
+            super(context, url);
         }
 
-        @Override
-        protected JSONObject doInBackground(String... args) {
-            JSONParser jParser = new JSONParser();
-            // Getting JSON from URL
-            JSONObject json = jParser.getJSONFromUrl("http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve");
-            return json;
-        }
         @Override
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
