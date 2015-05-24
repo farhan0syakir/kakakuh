@@ -17,6 +17,7 @@ public class Preferensi {
     static private final String ROLE_KEY = "role";
     static private final String PASSWORD_KEY = "password";
     static private final String LOGGED_KEY = "isLogged";
+    static private final String ENCODED_BITMAP_KEY = "photo";
 
     //pengaturan koordinator
     static final String PENGATURAN_PASANGAN_KEY = "pengaturanPasangan";
@@ -56,6 +57,14 @@ public class Preferensi {
 
     public String getRole() {
         return preferensiKakakuh.getString(ROLE_KEY, "wrong");
+    }
+
+    public void setPhotoProfil(String encodedBitmap) {
+        editor.putString(ENCODED_BITMAP_KEY,encodedBitmap);
+    }
+
+    public String getPhotoProfil() {
+        return preferensiKakakuh.getString(ENCODED_BITMAP_KEY,null);
     }
 
     public void setLogin() {
