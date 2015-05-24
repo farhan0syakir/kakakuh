@@ -42,6 +42,7 @@ public class PesanAkunListAdapter extends KakakuhBaseAdapter<PesanAkunListItem> 
         final PesanAkunListItem current = listItems.get(position);
 
         if(current.getPhoto() != null) image.setImageBitmap(current.getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(current.getName());
 
         if(current.isPesanBaru()) {

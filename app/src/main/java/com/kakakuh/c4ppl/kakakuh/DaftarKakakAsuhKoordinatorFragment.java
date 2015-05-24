@@ -86,8 +86,6 @@ public class DaftarKakakAsuhKoordinatorFragment extends Fragment{
                     // setting the Pengaturan list adapter
                     adapter = new AkunListKoordinatorAdapter(getActivity().getApplicationContext(), akunListItems);
                     mListAkun.setAdapter(adapter);
-
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

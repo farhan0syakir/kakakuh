@@ -35,6 +35,7 @@ public class HeaderPasanganListAdapter extends KakakuhBaseAdapter<PasanganListIt
         TextView txtUsername = (TextView) convertView.findViewById(R.id.username);
 
         if(listItems.get(position).getPhoto() != null) image.setImageBitmap(listItems.get(position).getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(listItems.get(position).getNama());
         txtUsername.setText(listItems.get(position).getUsername());
 

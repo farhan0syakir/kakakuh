@@ -51,6 +51,7 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
 
         final AkunListItem akunItem = listItems.get(position).getAkun();
         if(akunItem.getPhoto() != null) image.setImageBitmap(akunItem.getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(akunItem.getName());
 
         RelativeLayout lineTugas = (RelativeLayout) convertView.findViewById(R.id.line_tugas);

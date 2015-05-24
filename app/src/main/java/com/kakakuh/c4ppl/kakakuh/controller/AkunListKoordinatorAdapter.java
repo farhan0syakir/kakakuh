@@ -36,6 +36,7 @@ public class AkunListKoordinatorAdapter extends KakakuhBaseAdapter<AkunListItem>
         TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
 
         if(listItems.get(position).getPhoto() != null) image.setImageBitmap(listItems.get(position).getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(listItems.get(position).getUsername());
         txtRole.setText(listItems.get(position).getName());
 
