@@ -46,7 +46,7 @@ public class JadwalFragment
     WeekView mWeekView;
     Button button;
     String id,user,judul,startDate,tahunMulai,bulanMulai,tanggalMulai,jamMulai,menitMulai,detikMulai,endDate,tahunSelesai,bulanSelesai,tanggalSelesai,jamSelesai,menitSelesai,detikSelesai;
-
+    String statusBook;
     public JadwalFragment(){}
 
     Fragment fragment = null;
@@ -127,6 +127,8 @@ public class JadwalFragment
                 }
             }
         });
+        Calendar cal = Calendar.getInstance();
+        onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
         return rootView;
     }
     @Override
@@ -183,6 +185,7 @@ public class JadwalFragment
                     id = c.getString("id_jadwal");
                     user = c.getString("user_id");
                     judul = c.getString("title");
+                    statusBook = c.getString("status_book");
                     //Date format 2015-05-18 09:33:00
                     startDate = c.getString("start_date");
                     String [] spliter = startDate.split(" ");
@@ -221,7 +224,11 @@ public class JadwalFragment
                     endTime.set(Calendar.MONTH, Integer.parseInt(bulanSelesai)-1);
                     endTime.set(Calendar.YEAR, Integer.parseInt(tahunSelesai));
                     WeekViewEvent event = new WeekViewEvent(Integer.parseInt(id), judul, startTime, endTime);
-                    event.setColor(getResources().getColor(R.color.event_color_04));
+                    if(Integer.parseInt(statusBook)==0){
+                        event.setColor(getResources().getColor(R.color.available));
+                    }else{
+                        event.setColor(getResources().getColor(R.color.booked));
+                    }
                     events.add(event);
                 }
             } catch (JSONException e) {

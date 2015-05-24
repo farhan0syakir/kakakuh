@@ -36,5 +36,6 @@
     <string name="title_activity_detail_tugas">Detail Tugas</string>
     <string name="title_activity_tambah_tugas">Tambah Tugas</string>
     <string name="title_activity_kerjakan_tugas">Kerjakan Tugas</string>
+    <string name="title_activity_update_jadwal">updateJadwalActivity</string>
 
 </resources>

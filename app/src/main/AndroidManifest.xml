@@ -130,6 +130,10 @@
             android:name=".FormJadwalActivity"
             android:label="form jadwal" >
         </activity>
+        <activity
+            android:name=".updateJadwalActivity"
+            android:label="@string/title_activity_update_jadwal" >
+        </activity>
     </application>
 
 </manifest>
