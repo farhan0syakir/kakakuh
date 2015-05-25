@@ -91,7 +91,7 @@ public class AdikAsuhkuFragment extends Fragment{
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
-                Tugas[] tugases = {new Tugas("1","Jajan",new Date(new Long("1438224300000")),"2","Mock Up",true),null};
+                Tugas[] tugases = {new Tugas("1","Jajan",new Date(new Long("1438224300000")),"2","Mock Up",true),null,null};
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
                 for(int i = 0; i < android.length(); i++){

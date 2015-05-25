@@ -1,7 +1,5 @@
 package com.kakakuh.c4ppl.kakakuh.model;
 
-import android.graphics.Bitmap;
-
 import java.sql.Date;
 
 /**
@@ -12,7 +10,7 @@ public class Tugas {
     private String textKategori;
     private Date deadline;
     private String idTugas;
-    private String deskripsiTugas;
+    private String namaTugas;
     private boolean sudahDikerjakan;
 
     public Tugas(String idKategori, String textKategori, Date deadline) {
@@ -21,12 +19,12 @@ public class Tugas {
         this.deadline = deadline;
     }
 
-    public Tugas(String idKategori, String textKategori, Date deadline, String idTugas, String deskripsiTugas, boolean sudahDikerjakan) {
+    public Tugas(String idKategori, String textKategori, Date deadline, String idTugas, String namaTugas, boolean sudahDikerjakan) {
         this.idKategori = idKategori;
         this.textKategori = textKategori;
         this.deadline = deadline;
         this.idTugas = idTugas;
-        this.deskripsiTugas = deskripsiTugas;
+        this.namaTugas = namaTugas;
         this.sudahDikerjakan = sudahDikerjakan;
     }
 
@@ -63,11 +61,11 @@ public class Tugas {
     }
 
     public String getDeskripsiTugas() {
-        return deskripsiTugas;
+        return namaTugas;
     }
 
     public void setDeskripsiTugas(String deskripsiTugas) {
-        this.deskripsiTugas = deskripsiTugas;
+        this.namaTugas = deskripsiTugas;
     }
 
     public boolean isSudahDikerjakan() {

@@ -3,7 +3,6 @@ package com.kakakuh.c4ppl.kakakuh;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,8 @@ import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.TugasListKakakAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
+import org.json.JSONArray;
+
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -24,9 +25,10 @@ import java.util.ArrayList;
  * Created by Anas on 4/16/2015.
  */
 public class DetailTugasActivity extends KakakuhBaseActivity {
+
     private ArrayList<Tugas> listTugas;
-    private ArrayList<TugasListKakakAdapter> adapter;
-    private SectionedListAdapter<HeaderTugasListKakakAdapter,TugasListKakakAdapter> sectionAdapter;
+    private TugasListKakakAdapter adapter;
+    private SectionedListAdapter<HeaderTugasListKakakAdapter, TugasListKakakAdapter> sectionAdapter;
 
     private ListView mList;
     private Button btnTambah;
@@ -36,9 +38,12 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
     private String nama;
     private String encodedPhoto;
     private byte[] byteImage;
+    JSONArray android = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//
+//        new JSONParser(getApplicationContext(),"http://ppl-c04.cs.ui.ac.id/index.php/listKakakAsuhController").execute();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_tugas);
 
@@ -62,14 +67,14 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, ProfilActivity.class);
-                i.putExtra("username",usernameAdik);
+                i.putExtra("username", usernameAdik);
                 context.startActivity(i);
             }
         });
 
         /* END retrieve profil */
 
-        adapter = new ArrayList<>();
+//        adapter = new ArrayList<>();
         sectionAdapter = new SectionedListAdapter<>(this, new HeaderTugasListKakakAdapter(this));
 
         // TODO query kolom | idKategori | TextKategori | Deadline | JOIN by idKategory | idTugas | PoinTugas |status pengerjaaan | sorted by idKategory
@@ -77,23 +82,23 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
         //ini HARDCODED
         ArrayList<Tugas> queries = new ArrayList<>();
         //mau tau convert milis to Date? cek http://www.ruddwire.com/handy-code/date-to-millisecond-calculators/
-        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"1","Kerjakan Mock Up",false));
-        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"2","Bikin PPT",true));
-        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"3","Bikin UI",true));
-        queries.add(new Tugas("2","DPP",new Date(new Long("1428345600000")),"4","Ini matkul apa ya?",false));
-        queries.add(new Tugas("2","DPP",new Date(new Long("1428345600000")),"5","Sudah lewat deadline",true));
+        queries.add(new Tugas("1", "PPL", new Date(new Long("1438224300000")), "1", "Kerjakan Mock Up", false));
+        queries.add(new Tugas("1", "PPL", new Date(new Long("1438224300000")), "2", "Bikin PPT", true));
+        queries.add(new Tugas("1", "PPL", new Date(new Long("1438224300000")), "3", "Bikin UI", true));
+        queries.add(new Tugas("2", "DPP", new Date(new Long("1428345600000")), "4", "Ini matkul apa ya?", false));
+        queries.add(new Tugas("2", "DPP", new Date(new Long("1428345600000")), "5", "Sudah lewat deadline", true));
 
         Tugas currentKategori = queries.get(0);
         ArrayList<Tugas> tugases = new ArrayList<>();
         Tugas current;
-        for(int i = 0; i < queries.size() ; i++) {
+        for (int i = 0; i < queries.size(); i++) {
             current = queries.get(i);
-            if(!currentKategori.getIdKategori().equals(current.getIdKategori())) {
+            if (!currentKategori.getIdKategori().equals(current.getIdKategori())) {
                 sectionAdapter.addSection(new Tugas(
                                 currentKategori.getIdKategori(),
                                 currentKategori.getTextKategori(),
                                 currentKategori.getDeadline()),
-                        new TugasListKakakAdapter(this,tugases));
+                        new TugasListKakakAdapter(this, tugases));
                 currentKategori = current;
                 tugases = new ArrayList<>();
                 tugases.add(current);
@@ -105,7 +110,7 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
                         currentKategori.getIdKategori(),
                         currentKategori.getTextKategori(),
                         currentKategori.getDeadline()),
-                new TugasListKakakAdapter(this,tugases));
+                new TugasListKakakAdapter(this, tugases));
 
         mList = (ListView) findViewById(R.id.list);
         mList.setAdapter(sectionAdapter);
@@ -114,12 +119,45 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(context,TambahTugasActivity.class);
-                nextIntent.putExtra("username",usernameAdik);
+                Intent nextIntent = new Intent(context, TambahTugasActivity.class);
+                nextIntent.putExtra("username", usernameAdik);
                 nextIntent.putExtra("nama", nama);
                 nextIntent.putExtra("photo", encodedPhoto);
                 context.startActivity(nextIntent);
             }
         });
     }
+//    class JSONParser extends KakakuhBaseJSONParserAsyncTask {
+//        public JSONParser(Context context, String url) {
+//            super(context, url);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(JSONObject json) {
+//            pDialog.dismiss();
+//            try {
+//
+//                // Getting JSON Array from URL
+//                android = json.getJSONArray("data");
+//                for(int i = 0; i < android.length(); i++){
+//                    JSONObject c = android.getJSONObject(i);
+//
+//                    // Storing  JSON item in a Variable
+//                    String nama_lengkap = c.getString("nama_lengkap");
+//                    String username = c.getString("username");
+//                    decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"), false);
+//                    akunListItems.add(new AkunListItem(username,nama_lengkap, decodedByte));
+//                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
+//
+//                    // setting the Pengaturan list adapter
+//                    adapter = new AkunListAdapter(getActivity().getApplicationContext(), akunListItems);
+//                    mListAkun.setAdapter(adapter);
+//
+//
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }
