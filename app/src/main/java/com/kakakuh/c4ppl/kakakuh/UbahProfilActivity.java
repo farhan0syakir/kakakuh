@@ -114,17 +114,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 new updateMyProfile().execute();
                 finish();
                 System.out.println("SELESAI"); //TEST
-                if(getIntent().getBooleanExtra("activation",false)) {
-                    //Go to main activity
-                    preferensi.setLogin();
-                    preferensi.commit();
-                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
-                } else {
-                    startActivity(getIntent());
-                }
             }
         });
 
@@ -287,7 +276,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 Toast.makeText(getApplicationContext(), "Berhasil mengubah profil",
                         Toast.LENGTH_LONG).show();
                 preferensi.setPhotoProfil(base64);
-                preferensi.commit();
+                if(getIntent().getBooleanExtra("activation",false)) {
+                    //Go to main activity
+                    preferensi.setLogin();
+                    preferensi.commit();
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                } else {
+                    preferensi.commit();
+                    startActivity(getIntent());
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
