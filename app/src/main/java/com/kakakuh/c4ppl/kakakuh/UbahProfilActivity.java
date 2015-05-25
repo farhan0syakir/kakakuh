@@ -65,11 +65,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
         super.onCreate(savedInstanceState);
 
         preferensi = new Preferensi(getApplicationContext());
+        setContentView(R.layout.activity_ubah_profil);
+        Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        if(getIntent().getBooleanExtra("activation",false)) {
+            getActionBar().setTitle("Aktivasi Profil");
+            btnSelesai.setText("Aktivasi");
+        } else {
+            getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        }
         getActionBar().setIcon(R.drawable.ic_white_profil);
 
-        setContentView(R.layout.activity_ubah_profil);
+
 
         //get Element\
 
@@ -83,7 +90,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
         mottoField = (EditText)findViewById(R.id.motto);
 
         Button btnUpload = (Button) findViewById(R.id.btn_upload);
-        Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
+
 
         //url = url+"?username=adik";
         username = preferensi.getUsername();
@@ -107,8 +114,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 // SELESAI ngapain
                 new updateMyProfile().execute();
                 finish();
-                startActivity(getIntent());
                 System.out.println("SELESAI"); //TEST
+                if(getIntent().getBooleanExtra("activation",false)) {
+                    //Go to main activity
+                    preferensi.setLogin();
+                    preferensi.commit();
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                } else {
+                    startActivity(getIntent());
+                }
             }
         });
 

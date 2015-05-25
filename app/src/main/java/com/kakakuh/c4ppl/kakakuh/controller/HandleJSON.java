@@ -24,6 +24,7 @@ public class HandleJSON {
     private String role = "role";
     private String nama = "nama_lengkap";
     private String encodedPhoto = "photo";
+    private String activationStatus = "activation_status";
     private String urlString = null;
 
     public volatile boolean parsingComplete = true;
@@ -39,6 +40,9 @@ public class HandleJSON {
     public String getImg(){
         return encodedPhoto;
     }
+    public boolean getActivationStatus() {
+        return (activationStatus.equals("1"));
+    }
 
 
     @SuppressLint("NewApi")
@@ -50,6 +54,7 @@ public class HandleJSON {
             role = sys.getString("role");
             nama = sys.getString("nama_lengkap");
             encodedPhoto = sys.getString("img");
+            activationStatus = sys.getString("activation_status");
 
             parsingComplete = false;
 

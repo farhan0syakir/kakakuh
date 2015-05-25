@@ -48,7 +48,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO edit query berdasarkan kategori
+                //TODO query berdasarkan kategori
             }
         });
 
