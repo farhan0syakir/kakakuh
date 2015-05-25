@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,11 +64,18 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
         super.onCreate(savedInstanceState);
 
         preferensi = new Preferensi(getApplicationContext());
+        setContentView(R.layout.activity_ubah_profil);
+        Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        if(getIntent().getBooleanExtra("activation",false)) {
+            getActionBar().setTitle("Aktivasi Profil");
+            btnSelesai.setText("Aktivasi");
+        } else {
+            getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        }
         getActionBar().setIcon(R.drawable.ic_white_profil);
 
-        setContentView(R.layout.activity_ubah_profil);
+
 
         //get Element\
 
@@ -83,11 +89,11 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
         mottoField = (EditText)findViewById(R.id.motto);
 
         Button btnUpload = (Button) findViewById(R.id.btn_upload);
-        Button btnSelesai = (Button) findViewById(R.id.btn_selesai);
+
 
         //url = url+"?username=adik";
         username = preferensi.getUsername();
-        new retrieveMyProfile().execute();
+        new retrieveMyProfile(this).execute();
 
         //Add listener
         btnUpload.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +112,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             public void onClick(View v) {
                 // SELESAI ngapain
                 new updateMyProfile().execute();
-                finish();
-                startActivity(getIntent());
                 System.out.println("SELESAI"); //TEST
             }
         });
@@ -155,12 +159,30 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     }
 
     class retrieveMyProfile extends AsyncTask<String, String, String> {
+        private ProgressDialog pDialog;
+        private Context context;
+        retrieveMyProfile(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage("Ambil Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+
         protected String doInBackground(String... params) {
             String hasil = retrieve();
             return hasil ;
         }
 
         protected void onPostExecute(String result) {
+            pDialog.dismiss();
             JSONObject c = null;
             try {
                 JSONObject json = new JSONObject(result);
@@ -253,7 +275,19 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 Toast.makeText(getApplicationContext(), "Berhasil mengubah profil",
                         Toast.LENGTH_LONG).show();
                 preferensi.setPhotoProfil(base64);
-                preferensi.commit();
+                if(getIntent().getBooleanExtra("activation",false)) {
+                    //Go to main activity
+                    preferensi.setLogin();
+                    preferensi.commit();
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                } else {
+                    preferensi.commit();
+                    startActivity(getIntent());
+                }
+                finish();
             } catch (Exception e) {
                 e.printStackTrace();
             }
