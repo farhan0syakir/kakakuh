@@ -112,7 +112,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             public void onClick(View v) {
                 // SELESAI ngapain
                 new updateMyProfile().execute();
-                finish();
                 System.out.println("SELESAI"); //TEST
             }
         });
@@ -288,6 +287,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                     preferensi.commit();
                     startActivity(getIntent());
                 }
+                finish();
             } catch (Exception e) {
                 e.printStackTrace();
             }
