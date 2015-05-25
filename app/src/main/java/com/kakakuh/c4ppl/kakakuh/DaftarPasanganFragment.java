@@ -1,6 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,11 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.kakakuh.c4ppl.kakakuh.controller.AkunListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.HeaderPasanganListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.PasanganListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.PasanganListItem;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -22,6 +31,10 @@ import java.util.ArrayList;
  */
 public class DaftarPasanganFragment extends Fragment{
     static private Preferensi preferensi;
+    private JSONArray android = null;
+    private Bitmap decodedByte;
+    private ArrayList<TempClass> temps = new ArrayList<>();
+
 
     private SectionedListAdapter<HeaderPasanganListAdapter,PasanganListAdapter> sectionAdapter;
 
@@ -40,16 +53,17 @@ public class DaftarPasanganFragment extends Fragment{
         sectionAdapter = new SectionedListAdapter<>(getActivity().getApplicationContext(),
                 new HeaderPasanganListAdapter(getActivity().getApplicationContext()));
 
-        ArrayList<TempClass> temps = new ArrayList<>();
+
 
         Bitmap tempGambar = BitmapFactory.decodeResource(getResources(), R.drawable.ic_white_profil);
         if(preferensi.getPengaturanPasangan().equals("Kakak Asuh")) {
             //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | namaKakak | imageKakak | usernameAdik | namaAdik | sorted by kakak
             //ini HARDCODED
+            new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
             temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik1", "Keke Louis"));
-            temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik2", "Loue Koka"));
-            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik1", "Keke Louis"));
-            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik3", "Dida Lores"));
+//            temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik2", "Loue Koka"));
+//            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik1", "Keke Louis"));
+//            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik3", "Dida Lores"));
 
             TempClass currentKategori = temps.get(0);
             ArrayList<PasanganListItem> akuns = new ArrayList<>();
@@ -77,6 +91,7 @@ public class DaftarPasanganFragment extends Fragment{
         } else {
             //TODO eksekusi query. ambil array dari json yg isinya | usernameKakak | namaKakak | usernameAdik | namaAdik | imageAdik | sorted by adik
             //ini HARDCODED
+            //new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
             temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik1", "Didik Lolo", tempGambar));
             temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik1", "Didik Lolo", tempGambar));
             temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik2", "Didik Lola", tempGambar));
@@ -159,6 +174,38 @@ public class DaftarPasanganFragment extends Fragment{
 
         public String getNamaAdik() {
             return namaAdik;
+        }
+    }
+
+    class JSONParser extends KakakuhBaseJSONParserAsyncTask {
+        public JSONParser(Context context, String url) {
+            super(context, url);
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            pDialog.dismiss();
+            try {
+
+                // Getting JSON Array from URL
+                android = json.getJSONArray("data");
+                for(int i = 0; i < android.length(); i++){
+                    JSONObject c = android.getJSONObject(i);
+
+                    // Storing  JSON item in a Variable
+                    String nama_lengkap = c.getString("nama_lengkap");
+                    String username = c.getString("username");
+                    String role = c.getString("role");
+                    decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"), false);
+                    String userkakak = c.getString("userkakaku");
+                    String useradik = c.getString("useradik");
+                    //System.out.println("ini buat ya "+nama_lengkap+"dan "+username);
+                    temps.add(new TempClass(username, nama_lengkap, decodedByte, useradik, "Adik Asuh"));
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
