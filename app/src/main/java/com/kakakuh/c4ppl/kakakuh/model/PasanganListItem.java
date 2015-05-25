@@ -16,9 +16,9 @@ public class PasanganListItem {
         this.photo = photo;
     }
 
-    public PasanganListItem(String username, String nama) {
+    public PasanganListItem(String username) {
         this.username = username;
-        this.nama = nama;
+        this.nama = null;
         this.photo = null;
     }
 

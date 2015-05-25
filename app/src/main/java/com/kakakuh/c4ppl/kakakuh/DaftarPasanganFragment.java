@@ -33,8 +33,8 @@ public class DaftarPasanganFragment extends Fragment{
     static private Preferensi preferensi;
     private JSONArray android = null;
     private Bitmap decodedByte;
-    private ArrayList<TempClass> temps = new ArrayList<>();
-
+    private ArrayList<TempClass> tempsKakak = new ArrayList<>();
+    private ArrayList<TempClass> tempsAdik = new ArrayList<>();
 
     private SectionedListAdapter<HeaderPasanganListAdapter,PasanganListAdapter> sectionAdapter;
 
@@ -53,127 +53,74 @@ public class DaftarPasanganFragment extends Fragment{
         sectionAdapter = new SectionedListAdapter<>(getActivity().getApplicationContext(),
                 new HeaderPasanganListAdapter(getActivity().getApplicationContext()));
 
-
-
         Bitmap tempGambar = BitmapFactory.decodeResource(getResources(), R.drawable.ic_white_profil);
-        if(preferensi.getPengaturanPasangan().equals("Kakak Asuh")) {
-            //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | namaKakak | imageKakak | usernameAdik | namaAdik | sorted by kakak
-            //ini HARDCODED
-            new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
-            temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik1", "Keke Louis"));
-//            temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik2", "Loue Koka"));
-//            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik1", "Keke Louis"));
-//            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik3", "Dida Lores"));
-
-            TempClass currentKategori = temps.get(0);
-            ArrayList<PasanganListItem> akuns = new ArrayList<>();
-            for(int i = 0; i < temps.size() ; i++) {
-                TempClass current = temps.get(i);
-                if(!currentKategori.getUsernameKakak().equals(current.getUsernameKakak())) {
-                    sectionAdapter.addSection(new PasanganListItem(
-                                    currentKategori.getUsernameKakak(),
-                                    currentKategori.getNamaKakak(),
-                                    currentKategori.getImageKakak()),
-                            new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
-                    currentKategori = current;
-                    akuns = new ArrayList<>();
-                    akuns.add(new PasanganListItem(current.getUsernameAdik(),current.getNamaAdik()));
-                } else {
-                    akuns.add(new PasanganListItem(current.getUsernameAdik(), current.getNamaAdik()));
-                }
-            }
-            //tambahkan section terakhir
-            sectionAdapter.addSection(new PasanganListItem(
-                            currentKategori.getUsernameKakak(),
-                            currentKategori.getNamaKakak(),
-                            currentKategori.getImageKakak()),
-                    new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
-        } else {
-            //TODO eksekusi query. ambil array dari json yg isinya | usernameKakak | namaKakak | usernameAdik | namaAdik | imageAdik | sorted by adik
-            //ini HARDCODED
-            //new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
-            temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik1", "Didik Lolo", tempGambar));
-            temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik1", "Didik Lolo", tempGambar));
-            temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik2", "Didik Lola", tempGambar));
-            temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik3", "Didik Loko", tempGambar));
-
-            TempClass currentKategori = temps.get(0);
-            ArrayList<PasanganListItem> akuns = new ArrayList<>();
-            for(int i = 0; i < temps.size() ; i++) {
-                TempClass current = temps.get(i);
-                if(!currentKategori.getUsernameAdik().equals(current.getUsernameAdik())) {
-                    sectionAdapter.addSection(new PasanganListItem(
-                                    currentKategori.getUsernameAdik(),
-                                    currentKategori.getNamaAdik(),
-                                    currentKategori.getImageAdik()),
-                            new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
-                    currentKategori = current;
-                    akuns = new ArrayList<>();
-                    akuns.add(new PasanganListItem(current.getUsernameKakak(),current.getNamaKakak()));
-                } else {
-                    akuns.add(new PasanganListItem(current.getUsernameKakak(), current.getNamaKakak()));
-                }
-            }
-
-            //tambahkan section terakhir
-            sectionAdapter.addSection(new PasanganListItem(
-                            temps.get(temps.size()-1).getUsernameAdik(),
-                            temps.get(temps.size()-1).getNamaAdik(),
-                            temps.get(temps.size()-1).getImageAdik()),
-                    new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
-        }
-        mListAkun.setAdapter(sectionAdapter);
+        new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
+//        if(preferensi.getPengaturanPasangan().equals("Kakak Asuh")) {
+//            //TODO eksekusi query. ambil array dari json yg isinya |usernameKakak | namaKakak | imageKakak | usernameAdik | namaAdik | sorted by kakak
+//            //ini HARDCODED
+//
+//            temps = new ArrayList<>();
+//            //temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik1", "Keke Louis"));
+////            temps.add(new TempClass("Kakak1", "Coca Cola", tempGambar, "Adik2", "Loue Koka"));
+////            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik1", "Keke Louis"));
+////            temps.add(new TempClass("Kakak2", "Pepsi Men", tempGambar, "Adik3", "Dida Lores"));
+//
+//        } else {
+//            //TODO eksekusi query. ambil array dari json yg isinya | usernameKakak | namaKakak | usernameAdik | namaAdik | imageAdik | sorted by adik
+//            //ini HARDCODED
+//            new JSONParser(getActivity(), "http://ppl-c04.cs.ui.ac.id/index.php/listPasanganController").execute();
+//            temps = new ArrayList<>();
+//            //temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik1", "Didik Lolo", tempGambar));
+//            //temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik1", "Didik Lolo", tempGambar));
+//            //temps.add(new TempClass("Kakak1", "Didin Loapp", "Adik2", "Didik Lola", tempGambar));
+//            //temps.add(new TempClass("Kakak2", "Didin Loakk", "Adik3", "Didik Loko", tempGambar));
+//        }
         return rootView;
     }
 
     private class TempClass {
-        private String usernameKakak;
-        private Bitmap imageKakak;
-        private String namaKakak;
-        private String usernameAdik;
-        private Bitmap imageAdik;
-        private String namaAdik;
+        private String usernameHeader;
+        private Bitmap image;
+        private String nama;
+        private String usernameAnak;
 
-        public TempClass(String usernameKakak, String namaKakak, Bitmap imageKakak, String usernameAdik, String namaAdik) {
-            this.usernameKakak = usernameKakak;
-            this.imageKakak = imageKakak;
-            this.usernameAdik = usernameAdik;
-            this.namaAdik = namaAdik;
-            this.namaKakak = namaKakak;
-            imageAdik = null;
+        public TempClass(String username, String nama, Bitmap image, String usernameAnak) {
+            this.usernameHeader = username;
+            this.usernameAnak = usernameAnak;
+            this.image = image;
+            this.nama = nama;
         }
 
-        public TempClass(String usernameKakak, String namaKakak, String usernameAdik, String namaAdik, Bitmap imageAdik) {
-            this.usernameKakak = usernameKakak;
-            this.imageAdik = imageAdik;
-            this.usernameAdik = usernameAdik;
-            this.namaAdik = namaAdik;
-            this.namaKakak = namaKakak;
-            imageKakak = null;
+        public String getUsernameHeader() {
+            return usernameHeader;
         }
 
-        public String getUsernameKakak() {
-            return usernameKakak;
+        public void setUsernameHeader(String username) {
+            this.usernameHeader = username;
         }
 
-        public Bitmap getImageKakak() {
-            return imageKakak;
+        public Bitmap getImage() {
+            return image;
         }
 
-        public String getUsernameAdik() {
-            return usernameAdik;
+        public void setImage(Bitmap image) {
+            this.image = image;
         }
 
-        public Bitmap getImageAdik() {
-            return imageAdik;
+        public String getNama() {
+            return nama;
         }
 
-        public String getNamaKakak() {
-            return namaKakak;
+        public void setNama(String nama) {
+            this.nama = nama;
         }
 
-        public String getNamaAdik() {
-            return namaAdik;
+        public String getUsernameAnak() {
+            return usernameAnak;
+        }
+
+        public void setUsernameAnak(String usernameAnak) {
+            this.usernameAnak = usernameAnak;
         }
     }
 
@@ -186,6 +133,7 @@ public class DaftarPasanganFragment extends Fragment{
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
+                String mode = (preferensi.getPengaturanPasangan().equals("Kakak Asuh")) ? "1" : "2";
 
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
@@ -194,18 +142,49 @@ public class DaftarPasanganFragment extends Fragment{
 
                     // Storing  JSON item in a Variable
                     String nama_lengkap = c.getString("nama_lengkap");
-                    String username = c.getString("username");
+                    String usernameHeader = c.getString("username");
                     String role = c.getString("role");
                     decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"), false);
-                    String userkakak = c.getString("userkakaku");
-                    String useradik = c.getString("useradik");
-                    //System.out.println("ini buat ya "+nama_lengkap+"dan "+username);
-                    temps.add(new TempClass(username, nama_lengkap, decodedByte, useradik, "Adik Asuh"));
-
+                    String usernameKakakAnak = c.getString("userkakaku");
+                    String usernameAdikAnak = c.getString("useradik");
+                    if (role.equals("1")) {
+                        tempsKakak.add(new TempClass(usernameHeader, nama_lengkap, decodedByte, usernameAdikAnak));
+                    } else {
+                        tempsAdik.add(new TempClass(usernameHeader, nama_lengkap, decodedByte, usernameKakakAnak));
+                    }
                 }
+
+                if(mode.equals("1")) {
+                    add(tempsKakak);
+                } else {
+                    add(tempsAdik);
+                }
+                mListAkun.setAdapter(sectionAdapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
+        private void add(ArrayList<TempClass> temps) {
+            TempClass currentKategori = temps.get(0);
+            ArrayList<PasanganListItem> akuns = new ArrayList<>();
+            for(int i = 0; i < temps.size() ; i++) {
+                TempClass current = temps.get(i);
+                if(!currentKategori.getUsernameHeader().equals(current.getUsernameHeader())) {
+                    sectionAdapter.addSection(new PasanganListItem(
+                                    currentKategori.getUsernameHeader(),
+                                    currentKategori.getNama(),
+                                    currentKategori.getImage()),
+                            new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
+                    currentKategori = current;
+                    akuns = new ArrayList<>();
+                    akuns.add(new PasanganListItem(current.getUsernameAnak()));
+                } else {
+                    akuns.add(new PasanganListItem(current.getUsernameAnak()));
+                }
+            }
+        }
     }
+
+
 }
