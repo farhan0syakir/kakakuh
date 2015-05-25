@@ -31,14 +31,14 @@ public class BuatAkunFragment extends Fragment{
     public BuatAkunFragment(){}
 
     private EditText usernameField, passwordField, emailField;
-    String user="",pass="", email="",id;
-    String role = "0";
-    InputStream is=null;
-    String result=null;
-    String line=null;
-    int code;
+    private String user="",pass="", email="",id;
+    private String role = "0";
+    private InputStream is=null;
+    private String result=null;
+    private String line=null;
+    private int code;
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/create";
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

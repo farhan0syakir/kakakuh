@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AdikAsuhkuListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.model.AdikAsuhkuListItem;
@@ -34,7 +35,7 @@ public class AdikAsuhkuFragment extends Fragment{
     private JSONArray android = null;
     private String user;
     private ListView mListAkun;
-    Bitmap decodedByte;
+    private Bitmap decodedByte;
 
     private Preferensi preferensi;
 
@@ -56,11 +57,10 @@ public class AdikAsuhkuFragment extends Fragment{
         mListAkun.setClickable(false);
 
         //TODO panggil method yg mengeksekusi query SELECT Adikk Asuh
+        user = preferensi.getUsername();
         //dummy list
         new JSONParser(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/listAdikAsuhkuController?username="+user).execute();
         listItems = new ArrayList<>();
-
-        user = preferensi.getUsername();
 
         //akunListItems.add(new AkunListItem("la2","Yoyo","Adik Asuh", BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_home)));
         //akunListItems.remove(0);
@@ -99,15 +99,7 @@ public class AdikAsuhkuFragment extends Fragment{
                     // Storing  JSON item in a Variable
                     String namaLengkap = c.getString("nama_lengkap");
                     String username = c.getString("username");
-                    byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-                    System.out.println("ini hasil decodedString!");
-                    System.out.println(decodedString);
-                    System.out.println("hasil panjang sesudah masuk" + decodedString.length);
-                    decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                    System.out.println("ini hasil decodedByte!");
-                    System.out.println(decodedByte);
-                    //String img = c.getString(TAG_API);
-                    // Adding value HashMap key => value
+                    decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
                     AkunListItem akun = new AkunListItem(username,namaLengkap, decodedByte);
 
                     //TODO Hardcoded harusnya ambil tugas terakhir yang sudah dikerjakan adik.
@@ -121,7 +113,7 @@ public class AdikAsuhkuFragment extends Fragment{
                 }
 
                 // setting the Pengaturan list adapter
-                adapter = new AdikAsuhkuListAdapter(getActivity().getApplicationContext(), listItems);
+                adapter = new AdikAsuhkuListAdapter(context, listItems);
                 mListAkun.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();

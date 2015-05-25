@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
@@ -43,8 +44,6 @@ import java.util.ArrayList;
 
 public class UbahProfilActivity extends KakakuhBaseActivity {
     Bitmap decodedByte;
-    static int w = 250;
-    static int h = 250;
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
     private EditText namaField, npmField, emailField;
@@ -56,11 +55,10 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     private String urlupdate="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/update";
     String username;
     String nama_lengkap, tempat_tinggal, npm, email, handphone, asal_daerah, motto, base64;
-    byte[] imageByteArray;
-    InputStream is=null;
-    String result=null;
-    String line=null;
-    static Preferensi preferensi;
+    private InputStream is=null;
+    private String result=null;
+    private String line=null;
+    static private Preferensi preferensi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +135,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             Log.e("Fail 1", e.toString());
             Toast.makeText(getApplicationContext(), "Invalid IP Address",
                     Toast.LENGTH_LONG).show();
-
         }
 
         try {
@@ -149,14 +146,11 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             }
             is.close();
             result = sb.toString();
-            //debug
 
             Log.e("pass 2", "connection success ");
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());
-
         }
-
         return result;
     }
 
@@ -166,27 +160,16 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             return hasil ;
         }
 
-
-
         protected void onPostExecute(String result) {
             JSONObject c = null;
             try {
                 JSONObject json = new JSONObject(result);
                 jsonArray = json.getJSONArray("data");
                 c = jsonArray.getJSONObject(0);
-
                 namaField.setText(c.getString("nama_lengkap"), TextView.BufferType.EDITABLE);
                 npmField.setText(c.getString("npm"), TextView.BufferType.EDITABLE);
-                byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-//                System.out.println("ini hasil decodedString!");
-//                System.out.println(decodedString);
-//                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
-                decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-//                System.out.println("ini hasil decodedByte!");
-//                System.out.println(decodedByte);
-                imgView.setImageBitmap(decodedByte);
-//                imgView = (ImageView) findViewById(R.id.foto_profil);
-//                imgView.setImageBitmap(bm);
+                decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
+                if(decodedByte != null) imgView.setImageBitmap(decodedByte);
                 emailField.setText(c.getString("email"), TextView.BufferType.EDITABLE);
                 noHPField.setText(c.getString("handphone"), TextView.BufferType.EDITABLE);
                 alamatField.setText(c.getString("tempat_tinggal"),TextView.BufferType.EDITABLE);
@@ -235,7 +218,6 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             Log.e("Fail 1", e.toString());
             Toast.makeText(getApplicationContext(), "Invalid IP Address",
                     Toast.LENGTH_LONG).show();
-
         }
 
         try {
@@ -265,13 +247,13 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             return hasil ;
         }
 
-
-
         protected void onPostExecute(String result) {
             JSONObject c = null;
             try {
                 Toast.makeText(getApplicationContext(), "Berhasil mengubah profil",
                         Toast.LENGTH_LONG).show();
+                preferensi.setPhotoProfil(base64);
+                preferensi.commit();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -291,8 +273,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
                 // Get the cursor
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
+                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 // Move to first row
                 cursor.moveToFirst();
 
@@ -300,19 +281,9 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
-                System.out.println("ini hasil imgdecodeablestringnya brother!");
-                System.out.println(imgDecodableString);
-                Bitmap bitmap_Source=BitmapFactory.decodeFile(imgDecodableString);
-                float factorH = h / (float)bitmap_Source.getHeight();
-                float factorW = w / (float)bitmap_Source.getWidth();
-                float factorToUse = (factorH > factorW) ? factorW : factorH;
-                Bitmap bm = Bitmap.createScaledBitmap(bitmap_Source,
-                        (int) (bitmap_Source.getWidth() * factorToUse),
-                        (int) (bitmap_Source.getHeight() * factorToUse),
-                        false);
-                imgView.setImageBitmap(bm);
-                imageByteArray = getByteArray(bm);
-                base64 = Base64.encodeToString(imageByteArray,Base64.NO_WRAP);
+                Bitmap bitmap_Source= ImageConverter.minify(BitmapFactory.decodeFile(imgDecodableString));
+                imgView.setImageBitmap(bitmap_Source);
+                base64 = ImageConverter.convertBitmapToStringBase64(bitmap_Source);
             } else {
                 Toast.makeText(this, "You haven't picked Image",
                         Toast.LENGTH_LONG).show();
@@ -321,18 +292,5 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-    }
-
-    public byte[] getByteArray(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] hasil = stream.toByteArray();
-        System.out.println("hasil panjang sebelum masuk" + hasil.length);
-        try {
-            stream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return hasil;
     }
 }

@@ -2,6 +2,7 @@ package com.kakakuh.c4ppl.kakakuh;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.HeaderTugasListKakakAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.TugasListKakakAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
@@ -32,6 +34,7 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
     private Context context;
     private String usernameAdik;
     private String nama;
+    private String encodedPhoto;
     private byte[] byteImage;
 
     @Override
@@ -47,13 +50,13 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
         ImageView photoView = (ImageView) findViewById(R.id.image);
         TextView namaView = (TextView) findViewById(R.id.nama);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         usernameAdik = intent.getStringExtra("username");
-
-        byteImage = intent.getByteArrayExtra("photo");
-        photoView.setImageBitmap(BitmapFactory.decodeByteArray(byteImage,0,byteImage.length));
-
+        encodedPhoto = intent.getStringExtra("photo");
+        Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(encodedPhoto, false);
+        if(decodedPhoto != null) photoView.setImageBitmap(decodedPhoto);
         nama = intent.getStringExtra("nama");
+
         namaView.setText(nama);
         namaView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +117,7 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
                 Intent nextIntent = new Intent(context,TambahTugasActivity.class);
                 nextIntent.putExtra("username",usernameAdik);
                 nextIntent.putExtra("nama", nama);
-                nextIntent.putExtra("photo", byteImage);
+                nextIntent.putExtra("photo", encodedPhoto);
                 context.startActivity(nextIntent);
             }
         });

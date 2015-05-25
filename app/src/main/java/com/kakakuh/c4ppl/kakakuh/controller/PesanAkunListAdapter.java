@@ -41,7 +41,8 @@ public class PesanAkunListAdapter extends KakakuhBaseAdapter<PesanAkunListItem> 
 
         final PesanAkunListItem current = listItems.get(position);
 
-        image.setImageBitmap(current.getPhoto());
+        if(current.getPhoto() != null) image.setImageBitmap(current.getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(current.getName());
 
         if(current.isPesanBaru()) {
@@ -57,9 +58,7 @@ public class PesanAkunListAdapter extends KakakuhBaseAdapter<PesanAkunListItem> 
                 Intent i = new Intent(context, DetailPesanActivity.class);
                 i.putExtra("username",current.getUsername());
                 i.putExtra("name",current.getName());
-                //encoded Bitmap
-                //String encodedPhoto = current.getPhoto;
-                //i.putExtra("name",encodedPhoto);
+                i.putExtra("photo",ImageConverter.convertBitmapToStringBase64(current.getPhoto()));
                 context.startActivity(i);
             }
         });

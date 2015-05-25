@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 
@@ -23,21 +24,16 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class HapusAkunFragment extends Fragment{
-    public ListView mListAkun;
-    public ArrayList<AkunListItem> akunListItems;
-    public HapusAkunListAdapter adapter;
-    JSONArray android = null;
-
+    private ListView mListAkun;
+    private ArrayList<AkunListItem> akunListItems;
+    private HapusAkunListAdapter adapter;
+    private JSONArray android = null;
 
     public HapusAkunFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
-
 
         View rootView = inflater.inflate(R.layout.list_generic, container, false);
 
@@ -93,10 +89,10 @@ public class HapusAkunFragment extends Fragment{
                     //String img = c.getString(TAG_API);
                     // Adding value HashMap key => value
                     if(role.equals("2")){
-                        akunListItems.add(new AkunListItem(username,nama_lengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                        akunListItems.add(new AkunListItem(username,nama_lengkap, ImageConverter.convertStringToBitmap(c.getString("img"), false)));
                     }
                     else{
-                        akunListItems.add(new AkunListItem(username,nama_lengkap, BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal)));
+                        akunListItems.add(new AkunListItem(username,nama_lengkap, ImageConverter.convertStringToBitmap(c.getString("img"), false)));
                     }
 //                    mListAkun.setOnItemClickListener(new ListAkunClickListener());
                     // list adapter

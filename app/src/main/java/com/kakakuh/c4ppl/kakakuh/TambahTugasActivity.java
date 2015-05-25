@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.Kalender;
 
 import java.sql.Date;
@@ -74,10 +76,9 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         username = i.getStringExtra("username");
         TextView nama = (TextView) findViewById(R.id.nama);
         nama.setText(i.getStringExtra("nama"));
-
-        byte[] byteImage = i.getByteArrayExtra("photo");
-        ((ImageView) findViewById(R.id.image)).setImageBitmap(
-                BitmapFactory.decodeByteArray(byteImage, 0, byteImage.length));
+        ImageView photoView = (ImageView) findViewById(R.id.image);
+        Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(i.getStringExtra("photo"), false);
+        if(decodedPhoto != null) photoView.setImageBitmap(decodedPhoto);
 
         nama.setOnClickListener(new View.OnClickListener() {
             @Override

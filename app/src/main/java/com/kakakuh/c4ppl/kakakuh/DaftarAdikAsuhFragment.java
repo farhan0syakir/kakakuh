@@ -4,9 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.AkunListKoordinatorAdapter;
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 
@@ -27,13 +26,11 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class DaftarAdikAsuhFragment extends Fragment{
-    ListView mListAkun;
-    ArrayList<AkunListItem> akunListItems;
-    AkunListKoordinatorAdapter adapter;
-    JSONArray android = null;
-    Bitmap decodedByte;
-
-    String user;
+    private ListView mListAkun;
+    private ArrayList<AkunListItem> akunListItems;
+    private AkunListKoordinatorAdapter adapter;
+    private JSONArray android = null;
+    private Bitmap decodedByte;
 
     public DaftarAdikAsuhFragment(){}
 
@@ -78,20 +75,12 @@ public class DaftarAdikAsuhFragment extends Fragment{
                     // Storing  JSON item in a Variable
                     String nama_lengkap = c.getString("nama_lengkap");
                     String username = c.getString("username");
-                    byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-                    System.out.println("ini hasil decodedString!");
-                    System.out.println(decodedString);
-                    System.out.println("hasil panjang sesudah masuk" + decodedString.length);
-                    decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                    System.out.println("ini hasil decodedByte!");
-                    System.out.println(decodedByte);
-                    //String img = c.getString(TAG_API);
-                    // Adding value HashMap key => value
+                    decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"),false);
                     akunListItems.add(new AkunListItem(username,nama_lengkap, decodedByte));
                     mListAkun.setOnItemClickListener(new ListAkunClickListener());
 
                     // setting the Pengaturan list adapter
-                    adapter = new AkunListKoordinatorAdapter(getActivity().getApplicationContext(), akunListItems);
+                    adapter = new AkunListKoordinatorAdapter(getActivity(), akunListItems);
                     mListAkun.setAdapter(adapter);
 
                 }

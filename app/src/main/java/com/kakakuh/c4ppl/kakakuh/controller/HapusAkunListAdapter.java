@@ -65,7 +65,8 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
         TextView txtRole = (TextView) convertView.findViewById(R.id.role_akun);
         Button delete = (Button) convertView.findViewById(R.id.btn_delete);
 
-        image.setImageBitmap(listItems.get(position).getPhoto());
+        if(listItems.get(position).getPhoto() != null) image.setImageBitmap(listItems.get(position).getPhoto());
+        else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(listItems.get(position).getUsername());
         txtRole.setText(listItems.get(position).getName());
         delete.setOnClickListener(new View.OnClickListener() {

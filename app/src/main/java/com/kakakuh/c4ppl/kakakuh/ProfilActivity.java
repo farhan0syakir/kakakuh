@@ -19,6 +19,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
@@ -185,15 +186,8 @@ public class ProfilActivity extends TabActivity {
                 else{
                     role.setText("Adik Asuh");
                 }
-
-                byte[] decodedString = Base64.decode(c.getString("img"), Base64.NO_WRAP);
-                System.out.println("ini hasil decodedString!");
-                System.out.println(decodedString);
-                System.out.println("hasil panjang sesudah masuk" + decodedString.length);
-                decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                System.out.println("ini hasil decodedByte!");
-                System.out.println(decodedByte);
-                imgView.setImageBitmap(decodedByte);
+                decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
+                if(decodedByte != null) imgView.setImageBitmap(decodedByte);
 
             } catch (JSONException e) {
                 e.printStackTrace();

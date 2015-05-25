@@ -30,10 +30,7 @@ public class PasanganListAdapter extends KakakuhBaseAdapter<PasanganListItem> {
         }
 
         TextView txtUsername = (TextView) convertView.findViewById(R.id.username);
-        TextView txtName = (TextView) convertView.findViewById(R.id.nama);
-
         txtUsername.setText(listItems.get(position).getUsername());
-        txtName.setText(listItems.get(position).getNama());
 
         return convertView;
     }
