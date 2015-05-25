@@ -131,7 +131,7 @@
             android:label="form jadwal" >
         </activity>
         <activity
-            android:name=".updateJadwalActivity"
+            android:name=".UpdateJadwalActivity"
             android:label="@string/title_activity_update_jadwal" >
         </activity>
     </application>

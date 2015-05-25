@@ -132,7 +132,23 @@
                 android:textSize="@dimen/normal_text"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/deskripsi_jadwal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:layout_alignLeft="@+id/judul"
+                android:background="@drawable/btn_normal"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/btn_login"
+                />
+
+            <Button
+                android:id="@+id/btn_hapus"
+                android:text="HAPUS"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold"
+                android:layout_alignRight="@+id/judul"
+                android:textColor="@color/white"
                 android:layout_below="@+id/deskripsi_jadwal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="15dp"
@@ -141,6 +157,8 @@
                 android:layout_height="40dp"
                 android:contentDescription="@string/btn_login"
                 />
+
         </RelativeLayout>
     </ScrollView>
+
 </RelativeLayout>

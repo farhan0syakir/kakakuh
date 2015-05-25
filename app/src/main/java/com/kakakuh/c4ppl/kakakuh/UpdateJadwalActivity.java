@@ -3,11 +3,8 @@ package com.kakakuh.c4ppl.kakakuh;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -35,7 +32,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class updateJadwalActivity extends KakakuhBaseActivity {
+public class UpdateJadwalActivity extends KakakuhBaseActivity {
 
     private TextView username;
     private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField,deskripsi;
@@ -116,7 +113,7 @@ public class updateJadwalActivity extends KakakuhBaseActivity {
         dateStartField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                new DatePickerDialog(updateJadwalActivity.this, dateStart, myCalendarStart
+                new DatePickerDialog(UpdateJadwalActivity.this, dateStart, myCalendarStart
                         .get(Calendar.YEAR), myCalendarStart.get(Calendar.MONTH),
                         myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -126,7 +123,7 @@ public class updateJadwalActivity extends KakakuhBaseActivity {
         timeStartField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TimePickerDialog(updateJadwalActivity.this, timeStart, myCalendarStart.get(Calendar.HOUR_OF_DAY),
+                new TimePickerDialog(UpdateJadwalActivity.this, timeStart, myCalendarStart.get(Calendar.HOUR_OF_DAY),
                         myCalendarStart.get(Calendar.MINUTE),true).show();
             }
         });
@@ -134,7 +131,7 @@ public class updateJadwalActivity extends KakakuhBaseActivity {
         dateEndField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                new DatePickerDialog(updateJadwalActivity.this, dateEnd, myCalendarEnd
+                new DatePickerDialog(UpdateJadwalActivity.this, dateEnd, myCalendarEnd
                         .get(Calendar.YEAR), myCalendarEnd.get(Calendar.MONTH),
                         myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -144,7 +141,7 @@ public class updateJadwalActivity extends KakakuhBaseActivity {
         timeEndField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TimePickerDialog(updateJadwalActivity.this, timeEnd, myCalendarEnd.get(Calendar.HOUR_OF_DAY),
+                new TimePickerDialog(UpdateJadwalActivity.this, timeEnd, myCalendarEnd.get(Calendar.HOUR_OF_DAY),
                         myCalendarEnd.get(Calendar.MINUTE),true).show();
             }
         });

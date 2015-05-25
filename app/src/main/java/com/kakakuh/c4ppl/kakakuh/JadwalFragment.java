@@ -1,8 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.RectF;
@@ -18,20 +16,15 @@ import android.widget.Toast;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.kakakuh.c4ppl.kakakuh.controller.HapusAkunListAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.JSONParser;
-import com.kakakuh.c4ppl.kakakuh.model.belumTerpakai.Jadwal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Anas on 4/2/2015.
@@ -60,7 +53,7 @@ public class JadwalFragment
                              Bundle savedInstanceState)  {
 
         try{
-            new JSONParse().execute().get();
+//            new JSONParse().execute().get();
         }catch (Exception e){
             System.out.println(e);
         }
@@ -145,6 +138,9 @@ public class JadwalFragment
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
         Toast.makeText(JadwalFragment.this.getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        nextScreen = new Intent(getActivity().getApplicationContext(), UpdateJadwalActivity.class);
+        nextScreen.putExtra("id",event.getId());
+        startActivity(nextScreen);
     }
 
     @Override
