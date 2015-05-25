@@ -59,10 +59,10 @@ public class LoginActivity extends Activity {
             } else {
                 preferensi.setRole("Adik Asuh");
             }
-            preferensi.setLogin();
-            preferensi.commit();
+
 
             if(obj.getActivationStatus()) {
+                preferensi.setLogin();
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -74,6 +74,7 @@ public class LoginActivity extends Activity {
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
+            preferensi.commit();
         }
     }
 }

@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -94,7 +93,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
 
         //url = url+"?username=adik";
         username = preferensi.getUsername();
-        new retrieveMyProfile().execute();
+        new retrieveMyProfile(this).execute();
 
         //Add listener
         btnUpload.setOnClickListener(new View.OnClickListener() {
@@ -172,12 +171,30 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     }
 
     class retrieveMyProfile extends AsyncTask<String, String, String> {
+        private ProgressDialog pDialog;
+        private Context context;
+        retrieveMyProfile(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage("Ambil Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+
         protected String doInBackground(String... params) {
             String hasil = retrieve();
             return hasil ;
         }
 
         protected void onPostExecute(String result) {
+            pDialog.dismiss();
             JSONObject c = null;
             try {
                 JSONObject json = new JSONObject(result);
