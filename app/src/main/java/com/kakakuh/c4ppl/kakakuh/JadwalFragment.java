@@ -25,9 +25,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Anas on 4/2/2015.
@@ -60,6 +64,7 @@ public class JadwalFragment
         }catch (Exception e){
             System.out.println(e);
         }
+
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         FloatingActionButton tambahJadwalBtn = (FloatingActionButton) rootView.findViewById(R.id.tambah_jadwal);
 
@@ -123,13 +128,13 @@ public class JadwalFragment
                 }
             }
         });
+
         Calendar cal = Calendar.getInstance();
         onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
         return rootView;
     }
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-
         // Populate the week view with some events.
         return events;
     }
@@ -157,10 +162,8 @@ public class JadwalFragment
 
         @Override
         protected void onPostExecute(JSONObject json) {
-            pDialog.dismiss();
             try {
                 // Getting JSON Array from URL
-
                 android = json.getJSONArray("data");
                 for(int i = 0; i < android.length(); i++){
                     JSONObject c = android.getJSONObject(i);
@@ -171,49 +174,30 @@ public class JadwalFragment
                     statusBook = c.getString("status_book");
                     //Date format 2015-05-18 09:33:00
                     startDate = c.getString("start_date");
-                    String [] spliter = startDate.split(" ");
-                    String [] starterDate = spliter[0].split("-");
-                    String [] starterClock = spliter[1].split(":");
-                    tahunMulai = starterDate[0];
-                    bulanMulai = starterDate[1];
-                    tanggalMulai = starterDate[2];
-                    jamMulai = starterClock[0];
-                    menitMulai = starterClock[1];
-                    detikMulai = starterClock[2];
                     endDate = c.getString("end_date");
-                    String [] spliter2 = endDate.split(" ");
-                    String [] finisherDate = spliter2[0].split("-");
-                    String [] finisherClock = spliter2[1].split(":");
-                    tahunSelesai = finisherDate[0];
-                    bulanSelesai = finisherDate[1];
-                    tanggalSelesai = finisherDate[2];
-                    jamSelesai = finisherClock[0];
-                    menitSelesai = finisherClock[1];
-                    detikSelesai = finisherClock[2];
 
-                    Calendar startTime = Calendar.getInstance();
-                    startTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tanggalMulai));
-                    startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(jamMulai));
-                    startTime.set(Calendar.MINUTE, Integer.parseInt(menitMulai));
-                    startTime.set(Calendar.SECOND, Integer.parseInt(detikMulai));
-                    startTime.set(Calendar.MONTH, Integer.parseInt(bulanMulai)-1);
-                    startTime.set(Calendar.YEAR, Integer.parseInt(tahunMulai));
-                    System.out.println("lala start time" + startTime.toString() + "");
-                    Calendar endTime = Calendar.getInstance();
-                    endTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tanggalSelesai));
-                    endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(jamSelesai));
-                    endTime.set(Calendar.MINUTE, Integer.parseInt(menitSelesai));
-                    endTime.set(Calendar.SECOND, Integer.parseInt(detikSelesai));
-                    endTime.set(Calendar.MONTH, Integer.parseInt(bulanSelesai)-1);
-                    endTime.set(Calendar.YEAR, Integer.parseInt(tahunSelesai));
-                    WeekViewEvent event = new WeekViewEvent(Integer.parseInt(id), judul, startTime, endTime);
-                    if(Integer.parseInt(statusBook)==0){
-                        event.setColor(getResources().getColor(R.color.available));
-                    }else{
-                        event.setColor(getResources().getColor(R.color.booked));
+                    try {
+                        Date parsedStartDate = null, parsedEndDate = null;
+                        parsedStartDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startDate);
+                        parsedEndDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endDate);
+
+                        Calendar startTime = Calendar.getInstance();
+                        startTime.setTime(parsedStartDate);
+                        Calendar endTime = Calendar.getInstance();
+                        endTime.setTime(parsedEndDate);
+
+                        WeekViewEvent event = new WeekViewEvent(Integer.parseInt(id), judul, startTime, endTime);
+                        if(Integer.parseInt(statusBook)==0){
+                            event.setColor(getResources().getColor(R.color.available));
+                        }else{
+                            event.setColor(getResources().getColor(R.color.booked));
+                        }
+                        events.add(event);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
-                    events.add(event);
                 }
+                pDialog.dismiss();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
