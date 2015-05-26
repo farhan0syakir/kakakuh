@@ -111,7 +111,15 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
                 // SELESAI ngapain
-                new updateMyProfile().execute();
+//                if(namaField.equals("null")||npmField.equals("null")||emailField.equals("null")||noHPField.equals("null")||alamatField.equals("null")||asalDaerahField.equals("null")||mottoField.equals("null")){
+//                    Toast.makeText(getApplicationContext(), "Form tidak boleh ada yang kosong",
+//                            Toast.LENGTH_LONG).show();
+//                } else if(namaField.equals("")||npmField.equals("")||emailField.equals("")||noHPField.equals("")||alamatField.equals("")||asalDaerahField.equals("")||mottoField.equals("")){
+//                    Toast.makeText(getApplicationContext(), "Form tidak boleh ada yang kosong",
+//                            Toast.LENGTH_LONG).show();
+//                } else{
+                    new updateMyProfile().execute();
+//                }
                 System.out.println("SELESAI"); //TEST
             }
         });
