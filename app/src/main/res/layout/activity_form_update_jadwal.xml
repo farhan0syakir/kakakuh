@@ -1,11 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:background="@color/white"
-    tools:context="com.kakakuh.c4ppl.kakakuh.FormJadwalActivity">
-
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <ScrollView
         android:orientation="vertical"
         android:id="@+id/scrollview"
@@ -135,23 +131,7 @@
                 android:layout_below="@+id/deskripsi_jadwal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="15dp"
-                android:layout_alignLeft="@+id/judul"
-                android:background="@drawable/btn_normal"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/btn_login"
-                />
-
-            <Button
-                android:id="@+id/btn_hapus"
-                android:text="HAPUS"
-                android:textSize="@dimen/normal_text"
-                android:textStyle="bold"
-                android:layout_alignRight="@+id/judul"
-                android:textColor="@color/white"
-                android:layout_below="@+id/deskripsi_jadwal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="15dp"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/btn_normal"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
@@ -160,5 +140,4 @@
 
         </RelativeLayout>
     </ScrollView>
-
-</RelativeLayout>
+</LinearLayout>

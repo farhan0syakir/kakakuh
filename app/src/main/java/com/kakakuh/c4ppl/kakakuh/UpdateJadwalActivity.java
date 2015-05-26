@@ -54,7 +54,7 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferensi = new Preferensi(getApplicationContext());
-        usernameSTR = prefensi.getUsername();
+//        usernameSTR = prefensi.getUsername();
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -153,7 +153,7 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
             public void onClick(View v) {
                 // kyknya ini bisa ngerefer ke buat akun.
                 //samakan dengan format database
-                new CreateJadwal().execute();
+//                new CreateJadwal().execute();
             }
         });
     }
@@ -190,70 +190,70 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
             timeEndField.setText(sdf.format(myCalendarEnd.getTime()));
         }
     }
-
-    public String update() {
-
-        judulSTR = judulField.getText().toString();
-        dateStartSTR = changeFormatDateTime(myCalendarStart);
-        dateEndSTR = changeFormatDateTime(myCalendarEnd);
-        deskripsiSTR = deskripsi.getText().toString();
-
-        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
-
-        nameValuePairs.add(new BasicNameValuePair("judul", judulSTR));
-        nameValuePairs.add(new BasicNameValuePair("startdate", dateStartSTR));
-        nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
-        nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
-        nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
-
-        //debug
-        System.out.println(nameValuePairs);
-
-        try {
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(url1);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            is = entity.getContent();
-            //debug
-            System.out.println(is);
-            Log.e("pass 1", "connection success ");
-        } catch (Exception e) {
-            Log.e("Fail 1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
-
-        }
-
-        try {
-            BufferedReader reader = new BufferedReader
-                    (new InputStreamReader(is, "iso-8859-1"), 8);
-            StringBuilder sb = new StringBuilder();
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            is.close();
-            result = sb.toString();
-            //debug
-
-            Log.e("pass 2", "connection success ");
-            System.out.println(result);
-        } catch (Exception e) {
-            Log.e("Fail 2", e.toString());
-        }
-        return result;
-    }
-
-    class CreateJadwal extends AsyncTask<String, String, String> {
-        protected String doInBackground(String... params) {
-            String hasil = update();
-            return hasil ;
-        }
-
-        protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), "Berhasil mengupdate jadwal" + judulSTR + dateStartSTR+dateEndSTR+deskripsiSTR,
-                    Toast.LENGTH_LONG).show();
-        }
-    }
+//
+//    public String update() {
+//
+//        judulSTR = judulField.getText().toString();
+//        dateStartSTR = changeFormatDateTime(myCalendarStart);
+//        dateEndSTR = changeFormatDateTime(myCalendarEnd);
+//        deskripsiSTR = deskripsi.getText().toString();
+//
+//        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+//
+//        nameValuePairs.add(new BasicNameValuePair("judul", judulSTR));
+//        nameValuePairs.add(new BasicNameValuePair("startdate", dateStartSTR));
+//        nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
+//        nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
+//        nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
+//
+//        //debug
+//        System.out.println(nameValuePairs);
+//
+//        try {
+//            HttpClient httpclient = new DefaultHttpClient();
+//            HttpPost httppost = new HttpPost(url1);
+//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//            HttpResponse response = httpclient.execute(httppost);
+//            HttpEntity entity = response.getEntity();
+//            is = entity.getContent();
+//            //debug
+//            System.out.println(is);
+//            Log.e("pass 1", "connection success ");
+//        } catch (Exception e) {
+//            Log.e("Fail 1", e.toString());
+//            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+//                    Toast.LENGTH_LONG).show();
+//
+//        }
+//
+//        try {
+//            BufferedReader reader = new BufferedReader
+//                    (new InputStreamReader(is, "iso-8859-1"), 8);
+//            StringBuilder sb = new StringBuilder();
+//            while ((line = reader.readLine()) != null) {
+//                sb.append(line + "\n");
+//            }
+//            is.close();
+//            result = sb.toString();
+//            //debug
+//
+//            Log.e("pass 2", "connection success ");
+//            System.out.println(result);
+//        } catch (Exception e) {
+//            Log.e("Fail 2", e.toString());
+//        }
+//        return result;
+//    }
+//
+//    class CreateJadwal extends AsyncTask<String, String, String> {
+//        protected String doInBackground(String... params) {
+//            String hasil = update();
+//            return hasil ;
+//        }
+//
+//        protected void onPostExecute(String result) {
+//            Toast.makeText(getApplicationContext(), "Berhasil mengupdate jadwal" + judulSTR + dateStartSTR+dateEndSTR+deskripsiSTR,
+//                    Toast.LENGTH_LONG).show();
+//        }
+//    }
 }

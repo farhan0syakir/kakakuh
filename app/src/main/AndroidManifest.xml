@@ -134,6 +134,10 @@
             android:name=".UpdateJadwalActivity"
             android:label="@string/title_activity_update_jadwal" >
         </activity>
+        <activity
+            android:name=".DetailJadwalActivity"
+            android:label="@string/title_activity_detail_jadwal" >
+        </activity>
     </application>
 
 </manifest>

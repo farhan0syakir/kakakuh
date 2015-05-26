@@ -3,8 +3,7 @@
     android:layout_height="match_parent"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:background="@color/white"
-    tools:context="com.kakakuh.c4ppl.kakakuh.FormJadwalActivity">
+    android:background="@color/white">
 
     <ScrollView
         android:orientation="vertical"

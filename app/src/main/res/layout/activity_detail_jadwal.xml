@@ -1,0 +1,164 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Isi notenya Apa"
+            android:textSize="@dimen/normal_text"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/emerald"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/note"
+            android:layout_marginTop="5dp"
+            android:id="@+id/view" />
+
+        <LinearLayout
+            android:id="@+id/line_waktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_waktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_waktu"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/waktu_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sabtu, 29 April 2015"
+                    android:textSize="@dimen/normal_text"/>
+
+                <TextView
+                    android:id="@+id/waktu_jam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08:00"
+                    android:textSize="@dimen/normal_text"
+                    android:layout_marginTop="2dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_tempat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/line_waktu"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_tempat"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tentative"
+                android:textSize="@dimen/normal_text"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/line_tempat"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_detail"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belajar Bareng"
+                android:textSize="@dimen/normal_text"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_hapus"
+        android:text="HAPUS"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="91dp"
+        android:background="@drawable/btn_normal"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/btn_login"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/relativeLayout"
+        android:layout_alignEnd="@+id/relativeLayout" />
+
+    <Button
+        android:id="@+id/btn_ubah"
+        android:text="UBAH"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_normal"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/btn_login"
+        android:layout_alignTop="@+id/btn_hapus"
+        android:layout_alignLeft="@+id/relativeLayout"
+        android:layout_alignStart="@+id/relativeLayout" />
+</RelativeLayout>
