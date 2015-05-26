@@ -33,20 +33,26 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Anas on 4/2/2015.
  */
 public class PasangkanAkunFragment extends Fragment{
-    JSONArray jsonArray;
+    JSONArray jsonArray = null;
     String url = "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController/create";
-    String url2 = "http://ppl-c04.cs.ui.ac.id/inde.php/pasangkanController/retrieve";
+    String url2 = "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController/retrieve";
     AutoCompleteTextView kakakView;
     AutoCompleteTextView adikView;
     InputStream is=null;
     String result=null;
     String line=null;
     String fieldKakak="", fieldAdik="";
+    ArrayList<String> kakak = new ArrayList<>();
+    ArrayList<String> adik = new ArrayList<>();
+    ArrayAdapter<String> adapterKakak;
+    ArrayAdapter<String> adapterAdik;
+
 
     public PasangkanAkunFragment(){}
 
@@ -60,17 +66,13 @@ public class PasangkanAkunFragment extends Fragment{
         adikView = (AutoCompleteTextView) rootView.findViewById(R.id.adik_asuh);
 
         // TODO Sementara HARDCODE sebab harusnya ini query SELECT nama FROM kakak/adik asuh
-        String[] kakak = {"lalal","yooyo","yoyas","awakenea"};
-        String[] adik = {"lilie","yaoyo","yooyoaa","keneaw"};
+        new JSONParser(getActivity(),url2).execute();
 
         // Create the adapter and set it to the AutoCompleteTextView
-        ArrayAdapter<String> adapterKakak =
-                new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, kakak);
-        kakakView.setAdapter(adapterKakak);
+        adapterKakak = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, kakak);
+        adapterAdik = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, adik);
 
-        ArrayAdapter<String> adapterAdik =
-                new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, adik);
-        adikView.setAdapter(adapterAdik);
+
 
         //Listener btn Pasang
         Button btnPasang = (Button) rootView.findViewById(R.id.btn_pasang);
@@ -154,6 +156,36 @@ public class PasangkanAkunFragment extends Fragment{
             if(result.equals("OK"))
                 System.out.print("ea");
             //after background is done, use this to show or hide dialogs
+        }
+    }
+
+    class JSONParser extends KakakuhBaseJSONParserAsyncTask {
+        public JSONParser(Context context, String url) {
+            super(context, url);
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            pDialog.dismiss();
+            try {
+                // Getting JSON Array from URL
+                jsonArray = json.getJSONArray("data");
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject c = jsonArray.getJSONObject(i);
+                    // Storing  JSON item in a Variable
+                    String username = c.getString("username");
+                    String role = c.getString("role");
+                    if(role.equals("1")){
+                        kakak.add(username);
+                    } else if(role.equals("2")){
+                        adik.add(username);
+                    }
+                }
+                kakakView.setAdapter(adapterKakak);
+                adikView.setAdapter(adapterAdik);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
