@@ -69,6 +69,9 @@ public class PengaturanUbahPasswordActivity extends KakakuhBaseActivity {
                     if(confirm_pass.equals("")&&newPass.equals("")) {
                         Toast.makeText(getApplicationContext(), "Password tidak boleh kosong",
                                 Toast.LENGTH_LONG).show();
+                    } else if(confirm_pass.contains(" ")||newPass.toString().contains(" ")){
+                        Toast.makeText(getApplicationContext(), "Password tidak boleh mengandung spasi",
+                                Toast.LENGTH_LONG).show();
                     }
                     else if(newPass.equals(confirm_pass)){
                         new UpdatePass().execute();
