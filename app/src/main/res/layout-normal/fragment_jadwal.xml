@@ -4,72 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.alamkanak.weekview.WeekView
-        android:id="@+id/weekView"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:eventTextColor="@android:color/white"
-        app:textSize="12sp"
-        app:hourHeight="60dp"
-        app:headerColumnPadding="8dp"
-        app:headerColumnTextColor="#8f000000"
-        app:headerRowPadding="12dp"
-        app:columnGap="8dp"
-        app:noOfVisibleDays="3"
-        app:headerRowBackgroundColor="#ffefefef"
-        app:dayBackgroundColor="#05000000"
-        app:todayBackgroundColor="#1848adff"
-        app:headerColumnBackground="#ffffffff"/>
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        app:fab_addButtonColorNormal="@color/emerald"
-        app:fab_addButtonColorPressed="@color/emerald_light"
-        app:fab_addButtonPlusIconColor="@color/white"
-        app:fab_labelStyle="@style/menu_labels_style"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_alignParentEnd="true">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/tambah_jadwal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/emerald"
-            app:fab_title="Tambah Jadwal"
-            app:fab_colorPressed="@color/emerald_light"
-            />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/lihat_hari_ini"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/emerald"
-            app:fab_title="Lihat Hari Ini"
-            app:fab_colorPressed="@color/emerald_light"
-            android:onClick="lihatHariIni"/>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/lihat3hari"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="lihat3Hari"
-            app:fab_colorNormal="@color/emerald"
-            app:fab_title="Lihat Per 3 Hari"
-            app:fab_colorPressed="@color/emerald_light"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/spinner_bulan"
+                android:entries="@array/month_arrays"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <!--<NumberPicker-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Year"-->
+                <!--android:id="@+id/tahun"-->
+                <!--android:textSize="@dimen/large_text"-->
+                <!--android:layout_alignBottom="@+id/tambah_jadwal"-->
+                <!--android:layout_marginLeft="100dp"-->
+                <!--android:layout_marginEnd="78dp" />-->
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/refresh"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_refresh"
+                android:layout_gravity="right"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/lihat_seminggu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/emerald"
-            app:fab_title="Lihat Per 1 Minggu"
-            app:fab_colorPressed="@color/emerald_light"
-            android:onClick="lihatSeminggu"/>
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/tambah_jadwal"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/btn_new"
+                android:layout_gravity="right"
+                android:layout_marginEnd="28dp"
+                android:layout_alignTop="@+id/refresh"
+                android:layout_toLeftOf="@+id/refresh"
+                android:layout_toStartOf="@+id/refresh" />
+
+
+
+
+        </RelativeLayout>
+
+
+        <com.alamkanak.weekview.WeekView
+            android:id="@+id/weekView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:eventTextColor="@android:color/white"
+            app:textSize="12sp"
+            app:hourHeight="60dp"
+            app:headerColumnPadding="8dp"
+            app:headerColumnTextColor="#8f000000"
+            app:headerRowPadding="12dp"
+            app:columnGap="8dp"
+            app:noOfVisibleDays="3"
+            app:headerRowBackgroundColor="#ffefefef"
+            app:dayBackgroundColor="#05000000"
+            app:todayBackgroundColor="#1848adff"
+            app:headerColumnBackground="#ffffffff"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

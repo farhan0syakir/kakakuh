@@ -21,6 +21,7 @@ public class Preferensi {
 
     //pengaturan koordinator
     static final String PENGATURAN_PASANGAN_KEY = "pengaturanPasangan";
+    static final String PENGATURAN_JADWAL_KEY = "pengaturanJadwal";
     static final String PENGATURAN_PESAN_KEY = "pengaturanPesan";
     static final String PENGATURAN_PENGINGAT_KEY = "pengaturanPengingat";
     static final String PENGATURAN_REVIEW_LOG_KEY = "pengaturanReviewLog";
@@ -113,5 +114,10 @@ public class Preferensi {
 
     public void commit() {
         editor.commit();
+    }
+
+    public String getPengaturanJadwal() {
+        return preferensiKakakuh.getString(PENGATURAN_JADWAL_KEY,
+                context.getResources().getString(R.string.pengaturan_jadwal_default));
     }
 }

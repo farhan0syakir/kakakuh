@@ -39,4 +39,19 @@
     <string name="title_activity_update_jadwal">updateJadwalActivity</string>
     <string name="title_activity_detail_jadwal">DetailJadwalActivity</string>
 
+    <string-array name="month_arrays">
+        <item >Januari</item>
+        <item >Februari</item>
+        <item >Maret</item>
+        <item >April</item>
+        <item >Mei</item>
+        <item >Juni</item>
+        <item >Juli</item>
+        <item >Agustus</item>
+        <item >September</item>
+        <item >Oktober</item>
+        <item >November</item>
+        <item >Desember</item>
+    </string-array>
+    <string name="title_activity_pengaturan_jadwal">Pengaturan jadwal</string>
 </resources>

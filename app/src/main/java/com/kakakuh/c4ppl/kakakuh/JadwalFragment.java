@@ -1,5 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,7 +12,11 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
@@ -41,10 +46,14 @@ public class JadwalFragment
     private static final int TYPE_THREE_DAY_VIEW = 2;
     private static final int TYPE_WEEK_VIEW = 3;
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
+    Spinner monthSpinner;
     WeekView mWeekView;
-    Button button;
+    TextView tahun;
+    Button button,goToTodayBtn,tambahJadwalBtn;
     String id,user,judul,startDate,tahunMulai,bulanMulai,tanggalMulai,jamMulai,menitMulai,detikMulai,endDate,tahunSelesai,bulanSelesai,tanggalSelesai,jamSelesai,menitSelesai,detikSelesai;
     String statusBook;
+    NumberPicker yearpicker;
+
     public JadwalFragment(){}
 
     Fragment fragment = null;
@@ -57,24 +66,20 @@ public class JadwalFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)  {
 
-        try{
-//            new JSONParse().execute().get();
+//        try{
+////            new JSONParse().execute().get();
 //            new JSONParse(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve").execute().get();
-        }catch (Exception e){
-            System.out.println(e);
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+        for(int i = 0;i < events.size();i++){
+            System.out.print(events.get(i).toString()+" ");
         }
-
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
-        FloatingActionButton tambahJadwalBtn = (FloatingActionButton) rootView.findViewById(R.id.tambah_jadwal);
-
-        tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextScreen = new Intent(getActivity(), FormJadwalActivity.class);
-                startActivity(nextScreen);
-
-            }
-        });
+        Calendar today = Calendar.getInstance();
+        monthSpinner = (Spinner) rootView.findViewById(R.id.spinner_bulan);
+        monthSpinner.setSelection(Calendar.getInstance().get(Calendar.MONTH));
+        tambahJadwalBtn = (Button) rootView.findViewById(R.id.tambah_jadwal);
 
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
 
@@ -88,77 +93,66 @@ public class JadwalFragment
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
 
-        FloatingActionButton goToTodayBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat_hari_ini);
+//        yearpicker = (NumberPicker)rootView.findViewById(R.id.tahun);
+//        yearpicker.setValue(Calendar.getInstance().get(Calendar.YEAR));
+        goToTodayBtn = (Button) rootView.findViewById(R.id.refresh);
+
+
+        Calendar cal = Calendar.getInstance();
+        addListener();
+        onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
+        return rootView;
+    }
+
+    public void addListener(){
+
         goToTodayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mWeekView.goToToday();
             }
         });
-
-        FloatingActionButton threeDaysBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat3hari);
-        threeDaysBtn.setOnClickListener(new View.OnClickListener() {
+        tambahJadwalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mWeekViewType != TYPE_THREE_DAY_VIEW) {
-                    mWeekViewType = TYPE_THREE_DAY_VIEW;
-                    mWeekView.setNumberOfVisibleDays(3);
+                nextScreen = new Intent(getActivity(), FormJadwalActivity.class);
+                startActivity(nextScreen);
 
-                    // Lets change some dimensions to best fit the view.
-                    mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics()));
-                    mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-                    mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
-                }
             }
         });
-
-        FloatingActionButton weekViewBtn = (FloatingActionButton) rootView.findViewById(R.id.lihat_seminggu);
-        weekViewBtn.setOnClickListener(new View.OnClickListener() {
+        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                if (mWeekViewType != TYPE_WEEK_VIEW) {
-                    mWeekViewType = TYPE_WEEK_VIEW;
-                    mWeekView.setNumberOfVisibleDays(7);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Calendar today = Calendar.getInstance();
+                //kalau yang dipilih bulan yang udah lewat maka lompat ke bulan di tahun depannya
 
-                    //Lets change some dimensions to best fit the view.
-                    mWeekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics()));
-                    mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
-                    mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
-                }
+                today.set(Calendar.MONTH, position);
+                mWeekView.goToDate(today);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-
-        Calendar cal = Calendar.getInstance();
-        onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
-        return rootView;
+//        yearpicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            Calendar temp = Calendar.getInstance();
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//                temp.set(Calendar.YEAR, newVal);
+//                mWeekView.goToDate(temp);
+//            }
+//        });
     }
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         // Populate the week view with some events.
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.available));
-        events.add(event);
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR_OF_DAY, 4);
-        endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.available));
-        events.add(event);
+        try{
+//            new JSONParse().execute().get();
+            new JSONParse(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve").execute().get();
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return events;
     }
 
@@ -223,7 +217,9 @@ public class JadwalFragment
                         e.printStackTrace();
                     }
                 }
+//                mWeekView.notifyDatasetChanged();
                 pDialog.dismiss();
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -5,6 +5,7 @@
         <item >Ubah Password</item>
         <item >Profil</item>
         <item >Pesan</item>
+        <item >Jadwal</item>
         <item >Pengingat</item>
         <item >Tampilan Daftar Pasangan</item>
         <item >Review Log</item>
@@ -17,6 +18,7 @@
         <item>@drawable/ic_emerald_home</item>
         <item>@drawable/ic_emerald_profil</item>
         <item>@drawable/ic_emerald_pesan</item>
+        <item>@drawable/ic_emerald_jadwal</item>
         <item>@drawable/ic_emerald_reminder</item>
         <item>@drawable/ic_emerald_list</item>
         <item>@drawable/ic_emerald_review_log</item>
@@ -28,6 +30,7 @@
         <item>@drawable/ic_white_home</item>
         <item>@drawable/ic_white_profil</item>
         <item>@drawable/ic_white_pesan</item>
+        <item>@drawable/ic_white_jadwal</item>
         <item>@drawable/ic_white_reminder</item>
         <item>@drawable/ic_white_list</item>
         <item>@drawable/ic_white_review_log</item>
@@ -55,6 +58,9 @@
     <string name="pengaturan_review_log_default">3 hari</string>
     <string name="pengaturan_review_log_3">7 hari</string>
     <string name="pengaturan_review_log_4">14 hari</string>
+
+    <string name="pengaturan_jadwal_default">3 hari</string>
+    <string name="pengaturan_jadwal_log_2">7 hari</string>
 
     <string name="label_password_sekarang">Password Sekarang</string>
     <string name="label_password_baru">Password Baru</string>

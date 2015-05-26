@@ -24,6 +24,8 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
         setContentView(R.layout.activity_detail_jadwal);
 
         bundle = getIntent().getExtras();
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_jadwal);
 
         Button ubahBtn = (Button) findViewById(R.id.btn_ubah);
         ubahBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,6 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 //                        logout();
-                        Toast.makeText(getApplicationContext(), "farhan ganteng",Toast.LENGTH_SHORT ).show();
                     }
 
                 })

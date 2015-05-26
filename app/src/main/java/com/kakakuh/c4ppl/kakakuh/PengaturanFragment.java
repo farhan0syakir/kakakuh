@@ -55,13 +55,14 @@ public class PengaturanFragment extends Fragment{
         iconTextListItems.add(new IconTextListItem(listTitles[1], listEmeraldIcons.getResourceId(1, -1)));
         iconTextListItems.add(new IconTextListItem(listTitles[2], listEmeraldIcons.getResourceId(2, -1)));
         iconTextListItems.add(new IconTextListItem(listTitles[3], listEmeraldIcons.getResourceId(3, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
         //khusus koordinator
         if(roleSekarang.equals("Koordinator")) {
-            iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(4, -1)));
-            iconTextListItems.add(new IconTextListItem(listTitles[5], listEmeraldIcons.getResourceId(5, -1)));
+            iconTextListItems.add(new IconTextListItem(listTitles[4], listEmeraldIcons.getResourceId(5, -1)));
+            iconTextListItems.add(new IconTextListItem(listTitles[5], listEmeraldIcons.getResourceId(6, -1)));
         }
         //log out
-        iconTextListItems.add(new IconTextListItem(listTitles[6], listEmeraldIcons.getResourceId(6, -1)));
+        iconTextListItems.add(new IconTextListItem(listTitles[6], listEmeraldIcons.getResourceId(7, -1)));
 
         // Recycle the typed array
         listEmeraldIcons.recycle();
@@ -82,7 +83,7 @@ public class PengaturanFragment extends Fragment{
         Intent nextScreen;
         switch (position) {
             case 0:
-                //TODO start activity pengaturan otentikasi
+                //TODO start activity pengaturan otentifikasi
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanUbahPasswordActivity.class);
                 startActivity(nextScreen);
@@ -100,26 +101,20 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 3:
+                //TODO start activity pengaturan pesan
+                //buah pikiran: gimana caranya biar settingan tersimpan.
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanJadwalActivity.class);
+                startActivity(nextScreen);
+                break;
+            case 4:
                 //TODO start activity pengaturan Reminder
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 //untuk reminder ini spertinya controller dia dijalankan background ketika apps awal jalan
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanPengingatActivity.class);
                 startActivity(nextScreen);
                 break;
-            case 4:
-                //TODO start activity pengaturan Tampilan Daftar Pasangan
-                //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanDaftarPasanganActivity.class);
-                startActivity(nextScreen);
-                break;
-            case 5:
-                //TODO start activity pengaturan review log
-                //buah pikiran: gimana caranya biar settingan tersimpan.
-                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanReviewLogActivity.class);
-                startActivity(nextScreen);
-                break;
             case 6:
-                //TODO log out
+                //TODO
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya
                 onLogoutPressed();
@@ -154,13 +149,19 @@ public class PengaturanFragment extends Fragment{
                 startActivity(nextScreen);
                 break;
             case 3:
+                //TODO start activity pengaturan pesan
+                //buah pikiran: gimana caranya biar settingan tersimpan.
+                nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanJadwalActivity.class);
+                startActivity(nextScreen);
+                break;
+            case 4:
                 //TODO start activity pengaturan Reminder
                 //buah pikiran: gimana caranya biar settingan tersimpan.
                 //untuk reminder ini spertinya controller dia dijalankan background ketika apps awal jalan
                 nextScreen = new Intent(getActivity().getApplicationContext(), PengaturanPengingatActivity.class);
                 startActivity(nextScreen);
                 break;
-            case 4:
+            case 6:
                 //TODO
                 //panggil method log out disini. Implementasikan!
                 //jangan lupa ikutin uat. ada konfirmasi logout dari appsnya

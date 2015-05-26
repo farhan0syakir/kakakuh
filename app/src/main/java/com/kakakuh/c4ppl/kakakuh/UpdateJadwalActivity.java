@@ -53,6 +53,8 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setIcon(R.drawable.ic_white_jadwal);
+
         preferensi = new Preferensi(getApplicationContext());
 //        usernameSTR = prefensi.getUsername();
         dateStart = new DatePickerDialog.OnDateSetListener() {

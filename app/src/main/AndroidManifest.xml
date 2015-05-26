@@ -128,15 +128,19 @@
         </activity>
         <activity
             android:name=".FormJadwalActivity"
-            android:label="form jadwal" >
+            android:label="Tambah Jadwal" >
         </activity>
         <activity
             android:name=".UpdateJadwalActivity"
-            android:label="@string/title_activity_update_jadwal" >
+            android:label="Perbarui Jadwal" >
         </activity>
         <activity
             android:name=".DetailJadwalActivity"
-            android:label="@string/title_activity_detail_jadwal" >
+            android:label=" Detail Jadwal" >
+        </activity>
+        <activity
+            android:name=".PengaturanJadwalActivity"
+            android:label="@string/title_activity_pengaturan_jadwal" >
         </activity>
     </application>
 

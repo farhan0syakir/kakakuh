@@ -55,6 +55,9 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_jadwal);
+
         preferensi = new Preferensi(getApplicationContext());
         usernameSTR = preferensi.getUsername();
         dateStart = new DatePickerDialog.OnDateSetListener() {
