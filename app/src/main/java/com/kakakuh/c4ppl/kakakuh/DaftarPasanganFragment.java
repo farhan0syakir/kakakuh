@@ -169,6 +169,7 @@ public class DaftarPasanganFragment extends Fragment{
             ArrayList<TempClass> checker = new ArrayList<>();
             String as = "";
             Bitmap ts = null;
+            String tw = "0";
             checker.add(new TempClass(as, as, ts, as));
             TempClass currentKategori = checker.get(0);
             ArrayList<PasanganListItem> akuns = new ArrayList<>();
@@ -177,7 +178,10 @@ public class DaftarPasanganFragment extends Fragment{
                 TempClass current = temps.get(i);
                 System.out.println("current "+currentKategori.getUsernameHeader()+" dan current2 "+current.getUsernameHeader());
                 if(!currentKategori.getUsernameHeader().equals(current.getUsernameHeader())) {
-                    akuns.add(new PasanganListItem(current.getUsernameAnak()));
+                    if(tw.equals("0")){
+                        akuns.add(new PasanganListItem(current.getUsernameAnak()));
+                        tw = "1";
+                    }
                     sectionAdapter.addSection(new PasanganListItem(
                                     current.getUsernameHeader(),
                                     current.getNama(),
