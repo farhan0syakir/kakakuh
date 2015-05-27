@@ -35,48 +35,45 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Random;
 
 /**
  * Created by Anas on 4/30/2015.
  */
 public class TambahTugasActivity extends KakakuhBaseActivity {
-    String[] kumpulanTugas;
     static private Preferensi preferensi;
-    private String tugas1="",tugas2="", tugas3="", tugas4="",tugas5="",kategori="";
     private InputStream is=null;
     private String result=null;
     private String line=null;
-    private int hour;
-    private int minute;
-    private int year;
-    private int month;
-    private int day;
     private int id;
 
     private TextView deadlineTanggal;
     private TextView deadlineJam;
     private EditText kategoriField;
-    private EditText[] tugasField;
+    private EditText[] tugasField = new EditText[5];;
     private Button btnTambah;
 
-    private Date deadline;
+    Calendar myCalendarStart = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener dateStart;
+    TimePickerDialog.OnTimeSetListener timeStart;
+
+    private String usernameKakak=null, usernameAdik=null;
+    private String kategori,deadline, namaTugas;
 
     private Context context;
-    private String usernameAdik,usernameKakak;
 
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaTugas/createKategori";
     private String url2 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaTugas/createTugas";
 
-    static final int TIME_DIALOG_ID = 999;
-    static final int DATE_DIALOG_ID = 998;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Random rn = new Random();
-        id = rn.nextInt(99999999);
+        id = rn.nextInt(999);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kelola_tugas);
@@ -84,33 +81,6 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
         getActionBar().setIcon(R.drawable.ic_white_tugas);
 
-        setProfil();
-        inisialisasi();
-        setCurrentTimeOnView();
-        addTimeDateListener();
-        for(int i=0;i<5;i++){
-        kumpulanTugas[i]=tugasField[i].getText().toString();
-        }
-//        tugas1 = tugasField[0].getText().toString();
-//        tugas2 = tugasField[1].getText().toString();
-//        tugas3 = tugasField[2].getText().toString();
-//        tugas4 = tugasField[3].getText().toString();
-//        tugas5 = tugasField[4].getText().toString();
-        kategori = kategoriField.getText().toString();
-
-        btnTambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deadline = Kalender.getDate(year, month, day, hour, minute);
-                //TODO lanjutkan untuk masing2 field! cek jika poin tugas kosong berarti g diquery
-                new insertTaskKategori().execute("");
-                new insertTaskTugas().execute("");
-                Toast.makeText(getApplicationContext(), "Tugas Berhasil Dibuat",Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    private void setProfil() {
         preferensi = new Preferensi(getApplicationContext());
         usernameKakak = preferensi.getUsername();
         context = this;
@@ -131,94 +101,93 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
                 context.startActivity(nextIntent);
             }
         });
-    }
 
-    private void inisialisasi() {
-        tugasField = new EditText[5];
+        kategoriField = (EditText) findViewById(R.id.kategori);
+        dateStart = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendarStart.set(Calendar.YEAR, year);
+                myCalendarStart.set(Calendar.MONTH, monthOfYear);
+                myCalendarStart.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel(0);
+            }
+
+        };
+
+        timeStart = new TimePickerDialog.OnTimeSetListener(){
+            @Override
+            public void onTimeSet(TimePicker view, int hour, int minute){
+                myCalendarStart.set(Calendar.HOUR_OF_DAY,hour);
+                myCalendarStart.set(Calendar.MINUTE, minute);
+                updateLabel(1);
+            }
+        };
+        deadlineTanggal = (TextView) findViewById(R.id.deadline_tanggal);
+        deadlineTanggal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                new DatePickerDialog(TambahTugasActivity.this, dateStart, myCalendarStart
+                        .get(Calendar.YEAR), myCalendarStart.get(Calendar.MONTH),
+                        myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        deadlineJam = (TextView) findViewById(R.id.deadline_jam);
+        deadlineJam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TimePickerDialog(TambahTugasActivity.this, timeStart, myCalendarStart.get(Calendar.HOUR_OF_DAY),
+                        myCalendarStart.get(Calendar.MINUTE),true).show();
+            }
+        });
         tugasField[0] = (EditText) findViewById(R.id.poin1);
         tugasField[1] = (EditText) findViewById(R.id.poin2);
         tugasField[2] = (EditText) findViewById(R.id.poin3);
         tugasField[3] = (EditText) findViewById(R.id.poin4);
         tugasField[4] = (EditText) findViewById(R.id.poin5);
-        kategoriField = (EditText) findViewById(R.id.kategori);
-        deadlineTanggal = (TextView) findViewById(R.id.deadline_tanggal);
-        deadlineJam = (TextView) findViewById(R.id.deadline_jam);
         btnTambah = (Button) findViewById(R.id.btn_tambah);
-    }
 
-    private void setCurrentTimeOnView() {
-        final Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR_OF_DAY);
-        minute = c.get(Calendar.MINUTE);
-        day = c.get(Calendar.DAY_OF_MONTH);
-        month = c.get(Calendar.MONTH);
-        year = c.get(Calendar.YEAR);
 
-        deadlineTanggal.setText(Kalender.convertTanggal(year,month,day));
-        deadlineJam.setText(pad(hour) + ":" + pad(minute));
-    }
-
-    private void addTimeDateListener() {
-        deadlineJam.setOnClickListener(new View.OnClickListener() {
+        btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog(TIME_DIALOG_ID);
-            }
-        });
-        deadlineTanggal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(DATE_DIALOG_ID);
+                //TODO lanjutkan untuk masing2 field! cek jika poin tugas kosong berarti g diquery
+                new insertTaskKategori().execute("");
+                new insertTaskTugas().execute("");
+                Toast.makeText(getApplicationContext(), "Tugas Berhasil Dibuat",Toast.LENGTH_LONG).show();
+                Intent nextIntent = new Intent(context, ProfilActivity.class);
+                startActivity(nextIntent);
             }
         });
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case TIME_DIALOG_ID:
-                // set time picker as current time
-                return new TimePickerDialog(this,
-                        timePickerListener, hour, minute,true);
-            case DATE_DIALOG_ID:
-                // set date picker as current date
-                return new DatePickerDialog(this,
-                        datePickerListener, year, month, day);
+
+    private void updateLabel(int type) {
+        if (type == 0) {
+            String myFormat = "E, dd MM yy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+            deadlineTanggal.setText(sdf.format(myCalendarStart.getTime()));
+        } else if (type == 1) {
+            String myFormat = "HH:mm"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+            deadlineJam.setText(sdf.format(myCalendarStart.getTime()));
         }
-        return null;
     }
 
-    private TimePickerDialog.OnTimeSetListener timePickerListener =
-            new TimePickerDialog.OnTimeSetListener() {
-                public void onTimeSet(TimePicker view, int selectedHour,
-                                      int selectedMinute) {
-                    hour = selectedHour;
-                    minute = selectedMinute;
-
-                    deadlineJam.setText(pad(hour) + ":" + pad(minute));
-                }
-            };
-
-    private DatePickerDialog.OnDateSetListener datePickerListener =
-            new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
-                    year = selectedYear;
-                    month = selectedMonth;
-                    day = selectedDay;
-
-                    deadlineTanggal.setText(Kalender.convertTanggal(year,month,day));
-                }
-            };
-
-    private static String pad(int c) {
-        if (c >= 10)
-            return String.valueOf(c);
-        else
-            return "0" + String.valueOf(c);
+    private String changeFormatDateTime(Calendar calendar){
+        SimpleDateFormat myformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return myformat.format(calendar.getTime());
     }
+
 
     public String insertKategori() {
+
+        kategori = kategoriField.getText().toString();
+        deadline = changeFormatDateTime(myCalendarStart);
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("userkakak", usernameKakak));
@@ -263,22 +232,17 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
             Log.e("Fail 2", e.toString());
 
         }
-
         return result;
     }
 
+    public String insertTugas(String namaTugas) {
 
-
-
-
-    public String insertTugas(String tugas) {
+//        System.out.println("Cotititititi " + tugasField[j].getText().toString());
+//        namaTugas = tugasField[j].getText().toString();
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("nama_tugas", tugas));
-        nameValuePairs.add(new BasicNameValuePair("id_kategori", ""+id));
-        nameValuePairs.add(new BasicNameValuePair("status","0"));
-        //debug
-//        System.out.println(nameValuePairs);
+        nameValuePairs.add(new BasicNameValuePair("nama_tugas", namaTugas));
+        nameValuePairs.add(new BasicNameValuePair("id_kategori", "" + id));
 
         try {
             HttpClient httpclient = new DefaultHttpClient();
@@ -314,13 +278,8 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
             Log.e("Fail 2", e.toString());
 
         }
-
         return result;
     }
-
-
-
-
 
     class insertTaskKategori extends AsyncTask<String, String, String> {
         protected String doInBackground(String... params) {
@@ -331,20 +290,20 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
     class insertTaskTugas extends AsyncTask<String, String, String> {
         protected String doInBackground(String... params) {
             String hasil = "";
-            for (int j = 0; j < 5; j++) {
-                hasil = insertTugas(kumpulanTugas[j]);
+            for(int i = 0; i < 5; i++){
+                if(!tugasField[i].getText().toString().equals("")){
+                    hasil = insertTugas(tugasField[i].getText().toString());
+                }
             }
             return hasil;
         }
     }
 
 
-        protected void onPostExecute(String result) {
-            if(result.equals("OK"))
-                System.out.print("ea");
-            //after background is done, use this to show or hide dialogs
-        }
-
-
-
+    protected void onPostExecute(String result) {
+        if(result.equals("OK"))
+            System.out.print("ea");
+        //after background is done, use this to show or hide dialogs
     }
+}
+
