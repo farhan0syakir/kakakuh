@@ -40,8 +40,10 @@ import java.util.Arrays;
  */
 public class PasangkanAkunFragment extends Fragment{
     JSONArray jsonArray = null;
+    JSONArray jsonArray2 = null;
     String url = "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController/create";
     String url2 = "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController/retrieve";
+    String url3 = "http://ppl-c04.cs.ui.ac.id/index.php/pasangkanController/retrievePasangan";
     AutoCompleteTextView kakakView;
     AutoCompleteTextView adikView;
     InputStream is=null;
@@ -52,6 +54,7 @@ public class PasangkanAkunFragment extends Fragment{
     ArrayList<String> adik = new ArrayList<>();
     ArrayAdapter<String> adapterKakak;
     ArrayAdapter<String> adapterAdik;
+    String checker = null;
 
 
     public PasangkanAkunFragment(){}
@@ -67,6 +70,8 @@ public class PasangkanAkunFragment extends Fragment{
 
         // TODO Sementara HARDCODE sebab harusnya ini query SELECT nama FROM kakak/adik asuh
         new JSONParser(getActivity(),url2).execute();
+
+        System.out.println("ini checker "+checker);
 
         // Create the adapter and set it to the AutoCompleteTextView
         adapterKakak = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, kakak);
@@ -85,12 +90,22 @@ public class PasangkanAkunFragment extends Fragment{
                 //System.out.println("ini kakak "+fieldKakak);
                 fieldAdik = adikView.getText().toString();
                 //System.out.println("ini kakak "+fieldAdik);
-                new insertTask().execute();
-                    Toast.makeText(getActivity(), "Kakak dan Adik berhasil dipasangkan",
-                            Toast.LENGTH_LONG).show();
+                new JSONParser2(getActivity(),url3).execute();
 
-                kakakView.setText("");
-                adikView.setText("");
+//                new insertTask().execute();
+//                Toast.makeText(getActivity(), "Kakak dan Adik berhasil dipasangkan",
+//                            Toast.LENGTH_LONG).show();
+//                    kakakView.setText("");
+//                    adikView.setText("");
+//                if(checker.contains("Product have been created.")){
+//                    Toast.makeText(getActivity(), "Kakak dan Adik berhasil dipasangkan",
+//                            Toast.LENGTH_LONG).show();
+//                    kakakView.setText("");
+//                    adikView.setText("");
+//                } else{
+//                    Toast.makeText(getActivity(), "Pasangkan akun gagal",
+//                            Toast.LENGTH_LONG).show();
+//                }
             }
         });
 
@@ -111,7 +126,6 @@ public class PasangkanAkunFragment extends Fragment{
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
-            //System.out.println("lalalala "+EntityUtils.toString(entity));
             is = entity.getContent();
             //debug
             System.out.println(is);
@@ -156,6 +170,44 @@ public class PasangkanAkunFragment extends Fragment{
             if(result.equals("OK"))
                 System.out.print("ea");
             //after background is done, use this to show or hide dialogs
+        }
+    }
+
+    class JSONParser2 extends KakakuhBaseJSONParserAsyncTask {
+        public JSONParser2(Context context, String url) {
+            super(context, url);
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            pDialog.dismiss();
+            try {
+                // Getting JSON Array from URL
+                jsonArray2 = json.getJSONArray("data");
+                for(int i = 0; i < jsonArray2.length(); i++){
+                    JSONObject c = jsonArray2.getJSONObject(i);
+                    // Storing  JSON item in a Variable
+                    String userkakaku = c.getString("userkakaku");
+                    String useradik = c.getString("useradik");
+                    if(userkakaku.equals(fieldKakak)&&useradik.equals(fieldAdik)){
+                        checker ="1";
+                        System.out.println("ini checker 2 " + checker);
+                    }
+                }
+                if(checker.equals("1")){
+                    checker="0";
+                    Toast.makeText(getActivity(), "Pasangan sudah ada",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    new insertTask().execute();
+                    Toast.makeText(getActivity(), "Kakak dan Adik berhasil dipasangkan",
+                            Toast.LENGTH_LONG).show();
+                    kakakView.setText("");
+                    adikView.setText("");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
