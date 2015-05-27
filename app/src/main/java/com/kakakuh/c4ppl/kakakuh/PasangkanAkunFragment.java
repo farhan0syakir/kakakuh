@@ -54,7 +54,7 @@ public class PasangkanAkunFragment extends Fragment{
     ArrayList<String> adik = new ArrayList<>();
     ArrayAdapter<String> adapterKakak;
     ArrayAdapter<String> adapterAdik;
-    String checker = null;
+    String checker = "0";
 
 
     public PasangkanAkunFragment(){}
