@@ -173,6 +173,7 @@
                 android:text="@id/btn_tambah_label"
                 android:textSize="@dimen/normal_text"
                 android:textStyle="bold"
+                android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 android:layout_below="@+id/points"
                 android:layout_marginTop="30dp"
