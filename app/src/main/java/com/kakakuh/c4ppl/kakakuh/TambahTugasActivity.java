@@ -63,6 +63,7 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
 
     private String usernameKakak=null, usernameAdik=null;
     private String kategori,deadline, namaTugas;
+    private String encodedPhoto, namauser;
 
     private Context context;
 
@@ -83,14 +84,19 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
 
         preferensi = new Preferensi(getApplicationContext());
         usernameKakak = preferensi.getUsername();
+        System.out.println("username kakak "+usernameKakak);
         context = this;
 
+        context = this;
         Intent i = getIntent();
         usernameAdik = i.getStringExtra("username");
+        System.out.println("username adik "+usernameAdik);
+        encodedPhoto = i.getStringExtra("photo");
+        namauser = i.getStringExtra("nama");
         TextView nama = (TextView) findViewById(R.id.nama);
-        nama.setText(i.getStringExtra("nama"));
+        nama.setText(namauser);
         ImageView photoView = (ImageView) findViewById(R.id.image);
-        Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(i.getStringExtra("photo"), false);
+        Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(encodedPhoto, false);
         if(decodedPhoto != null) photoView.setImageBitmap(decodedPhoto);
 
         nama.setOnClickListener(new View.OnClickListener() {
@@ -157,8 +163,11 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
                 new insertTaskKategori().execute("");
                 new insertTaskTugas().execute("");
                 Toast.makeText(getApplicationContext(), "Tugas Berhasil Dibuat",Toast.LENGTH_LONG).show();
-                Intent nextIntent = new Intent(context, ProfilActivity.class);
-                startActivity(nextIntent);
+                Intent nextIntent = new Intent(context, DetailTugasActivity.class);
+                nextIntent.putExtra("username", usernameAdik);
+                nextIntent.putExtra("nama", namauser);
+                nextIntent.putExtra("photo", encodedPhoto);
+                context.startActivity(nextIntent);
             }
         });
     }
