@@ -91,8 +91,10 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 new deleteTask().execute("");
-                                Toast.makeText(context,"berhasil menghapus" , Toast.LENGTH_LONG).show();
-
+                                Toast.makeText(context,"menghapus tugas...." , Toast.LENGTH_LONG).show();
+                                listItems.remove(listItems.get(position));//ini dievaluasi lagi
+                                SectionedListAdapter adapter = new SectionedListAdapter(context, new TugasListKakakAdapter(context, listItems));//ini dievaluasi lagi
+                                adapter.notifyDataSetChanged();//ini dievaluasi lagi, menyebabkan force close.
                             }
 
                         })

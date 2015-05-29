@@ -82,7 +82,9 @@ public class HapusAkunListAdapter extends KakakuhBaseAdapter<AkunListItem> {
                             public void onClick(DialogInterface dialog, int which) {
                                 new deleteTask().execute("");
                                 //Toast.makeText(,"berhasil menghapus" , Toast.LENGTH_LONG).show();
-
+                                listItems.remove(listItems.get(position));
+                                HapusAkunListAdapter adapter = new HapusAkunListAdapter(context, listItems);
+                                adapter.notifyDataSetChanged();
                             }
 
                         })
