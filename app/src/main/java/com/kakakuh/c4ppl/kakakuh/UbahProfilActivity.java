@@ -58,6 +58,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
     private String result=null;
     private String line=null;
     static private Preferensi preferensi;
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z.]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,15 +112,25 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
                 // SELESAI ngapain
-//                if(namaField.equals("null")||npmField.equals("null")||emailField.equals("null")||noHPField.equals("null")||alamatField.equals("null")||asalDaerahField.equals("null")||mottoField.equals("null")){
-//                    Toast.makeText(getApplicationContext(), "Form tidak boleh ada yang kosong",
-//                            Toast.LENGTH_LONG).show();
-//                } else if(namaField.equals("")||npmField.equals("")||emailField.equals("")||noHPField.equals("")||alamatField.equals("")||asalDaerahField.equals("")||mottoField.equals("")){
-//                    Toast.makeText(getApplicationContext(), "Form tidak boleh ada yang kosong",
-//                            Toast.LENGTH_LONG).show();
-//                } else{
+                String nama = namaField.getText().toString();
+                String npm = npmField.getText().toString();
+                String email = emailField.getText().toString();
+                String noHp = noHPField.getText().toString();
+                String alamat = alamatField.getText().toString();
+                String asal = asalDaerahField.getText().toString();
+                String motto = mottoField.getText().toString();
+                if(nama.isEmpty()||npm.isEmpty()||email.isEmpty()||noHp.isEmpty()||alamat.isEmpty()||asal.isEmpty()||motto.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Form tidak boleh null/kosong",
+                            Toast.LENGTH_LONG).show();
+                } else if(nama.equals("null")||npm.equals("null")||email.equals("null")||noHp.equals("null")||alamat.equals("null")||asal.equals("null")||motto.equals("null")){
+                    Toast.makeText(getApplicationContext(), "Form tidak boleh null/kosong",
+                            Toast.LENGTH_LONG).show();
+                } else if (!email.matches(emailPattern)) {
+                    Toast.makeText(getApplicationContext(),"Format alamat email tidak sesuai",
+                            Toast.LENGTH_LONG).show();
+                }else {
                     new updateMyProfile().execute();
-//                }
+                }
                 System.out.println("SELESAI"); //TEST
             }
         });
@@ -199,12 +210,14 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 namaField.setText(c.getString("nama_lengkap"), TextView.BufferType.EDITABLE);
                 npmField.setText(c.getString("npm"), TextView.BufferType.EDITABLE);
                 decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
+                base64 = c.getString("img");
                 if(decodedByte != null) imgView.setImageBitmap(decodedByte);
                 emailField.setText(c.getString("email"), TextView.BufferType.EDITABLE);
                 noHPField.setText(c.getString("handphone"), TextView.BufferType.EDITABLE);
                 alamatField.setText(c.getString("tempat_tinggal"),TextView.BufferType.EDITABLE);
                 asalDaerahField.setText(c.getString("asal_daerah"), TextView.BufferType.EDITABLE);
                 mottoField.setText(c.getString("motto"), TextView.BufferType.EDITABLE);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

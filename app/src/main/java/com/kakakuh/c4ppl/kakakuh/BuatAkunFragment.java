@@ -38,8 +38,7 @@ public class BuatAkunFragment extends Fragment{
     private String line=null;
     private int code;
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaAkunController/create";
-    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z.]+\\.+[a-z]+";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {

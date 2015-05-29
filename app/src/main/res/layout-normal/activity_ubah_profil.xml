@@ -74,6 +74,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="nama lengkap"
                     android:background="@drawable/square_text_box"
                     android:inputType="textNoSuggestions" />
 
@@ -97,8 +98,9 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="npm"
                     android:background="@drawable/square_text_box"
-                    android:inputType="textNoSuggestions" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/label_email"
@@ -120,6 +122,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="email"
                     android:background="@drawable/square_text_box"
                     android:inputType="textNoSuggestions" />
 
@@ -143,6 +146,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="nomor handphone"
                     android:background="@drawable/square_text_box"
                     android:inputType="number" />
 
@@ -166,6 +170,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="alamat"
                     android:background="@drawable/square_text_box"
                     android:inputType="textNoSuggestions" />
 
@@ -189,6 +194,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="asal daerah"
                     android:background="@drawable/square_text_box"
                     android:inputType="textNoSuggestions" />
 
@@ -212,6 +218,7 @@
                     android:layout_marginTop="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
+                    android:hint="motto"
                     android:background="@drawable/square_text_box"
                     android:inputType="textNoSuggestions" />
 
