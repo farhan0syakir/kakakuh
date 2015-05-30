@@ -54,4 +54,6 @@
         <item >Desember</item>
     </string-array>
     <string name="title_activity_pengaturan_jadwal">Pengaturan jadwal</string>
+    <string name="title_activity_detail_gambar">Lihat Gambar</string>
+    <string name="title_activity_ubah_tugas">Ubah Tugas</string>
 </resources>

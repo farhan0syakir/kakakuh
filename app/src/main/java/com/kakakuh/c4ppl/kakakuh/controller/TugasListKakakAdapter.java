@@ -2,12 +2,14 @@ package com.kakakuh.c4ppl.kakakuh.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.kakakuh.c4ppl.kakakuh.DetailGambarActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
@@ -38,7 +40,7 @@ public class TugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnLihat = (Button) convertView.findViewById(R.id.btn_kerjakan);
         btnLihat.setText("Lihat");
 
-        Tugas entrySekarang = listItems.get(position);
+        final Tugas entrySekarang = listItems.get(position);
 
         //set deskripsi
         deskripsiTugas.setText(entrySekarang.getDeskripsiTugas());
@@ -50,8 +52,11 @@ public class TugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
             btnLihat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO go to Kerjakan Tugas dengan mengirim data id
-                    //System.out.println(akunListItems.get(position).getUsername()); //TEST
+                    Intent i = new Intent(context, DetailGambarActivity.class);
+                    i.putExtra("isKakak",true);
+                    i.putExtra("idTugas",entrySekarang.getIdTugas());
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
                 }
             });
         } else {

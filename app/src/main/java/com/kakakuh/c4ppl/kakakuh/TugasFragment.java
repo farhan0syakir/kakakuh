@@ -145,8 +145,6 @@ public class TugasFragment extends Fragment{
             return hasil ;
         }
 
-
-
         protected void onPostExecute(String result) {
             try {
                 JSONObject json = new JSONObject(result);

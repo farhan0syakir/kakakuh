@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.UbahTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.apache.http.HttpEntity;
@@ -58,7 +61,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         Button btnEdit = (Button) convertView.findViewById(R.id.btn_edit);
         Button btnDelete = (Button) convertView.findViewById(R.id.btn_delete);
 
-        Tugas current = listItems.get(position);
+        final Tugas current = listItems.get(position);
         
         txtHeader.setText(current.getTextKategori());
         if(current.isLewatDeadline()) {
@@ -71,9 +74,10 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO query berdasarkan kategori
-
-
+                Intent i = new Intent(context, UbahTugasActivity.class);
+                i.putExtra("idTugas",current.getIdKategori());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
 
             }
         });

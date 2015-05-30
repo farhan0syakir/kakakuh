@@ -5,5 +5,7 @@
     <string name="kategori_label">Kategori</string>
     <string name="btn_cari">Cari...</string>
     <string name="text_bukti">Silahkan unggah bukti pengerjaan.</string>
+    <string name="btn_download">DOWNLOAD</string>
+    <string name="uploadgambarbaru">Upload gambar baru</string>
     <item name="btn_tambah_label" type="id">TAMBAH</item>
 </resources>
