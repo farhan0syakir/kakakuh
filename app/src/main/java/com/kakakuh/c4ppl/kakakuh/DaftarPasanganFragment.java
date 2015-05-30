@@ -166,26 +166,15 @@ public class DaftarPasanganFragment extends Fragment{
         }
 
         private void add(ArrayList<TempClass> temps) {
-            ArrayList<TempClass> checker = new ArrayList<>();
-            String as = "";
-            Bitmap ts = null;
-            String tw = "0";
-            checker.add(new TempClass(as, as, ts, as));
-            TempClass currentKategori = checker.get(0);
+            TempClass currentKategori = temps.get(0);
             ArrayList<PasanganListItem> akuns = new ArrayList<>();
-            System.out.println("ini ukuran temps "+temps.get(0));
             for(int i = 0; i < temps.size() ; i++) {
                 TempClass current = temps.get(i);
-                System.out.println("current "+currentKategori.getUsernameHeader()+" dan current2 "+current.getUsernameHeader());
                 if(!currentKategori.getUsernameHeader().equals(current.getUsernameHeader())) {
-                    if(tw.equals("0")){
-                        akuns.add(new PasanganListItem(current.getUsernameAnak()));
-                        tw = "1";
-                    }
                     sectionAdapter.addSection(new PasanganListItem(
-                                    current.getUsernameHeader(),
-                                    current.getNama(),
-                                    current.getImage()),
+                                    currentKategori.getUsernameHeader(),
+                                    currentKategori.getNama(),
+                                    currentKategori.getImage()),
                             new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
                     currentKategori = current;
                     akuns = new ArrayList<>();
@@ -194,6 +183,11 @@ public class DaftarPasanganFragment extends Fragment{
                     akuns.add(new PasanganListItem(current.getUsernameAnak()));
                 }
             }
+            sectionAdapter.addSection(new PasanganListItem(
+                            currentKategori.getUsernameHeader(),
+                            currentKategori.getNama(),
+                            currentKategori.getImage()),
+                    new PasanganListAdapter(getActivity().getApplicationContext(),akuns));
         }
     }
 }
