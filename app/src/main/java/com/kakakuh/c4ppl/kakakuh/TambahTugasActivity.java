@@ -35,6 +35,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -159,15 +160,29 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Long currentTime = System.currentTimeMillis();
+                Long deadEnd = myCalendarStart.getTimeInMillis();
                 //TODO lanjutkan untuk masing2 field! cek jika poin tugas kosong berarti g diquery
-                new insertTaskKategori().execute("");
-                new insertTaskTugas().execute("");
-                Toast.makeText(getApplicationContext(), "Tugas Berhasil Dibuat",Toast.LENGTH_LONG).show();
-                Intent nextIntent = new Intent(context, DetailTugasActivity.class);
-                nextIntent.putExtra("username", usernameAdik);
-                nextIntent.putExtra("nama", namauser);
-                nextIntent.putExtra("photo", encodedPhoto);
-                context.startActivity(nextIntent);
+                if(kategoriField.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Kategori harus dibuat",
+                            Toast.LENGTH_LONG).show();
+                }else if(deadEnd < currentTime){
+                    Toast.makeText(getApplicationContext(), "Input waktu harus lebih dari sekarang",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(tugasField[0].getText().toString().isEmpty()&&tugasField[1].getText().toString().isEmpty()&&tugasField[2].getText().toString().isEmpty()&&tugasField[3].getText().toString().isEmpty()&&tugasField[4].getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Daftar tugas harus ada",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    new insertTaskKategori().execute("");
+                    new insertTaskTugas().execute("");
+                    Toast.makeText(getApplicationContext(), "Tugas Berhasil Dibuat",Toast.LENGTH_LONG).show();
+                    Intent nextIntent = new Intent(context, DetailTugasActivity.class);
+                    nextIntent.putExtra("username", usernameAdik);
+                    nextIntent.putExtra("nama", namauser);
+                    nextIntent.putExtra("photo", encodedPhoto);
+                    context.startActivity(nextIntent);
+                }
             }
         });
     }
@@ -191,7 +206,6 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         SimpleDateFormat myformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return myformat.format(calendar.getTime());
     }
-
 
     public String insertKategori() {
 
@@ -245,9 +259,6 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
     }
 
     public String insertTugas(String namaTugas) {
-
-//        System.out.println("Cotititititi " + tugasField[j].getText().toString());
-//        namaTugas = tugasField[j].getText().toString();
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("nama_tugas", namaTugas));
