@@ -51,10 +51,10 @@ public class TugasFragment extends Fragment{
     String line=null;
     JSONArray android = null;
 
-    private String usernameAdik, usernameKakak;
+    private String usernameAdik;
     ArrayList<Tugas> queries = new ArrayList<>();
 
-    String url="http://ppl-c04.cs.ui.ac.id/index.php/mengelolaTugas/retrieve";
+    String url="http://ppl-c04.cs.ui.ac.id/index.php/lihatDaftarTugas";
 
     private ListView mList;
 
@@ -71,12 +71,10 @@ public class TugasFragment extends Fragment{
         //mengambil username sendiri
         preferensi = new Preferensi(getActivity().getApplicationContext());
         usernameAdik = preferensi.getUsername();
-        usernameKakak = "kakak";
 
         // TODO query kolom | idKategori | TextKategori | Deadline | JOIN by idKategory | idTugas | PoinTugas |status pengerjaaan | sorted by idKategory
         //kolom yg dibutuhkan | Kategori | Deadline | idTugas | status pengerjaaan |
         //ini HARDCODED
-        new retrieveTask().execute();
         //mau tau convert milis to Date? cek http://www.ruddwire.com/handy-code/date-to-millisecond-calculators/
 //        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"1","Kerjakan Mock Up",false));
 //        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"2","Bikin PPT",true));
@@ -84,6 +82,7 @@ public class TugasFragment extends Fragment{
 //        queries.add(new Tugas("2","DPP",new Date(new Long("1428345600000")),"4","Sudah lewat deadline",false));
 //        queries.add(new Tugas("2","DPP",new Date(new Long("1428345600000")),"5","Sudah lewat deadline",true));
         mList = (ListView) rootView.findViewById(R.id.list_generic);
+        new retrieveTask().execute();
 
 
         return rootView;
@@ -98,7 +97,6 @@ public class TugasFragment extends Fragment{
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("userkakak", usernameKakak));
         nameValuePairs.add(new BasicNameValuePair("useradik", usernameAdik));
         //debug
         System.out.println(nameValuePairs);

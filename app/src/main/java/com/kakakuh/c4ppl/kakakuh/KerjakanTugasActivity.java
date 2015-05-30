@@ -44,7 +44,7 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
     private String idTugas;
     private String status = "1";
 
-    private String url = "http://ppl-c04.cs.ui.ac.id/index.php/mengelolaTugas/update";
+    private String url = "http://ppl-c04.cs.ui.ac.id/index.php/kerjakanTugasController";
 
     private InputStream is=null;
     private String result=null;
@@ -86,6 +86,9 @@ public class KerjakanTugasActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
                 //TODO unggah dan query kerjakan tugas dg idTugas
+                new updateTask().execute();
+                Toast.makeText(getApplicationContext(), "Tugas berhasil diunggah",
+                        Toast.LENGTH_LONG).show();
 
             }
         });
