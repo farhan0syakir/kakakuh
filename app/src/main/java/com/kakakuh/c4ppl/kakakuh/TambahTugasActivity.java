@@ -99,14 +99,14 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(encodedPhoto, false);
         if(decodedPhoto != null) photoView.setImageBitmap(decodedPhoto);
 
-        nama.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextIntent = new Intent(context, ProfilActivity.class);
-                nextIntent.putExtra("username", usernameAdik);
-                context.startActivity(nextIntent);
-            }
-        });
+//        nama.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent nextIntent = new Intent(context, ProfilActivity.class);
+//                nextIntent.putExtra("username", usernameAdik);
+//                context.startActivity(nextIntent);
+//            }
+//        });
 
         kategoriField = (EditText) findViewById(R.id.kategori);
         dateStart = new DatePickerDialog.OnDateSetListener() {

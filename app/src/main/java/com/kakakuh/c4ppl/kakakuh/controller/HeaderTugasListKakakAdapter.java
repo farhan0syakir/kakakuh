@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.UbahProfilActivity;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.apache.http.HttpEntity;
@@ -72,9 +74,9 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
             @Override
             public void onClick(View v) {
                 //TODO query berdasarkan kategori
-
-
-
+//                Intent i = new Intent(context, UbahTugasActivity.class);
+//                i.putExtra("idTugas",entrySekarang.getIdTugas());
+//                context.startActivity(i);
             }
         });
 
