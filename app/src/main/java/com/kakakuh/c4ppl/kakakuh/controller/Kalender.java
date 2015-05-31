@@ -25,7 +25,7 @@ public class Kalender {
 
         String hari = HARI[cal.get(Calendar.DAY_OF_WEEK) - 1];
         int tanggal = cal.get(Calendar.DAY_OF_MONTH);
-        String bulan = BULAN[cal.get(Calendar.MONTH) - 1];
+        String bulan = BULAN[cal.get(Calendar.MONTH)];
         int tahun = cal.get(Calendar.YEAR);
         String jam = new SimpleDateFormat("HH:mm").format(timestamp);
 
