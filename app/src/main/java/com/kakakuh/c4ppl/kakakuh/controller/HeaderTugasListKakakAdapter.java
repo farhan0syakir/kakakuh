@@ -85,8 +85,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(activeActivity, UbahTugasActivity.class);
-                i.putExtra("idKategori", current.getIdKategori());
-                i.putExtra("idTugas", current.getIdTugas());
+                i.putExtra("idTugas", current.getIdKategori());
                 i.putExtra("username", usernameAdik);
                 i.putExtra("nama", nama);
                 i.putExtra("photo", encodedPhoto);
