@@ -1,7 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
-import com.kakakuh.c4ppl.kakakuh.controller.Kalender;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
@@ -34,8 +32,6 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,7 +41,7 @@ import java.util.Random;
 /**
  * Created by Anas on 4/30/2015.
  */
-public class TambahTugasActivity extends KakakuhBaseActivity {
+public class UbahTugasActivity extends KakakuhBaseActivity {
     static private Preferensi preferensi;
     private InputStream is=null;
     private String result=null;
@@ -100,14 +96,14 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         Bitmap decodedPhoto = ImageConverter.convertStringToBitmap(encodedPhoto, false);
         if(decodedPhoto != null) photoView.setImageBitmap(decodedPhoto);
 
-//        nama.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent nextIntent = new Intent(context, ProfilActivity.class);
-//                nextIntent.putExtra("username", usernameAdik);
-//                context.startActivity(nextIntent);
-//            }
-//        });
+        nama.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(context, ProfilActivity.class);
+                nextIntent.putExtra("username", usernameAdik);
+                context.startActivity(nextIntent);
+            }
+        });
 
         kategoriField = (EditText) findViewById(R.id.kategori);
         dateStart = new DatePickerDialog.OnDateSetListener() {
@@ -136,7 +132,7 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         deadlineTanggal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                new DatePickerDialog(TambahTugasActivity.this, dateStart, myCalendarStart
+                new DatePickerDialog(UbahTugasActivity.this, dateStart, myCalendarStart
                         .get(Calendar.YEAR), myCalendarStart.get(Calendar.MONTH),
                         myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -145,7 +141,7 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
         deadlineJam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TimePickerDialog(TambahTugasActivity.this, timeStart, myCalendarStart.get(Calendar.HOUR_OF_DAY),
+                new TimePickerDialog(UbahTugasActivity.this, timeStart, myCalendarStart.get(Calendar.HOUR_OF_DAY),
                         myCalendarStart.get(Calendar.MINUTE),true).show();
             }
         });

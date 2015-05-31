@@ -123,6 +123,12 @@
             android:label="@string/title_activity_tambah_tugas" >
         </activity>
         <activity
+            android:name=".UbahTugasActivity"
+            android:label="@string/title_activity_ubah_tugas"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <activity
             android:name=".KerjakanTugasActivity"
             android:label="@string/title_activity_kerjakan_tugas" >
         </activity>
@@ -141,6 +147,10 @@
         <activity
             android:name=".PengaturanJadwalActivity"
             android:label="@string/title_activity_pengaturan_jadwal" >
+        </activity>
+        <activity
+            android:name=".DetailGambarActivity"
+            android:label="@string/title_activity_detail_gambar" >
         </activity>
     </application>
 

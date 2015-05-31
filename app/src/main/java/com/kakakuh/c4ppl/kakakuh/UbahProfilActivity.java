@@ -120,10 +120,7 @@ public class UbahProfilActivity extends KakakuhBaseActivity {
                 String asal = asalDaerahField.getText().toString();
                 String motto = mottoField.getText().toString();
                 if(nama.isEmpty()||npm.isEmpty()||email.isEmpty()||noHp.isEmpty()||alamat.isEmpty()||asal.isEmpty()||motto.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Form tidak boleh null/kosong",
-                            Toast.LENGTH_LONG).show();
-                } else if(nama.equals("null")||npm.equals("null")||email.equals("null")||noHp.equals("null")||alamat.equals("null")||asal.equals("null")||motto.equals("null")){
-                    Toast.makeText(getApplicationContext(), "Form tidak boleh null/kosong",
+                    Toast.makeText(getApplicationContext(), "Form tidak boleh kosong",
                             Toast.LENGTH_LONG).show();
                 } else if (!email.matches(emailPattern)) {
                     Toast.makeText(getApplicationContext(),"Format alamat email tidak sesuai",

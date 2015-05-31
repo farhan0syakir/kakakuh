@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.kakakuh.c4ppl.kakakuh.DetailGambarActivity;
 import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
@@ -22,10 +23,12 @@ import java.util.ArrayList;
 public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
     private CheckBox deskripsiTugas;
     private Button btnKerjakan;
+    private Preferensi preferensi;
 
     public TugasListAdapter(Context context, ArrayList<Tugas> tugasListItems) {
         this.context = context;
         listItems = tugasListItems;
+        preferensi = new Preferensi(context);
     }
 
     @Override
@@ -53,6 +56,12 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
                 public void onClick(View v) {
                     //TODO go to Kerjakan Tugas dengan mengirim data id
                     //System.out.println(akunListItems.get(position).getUsername()); //TEST
+
+                    Intent i = new Intent(context, DetailGambarActivity.class);
+                    i.putExtra("isKakak",false);
+                    i.putExtra("idTugas",entrySekarang.getIdTugas());
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
                 }
             });
         } else {
@@ -69,6 +78,7 @@ public class TugasListAdapter extends KakakuhBaseAdapter<Tugas> {
 
                         Intent i = new Intent(context, KerjakanTugasActivity.class);
                         i.putExtra("idTugas",entrySekarang.getIdTugas());
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(i);
                     }
                 });

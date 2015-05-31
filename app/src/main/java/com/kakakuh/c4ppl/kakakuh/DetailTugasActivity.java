@@ -201,21 +201,25 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
             try {
                 JSONObject json = new JSONObject(result);
                 android = json.getJSONArray("data");
-                for(int i = 0; i < android.length(); i++){
-                    JSONObject c = android.getJSONObject(i);
+                if(android.length()==0){
+                    queries.add(new Tugas("1", "Tidak ada kategori", new Date(new Long(System.currentTimeMillis())), "1", "tidak ada tugas", true));
+                }else{
+                    for(int i = 0; i < android.length(); i++){
+                        JSONObject c = android.getJSONObject(i);
 
-                    // TODO query kolom | idKategori | TextKategori | Deadline | JOIN by idKategory | idTugas | PoinTugas |status pengerjaaan | sorted by idKategory
-                    String idKategori = c.getString("id");
-                    String textKategori = c.getString("nama");
-                    String deadline = c.getString("deadline");
-                    Long deadEnd = parseDate(deadline);
-                    String idTugas = c.getString("id_tugas");
-                    String poinTugas = c.getString("nama_tugas");
-                    String status = c.getString("status");
-                    if(status.equals("0")){
-                        queries.add(new Tugas(idKategori, textKategori, new Date(new Long(deadEnd)), idTugas, poinTugas, false));
-                    }else{
-                        queries.add(new Tugas(idKategori, textKategori, new Date(new Long(deadEnd)), idTugas, poinTugas, true));
+                        // TODO query kolom | idKategori | TextKategori | Deadline | JOIN by idKategory | idTugas | PoinTugas |status pengerjaaan | sorted by idKategory
+                        String idKategori = c.getString("id");
+                        String textKategori = c.getString("nama");
+                        String deadline = c.getString("deadline");
+                        Long deadEnd = parseDate(deadline);
+                        String idTugas = c.getString("id_tugas");
+                        String poinTugas = c.getString("nama_tugas");
+                        String status = c.getString("status");
+                        if(status.equals("0")){
+                            queries.add(new Tugas(idKategori, textKategori, new Date(new Long(deadEnd)), idTugas, poinTugas, false));
+                        }else{
+                            queries.add(new Tugas(idKategori, textKategori, new Date(new Long(deadEnd)), idTugas, poinTugas, true));
+                        }
                     }
                 }
                 addList(queries);

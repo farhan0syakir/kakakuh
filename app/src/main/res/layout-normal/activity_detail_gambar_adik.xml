@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kakakuh.c4ppl.kakakuh.DetailGambarActivity"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/image"
+                android:scaleType="centerInside"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/textView"
+                android:layout_below="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/abc_text_size_medium_material"
+                android:text="@string/uploadgambarbaru"
+                />
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/textView"
+                android:id="@+id/inputLine">
+
+                <TextView
+                    android:layout_toLeftOf="@+id/btn_cari"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/file_name"
+                    android:background="@drawable/square_text_box"
+                    android:padding="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"/>
+
+                <Button
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/btn_cari"
+                    android:text="@string/btn_cari"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/button"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_upload"
+                android:text="@string/btn_upload"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/inputLine"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_normal"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/button" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
