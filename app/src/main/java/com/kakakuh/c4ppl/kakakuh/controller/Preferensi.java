@@ -25,6 +25,7 @@ public class Preferensi {
     static final String PENGATURAN_PESAN_KEY = "pengaturanPesan";
     static final String PENGATURAN_PENGINGAT_KEY = "pengaturanPengingat";
     static final String PENGATURAN_REVIEW_LOG_KEY = "pengaturanReviewLog";
+    private String pengaturanJadwal;
 
     public Preferensi(Context context) {
         this.context = context;
@@ -119,5 +120,9 @@ public class Preferensi {
     public String getPengaturanJadwal() {
         return preferensiKakakuh.getString(PENGATURAN_JADWAL_KEY,
                 context.getResources().getString(R.string.pengaturan_jadwal_default));
+    }
+
+    public void setPengaturanJadwal(String pengaturanJadwal) {
+        editor.putString(PENGATURAN_JADWAL_KEY, pengaturanJadwal);
     }
 }

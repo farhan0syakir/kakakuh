@@ -61,7 +61,7 @@ public class PengaturanJadwalActivity extends KakakuhBaseActivity{
             @Override
             public void onClick(View v) {
                 if (!selectedOption.equals(preferensi.getPengaturanJadwal())) {
-                    preferensi.setPengaturanPengingat(selectedOption);
+                    preferensi.setPengaturanJadwal(selectedOption);
                     preferensi.commit();
                     Toast.makeText(getApplicationContext(), "Pengaturan tersimpan!",
                             Toast.LENGTH_LONG).show();

@@ -34,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -56,14 +55,13 @@ public class JadwalFragment
     String statusBook;
     NumberPicker yearpicker;
     static int counter=0;
-    private ArrayList mEventRects;
 
     public JadwalFragment(){}
 
     Fragment fragment = null;
     JSONArray android = null;
-    List<WeekViewEvent> events=new ArrayList<>();
-    List<Integer> eventIdContainer = new ArrayList<>();
+    List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+    List<Long> eventIdContainer = new ArrayList<>();
 
     Intent nextScreen;
     @Override
@@ -76,6 +74,9 @@ public class JadwalFragment
 //        }catch (Exception e){
 //            System.out.println(e);
 //        }
+        for(int i = 0;i < events.size();i++){
+            System.out.print(events.get(i).toString()+" ");
+        }
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         Calendar today = Calendar.getInstance();
         monthSpinner = (Spinner) rootView.findViewById(R.id.spinner_bulan);
@@ -104,7 +105,6 @@ public class JadwalFragment
 
         Calendar cal = Calendar.getInstance();
         addListener();
-        setViewMode(pref.getPengaturanJadwal());
 //        onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
         return rootView;
     }
@@ -169,33 +169,16 @@ public class JadwalFragment
          }
 
     }
-
-
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         // Populate the week view with some events.
-        List<WeekViewEvent> tempEvents=null;
         try{
 //            new JSONParse().execute().get();
-            Preferensi pref = new Preferensi(getActivity());
-            String tempYear = ""+newYear;
-            String tempMonth = ""+(newMonth-1);
-//            monthSpinner.setSelection(newMonth-1);
-
-            //System.out.print("ayo cek sizenya nih" + events.size());
-            String myUrl = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve?username="+pref.getUsername()+"&year="+tempYear+"&month="+ tempMonth;
-            new JSONParse(getActivity(),myUrl).execute().get();
-            System.out.println("my url is " + myUrl + " size after asycn event = " + events.size());
-            tempEvents= new ArrayList<>(events);
-            events = new ArrayList<>();
-             //System.out.println("myurl "+myUrl);
-            //for(int i =0;i<events.size();i++){
-            //    System.out.println("onmonthcahge = "+events.get(i).getName()+" ");
-            //}
+            new JSONParse(getActivity(),"http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieve").execute().get();
         }catch (Exception e){
             System.out.println(e);
         }
-        return tempEvents;
+        return events;
     }
 
     private String getEventTitle(Calendar time) {
@@ -218,18 +201,12 @@ public class JadwalFragment
 
     class JSONParse extends KakakuhBaseJSONParserAsyncTask {
 
-        private String url = "";
-        private int newMonth,newYear;
         public JSONParse(Context context, String url) {
             super(context, url);
-            this.url=url;
         }
-
 
         @Override
         protected void onPostExecute(JSONObject json) {
-            events = new ArrayList<>();
-            System.out.println("apakah ini nol?"+events.size());
             try {
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
@@ -254,23 +231,25 @@ public class JadwalFragment
                         Calendar endTime = Calendar.getInstance();
                         endTime.setTime(parsedEndDate);
 
-                        int tempInt  = Integer.parseInt(id);
-                        WeekViewEvent event = new WeekViewEvent(tempInt, judul, startTime, endTime);
+                        WeekViewEvent event = new WeekViewEvent(Integer.parseInt(id), judul, startTime, endTime);
                         if(Integer.parseInt(statusBook)==0){
                             event.setColor(getResources().getColor(R.color.available));
                         }else{
                             event.setColor(getResources().getColor(R.color.booked));
                         }
-//                        if(!eventIdContainer.contains(tempInt)){
+                        if(!eventIdContainer.contains(event.getId())){
+                            System.out.println(event.getName()+"belum ada boss");
                             events.add(event);
-//                            eventIdContainer.add(tempInt);
-//                        }
+                            eventIdContainer.add(event.getId());
+                        }else{
+                            System.out.println("wah udah ada boss");
+                        }
 
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("my url is "+url+"sekarang sizenya " + events.size());
+
 //                mWeekView.notifyDatasetChanged();
                 pDialog.dismiss();
 
@@ -278,6 +257,10 @@ public class JadwalFragment
                 e.printStackTrace();
             }
 
+            for(int i = 0 ; i<events.size();i++){
+                System.out.print(events.get(i).getName()+" ");
+            }
+            System.out.println(counter++);
         }
 
     }
