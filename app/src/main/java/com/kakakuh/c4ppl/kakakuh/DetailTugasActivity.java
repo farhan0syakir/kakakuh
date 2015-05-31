@@ -20,6 +20,7 @@ import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.TugasListKakakAdapter;
+import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
@@ -102,19 +103,19 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
         nama = intent.getStringExtra("nama");
 
         namaView.setText(nama);
-        namaView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, ProfilActivity.class);
-                i.putExtra("username", usernameAdik);
-                context.startActivity(i);
-            }
-        });
+//        namaView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context, ProfilActivity.class);
+//                i.putExtra("username", usernameAdik);
+//                context.startActivity(i);
+//            }
+//        });
 
         /* END retrieve profil */
 
 //      adapter = new ArrayList<>();
-        sectionAdapter = new SectionedListAdapter<>(this, new HeaderTugasListKakakAdapter(this));
+        sectionAdapter = new SectionedListAdapter<>(this, new HeaderTugasListKakakAdapter(this,usernameAdik, nama, encodedPhoto));
         mList = (ListView) findViewById(R.id.list);
 
 

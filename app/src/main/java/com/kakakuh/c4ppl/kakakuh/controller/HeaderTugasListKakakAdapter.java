@@ -16,11 +16,8 @@ import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
-<<<<<<< HEAD
-import com.kakakuh.c4ppl.kakakuh.UbahProfilActivity;
-=======
 import com.kakakuh.c4ppl.kakakuh.UbahTugasActivity;
->>>>>>> origin/master
+import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.apache.http.HttpEntity;
@@ -46,10 +43,16 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
     InputStream is = null;
     String result = null;
     String line = null;
+    String usernameAdik = null;
+    String nama = null;
+    String encodedPhoto = null;
 
-    public HeaderTugasListKakakAdapter(Context context) {
+    public HeaderTugasListKakakAdapter(Context context, String usernameAdik, String nama, String encodedPhoto) {
         this.context = context;
         listItems = new ArrayList<>();
+        this.usernameAdik = usernameAdik;
+        this.nama = nama;
+        this.encodedPhoto = encodedPhoto;
     }
 
     @Override
@@ -78,13 +81,15 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(context, UbahTugasActivity.class);
-                i.putExtra("idTugas",current.getIdKategori());
+                i.putExtra("idTugas", current.getIdKategori());
+                i.putExtra("username", usernameAdik);
+                i.putExtra("nama", nama);
+                i.putExtra("photo", encodedPhoto);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
-
-
+            }
+        });
 
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
