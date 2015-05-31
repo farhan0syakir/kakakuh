@@ -56,4 +56,6 @@
     <string name="title_activity_pengaturan_jadwal">Pengaturan jadwal</string>
     <string name="title_activity_detail_gambar">Lihat Gambar</string>
     <string name="title_activity_ubah_tugas">Ubah Tugas</string>
+    <string name="title_activity_ubah_detail">Ubah Detail</string>
+    <string name="title_activity_ubah_kategori">Ubah Kategori</string>
 </resources>
