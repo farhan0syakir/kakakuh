@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kakakuh.c4ppl.kakakuh.DetailTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.UbahTugasActivity;
@@ -46,9 +47,11 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
     String usernameAdik = null;
     String nama = null;
     String encodedPhoto = null;
+    private Activity activeActivity;
 
-    public HeaderTugasListKakakAdapter(Context context, String usernameAdik, String nama, String encodedPhoto) {
-        this.context = context;
+    public HeaderTugasListKakakAdapter(Activity context, String usernameAdik, String nama, String encodedPhoto) {
+        //this.context = context;
+        this.activeActivity = context;
         listItems = new ArrayList<>();
         this.usernameAdik = usernameAdik;
         this.nama = nama;
@@ -59,7 +62,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater)
-                    context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+                    activeActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.header_tugas_kakak, null);
         }
 
@@ -81,13 +84,14 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, UbahTugasActivity.class);
+                Intent i = new Intent(activeActivity, UbahTugasActivity.class);
                 i.putExtra("idTugas", current.getIdKategori());
                 i.putExtra("username", usernameAdik);
                 i.putExtra("nama", nama);
                 i.putExtra("photo", encodedPhoto);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
+                activeActivity.startActivity(i);
+                activeActivity.finish();
             }
         });
 
@@ -96,6 +100,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
             @Override
             public void onClick(View v) {
                 //TODO hapus query berdasarkan kategori
+                idKategori = listItems.get(position).getIdKategori();
                 new AlertDialog.Builder(v.getRootView().getContext())
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setMessage("Apakah anda yakin ingin menghapus "+ listItems.get(position).getTextKategori() + "?")
@@ -104,19 +109,13 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 new deleteTask().execute("");
-                                Toast.makeText(context,"menghapus tugas...." , Toast.LENGTH_LONG).show();
-                                listItems.remove(listItems.get(position));//ini dievaluasi lagi
-                                SectionedListAdapter adapter = new SectionedListAdapter(context, new TugasListKakakAdapter(context, listItems));//ini dievaluasi lagi
-                                adapter.notifyDataSetChanged();//ini dievaluasi lagi, menyebabkan force close.
+                                Toast.makeText(activeActivity,"menghapus tugas...." , Toast.LENGTH_LONG).show();
+                                System.out.println(idKategori);
                             }
 
                         })
                         .setPositiveButton("Tidak", null)
                         .show();
-
-                System.out.println(idKategori);
-                idKategori = listItems.get(position).getIdKategori();
-
             }
         });
 
@@ -179,8 +178,15 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
 
         protected void onPostExecute(String result) {
 //            if (result.equals("OK")){
-            Toast.makeText(context, "Tugas Berhasil Dihapus", Toast.LENGTH_LONG).show();
+            Toast.makeText(activeActivity, "Tugas Berhasil Dihapus", Toast.LENGTH_LONG).show();
             HeaderTugasListKakakAdapter.this.notifyDataSetChanged();
+            Intent i = new Intent(activeActivity, DetailTugasActivity.class);
+            i.putExtra("username", usernameAdik);
+            i.putExtra("nama", nama);
+            i.putExtra("photo", encodedPhoto);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activeActivity.startActivity(i);
+            activeActivity.finish();
 //            }
             //after background is done, use this to show or hide dialogs
         }

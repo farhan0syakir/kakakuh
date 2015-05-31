@@ -182,6 +182,7 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
                     nextIntent.putExtra("nama", namauser);
                     nextIntent.putExtra("photo", encodedPhoto);
                     context.startActivity(nextIntent);
+                    finish();
                 }
             }
         });

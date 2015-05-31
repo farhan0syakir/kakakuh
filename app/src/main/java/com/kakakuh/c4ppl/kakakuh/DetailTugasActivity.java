@@ -134,6 +134,7 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
                 nextIntent.putExtra("nama", nama);
                 nextIntent.putExtra("photo", encodedPhoto);
                 context.startActivity(nextIntent);
+                finish();
             }
         });
     }
