@@ -4,12 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -28,17 +26,15 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class FormJadwalActivity extends KakakuhBaseActivity {
     private TextView username;
-    private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField,deskripsi;
-    private String judulSTR,dateStartSTR,dateEndSTR,deskripsiSTR,usernameSTR="";
+    private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField, deskripsiField,placeField;
+    private String judulSTR,dateStartSTR,dateEndSTR,deskripsiSTR,usernameSTR,placeSTR="";
     private Button btnSimpan;
 
     private String url1 = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/create";
@@ -60,6 +56,27 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
 
         preferensi = new Preferensi(getApplicationContext());
         usernameSTR = preferensi.getUsername();
+
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_white_home);
+
+        setContentView(R.layout.activity_form_jadwal);
+        preferensi = new Preferensi(getApplicationContext());
+
+        judulField = (TextView) findViewById(R.id.judul);
+        dateStartField = (TextView) findViewById(R.id.start_date);
+        timeStartField  = (TextView) findViewById(R.id.start_time);
+        dateEndField  = (TextView) findViewById(R.id.end_date);
+        timeEndField  = (TextView) findViewById(R.id.end_time);
+        deskripsiField = (TextView) findViewById(R.id.deskripsi_jadwal);
+        placeField = (TextView) findViewById(R.id.place);
+        btnSimpan = (Button) findViewById(R.id.btn_simpan);
+
+        addListener();
+    }
+
+    private void addListener(){
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -106,15 +123,6 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
             }
         };
 
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_white_home);
-
-        setContentView(R.layout.activity_form_jadwal);
-        preferensi = new Preferensi(getApplicationContext());
-
-        judulField = (TextView) findViewById(R.id.judul);
-        dateStartField = (TextView) findViewById(R.id.start_date);
         dateStartField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -124,7 +132,6 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
             }
         });
 
-        timeStartField  = (TextView) findViewById(R.id.start_time);
         timeStartField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +139,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
                         myCalendarStart.get(Calendar.MINUTE),true).show();
             }
         });
-        dateEndField  = (TextView) findViewById(R.id.end_date);
+
         dateEndField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -142,7 +149,6 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
             }
         });
 
-        timeEndField  = (TextView) findViewById(R.id.end_time);
         timeEndField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,20 +156,16 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
                         myCalendarEnd.get(Calendar.MINUTE),true).show();
             }
         });
-        deskripsi  = (TextView) findViewById(R.id.deskripsi_jadwal);
 
-        btnSimpan = (Button) findViewById(R.id.btn_simpan);
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // kyknya ini bisa ngerefer ke buat akun.
-               //samakan dengan format database
+                //samakan dengan format database
                 new CreateJadwal().execute();
             }
         });
     }
-
-
     //    public void showTimePickerDialog(View v) {
 //        DialogFragment newFragment = new TimePickerFragment();
 //        newFragment.show(new ,"timePicker");
@@ -201,7 +203,8 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
         judulSTR = judulField.getText().toString();
         dateStartSTR = changeFormatDateTime(myCalendarStart);
         dateEndSTR = changeFormatDateTime(myCalendarEnd);
-        deskripsiSTR = deskripsi.getText().toString();
+        deskripsiSTR = deskripsiField.getText().toString();
+        placeSTR = placeField.getText().toString();
 
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
 
@@ -210,6 +213,7 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
         nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
         nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
         nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
+        nameValuePairs.add(new BasicNameValuePair("place", placeSTR));
 
         //debug
         System.out.println(nameValuePairs);

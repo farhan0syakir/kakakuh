@@ -103,6 +103,30 @@
                 android:layout_alignLeft="@+id/start_time"
                 android:layout_alignStart="@+id/start_time" />
 
+
+            <TextView
+                android:id="@+id/place_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempat"
+                android:textSize="@dimen/normal_text"
+                android:layout_alignLeft="@+id/judul"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/end_time"/>
+
+            <EditText
+                android:id="@+id/place"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/place_label"
+                android:layout_marginTop="5dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"/>
+
+
             <TextView
                 android:id="@+id/label_deskripsi"
                 android:layout_width="wrap_content"
@@ -110,7 +134,7 @@
                 android:text="Deskripsi Kalender"
                 android:textSize="@dimen/normal_text"
                 android:layout_alignLeft="@+id/judul"
-                android:layout_below="@+id/end_time"
+                android:layout_below="@+id/place"
                 android:layout_marginTop="20dp"/>
 
             <EditText
@@ -119,9 +143,11 @@
                 android:layout_height="100dp"
                 android:textSize="@dimen/normal_text"
                 android:layout_centerHorizontal="true"
+                android:text="ngetes"
                 android:layout_below="@+id/label_deskripsi"
                 android:layout_marginTop="10dp"
-                android:paddingTop="2dp"
+                android:paddingTop="0dp"
+                android:gravity="top"
                 android:paddingBottom="2dp"
                 android:background="@drawable/square_text_box"/>
 

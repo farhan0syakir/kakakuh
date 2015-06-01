@@ -9,23 +9,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class DetailJadwalActivity extends KakakuhBaseActivity {
     Intent nextScreen;
-    int id;
-    Bundle bundle;
+    TextView colorField, placeField, titleField, timeField,bookerField = null;
+    int id,color=0;
+    String title,place,startDateStr,endDateStr=null;
+    Calendar startdate,enddate=Calendar.getInstance();
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_jadwal);
 
-        bundle = getIntent().getExtras();
         getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
         getActionBar().setIcon(R.drawable.ic_white_jadwal);
+
+        colorField = (TextView) findViewById(R.id.color);
+        placeField = (TextView) findViewById(R.id.tempat);
+        timeField = (TextView) findViewById(R.id.waktu_tanggal);
+        titleField = (TextView) findViewById(R.id.status);
+        retrieveExtras(savedInstanceState);
 
         Button ubahBtn = (Button) findViewById(R.id.btn_ubah);
         ubahBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +59,30 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
             }
         });
     }
+
+    private void retrieveExtras(Bundle savedInstanceState) {
+//        if (savedInstanceState == null) {
+        extras = getIntent().getExtras();
+        this.id = Integer.parseInt(String.valueOf(extras.getLong("id")));
+        this.title = extras.getString("judul");
+        this.place = extras.getString("place");
+        this.startDateStr = extras.getString("start");
+        this.endDateStr = extras.getString("end");
+        this.color = extras.getInt("color");
+//        } else {
+//            this,id = (String) savedInstanceState.getSerializable("id");
+//            this,title = (String) savedInstanceState.getSerializable("judul");
+//            this,startdate = (String) savedInstanceState.getSerializable("start");
+//            this,enddate = (String) savedInstanceState.getSerializable("end");
+//            this,color = (String) savedInstanceState.getSerializable("color");
+//        }
+        placeField.setText(place);
+        colorField.setBackgroundColor(color);
+        titleField.setText(title);
+        timeField.setText(""+startDateStr+" - "+endDateStr);
+
+    }
+
     public void onHapusPressed() {
 
         new AlertDialog.Builder(DetailJadwalActivity.this)

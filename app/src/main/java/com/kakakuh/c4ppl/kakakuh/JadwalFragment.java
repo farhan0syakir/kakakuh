@@ -1,12 +1,9 @@
 package com.kakakuh.c4ppl.kakakuh;
 
-import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.RectF;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -21,7 +18,6 @@ import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
@@ -34,9 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Anas on 4/2/2015.
@@ -56,6 +50,8 @@ public class JadwalFragment
     String statusBook;
     NumberPicker yearpicker;
     static int counter=0;
+    String myDateSqlFormat = "yyyy-MM-dd HH:mm:ss";
+    String myDateFormat = "E, dd MM yy HH:mm";
     private ArrayList mEventRects;
 
     public JadwalFragment(){}
@@ -195,6 +191,7 @@ public class JadwalFragment
         }catch (Exception e){
             System.out.println(e);
         }
+        mWeekView.notifyDatasetChanged();
         return tempEvents;
     }
 
@@ -204,9 +201,14 @@ public class JadwalFragment
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(JadwalFragment.this.getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(JadwalFragment.this.getActivity(), dateFormat.format(event.getStartTime().getTime()), Toast.LENGTH_SHORT).show();
         nextScreen = new Intent(getActivity().getApplicationContext(), DetailJadwalActivity.class);
-//        nextScreen.putExtra("id",""+event.getId());
+        nextScreen.putExtra("id", event.getId());
+        nextScreen.putExtra("judul", event.getName());
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myDateFormat);
+        nextScreen.putExtra("start",""+dateFormat.format(event.getStartTime().getTime()));
+        nextScreen.putExtra("end",""+dateFormat.format(event.getEndTime().getTime()));
+        nextScreen.putExtra("color",event.getColor());
         startActivity(nextScreen);
     }
 
@@ -229,7 +231,6 @@ public class JadwalFragment
         @Override
         protected void onPostExecute(JSONObject json) {
             events = new ArrayList<>();
-            System.out.println("apakah ini nol?"+events.size());
             try {
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
@@ -246,8 +247,8 @@ public class JadwalFragment
 
                     try {
                         Date parsedStartDate = null, parsedEndDate = null;
-                        parsedStartDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startDate);
-                        parsedEndDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(endDate);
+                        parsedStartDate = new SimpleDateFormat(myDateSqlFormat).parse(startDate);
+                        parsedEndDate = new SimpleDateFormat(myDateSqlFormat).parse(endDate);
 
                         Calendar startTime = Calendar.getInstance();
                         startTime.setTime(parsedStartDate);
