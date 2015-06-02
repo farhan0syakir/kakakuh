@@ -66,7 +66,6 @@ public class DaftarAdikAsuhFragment extends Fragment{
 
         @Override
         protected void onPostExecute(JSONObject json) {
-            pDialog.dismiss();
             try {
                 // Getting JSON Array from URL
                 android = json.getJSONArray("data");
@@ -86,6 +85,9 @@ public class DaftarAdikAsuhFragment extends Fragment{
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+            finally {
+                pDialog.dismiss();
             }
         }
     }

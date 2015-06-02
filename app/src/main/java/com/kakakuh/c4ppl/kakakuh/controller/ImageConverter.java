@@ -43,7 +43,7 @@ public class ImageConverter {
 
     public static String convertBitmapToStringBase64(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        if(bitmap != null) bitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+        if(bitmap != null) bitmap.compress(Bitmap.CompressFormat.JPEG, 20, stream);
         byte[] hasil = stream.toByteArray();
         try {
             stream.close();

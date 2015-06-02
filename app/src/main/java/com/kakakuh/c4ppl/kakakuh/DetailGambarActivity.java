@@ -1,5 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -36,6 +38,8 @@ import java.util.ArrayList;
 
 
 public class DetailGambarActivity extends KakakuhBaseActivity {
+
+    private Context context;
     Bitmap decodedByte;
     private TextView fileName;
     private Button btnDownload;
@@ -65,6 +69,7 @@ public class DetailGambarActivity extends KakakuhBaseActivity {
         idTugas = i.getStringExtra("idTugas");
         System.out.println("ini loh si idTugas " + idTugas);
         System.out.println("ini img " + base64);
+        context=this;
 
 
         if(getIntent().getBooleanExtra("isKakak",false)) {
@@ -230,16 +235,30 @@ public class DetailGambarActivity extends KakakuhBaseActivity {
     }
 
     class updateTask extends AsyncTask<String, String, String> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage("Ambil Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
         protected String doInBackground(String... params) {
             String hasil = update();
             return hasil ;
         }
 
 
-
+        @Override
         protected void onPostExecute(String result) {
             if(result.equals("OK"))
                 System.out.print("ea");
+            pDialog.dismiss();
             //after background is done, use this to show or hide dialogs
         }
     }
@@ -292,11 +311,23 @@ public class DetailGambarActivity extends KakakuhBaseActivity {
     }
 
     class showImage extends AsyncTask<String, String, String> {
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(context);
+            pDialog.setMessage("Ambil Data ...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+        @Override
         protected String doInBackground(String... params) {
             String hasil = retrieve();
             return hasil ;
         }
-
+        @Override
         protected void onPostExecute(String result) {
             //after background is done, use this to show or hide dialogs
             try {
@@ -309,6 +340,8 @@ public class DetailGambarActivity extends KakakuhBaseActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+            }finally {
+                pDialog.dismiss();
             }
         }
     }
