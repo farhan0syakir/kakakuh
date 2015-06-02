@@ -46,6 +46,7 @@ public class JadwalKakakFragment extends Fragment
     List<WeekViewEvent> events=new ArrayList<>();
     JSONArray jsonArray = null;
     String myDateSqlFormat = "yyyy-MM-dd HH:mm:ss";
+    String myDateFormat = "E, dd-MM-yy HH:mm";
     String statusBook = null;
 
 
@@ -114,8 +115,15 @@ public class JadwalKakakFragment extends Fragment
     }
 
     @Override
-    public void onEventClick(WeekViewEvent weekViewEvent, RectF rectF) {
-
+    public void onEventClick(WeekViewEvent event, RectF rectF) {
+        nextScreen = new Intent(getActivity().getApplicationContext(), DetailJadwalByAdikActivity.class);
+        nextScreen.putExtra("id", event.getId());
+        nextScreen.putExtra("judul", event.getName());
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myDateFormat);
+        nextScreen.putExtra("start",""+dateFormat.format(event.getStartTime().getTime()));
+        nextScreen.putExtra("end",""+dateFormat.format(event.getEndTime().getTime()));
+        nextScreen.putExtra("color",event.getColor());
+        startActivity(nextScreen);
     }
 
     @Override

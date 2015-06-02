@@ -127,7 +127,6 @@
             android:label="@string/title_activity_ubah_tugas"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-
         <activity
             android:name=".KerjakanTugasActivity"
             android:label="@string/title_activity_kerjakan_tugas" >
@@ -152,7 +151,6 @@
             android:name=".DetailGambarActivity"
             android:label="@string/title_activity_detail_gambar" >
         </activity>
-
         <activity
             android:name=".UbahKategoriActivity"
             android:label="@string/title_activity_ubah_kategori" >
@@ -160,6 +158,10 @@
         <activity
             android:name=".UbahDetailActivity"
             android:label="@string/title_activity_ubah_detail" >
+        </activity>
+        <activity
+            android:name=".DetailJadwalByAdikActivity"
+            android:label="@string/title_activity_detail_jadwal_by_adik" >
         </activity>
     </application>
 

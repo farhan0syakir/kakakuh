@@ -58,4 +58,5 @@
     <string name="title_activity_ubah_tugas">Ubah Tugas</string>
     <string name="title_activity_ubah_detail">Ubah Detail</string>
     <string name="title_activity_ubah_kategori">Ubah Kategori</string>
+    <string name="title_activity_detail_jadwal_by_adik">DetailJadwalByAdikActivity</string>
 </resources>

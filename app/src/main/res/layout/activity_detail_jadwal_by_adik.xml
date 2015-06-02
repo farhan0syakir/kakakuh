@@ -1,0 +1,177 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+    <RelativeLayout
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/available"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:textSize="@dimen/normal_text"
+            android:layout_alignBottom="@+id/color"
+            android:layout_toRightOf="@+id/color"
+            android:layout_toEndOf="@+id/color" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/emerald"
+            android:id="@+id/view"
+            android:layout_below="@+id/color"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:id="@+id/line_waktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_waktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_waktu"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/waktu_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sabtu, 29 April 2015, 08:00 - Sabtu, 29 April 2015, 09:00 "
+                    android:textSize="@dimen/normal_text"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_tempat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/line_waktu"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_tempat"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tentative"
+                android:textSize="@dimen/normal_text"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/line_tempat"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_detail"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belajar Bareng"
+                android:textSize="@dimen/normal_text"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_booker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/line_detail"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@+id/view">
+
+            <ImageView
+                android:id="@+id/ic_booker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emerald_profil"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/booker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Didi sumardi"
+                android:textSize="@dimen/normal_text"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_booking"
+        android:text="BOOKING"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_normal"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/btn_login"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp" />
+
+
+</RelativeLayout>
