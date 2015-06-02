@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 
-import com.kakakuh.c4ppl.kakakuh.R;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -45,7 +43,7 @@ public class ImageConverter {
 
     public static String convertBitmapToStringBase64(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        if(bitmap != null) bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        if(bitmap != null) bitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
         byte[] hasil = stream.toByteArray();
         try {
             stream.close();
@@ -54,4 +52,8 @@ public class ImageConverter {
         }
         return Base64.encodeToString(hasil,Base64.NO_WRAP);
     }
+
+
+
+
 }
