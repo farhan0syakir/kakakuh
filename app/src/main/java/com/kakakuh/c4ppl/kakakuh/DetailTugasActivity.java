@@ -14,14 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.HeaderTugasListKakakAdapter;
-import com.kakakuh.c4ppl.kakakuh.controller.IconTextListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
-import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 import com.kakakuh.c4ppl.kakakuh.controller.SectionedListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.TugasListKakakAdapter;
-import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
-import com.kakakuh.c4ppl.kakakuh.model.IconTextListItem;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
 
 import org.apache.http.HttpEntity;
@@ -40,11 +36,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by Anas on 4/16/2015.
@@ -204,7 +198,7 @@ public class DetailTugasActivity extends KakakuhBaseActivity {
                 JSONObject json = new JSONObject(result);
                 android = json.getJSONArray("data");
                 if(android.length()==0){
-                    queries.add(new Tugas("1", "Tidak ada kategori", new Date(new Long(System.currentTimeMillis())), "1", "tidak ada tugas", true));
+                    queries.add(new Tugas("1", "Tidak ada kategori", new Date(new Long(System.currentTimeMillis())), "1", "Tidak ada tugas", false));
                 }else{
                     for(int i = 0; i < android.length(); i++){
                         JSONObject c = android.getJSONObject(i);
