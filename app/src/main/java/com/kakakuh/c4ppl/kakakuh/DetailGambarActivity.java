@@ -6,12 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
-import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -36,7 +32,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 
@@ -75,61 +70,82 @@ public class DetailGambarActivity extends KakakuhBaseActivity {
         if(getIntent().getBooleanExtra("isKakak",false)) {
             setContentView(R.layout.activity_detail_gambar_kakak);
 
-            btnDownload = (Button) findViewById(R.id.btn_download);
-            btnDownload.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //download
-                }
-            });
         } else {
             setContentView(R.layout.activity_detail_gambar_adik);
 
             btnCari = (Button) findViewById(R.id.btn_cari);
             btnUnggah = (Button) findViewById(R.id.btn_upload);
 
-            btnUnggah.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //unggah adik
-                }
-            });
+//            btnUnggah.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //unggah adik
+//                }
+//            });
+//
+//            btnCari.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //cari adik
+//                }
+//            });
+
 
             btnCari.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //cari adik
+
+                    //TODO pilih file
+                    // Upload ngapain
+                    // Create intent to Open Image applications like Gallery, Google Photos
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
                 }
             });
+
+            btnUnggah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO unggah dan query kerjakan tugas dg idTugas
+                    new updateTask().execute();
+                    Toast.makeText(getApplicationContext(), "Tugas berhasil diunggah",
+                            Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
+
         }
         new showImage().execute();
         fileName = (TextView) findViewById(R.id.file_name);
         image = (ImageView) findViewById(R.id.image);
 
 
-        btnCari.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //TODO pilih file
-                // Upload ngapain
-                // Create intent to Open Image applications like Gallery, Google Photos
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-            }
-        });
-
-        btnUnggah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO unggah dan query kerjakan tugas dg idTugas
-                new updateTask().execute();
-                Toast.makeText(getApplicationContext(), "Tugas berhasil diunggah",
-                        Toast.LENGTH_LONG).show();
-
-            }
-        });
+//        btnCari.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //TODO pilih file
+//                // Upload ngapain
+//                // Create intent to Open Image applications like Gallery, Google Photos
+//                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+//            }
+//        });
+//
+//        btnUnggah.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO unggah dan query kerjakan tugas dg idTugas
+//                new updateTask().execute();
+//                Toast.makeText(getApplicationContext(), "Tugas berhasil diunggah",
+//                        Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
