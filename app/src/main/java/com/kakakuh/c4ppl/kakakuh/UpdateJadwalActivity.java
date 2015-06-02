@@ -35,7 +35,7 @@ import java.util.Locale;
 public class UpdateJadwalActivity extends KakakuhBaseActivity {
 
     private TextView username;
-    private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField,deskripsi;
+    private TextView judulField, dateStartField,dateEndField,timeStartField,timeEndField,deskripsi,placeField;
     private String judulSTR,dateStartSTR,dateEndSTR,deskripsiSTR,usernameSTR="";
     private Button btnSimpan;
 
@@ -49,7 +49,12 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
     DatePickerDialog.OnDateSetListener dateStart,dateEnd;
     TimePickerDialog.OnTimeSetListener timeStart,timeEnd;
 
+    String title, place=null;
+    int id,color;
+
     static private Preferensi prefensi;
+    Bundle extras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +62,55 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
 
         preferensi = new Preferensi(getApplicationContext());
 //        usernameSTR = prefensi.getUsername();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_white_home);
+
+        setContentView(R.layout.activity_form_update_jadwal);
+        preferensi = new Preferensi(getApplicationContext());
+
+        judulField = (TextView) findViewById(R.id.judul);
+        dateStartField = (TextView) findViewById(R.id.start_date);
+        timeStartField  = (TextView) findViewById(R.id.start_time);
+        dateEndField  = (TextView) findViewById(R.id.end_date);
+        timeEndField  = (TextView) findViewById(R.id.end_time);
+        placeField  = (TextView) findViewById(R.id.tempat);
+        deskripsi  = (TextView) findViewById(R.id.deskripsi_jadwal);
+        btnSimpan = (Button) findViewById(R.id.btn_simpan);
+
+        addListener();
+        retrieveExtras();
+    }
+
+    private void retrieveExtras() {
+
+        extras = getIntent().getExtras();
+        this.id = extras.getInt("id");
+        this.title = extras.getString("judul").toString();
+        this.place = extras.getString("place").toString();
+        this.deskripsiSTR = extras.getString("description").toString();
+        this.dateStartSTR = extras.getString("start").toString();
+        this.dateEndSTR = extras.getString("end").toString();
+//        this.color = extras.getInt("color");
+        judulField.setText(title);
+        dateStartField.setText(parseDate(dateStartSTR));
+        timeStartField.setText(parseTime(dateStartSTR));
+        dateEndField.setText(parseDate(dateEndSTR));
+        timeEndField.setText(parseTime(dateEndSTR));
+        placeField.setText(place);
+        deskripsi.setText(deskripsiSTR);
+    }
+
+    private String parseDate(String date){
+        String[] tempS = date.split(" ");
+        return tempS[0]+" "+tempS[1];
+    }
+
+    private String parseTime(String date){
+        String[] tempS = date.split(" ");
+        return tempS[2];
+    }
+
+    private void addListener(){
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -103,15 +157,6 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
             }
         };
 
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_white_home);
-
-        setContentView(R.layout.activity_form_update_jadwal);
-        preferensi = new Preferensi(getApplicationContext());
-
-        judulField = (TextView) findViewById(R.id.judul);
-        dateStartField = (TextView) findViewById(R.id.start_date);
         dateStartField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -121,7 +166,6 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
             }
         });
 
-        timeStartField  = (TextView) findViewById(R.id.start_time);
         timeStartField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +173,6 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
                         myCalendarStart.get(Calendar.MINUTE),true).show();
             }
         });
-        dateEndField  = (TextView) findViewById(R.id.end_date);
         dateEndField.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -138,8 +181,6 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
                         myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
-        timeEndField  = (TextView) findViewById(R.id.end_time);
         timeEndField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,19 +188,17 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
                         myCalendarEnd.get(Calendar.MINUTE),true).show();
             }
         });
-        deskripsi  = (TextView) findViewById(R.id.deskripsi_jadwal);
 
-        btnSimpan = (Button) findViewById(R.id.btn_simpan);
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // kyknya ini bisa ngerefer ke buat akun.
                 //samakan dengan format database
-//                new CreateJadwal().execute();
+                new UpdateJadwal().execute();
+                finish();
             }
         });
     }
-
 
     //    public void showTimePickerDialog(View v) {
 //        DialogFragment newFragment = new TimePickerFragment();
@@ -192,70 +231,71 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
             timeEndField.setText(sdf.format(myCalendarEnd.getTime()));
         }
     }
-//
-//    public String update() {
-//
-//        judulSTR = judulField.getText().toString();
-//        dateStartSTR = changeFormatDateTime(myCalendarStart);
-//        dateEndSTR = changeFormatDateTime(myCalendarEnd);
-//        deskripsiSTR = deskripsi.getText().toString();
-//
-//        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
-//
-//        nameValuePairs.add(new BasicNameValuePair("judul", judulSTR));
-//        nameValuePairs.add(new BasicNameValuePair("startdate", dateStartSTR));
-//        nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
-//        nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
-//        nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
-//
-//        //debug
-//        System.out.println(nameValuePairs);
-//
-//        try {
-//            HttpClient httpclient = new DefaultHttpClient();
-//            HttpPost httppost = new HttpPost(url1);
-//            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//            HttpResponse response = httpclient.execute(httppost);
-//            HttpEntity entity = response.getEntity();
-//            is = entity.getContent();
-//            //debug
-//            System.out.println(is);
-//            Log.e("pass 1", "connection success ");
-//        } catch (Exception e) {
-//            Log.e("Fail 1", e.toString());
-//            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-//                    Toast.LENGTH_LONG).show();
-//
-//        }
-//
-//        try {
-//            BufferedReader reader = new BufferedReader
-//                    (new InputStreamReader(is, "iso-8859-1"), 8);
-//            StringBuilder sb = new StringBuilder();
-//            while ((line = reader.readLine()) != null) {
-//                sb.append(line + "\n");
-//            }
-//            is.close();
-//            result = sb.toString();
-//            //debug
-//
-//            Log.e("pass 2", "connection success ");
-//            System.out.println(result);
-//        } catch (Exception e) {
-//            Log.e("Fail 2", e.toString());
-//        }
-//        return result;
-//    }
-//
-//    class CreateJadwal extends AsyncTask<String, String, String> {
-//        protected String doInBackground(String... params) {
-//            String hasil = update();
-//            return hasil ;
-//        }
-//
-//        protected void onPostExecute(String result) {
-//            Toast.makeText(getApplicationContext(), "Berhasil mengupdate jadwal" + judulSTR + dateStartSTR+dateEndSTR+deskripsiSTR,
-//                    Toast.LENGTH_LONG).show();
-//        }
-//    }
+
+    public String update() {
+
+        judulSTR = judulField.getText().toString();
+        dateStartSTR = changeFormatDateTime(myCalendarStart);
+        dateEndSTR = changeFormatDateTime(myCalendarEnd);
+        deskripsiSTR = deskripsi.getText().toString();
+
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+
+        nameValuePairs.add(new BasicNameValuePair("id", ""+id));
+        nameValuePairs.add(new BasicNameValuePair("judul", judulSTR));
+        nameValuePairs.add(new BasicNameValuePair("startdate", dateStartSTR));
+        nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
+        nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
+        nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
+
+        //debug
+        System.out.println(nameValuePairs);
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url1);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            //debug
+            System.out.println(is);
+            Log.e("pass 1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail 1", e.toString());
+            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(is, "iso-8859-1"), 8);
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            is.close();
+            result = sb.toString();
+            //debug
+
+            Log.e("pass 2", "connection success ");
+            System.out.println(result);
+        } catch (Exception e) {
+            Log.e("Fail 2", e.toString());
+        }
+        return result;
+    }
+
+    class UpdateJadwal extends AsyncTask<String, String, String> {
+        protected String doInBackground(String... params) {
+            String hasil = update();
+            return hasil ;
+        }
+
+        protected void onPostExecute(String result) {
+            Toast.makeText(getApplicationContext(), "Berhasil mengupdate jadwal" + judulSTR + dateStartSTR+dateEndSTR+deskripsiSTR,
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 }

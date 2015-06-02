@@ -51,7 +51,7 @@ public class JadwalFragment
     NumberPicker yearpicker;
     static int counter=0;
     String myDateSqlFormat = "yyyy-MM-dd HH:mm:ss";
-    String myDateFormat = "E, dd MM yy HH:mm";
+    String myDateFormat = "E, dd-MM-yy HH:mm";
     private ArrayList mEventRects;
 
     public JadwalFragment(){}
@@ -74,8 +74,8 @@ public class JadwalFragment
 //        }
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         Calendar today = Calendar.getInstance();
-        monthSpinner = (Spinner) rootView.findViewById(R.id.spinner_bulan);
-        monthSpinner.setSelection(Calendar.getInstance().get(Calendar.MONTH));
+//        monthSpinner = (Spinner) rootView.findViewById(R.id.spinner_bulan);
+//        monthSpinner.setSelection(Calendar.getInstance().get(Calendar.MONTH));
         tambahJadwalBtn = (Button) rootView.findViewById(R.id.tambah_jadwal);
 
         Preferensi pref = new Preferensi(getActivity());
@@ -122,7 +122,7 @@ public class JadwalFragment
 
             }
         });
-        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Calendar today = Calendar.getInstance();
@@ -136,7 +136,7 @@ public class JadwalFragment
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 //        yearpicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
 //            Calendar temp = Calendar.getInstance();
 //            @Override

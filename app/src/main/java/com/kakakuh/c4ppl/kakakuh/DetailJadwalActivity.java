@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
@@ -52,6 +53,9 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
 
     String myUrl = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieveDetail";
     String deleteUrl = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/delete";
+
+    String myDateFormat = "E, dd-MM-yy HH:mm";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +83,7 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getApplicationContext(), "farhan ganteng",Toast.LENGTH_SHORT ).show();
-
-                nextScreen = new Intent(getApplicationContext(), UpdateJadwalActivity.class);
-//                nextScreen.putExtra("id",bundle.getString("id"));
-                startActivity(nextScreen);
+                onUbahPressed();
             }
         });
         Button hapusBtn = (Button) findViewById(R.id.btn_hapus);
@@ -92,6 +93,19 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
                 onHapusPressed();
             }
         });
+    }
+
+    private void onUbahPressed() {
+        nextScreen = new Intent(getApplicationContext(), UpdateJadwalActivity.class);
+        nextScreen.putExtra("id", this.id);
+        nextScreen.putExtra("judul", this.title);
+        nextScreen.putExtra("place", this.place);
+        nextScreen.putExtra("description", this.descriptionStr);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myDateFormat);
+        nextScreen.putExtra("start",""+startDateStr);
+        nextScreen.putExtra("end",""+endDateStr);
+//        nextScreen.putExtra("color",event.getColor());
+        startActivity(nextScreen);
     }
 
     private void retrieveExtras(Bundle savedInstanceState) throws ExecutionException, InterruptedException {
