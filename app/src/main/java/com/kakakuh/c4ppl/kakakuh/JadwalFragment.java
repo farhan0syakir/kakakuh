@@ -101,6 +101,7 @@ public class JadwalFragment
         Calendar cal = Calendar.getInstance();
         addListener();
         setViewMode(pref.getPengaturanJadwal());
+        mWeekView.goToToday();
 //        onMonthChange(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH));
         return rootView;
     }

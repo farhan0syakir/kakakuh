@@ -36,4 +36,5 @@ public abstract class KakakuhBaseJSONParserAsyncTask extends AsyncTask<String, S
         JSONObject json = jParser.getJSONFromUrl(url);
         return json;
     }
+
 }
