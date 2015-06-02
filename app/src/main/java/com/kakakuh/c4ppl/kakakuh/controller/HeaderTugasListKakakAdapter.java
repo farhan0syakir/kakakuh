@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.kakakuh.c4ppl.kakakuh.DetailTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.UbahKategoriActivity;
 import com.kakakuh.c4ppl.kakakuh.UbahTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
 import com.kakakuh.c4ppl.kakakuh.model.Tugas;
@@ -84,11 +85,8 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(activeActivity, UbahTugasActivity.class);
-                i.putExtra("idTugas", current.getIdKategori());
-                i.putExtra("username", usernameAdik);
-                i.putExtra("nama", nama);
-                i.putExtra("photo", encodedPhoto);
+                Intent i = new Intent(activeActivity, UbahKategoriActivity.class);
+                i.putExtra("idKategori", current.getIdKategori());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 activeActivity.startActivity(i);
                 activeActivity.finish();

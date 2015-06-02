@@ -7,5 +7,6 @@
     <string name="text_bukti">Silahkan unggah bukti pengerjaan.</string>
     <string name="btn_download">DOWNLOAD</string>
     <string name="uploadgambarbaru">Upload gambar baru</string>
+    <string name="btn_hapus_label">HAPUS</string>
     <item name="btn_tambah_label" type="id">TAMBAH</item>
 </resources>

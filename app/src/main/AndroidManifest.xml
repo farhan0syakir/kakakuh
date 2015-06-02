@@ -152,6 +152,15 @@
             android:name=".DetailGambarActivity"
             android:label="@string/title_activity_detail_gambar" >
         </activity>
+
+        <activity
+            android:name=".UbahKategoriActivity"
+            android:label="@string/title_activity_ubah_kategori" >
+        </activity>
+        <activity
+            android:name=".UbahDetailActivity"
+            android:label="@string/title_activity_ubah_detail" >
+        </activity>
     </application>
 
 </manifest>

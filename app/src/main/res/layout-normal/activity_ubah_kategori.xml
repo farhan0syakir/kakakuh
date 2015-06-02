@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/emerald_light">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_toLeftOf="@+id/btn_edit"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DASAR DASAR PEMPROGRAMAN"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/btn_edit"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/btn_edit_selector"
+                    android:contentDescription="@string/button"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_below="@id/linear"
+                android:id="@+id/deadline"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:text="28 Mei 2015 09:00"
+                android:background="@color/cloud"
+                android:paddingLeft="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deadline">
+
+                <RelativeLayout
+                    android:id="@+id/linearTugas1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_toLeftOf="@+id/linearButton1"
+                        android:id="@+id/tugas1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tugas 1"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp">
+
+                        <Button
+                            android:id="@+id/btn_editTugas1"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_edit_selector"
+                            android:contentDescription="@string/button"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_plusTugas1"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_plus_selector"
+                            android:contentDescription="@string/button" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearTugas2"
+                    android:layout_below="@+id/linearTugas1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_toLeftOf="@+id/linearButton2"
+                        android:id="@+id/tugas2"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tugas 2"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp">
+
+                        <Button
+                            android:id="@+id/btn_editTugas2"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_edit_selector"
+                            android:contentDescription="@string/button"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_plusTugas2"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_plus_selector"
+                            android:contentDescription="@string/button" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearTugas3"
+                    android:layout_below="@+id/linearTugas2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_toLeftOf="@+id/linearButton3"
+                        android:id="@+id/tugas3"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tugas 3"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp">
+
+                        <Button
+                            android:id="@+id/btn_editTugas3"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_edit_selector"
+                            android:contentDescription="@string/button"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_plusTugas3"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_plus_selector"
+                            android:contentDescription="@string/button" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearTugas4"
+                    android:layout_below="@+id/linearTugas3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_toLeftOf="@+id/linearButton4"
+                        android:id="@+id/tugas4"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tugas 4"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp">
+
+                        <Button
+                            android:id="@+id/btn_editTugas4"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_edit_selector"
+                            android:contentDescription="@string/button"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_plusTugas4"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_plus_selector"
+                            android:contentDescription="@string/button" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/linearTugas5"
+                    android:layout_below="@+id/linearTugas4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_toLeftOf="@+id/linearButton5"
+                        android:id="@+id/tugas5"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tugas 5"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearButton5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp">
+
+                        <Button
+                            android:id="@+id/btn_editTugas5"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_edit_selector"
+                            android:contentDescription="@string/button"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_plusTugas5"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/btn_plus_selector"
+                            android:contentDescription="@string/button" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
