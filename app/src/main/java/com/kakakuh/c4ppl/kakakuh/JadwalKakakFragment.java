@@ -1,6 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
@@ -15,9 +16,18 @@ import android.widget.TextView;
 
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +42,13 @@ public class JadwalKakakFragment extends Fragment
     String id,user,judul,startDate,tahunMulai,bulanMulai,tanggalMulai,jamMulai,menitMulai,detikMulai,endDate,tahunSelesai,bulanSelesai,tanggalSelesai,jamSelesai,menitSelesai,detikSelesai;
     Intent nextScreen;
 
+
+    List<WeekViewEvent> events=new ArrayList<>();
+    JSONArray jsonArray = null;
+    String myDateSqlFormat = "yyyy-MM-dd HH:mm:ss";
+    String statusBook = null;
+
+
     public JadwalKakakFragment(){}
 
     @Override
@@ -39,8 +56,6 @@ public class JadwalKakakFragment extends Fragment
                                  Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_jadwal_kakak, container, false);
         Calendar today = Calendar.getInstance();
-        monthSpinner = (Spinner) rootView.findViewById(R.id.spinner_bulan);
-        monthSpinner.setSelection(Calendar.getInstance().get(Calendar.MONTH));
 
         Preferensi pref = new Preferensi(getActivity());
 //        setViewMode("3 hari");
@@ -73,22 +88,6 @@ public class JadwalKakakFragment extends Fragment
             @Override
             public void onClick(View v) {
                 mWeekView.goToToday();
-            }
-        });
-
-        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Calendar today = Calendar.getInstance();
-                //kalau yang dipilih bulan yang udah lewat maka lompat ke bulan di tahun depannya
-
-                today.set(Calendar.MONTH, position);
-                mWeekView.goToDate(today);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -125,7 +124,95 @@ public class JadwalKakakFragment extends Fragment
     }
 
     @Override
-    public List<WeekViewEvent> onMonthChange(int i, int i1) {
-        return null;
+    public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+        List<WeekViewEvent> tempEvents=null;
+        try{
+//            new JSONParse().execute().get();
+            Preferensi pref = new Preferensi(getActivity());
+            String tempYear = ""+newYear;
+            String tempMonth = ""+(newMonth-1);
+//            monthSpinner.setSelection(newMonth-1);
+
+            //System.out.print("ayo cek sizenya nih" + events.size());
+            String myUrl = "http://ppl-c04.cs.ui.ac.id/index.php/jadwalController/retrieveJadwalKakak?useradik="+pref.getUsername()+"&year="+tempYear+"&month="+ tempMonth;
+            new JSONParse(getActivity(),myUrl).execute().get();
+            System.out.println("my url is " + myUrl + " size after asycn event = " + events.size());
+            tempEvents= new ArrayList<>(events);
+            events = new ArrayList<>();
+            //System.out.println("myurl "+myUrl);
+            //for(int i =0;i<events.size();i++){
+            //    System.out.println("onmonthcahge = "+events.get(i).getName()+" ");
+            //}
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        mWeekView.notifyDatasetChanged();
+        return tempEvents;
+
+    }
+
+    class JSONParse extends KakakuhBaseJSONParserAsyncTask {
+
+        private String url = "";
+        private int newMonth,newYear;
+        public JSONParse(Context context, String url) {
+            super(context, url);
+            this.url=url;
+        }
+
+
+        @Override
+        protected void onPostExecute(JSONObject json) {
+            events = new ArrayList<>();
+            try {
+                // Getting JSON Array from URL
+                jsonArray= json.getJSONArray("data");
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject c = jsonArray.getJSONObject(i);
+                    // Storing  JSON item in a Variable
+                    id = c.getString("id_jadwal");
+                    user = c.getString("user_id");
+                    judul = c.getString("title");
+                    statusBook = c.getString("status_book");
+                    //Date format 2015-05-18 09:33:00
+                    startDate = c.getString("start_date");
+                    endDate = c.getString("end_date");
+
+                    try {
+                        Date parsedStartDate = null, parsedEndDate = null;
+                        parsedStartDate = new SimpleDateFormat(myDateSqlFormat).parse(startDate);
+                        parsedEndDate = new SimpleDateFormat(myDateSqlFormat).parse(endDate);
+
+                        Calendar startTime = Calendar.getInstance();
+                        startTime.setTime(parsedStartDate);
+                        Calendar endTime = Calendar.getInstance();
+                        endTime.setTime(parsedEndDate);
+
+                        int tempInt  = Integer.parseInt(id);
+                        WeekViewEvent event = new WeekViewEvent(tempInt, judul, startTime, endTime);
+                        if(Integer.parseInt(statusBook)==0){
+                            event.setColor(getResources().getColor(R.color.available));
+                        }else{
+                            event.setColor(getResources().getColor(R.color.booked));
+                        }
+//                        if(!eventIdContainer.contains(tempInt)){
+                        events.add(event);
+//                            eventIdContainer.add(tempInt);
+//                        }
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println("my url is "+url+"sekarang sizenya " + events.size());
+//                mWeekView.notifyDatasetChanged();
+                pDialog.dismiss();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }
