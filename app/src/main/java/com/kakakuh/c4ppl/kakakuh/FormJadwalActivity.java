@@ -162,7 +162,29 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
             public void onClick(View v) {
                 // kyknya ini bisa ngerefer ke buat akun.
                 //samakan dengan format database
-                new CreateJadwal().execute();
+//                new CreateJadwal().execute();
+                Long currentTime = System.currentTimeMillis();
+                Long deadStart = myCalendarStart.getTimeInMillis();
+                Long deadEnd = myCalendarEnd.getTimeInMillis();
+                //TODO lanjutkan untuk masing2 field! cek jika poin tugas kosong berarti g diquery
+                if(judulField.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Judul harus dibuat",
+                            Toast.LENGTH_LONG).show();
+                }else if(deadEnd < currentTime && deadStart < currentTime){
+                    Toast.makeText(getApplicationContext(), "Input waktu harus lebih dari sekarang",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(placeField.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Tempat harus ada",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(deskripsiField.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Deskripsi harus ada",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    new CreateJadwal().execute();
+                    finish();
+                }
             }
         });
     }

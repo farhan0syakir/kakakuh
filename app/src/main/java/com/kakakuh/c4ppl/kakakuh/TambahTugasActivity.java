@@ -1,7 +1,6 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.kakakuh.c4ppl.kakakuh.controller.ImageConverter;
-import com.kakakuh.c4ppl.kakakuh.controller.Kalender;
 import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
@@ -34,8 +32,6 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -163,14 +159,14 @@ public class TambahTugasActivity extends KakakuhBaseActivity {
                 Long currentTime = System.currentTimeMillis();
                 Long deadEnd = myCalendarStart.getTimeInMillis();
                 //TODO lanjutkan untuk masing2 field! cek jika poin tugas kosong berarti g diquery
-                if(kategoriField.getText().toString().isEmpty()){
+                if(kategoriField.getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), "Kategori harus dibuat",
                             Toast.LENGTH_LONG).show();
                 }else if(deadEnd < currentTime){
                     Toast.makeText(getApplicationContext(), "Input waktu harus lebih dari sekarang",
                             Toast.LENGTH_LONG).show();
                 }
-                else if(tugasField[0].getText().toString().isEmpty()&&tugasField[1].getText().toString().isEmpty()&&tugasField[2].getText().toString().isEmpty()&&tugasField[3].getText().toString().isEmpty()&&tugasField[4].getText().toString().isEmpty()){
+                else if(tugasField[0].getText().toString().trim().isEmpty()&&tugasField[1].getText().toString().trim().isEmpty()&&tugasField[2].getText().toString().trim().isEmpty()&&tugasField[3].getText().toString().trim().isEmpty()&&tugasField[4].getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), "Daftar tugas harus ada",
                             Toast.LENGTH_LONG).show();
                 }else{
