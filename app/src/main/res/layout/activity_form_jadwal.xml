@@ -143,7 +143,6 @@
                 android:layout_height="100dp"
                 android:textSize="@dimen/normal_text"
                 android:layout_centerHorizontal="true"
-                android:text="ngetes"
                 android:layout_below="@+id/label_deskripsi"
                 android:layout_marginTop="10dp"
                 android:paddingTop="0dp"
