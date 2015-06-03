@@ -124,7 +124,6 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
 //            this,enddate = (String) savedInstanceState.getSerializable("end");
 //            this,color = (String) savedInstanceState.getSerializable("color");
 //        }
-        placeField.setText(place);
         colorField.setBackgroundColor(color);
         titleField.setText(title);
         timeField.setText("" + startDateStr + " - " + endDateStr);

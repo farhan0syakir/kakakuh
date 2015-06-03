@@ -3,19 +3,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtLabel"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16dp"
-        android:text="Konfirmasi Booking"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/line_adik"
+        android:layout_marginTop="10dp">
+        <View
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:background="@color/emerald"/>
 
-    <ImageView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:src="@drawable/ic_emerald_konfirmasi_booking"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+
+
+        <RelativeLayout
+            android:id="@+id/line_tugas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_adik">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:layout_marginRight="12dp"
+                android:contentDescription="@string/desc_list_item_icon"
+                android:src="@drawable/art_default_profil"
+                android:background="@color/grey"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/nama_akun"
+                android:text="Nama Saya"
+                android:textSize="@dimen/nama_akun_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:layout_below="@+id/view2"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/image"
+                android:layout_toEndOf="@+id/image"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/emerald"
+                android:id="@+id/view2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_tugas"
+                android:layout_below="@id/image"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/belum_ada_tugas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="12dp"
+                    android:text="Ingin melakukan booking pada hari Sabtu, 4 April 2015 di jam 07.00-09.00"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/tanya_terima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="12dp"
+                    android:text="terima?"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/belum_ada_tugas"/>
+
+                <Button
+                    android:text="TIDAK"
+                    android:id="@+id/btn_tidak"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@id/tanya_terima"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentRight="true"
+                    />
+
+                <Button
+                    android:text="YA"
+                    android:id="@+id/btn_ya"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@+id/btn_tidak"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/container_tugas"
+                android:background="@color/emerald"
+                android:id="@+id/view3" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
