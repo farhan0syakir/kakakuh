@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
+import com.kakakuh.c4ppl.kakakuh.controller.Preferensi;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,12 +48,14 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
     String result = null;
     String line = null;
     String bookingUrl = "";
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_jadwal_by_adik);
 
+        addPreferensi();
         colorField = (TextView) findViewById(R.id.color);
         placeField = (TextView) findViewById(R.id.tempat);
         timeField = (TextView) findViewById(R.id.waktu_tanggal);
@@ -66,8 +69,13 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
             e.printStackTrace();
         }
         addListener();
+
     }
 
+    private void addPreferensi(){
+        Preferensi pref = new Preferensi(getApplication());
+        this.username = pref.getUsername();
+    }
     private void addListener(){
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +169,7 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
 
         @Override
         protected String doInBackground(String... args) {
-            String hasil = deleteJadwal();
+            String hasil = bookingJadwal();
             return hasil;
         }
 
@@ -174,11 +182,12 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
             }
         }
 
-        public String deleteJadwal(){
+        public String bookingJadwal(){
 
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
             nameValuePairs.add(new BasicNameValuePair("id_jadwal", ""+id));
+            nameValuePairs.add(new BasicNameValuePair("useradik", ""+username));
             //debug
 
             try {
