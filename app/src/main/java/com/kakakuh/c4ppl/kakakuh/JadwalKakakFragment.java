@@ -212,7 +212,7 @@ public class JadwalKakakFragment extends Fragment
                         e.printStackTrace();
                     }
                 }
-                System.out.println("my url is "+url+"sekarang sizenya " + events.size());
+//                System.out.println("my url is "+url+"sekarang sizenya " + events.size());
 //                mWeekView.notifyDatasetChanged();
                 pDialog.dismiss();
 
