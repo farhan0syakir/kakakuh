@@ -3,9 +3,7 @@ package com.kakakuh.c4ppl.kakakuh;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +30,7 @@ import java.util.ArrayList;
 public class AdikAsuhkuFragment extends Fragment{
     private ArrayList<AdikAsuhkuListItem> listItems;
     private AdikAsuhkuListAdapter adapter;
-    private JSONArray android = null;
+    private JSONArray jsonArray = null;
     private String user;
     private ListView mListAkun;
     private Bitmap decodedByte;
@@ -93,9 +91,10 @@ public class AdikAsuhkuFragment extends Fragment{
             try {
                 Tugas[] tugases = {new Tugas("1","Jajan",new Date(new Long("1438224300000")),"2","Mock Up",true),null,null};
                 // Getting JSON Array from URL
-                android = json.getJSONArray("data");
-                for(int i = 0; i < android.length(); i++){
-                    JSONObject c = android.getJSONObject(i);
+                System.out.println("adik asuh fragment debug json ="+json);
+                jsonArray = json.getJSONArray("data");
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject c = jsonArray.getJSONObject(i);
                     // Storing  JSON item in a Variable
                     String namaLengkap = c.getString("nama_lengkap");
                     String username = c.getString("username");
