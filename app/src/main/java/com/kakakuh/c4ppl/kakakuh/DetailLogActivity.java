@@ -8,7 +8,7 @@ import android.widget.TextView;
  * Class ini untuk menampilkan detail log
  */
 public class DetailLogActivity extends KakakuhBaseActivity {
-    private TextView note, tanggal, jam, tempat, detail;
+    private TextView note, tanggal, jam, tempat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,6 @@ public class DetailLogActivity extends KakakuhBaseActivity {
 
         //ambil intent dari pemanggil
         Intent detailLog = getIntent();
-        String iDetail = detailLog.getStringExtra("detail");
         String iNote = detailLog.getStringExtra("note");
         String iDate = detailLog.getStringExtra("date");
         String iHour = detailLog.getStringExtra("hour");
@@ -37,13 +36,11 @@ public class DetailLogActivity extends KakakuhBaseActivity {
         note = (TextView) findViewById(R.id.note);
         tanggal = (TextView) findViewById(R.id.waktu_tanggal);
         jam = (TextView) findViewById(R.id.waktu_jam);
-        detail = (TextView) findViewById(R.id.detail);
 
         //set value
         note.setText(iNote);
         tanggal.setText(iDate);
         jam.setText(iHour);
-        detail.setText(iDetail);
         if(!iTempat.equals("null")) {
             tempat = (TextView) findViewById(R.id.tempat);
             tempat.setText(iTempat);

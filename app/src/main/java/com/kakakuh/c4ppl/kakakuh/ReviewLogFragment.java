@@ -49,18 +49,18 @@ public class ReviewLogFragment extends Fragment{
         //input parameter timestamp jadinya adalah get(currentTimestamp, query.getWaktuDikerjakan)
         //contoh dibawah HARDCODED tanpa perbandingan;
         logs = new ArrayList<>();
-        logs.add(new Log(1, "a01", "a01 mengadakan pertemuan dengan b01", "Belajar Bareng",
+        logs.add(new Log(1, "a01", "a01 mengadakan pertemuan dengan b01",
                 new Date (new Long("1428805800000")),
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal),
                 "Lab 07")); // Sun Apr 12 2015 09:30:00 GMT+0700 (SE Asia Standard Time)
-        logs.add(new Log(2, "b01", "b01 mengerjakan tugas yang diberikan a01", "Page sekian",
+        logs.add(new Log(2, "b01", "b01 mengerjakan tugas yang diberikan a01",
                 new Date(new Long("1428802200000")),
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal),
                 "Lab 07")); // Sun Apr 12 2015 08:30:00 GMT+0700 (SE Asia Standard Time)
-        logs.add(new Log(3, "a01", "a01 mengadakan pertemuan dengan b01", "Belajar Bareng",
+        logs.add(new Log(3, "a01", "a01 mengadakan pertemuan dengan b01",
                 new Date(new Long("1428715800000")),
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal))); // Sun Apr 11 2015 08:30:00 GMT+0700 (SE Asia Standard Time)
-        logs.add(new Log(3, "a01", "a01 mengadakan pertemuan dengan b01", "Belajar Bareng",
+        logs.add(new Log(3, "a01", "a01 mengadakan pertemuan dengan b01",
                 new Date(new Long("1428345600000")),
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_emerald_jadwal))); // Tue Apr 07 2015 01:40:00 GMT+0700 (SE Asia Standard Time)
 
@@ -82,7 +82,6 @@ public class ReviewLogFragment extends Fragment{
     public void getDetailLog(Log log) {
         Intent i = new Intent(getActivity(), DetailLogActivity.class);
 
-        i.putExtra("detail", log.getDetail());
         i.putExtra("note", log.getNote());
 
         String[] time = convertDate(log.getTimestamp());

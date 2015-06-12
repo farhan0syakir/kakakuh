@@ -11,26 +11,23 @@ public class Log{
     private int id;
     private String username;
     private String note;
-    private String detail;
     private Date timestamp;
     private Bitmap photo;
     private String tempat;
 
-    public Log(int id, String username, String note, String detail, Date timestamp, Bitmap photo) {
+    public Log(int id, String username, String note, Date timestamp, Bitmap photo) {
         this.id = id;
         this.username = username;
         this.note = note;
-        this.detail = detail;
         this.timestamp = timestamp;
         this.photo = photo;
         tempat = null;
     }
 
-    public Log(int id, String username, String note, String detail, Date timestamp, Bitmap photo, String tempat) {
+    public Log(int id, String username, String note, Date timestamp, Bitmap photo, String tempat) {
         this.id = id;
         this.username = username;
         this.note = note;
-        this.detail = detail;
         this.timestamp = timestamp;
         this.photo = photo;
         this.tempat = tempat;
@@ -59,14 +56,6 @@ public class Log{
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
     }
 
     public Date getTimestamp() {
