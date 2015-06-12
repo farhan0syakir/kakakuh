@@ -17,7 +17,9 @@
         <RelativeLayout
             android:id="@+id/container"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent">
+            android:layout_width="fill_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
                 android:id="@+id/label_judul"
@@ -30,7 +32,7 @@
 
             <EditText
                 android:id="@+id/judul"
-                android:layout_width="250dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/normal_text"
                 android:layout_centerHorizontal="true"
@@ -67,10 +69,10 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="@dimen/normal_text"
+                android:layout_marginLeft="15dp"
                 android:background="@drawable/square_text_box"
                 android:layout_alignTop="@+id/start_date"
-                android:layout_alignRight="@+id/judul"
-                android:layout_alignEnd="@+id/judul" />
+                android:layout_toRightOf="@+id/start_date" />
 
             <TextView
                 android:id="@+id/label_end_time"
@@ -116,7 +118,7 @@
 
             <EditText
                 android:id="@+id/deskripsi_jadwal"
-                android:layout_width="250dp"
+                android:layout_width="fill_parent"
                 android:layout_height="100dp"
                 android:textSize="@dimen/normal_text"
                 android:layout_centerHorizontal="true"
