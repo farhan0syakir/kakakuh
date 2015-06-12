@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.kakakuh.c4ppl.kakakuh.DetailTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.KerjakanTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
+import com.kakakuh.c4ppl.kakakuh.UbahDetailKategoriActivity;
 import com.kakakuh.c4ppl.kakakuh.UbahKategoriActivity;
 import com.kakakuh.c4ppl.kakakuh.UbahTugasActivity;
 import com.kakakuh.c4ppl.kakakuh.model.AkunListItem;
@@ -34,6 +35,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -49,6 +51,7 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
     String nama = null;
     String encodedPhoto = null;
     private Activity activeActivity;
+    final private String myDateFormat = "E, dd-MM-yy HH:mm";
 
     public HeaderTugasListKakakAdapter(Activity context, String usernameAdik, String nama, String encodedPhoto) {
         //this.context = context;
@@ -85,9 +88,11 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(activeActivity, UbahKategoriActivity.class);
+                Intent i = new Intent(activeActivity, UbahDetailKategoriActivity.class);
                 i.putExtra("idKategori", current.getIdKategori());
                 i.putExtra("textKategori", current.getTextKategori());
+                SimpleDateFormat dateFormat = new SimpleDateFormat(myDateFormat);
+                i.putExtra("start", "" + dateFormat.format(current.getDeadline()));
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 activeActivity.startActivity(i);
             }

@@ -22,7 +22,10 @@ import java.util.Locale;
  */
 public class UbahDetailKategoriActivity extends KakakuhBaseActivity {
 
+    private String dateStartSTR,dateEndSTR;
+
     private String idKategori;
+    private String kategoriText;
     private Button btnHapus;
     private Button btnUbah;
     private EditText content;
@@ -32,6 +35,7 @@ public class UbahDetailKategoriActivity extends KakakuhBaseActivity {
     private static Calendar myCalendarStart;
     DatePickerDialog.OnDateSetListener dateStart;
     TimePickerDialog.OnTimeSetListener timeStart;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +52,42 @@ public class UbahDetailKategoriActivity extends KakakuhBaseActivity {
         content.setText(temp.getTextKategori());
         myCalendarStart = Calendar.getInstance();
         myCalendarStart.setTime(temp.getDeadline());
-        //updateLabel(0);
-        //updateLabel(1);
 
-        //urusan dengan date
+        addListener();
+        retrieveExtras();
+    }
+
+
+    private void inisialisasi() {
+        content = (EditText) findViewById(R.id.content);
+        btnUbah = (Button) findViewById(R.id.btn_ubah);
+        btnHapus = (Button) findViewById(R.id.btn_hapus);
+        deadlineTanggal = (TextView) findViewById(R.id.deadline_tanggal);
+        deadlineJam = (TextView) findViewById(R.id.deadline_jam);
+    }
+
+    private void retrieveExtras() {
+        extras = getIntent().getExtras();
+        idKategori = extras.getString("idKategori");
+        kategoriText = extras.getString("textKategori").toString();
+        dateStartSTR = extras.getString("start").toString();
+
+        deadlineTanggal.setText(parseDate(dateStartSTR));
+        deadlineJam.setText(parseTime(dateStartSTR));
+        content.setText(kategoriText);
+    }
+
+    private String parseDate(String date){
+        String[] tempS = date.split(" ");
+        return tempS[0]+" "+tempS[1];
+    }
+
+    private String parseTime(String date){
+        String[] tempS = date.split(" ");
+        return tempS[2];
+    }
+
+    private void addListener(){
         dateStart = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -93,28 +129,22 @@ public class UbahDetailKategoriActivity extends KakakuhBaseActivity {
             }
         });
 
-
-        // button
         btnUbah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO query edit tugas
+                // kyknya ini bisa ngerefer ke buat akun.
+                //samakan dengan format database
+                //new UpdateJadwal().execute();
+                finish();
             }
         });
+
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO query hapus tugas
             }
         });
-    }
-
-    private void inisialisasi() {
-        idKategori = getIntent().getStringExtra("idKategori");
-
-        content = (EditText) findViewById(R.id.content);
-        btnUbah = (Button) findViewById(R.id.btn_ubah);
-        btnHapus = (Button) findViewById(R.id.btn_hapus);
     }
 
     private void updateLabel(int type) {
