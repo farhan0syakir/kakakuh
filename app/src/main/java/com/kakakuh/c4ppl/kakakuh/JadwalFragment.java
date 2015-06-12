@@ -272,8 +272,6 @@ public class JadwalFragment
                         e.printStackTrace();
                     }
                 }
-                System.out.println("my url is "+url+"sekarang sizenya " + events.size());
-//                mWeekView.notifyDatasetChanged();
                 pDialog.dismiss();
 
             } catch (JSONException e) {

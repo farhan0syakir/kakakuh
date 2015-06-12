@@ -49,11 +49,11 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
     String line = null;
     String bookingUrl = "";
     String username = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_jadwal_by_adik);
+
 
         addPreferensi();
         colorField = (TextView) findViewById(R.id.color);

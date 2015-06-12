@@ -73,6 +73,10 @@ public class FormJadwalActivity extends KakakuhBaseActivity {
         placeField = (TextView) findViewById(R.id.place);
         btnSimpan = (Button) findViewById(R.id.btn_simpan);
 
+        if(getIntent().getBooleanExtra("isEvent",false)) {
+            getActionBar().setTitle("Tambah Event");
+        }
+
         addListener();
     }
 
