@@ -2,12 +2,14 @@ package com.kakakuh.c4ppl.kakakuh.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.kakakuh.c4ppl.kakakuh.ProfilActivity;
 import com.kakakuh.c4ppl.kakakuh.R;
 import com.kakakuh.c4ppl.kakakuh.model.PasanganListItem;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
  * Created by Anas on 4/16/2015.
  */
 public class HeaderPasanganListAdapter extends KakakuhBaseAdapter<PasanganListItem> {
+
     public HeaderPasanganListAdapter(Context context) {
         this.context = context;
         listItems = new ArrayList<>();
@@ -38,6 +41,18 @@ public class HeaderPasanganListAdapter extends KakakuhBaseAdapter<PasanganListIt
         else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(listItems.get(position).getNama());
         txtUsername.setText(listItems.get(position).getUsername());
+        final String username = listItems.get(position).getUsername();
+
+        //add listener
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ProfilActivity.class);
+                i.putExtra("username", username);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
 
         return convertView;
     }

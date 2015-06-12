@@ -3,27 +3,22 @@ package com.kakakuh.c4ppl.kakakuh;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.alamkanak.weekview.WeekViewEvent;
 import com.kakakuh.c4ppl.kakakuh.controller.EventListAdapter;
 import com.kakakuh.c4ppl.kakakuh.controller.KakakuhBaseJSONParserAsyncTask;
-import com.kakakuh.c4ppl.kakakuh.controller.LogListAdapter;
 import com.kakakuh.c4ppl.kakakuh.model.Event;
-import com.kakakuh.c4ppl.kakakuh.model.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,7 +38,7 @@ public class EventFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.list_generic_event_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_event, container, false);
 
         mList = (ListView) rootView.findViewById(R.id.list_generic);
 

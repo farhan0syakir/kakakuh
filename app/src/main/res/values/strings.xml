@@ -59,5 +59,5 @@
     <string name="title_activity_ubah_detail_kategori">Ubah Detail Kategori</string>
     <string name="title_activity_ubah_detail_tugas">Ubah Detail Tugas</string>
     <string name="title_activity_ubah_kategori">Ubah Kategori</string>
-    <string name="title_activity_detail_jadwal_by_adik">DetailJadwalByAdikActivity</string>
+    <string name="title_activity_detail_jadwal_by_adik">Detail Jadwal</string>
 </resources>

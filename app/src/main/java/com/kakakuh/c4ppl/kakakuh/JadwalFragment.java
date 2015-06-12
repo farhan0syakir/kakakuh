@@ -1,6 +1,7 @@
 package com.kakakuh.c4ppl.kakakuh;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.RectF;
@@ -227,7 +228,6 @@ public class JadwalFragment
             super(context, url);
             this.url=url;
         }
-
 
         @Override
         protected void onPostExecute(JSONObject json) {

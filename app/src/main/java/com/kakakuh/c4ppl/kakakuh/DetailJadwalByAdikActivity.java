@@ -54,6 +54,8 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_jadwal_by_adik);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true); //enable UP
+        getActionBar().setIcon(R.drawable.ic_white_jadwal);
 
         addPreferensi();
         colorField = (TextView) findViewById(R.id.color);
@@ -112,28 +114,6 @@ public class DetailJadwalByAdikActivity extends KakakuhBaseActivity {
             e.printStackTrace();
         }
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detail_jadwal_by_adik, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     class detailJSON extends KakakuhBaseJSONParserAsyncTask {
