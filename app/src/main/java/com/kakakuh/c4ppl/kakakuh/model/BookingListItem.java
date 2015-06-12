@@ -1,25 +1,25 @@
 package com.kakakuh.c4ppl.kakakuh.model;
 
-import java.util.Date;
+import android.graphics.Bitmap;
 
 /**
  * Created by pudjiwahyudi on 6/12/15.
  */
 public class BookingListItem {
-    private String userkakak;
     private String useradik;
+    private String userkakak;
     private int idJadwal;
-    private boolean bookStatus;
-    private Date timestamp;
-    private Date dateStart;
-    private Date dateEnd;
+    private String timestamp;
+    private String txtDate;
+    private Bitmap photo;
 
-    public String getUserkakak() {
-        return userkakak;
-    }
-
-    public void setUserkakak(String userkakak) {
-        this.userkakak = userkakak;
+    public BookingListItem(String useradik, String userkakak, int idJadwal, String timestamp, String txtDate, Bitmap photo) {
+        this.useradik = useradik;
+        this.idJadwal = idJadwal;
+        this.timestamp = timestamp;
+        this.txtDate = txtDate;
+        this.photo = photo;
+        this.userkakak=userkakak;
     }
 
     public String getUseradik() {
@@ -30,6 +30,14 @@ public class BookingListItem {
         this.useradik = useradik;
     }
 
+    public String getUserkakak() {
+        return userkakak;
+    }
+
+    public void setUserkakak(String userkakak) {
+        this.userkakak = userkakak;
+    }
+
     public int getIdJadwal() {
         return idJadwal;
     }
@@ -38,46 +46,27 @@ public class BookingListItem {
         this.idJadwal = idJadwal;
     }
 
-    public boolean isBookStatus() {
-        return bookStatus;
-    }
-
-    public void setBookStatus(boolean bookStatus) {
-        this.bookStatus = bookStatus;
-    }
-
-    public Date getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
-    public Date getDateStart() {
-        return dateStart;
+    public String getTxtDate() {
+        return txtDate;
     }
 
-    public void setDateStart(Date dateStart) {
-        this.dateStart = dateStart;
+    public void setTxtDate(String txtDate) {
+        this.txtDate = txtDate;
     }
 
-    public Date getDateEnd() {
-        return dateEnd;
+    public Bitmap getPhoto() {
+        return photo;
     }
 
-    public void setDateEnd(Date dateEnd) {
-        this.dateEnd = dateEnd;
-    }
-
-    public BookingListItem(String userkakak, String useradik, int idJadwal, boolean bookStatus, Date timestamp, Date dateStart, Date dateEnd) {
-
-        this.userkakak = userkakak;
-        this.useradik = useradik;
-        this.idJadwal = idJadwal;
-        this.bookStatus = bookStatus;
-        this.timestamp = timestamp;
-        this.dateStart = dateStart;
-        this.dateEnd = dateEnd;
+    public void setPhoto(Bitmap photo) {
+        this.photo = photo;
     }
 }

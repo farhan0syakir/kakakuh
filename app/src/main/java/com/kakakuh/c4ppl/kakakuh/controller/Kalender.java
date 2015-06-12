@@ -36,6 +36,22 @@ public class Kalender {
         return hasil;
     }
 
+    public static String[] convertTanggalWaktu(Calendar cal) {
+
+        String hari = HARI[cal.get(Calendar.DAY_OF_WEEK) - 1];
+        int tanggal = cal.get(Calendar.DAY_OF_MONTH);
+        String bulan = BULAN[cal.get(Calendar.MONTH)];
+        int tahun = cal.get(Calendar.YEAR);
+        String jam = new SimpleDateFormat("HH:mm").format(cal.getTime());
+
+        String[] hasil = new String[2];
+        hasil[0] = hari + ", " + tanggal + " " + bulan + " " +  tahun;
+        hasil[1] = jam;
+
+        return hasil;
+    }
+
+
     public static String convertTanggal(int year, int month, int day) {
         Calendar cal = new GregorianCalendar(year, month, day);
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
@@ -94,5 +110,9 @@ public class Kalender {
 
         if(days > 0) return "Kemarin" + " " + time;
         return time;
+    }
+
+    public static String[] getTimeBooking(Calendar time) {
+        return convertTanggalWaktu(time);
     }
 }
