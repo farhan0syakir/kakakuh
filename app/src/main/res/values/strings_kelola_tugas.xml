@@ -8,5 +8,6 @@
     <string name="btn_download">DOWNLOAD</string>
     <string name="uploadgambarbaru">Upload gambar baru</string>
     <string name="btn_hapus_label">HAPUS</string>
+    <string name="btn_ubah">UBAH</string>
     <item name="btn_tambah_label" type="id">TAMBAH</item>
 </resources>

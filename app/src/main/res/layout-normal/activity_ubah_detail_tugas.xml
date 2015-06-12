@@ -6,7 +6,7 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
     android:background="@color/white"
-    tools:context="com.kakakuh.c4ppl.kakakuh.UbahDetailActivity">
+    tools:context="com.kakakuh.c4ppl.kakakuh.UbahDetailTugasActivity">
 
     <ScrollView
         android:orientation="vertical"
@@ -28,7 +28,6 @@
                 android:textSize="@dimen/normal_text"
                 android:layout_centerHorizontal="true"
                 android:gravity="top"
-                android:layout_below="@+id/label_deskripsi"
                 android:layout_marginTop="20dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
@@ -41,9 +40,10 @@
                 android:layout_marginBottom="15dp"
                 android:layout_below="@id/content"
                 android:layout_centerHorizontal="true">
+
                 <Button
                     android:id="@+id/btn_ubah"
-                    android:text="@string/btn_ubah_label"
+                    android:text="@string/btn_ubah"
                     android:textSize="@dimen/normal_text"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -63,7 +63,7 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:contentDescription="@string/btn_login"/>
-            </LinearLayout>
+        </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

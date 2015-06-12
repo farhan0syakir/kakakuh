@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.kakakuh.c4ppl.kakakuh.model.Tugas;
+
+import java.sql.Date;
+import java.util.ArrayList;
+
 /**
  * Created by Anas on 6/1/2015.
  */
@@ -28,6 +33,43 @@ public class UbahKategoriActivity extends KakakuhBaseActivity {
         getActionBar().setIcon(R.drawable.ic_white_tugas);
 
         inisialisasi();
+
+        //TOdo query tugas berdasarkan idKategori
+        //Hardcode
+        ArrayList<Tugas> queries = new ArrayList<>(); // isi 3
+        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"1","Kerjakan Mock Up",false));
+        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"2","Bikin PPT",true));
+        queries.add(new Tugas("1","PPL",new Date(new Long("1438224300000")),"3","Bikin UI",true));
+
+        for(int i = 0; i < queries.size(); i++) {
+            final Tugas current = queries.get(i);
+            tugasTxt[i].setText(current.getDeskripsiTugas());
+            btnEditTugas[i].setVisibility(View.VISIBLE);
+            btnEditTugas[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, UbahDetailTugasActivity.class);
+                    i.putExtra("idTugas", current.getIdTugas());
+                    context.startActivity(i);
+                }
+            });
+
+            btnTambahTugas[i].setVisibility(View.GONE);
+        }
+
+        //sisa
+        for(int i = queries.size(); i < 5; i++) {
+            tugasTxt[i].setText("tambah tugas baru");
+            btnEditTugas[i].setVisibility(View.GONE);
+            btnTambahTugas[i].setVisibility(View.VISIBLE);
+            btnTambahTugas[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, UbahDetailTugasActivity.class);
+                    context.startActivity(i);
+                }
+            });
+        }
     }
 
     private void inisialisasi() {
@@ -51,7 +93,6 @@ public class UbahKategoriActivity extends KakakuhBaseActivity {
 
         btnTambahTugas = new Button[5];
         btnTambahTugas[0] = (Button) findViewById(R.id.btn_plusTugas1);
-        btnTambahTugas[0].setVisibility(View.GONE);
         btnTambahTugas[1] = (Button) findViewById(R.id.btn_plusTugas2);
         btnTambahTugas[2] = (Button) findViewById(R.id.btn_plusTugas3);
         btnTambahTugas[3] = (Button) findViewById(R.id.btn_plusTugas4);
@@ -61,25 +102,12 @@ public class UbahKategoriActivity extends KakakuhBaseActivity {
         btnUbahKategori.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, UbahDetailActivity.class);
-                i.putExtra("isKategori",true);
+                Intent i = new Intent(context, UbahDetailKategoriActivity.class);
                 i.putExtra("idKategori", idKategori);
                 context.startActivity(i);
             }
         });
         deskripsiKategori = (TextView) findViewById(R.id.header);
-    }
-
-    private class UbahTugasListener implements View.OnClickListener {
-
-        private String idTugas;
-        public UbahTugasListener(String idTugas) {
-            this.idTugas = idTugas;
-        }
-
-        @Override
-        public void onClick(View v) {
-
-        }
+        deskripsiKategori.setText(getIntent().getStringExtra("textKategori"));
     }
 }

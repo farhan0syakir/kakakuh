@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@color/white"
+    tools:context="com.kakakuh.c4ppl.kakakuh.UbahDetailKategoriActivity">
+
+    <ScrollView
+        android:orientation="vertical"
+        android:id="@+id/scrollview"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:isScrollContainer="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_deskripsi"
+                android:text="@string/kategori_label"/>
+
+            <EditText
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:textSize="@dimen/normal_text"
+                android:layout_centerHorizontal="true"
+                android:gravity="top"
+                android:layout_below="@+id/label_deskripsi"
+                android:layout_marginTop="20dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/square_text_box"/>
+
+            <TextView
+                android:id="@+id/deadline_label"
+                android:layout_below="@+id/content"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deadline_label"
+                android:textSize="@dimen/normal_text"/>
+
+            <TextView
+                android:id="@+id/deadline_tanggal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/deadline_jam"
+                android:layout_alignBottom="@+id/deadline_jam"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/square_text_box" />
+
+            <TextView
+                android:id="@+id/deadline_jam"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deadline_label"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/normal_text"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/square_text_box"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/deadline_jam"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/btn_ubah"
+                    android:text="@string/btn_ubah"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="30dp"
+                    android:contentDescription="@string/btn_login"/>
+
+                <Button
+                    android:id="@+id/btn_hapus"
+                    android:text="@string/btn_hapus_label"
+                    android:textSize="@dimen/normal_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_normal"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/btn_login"/>
+        </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

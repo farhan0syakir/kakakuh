@@ -87,9 +87,9 @@ public class HeaderTugasListKakakAdapter extends KakakuhBaseAdapter<Tugas> {
             public void onClick(View v) {
                 Intent i = new Intent(activeActivity, UbahKategoriActivity.class);
                 i.putExtra("idKategori", current.getIdKategori());
+                i.putExtra("textKategori", current.getTextKategori());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 activeActivity.startActivity(i);
-                activeActivity.finish();
             }
         });
 

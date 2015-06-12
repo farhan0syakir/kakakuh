@@ -156,8 +156,12 @@
             android:label="@string/title_activity_ubah_kategori" >
         </activity>
         <activity
-            android:name=".UbahDetailActivity"
-            android:label="@string/title_activity_ubah_detail" >
+            android:name=".UbahDetailKategoriActivity"
+            android:label="@string/title_activity_ubah_detail_kategori" >
+        </activity>
+        <activity
+            android:name=".UbahDetailTugasActivity"
+            android:label="@string/title_activity_ubah_detail_tugas" >
         </activity>
         <activity
             android:name=".DetailJadwalByAdikActivity"
