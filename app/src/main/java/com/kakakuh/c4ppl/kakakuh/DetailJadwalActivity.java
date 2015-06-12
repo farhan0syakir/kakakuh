@@ -131,6 +131,7 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
         timeField.setText("" + startDateStr + " - " + endDateStr);
 
         if(getIntent().getBooleanExtra("isEvent",false)) {
+            getActionBar().setTitle("Detail Event");
             colorField.setBackgroundColor(getResources().getColor(R.color.available));
             descriptionStr = getIntent().getStringExtra("description");
             descriptionField.setText(descriptionStr);
