@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,12 +127,23 @@ public class DetailJadwalActivity extends KakakuhBaseActivity {
 //        }
         colorField.setBackgroundColor(color);
         titleField.setText(title);
+        placeField.setText(place);
         timeField.setText("" + startDateStr + " - " + endDateStr);
+
+        if(getIntent().getBooleanExtra("isEvent",false)) {
+            colorField.setBackgroundColor(getResources().getColor(R.color.available));
+            descriptionStr = getIntent().getStringExtra("description");
+            descriptionField.setText(descriptionStr);
+            ((ImageView) findViewById(R.id.ic_booker)).setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.booker)).setVisibility(View.GONE);
+        } else {
+
 //        Toast.makeText(getApplicationContext(), "myurl is detail jadwal"+myUrl+"?id="+id,Toast.LENGTH_SHORT ).show();
 //        System.out.println("detail jjadwal debug " + myUrl + "?id=" + id);
-        new detailJSON(DetailJadwalActivity.this,myUrl+"?id="+id).execute().get();
+            new detailJSON(DetailJadwalActivity.this, myUrl + "?id=" + id).execute().get();
 //        descriptionField.setText(descriptionStr);
 //        bookerField.setText(bookerId);
+        }
     }
 
     public void onHapusPressed() {

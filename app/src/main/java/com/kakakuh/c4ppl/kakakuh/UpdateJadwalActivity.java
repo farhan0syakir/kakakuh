@@ -247,6 +247,7 @@ public class UpdateJadwalActivity extends KakakuhBaseActivity {
         nameValuePairs.add(new BasicNameValuePair("enddate", dateEndSTR));
         nameValuePairs.add(new BasicNameValuePair("description", deskripsiSTR));
         nameValuePairs.add(new BasicNameValuePair("username", usernameSTR));
+        nameValuePairs.add(new BasicNameValuePair("place", place));
 
         //debug
         System.out.println(nameValuePairs);

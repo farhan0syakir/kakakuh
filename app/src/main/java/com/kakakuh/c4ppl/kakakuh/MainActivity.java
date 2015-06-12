@@ -257,9 +257,9 @@ public class MainActivity extends Activity {
                 fragment = new ReviewLogFragment();
                 break;
             case 1:
-                mTitleIcon = R.drawable.ic_emerald_jadwal;
+                mTitleIcon = R.drawable.ic_white_jadwal;
                 getActionBar().setIcon(mTitleIcon);
-                //fragment = new BuatEventFragment();
+                fragment = new EventFragment();
                 break;
             case 2:
                 mTitleIcon = R.drawable.ic_white_buat_akun;
