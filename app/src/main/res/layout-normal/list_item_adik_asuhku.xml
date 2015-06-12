@@ -42,77 +42,35 @@
         <View
             android:layout_width="12dp"
             android:layout_height="match_parent"
-            android:background="@color/emerald"/>
-        <RelativeLayout
+            android:background="@color/emerald_light"/>
+
+        <LinearLayout
             android:id="@+id/line_tugas"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/line_adik">
+            android:orientation="vertical"
+            android:background="@color/emerald">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_alignParentTop="true"
-                android:background="@color/emerald"/>
+                android:background="@color/emerald_light"/>
 
             <TextView
                 android:id="@+id/label_tugas_terakhir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
                 android:text="@string/label_tugas_terakhir"
                 android:paddingLeft="12dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/black"/>
+                android:layout_margin="5dp"
+                android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/belum_ada_tugas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/label_tugas_terakhir"
-                android:paddingLeft="12dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/label_belum_ada_tugas"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                android:textColor="@color/black"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/container_tugas"
-                android:layout_below="@id/belum_ada_tugas"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp">
-
-                <TextView
-                    android:id="@+id/kategori"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:paddingLeft="12dp"
-                    android:textColor="@color/black"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/tugas"
-                    android:layout_marginTop="2dp"
-                    android:layout_below="@id/kategori"
-                    android:enabled="false"
-                    android:textColor="@color/black"
-                    android:checked="true"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="10dp"/>
-            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/container_tugas"
-                android:background="@color/emerald"/>
-        </RelativeLayout>
+                android:background="@color/emerald_light"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

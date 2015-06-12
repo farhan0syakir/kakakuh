@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * Created by Anas on 4/2/2015.
  */
 public class AdikAsuhkuFragment extends Fragment{
-    private ArrayList<AdikAsuhkuListItem> listItems;
+    private ArrayList<AkunListItem> listItems;
     private AdikAsuhkuListAdapter adapter;
     private JSONArray jsonArray = null;
     private String user;
@@ -89,7 +89,6 @@ public class AdikAsuhkuFragment extends Fragment{
         protected void onPostExecute(JSONObject json) {
             pDialog.dismiss();
             try {
-                Tugas[] tugases = {new Tugas("1","Jajan",new Date(new Long("1438224300000")),"2","Mock Up",true),null,null};
                 // Getting JSON Array from URL
                 System.out.println("adik asuh fragment debug json ="+json);
                 jsonArray = json.getJSONArray("data");
@@ -102,13 +101,7 @@ public class AdikAsuhkuFragment extends Fragment{
                     AkunListItem akun = new AkunListItem(username,namaLengkap, decodedByte);
 
                     //TODO Hardcoded harusnya ambil tugas terakhir yang sudah dikerjakan adik.
-                    Tugas tugas = tugases[i];
-
-                    if(tugas == null) {
-                        listItems.add(new AdikAsuhkuListItem(akun));
-                    } else {
-                        listItems.add(new AdikAsuhkuListItem(akun,tugas));
-                    }
+                    listItems.add(akun);
                 }
 
                 // setting the Pengaturan list adapter

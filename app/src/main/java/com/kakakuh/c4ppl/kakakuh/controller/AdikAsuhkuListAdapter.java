@@ -31,9 +31,9 @@ import java.util.ArrayList;
 /**
  * Created by Anas on 4/15/2015.
  */
-public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem> {
+public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AkunListItem> {
 
-    public AdikAsuhkuListAdapter(Context context, ArrayList<AdikAsuhkuListItem> listAdik) {
+    public AdikAsuhkuListAdapter(Context context, ArrayList<AkunListItem> listAdik) {
         this.context = context;
         listItems = listAdik;
     }
@@ -49,29 +49,12 @@ public class AdikAsuhkuListAdapter extends KakakuhBaseAdapter<AdikAsuhkuListItem
         ImageView image = (ImageView) convertView.findViewById(R.id.image);
         TextView txtName = (TextView) convertView.findViewById(R.id.nama_akun);
 
-        final AkunListItem akunItem = listItems.get(position).getAkun();
+        final AkunListItem akunItem = listItems.get(position);
         if(akunItem.getPhoto() != null) image.setImageBitmap(akunItem.getPhoto());
         else image.setImageResource(R.drawable.art_default_profil);
         txtName.setText(akunItem.getName());
 
-        RelativeLayout lineTugas = (RelativeLayout) convertView.findViewById(R.id.line_tugas);
-        RelativeLayout container = (RelativeLayout) convertView.findViewById(R.id.container_tugas);
-        TextView belum_ada = (TextView) convertView.findViewById(R.id.belum_ada_tugas);
-
-        if(listItems.get(position).getTugas() != null) {
-            belum_ada.setVisibility(View.GONE);
-            container.setVisibility(View.VISIBLE);
-
-            TextView kategori = (TextView) convertView.findViewById(R.id.kategori);
-            CheckBox tugas = (CheckBox) convertView.findViewById(R.id.tugas);
-
-            Tugas tugasItem = listItems.get(position).getTugas();
-            kategori.setText(tugasItem.getTextKategori());
-            tugas.setText(tugasItem.getDeskripsiTugas());
-        } else {
-            container.setVisibility(View.GONE);
-            belum_ada.setVisibility(View.VISIBLE);
-        }
+        LinearLayout lineTugas = (LinearLayout) convertView.findViewById(R.id.line_tugas);
 
         //add listener
         txtName.setOnClickListener(new View.OnClickListener() {
