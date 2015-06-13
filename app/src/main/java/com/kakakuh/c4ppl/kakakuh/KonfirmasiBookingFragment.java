@@ -89,7 +89,7 @@ public class KonfirmasiBookingFragment extends Fragment{
                     JSONObject c = jsonArray.getJSONObject(i);
                     // Storing  JSON item in a Variable
                     String useradik = c.getString("useradik");
-                    String userkakak = c.getString("userkakak");
+                    String userkakak = c.getString("user_id");
                     String idjadwal = c.getString("id_jadwal");
                     String bookstatus = c.getString("book_status");
                     decodedByte = ImageConverter.convertStringToBitmap(c.getString("img"));
